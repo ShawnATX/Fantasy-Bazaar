@@ -14,7 +14,8 @@ const itemSeed = [
         description: "A magical potion which heals 1d6 hit points to the user",
         value: 50,
         weight: 0.5,
-        type: "Consumable"
+        type: "Consumable",
+        system: "DnD"
     }
 
 ];
@@ -29,17 +30,17 @@ const userSeed = [
         userName: "glass cannon",
         characterName: "Pembrick",
         wallet: 25,
-        type: "Player"
+        type: "Player",
+        items: []
     }
 ]
 const bazaarSeed =[
     {
         bazaarName: "First World Junk",
         creator: {},
-        system: "Pathfinder"
+        system: "DnD"
     }
 ];
-
 
 function seedItems() {
     db.Item
@@ -57,6 +58,9 @@ function seedItems() {
 }
 
 const seedUsers = () => {
+    //add seeded item to players item list
+
+
     db.User
         .remove({})
         .then(() => db.User.collection.insertMany(userSeed))
