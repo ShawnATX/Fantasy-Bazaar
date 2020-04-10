@@ -15,6 +15,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    characterImage: {
+        type: String
+    },
     type: {
         type: String,
         required: true,
@@ -46,7 +49,7 @@ const userSchema = new Schema({
 
 });
 
-userSchema.pre(save, function (next) {
+userSchema.pre('save', function (next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
@@ -65,8 +68,6 @@ userSchema.pre(save, function (next) {
             next();
         });
     });
-
-
 });
 
 userSchema.methods.comparePassword = function (passwordAttempt, cb) {

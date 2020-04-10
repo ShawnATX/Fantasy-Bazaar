@@ -22,6 +22,10 @@ export default {
     getUser: function (id) {
         return axios.get("/api/users/" + id);
     },
+    // Gets all users
+    getUsers: function () {
+        return axios.get("/api/users");
+    },
     //Save new user
     saveUser: function (userData) {
         console.log(userData);

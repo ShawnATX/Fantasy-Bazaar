@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const db = require("../models");
 
 //This file is used to initialize standard data for the application: items, admin user, example bazaar
-
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb://localhost/fantasybazaar"
