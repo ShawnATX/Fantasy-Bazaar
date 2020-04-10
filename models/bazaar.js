@@ -23,7 +23,8 @@ const bazaarSchema = new Schema({
         type: String,
         unique: true,
         default: shortid.generate,
-        required: true
+        required: true,
+        lowercase: true
     },
     date: {
         type: Date,

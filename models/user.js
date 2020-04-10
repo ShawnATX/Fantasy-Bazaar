@@ -46,7 +46,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-
 });
 
 userSchema.pre('save', function (next) {

@@ -1,15 +1,18 @@
 //New player form with handles basic player creation. front-end validation ensures data is present before being sent to the server on required fields. useState React hook is being used to hold and handle form data as it is entered.
 
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button, Col, Row } from 'reactstrap';
 import API from "../utils/api";
 
 
 function NewPlayer() {
+    const { isAuthenticated, userHasAuthenticated } = useContext(UserContext);
     const [formObject, setFormObject] = useState({});
 
     function handleInputChange(event) {
+        console.log(isAuthenticated);
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
     };
@@ -24,14 +27,18 @@ function NewPlayer() {
                 wallet: formObject.wallet,
                 password: formObject.password
             })
-            .then(res => console.log(res))
+            .then((res) => {
+                console.log(res)
+                if (res) {
+                    //redirect
+                }
+            })
             .catch(err => console.log(err));
         }
     };
 
     return (
         <Container fluid={true}>
-
             <Form onSubmit={handleFormSubmit}>
                 <FormGroup row>
                     <Input
