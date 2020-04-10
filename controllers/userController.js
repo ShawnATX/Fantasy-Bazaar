@@ -16,9 +16,9 @@ const UserController =  {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req);
+    console.log(req.body);
     db.User
-      .create(req.body)
+      .create({...req.body, wallet: parseInt(req.body.wallet)})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

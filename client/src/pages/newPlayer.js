@@ -1,21 +1,13 @@
 //New player form with handles basic player creation. front-end validation ensures data is present before being sent to the server on required fields. useState React hook is being used to hold and handle form data as it is entered.
 
 
-import React, { useState, useEffect } from 'react';
-import { Container, FormGroup, Form, Label, Input, FormText, Button, Col, Row } from 'reactstrap';
+import React, { useState } from 'react';
+import { Container, FormGroup, Form, Label, Input, Button, Col, Row } from 'reactstrap';
 import API from "../utils/api";
 
 
 function NewPlayer() {
-    const [formObject, setFormObject] = useState({})
-
-    useEffect(() => {
-        getUsers()
-    }, [])
-
-    function getUsers() {
-        API.getUsers().then((res) => console.log(res));
-    }
+    const [formObject, setFormObject] = useState({});
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -24,11 +16,10 @@ function NewPlayer() {
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        console.log(formObject);
         if (formObject.characterName && formObject.playerName && formObject.password) {
             API.saveUser( {
-                characterName : formObject.characterName,
                 userName: formObject.playerName,
+                characterName : formObject.characterName,
                 type: "Player",
                 wallet: formObject.wallet,
                 password: formObject.password

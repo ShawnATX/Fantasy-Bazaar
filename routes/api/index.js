@@ -10,7 +10,4 @@ router.use("/items", itemRoutes);
 // Bazaar API routes
 router.use("/bazaars", bazaarRoutes);
 
-router.route("/")
-  .get(() => console.log("API get"));
-
 module.exports = router;

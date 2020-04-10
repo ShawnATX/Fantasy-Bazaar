@@ -20,8 +20,8 @@ const userSchema = new Schema({
     },
     type: {
         type: String,
-        required: true,
-        match: [({ value }) => value === ("GM" || "Player"), "Invalid user type"]
+        required: true
+        // match: [({ value }) => value === ("GM" || "Player"), "Invalid user type"]
     },
     wallet: {
         type: Number,
@@ -50,6 +50,7 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', function (next) {
+    console.log("Pre-save")
     var user = this;
 
     // only hash the password if it has been modified (or is new)
