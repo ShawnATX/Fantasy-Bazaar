@@ -4,10 +4,10 @@ const userRoutes = require("./users");
 const bazaarRoutes = require("./bazaars");
 
 // Item API routes
-router.use("/item", itemRoutes);
+router.use("/items", itemRoutes);
 // User API routes
-router.use("/user", userRoutes);
+router.use("/users", userRoutes);
 // Bazaar API routes
-router.use("/bazaar", bazaarRoutes);
+router.use("/bazaars", bazaarRoutes);
 
 module.exports = router;

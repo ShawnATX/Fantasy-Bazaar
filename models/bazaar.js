@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const shortid = require('shortid');
+
 
 const bazaarSchema = new Schema({
     bazaarName: { 
@@ -17,6 +19,12 @@ const bazaarSchema = new Schema({
             ref: "User",
         }
     ],
+    joinCode: {
+        type: String,
+        unique: true,
+        default: shortid.generate,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
