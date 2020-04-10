@@ -24,6 +24,7 @@ export default {
     },
     //Save new user
     saveUser: function (userData) {
+        console.log(userData);
         return axios.post("/api/users", userData);
     },
     //Delete user with given id
