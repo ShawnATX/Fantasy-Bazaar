@@ -6,26 +6,36 @@ import NewPlayer from "./pages/newPlayer";
 import NoMatch from "./pages/NoMatch";
 import playerHome from "./pages/playerHome"
 import UserContext from "./utils/userContext";
+import Login from "./pages/login";
 
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [authenticationState, setAuthenticationState] = useState({
+    isAuthenticated: false,
+    user: {},
+    userHasAuthenticated: (auth, user) => {
+      console.log(auth, user);
+      setAuthenticationState({...authenticationState, isAuthenticated: auth, user})
+    }
+  });
 
   return (
-    <UserContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-
+    <UserContext.Provider value={{ authenticationState }}>
       <BrowserRouter>
-        <div>
+        <div className="app">
           <Switch>
             <Route exact path="/" >
               <Splash />
             </Route>
-            <Route path="/playerhome" component={playerHome} isPrivate />
+            <Route exact path="/playerhome" component={playerHome} isPrivate />
 
             <Route exact path="/newplayer">
               <NewPlayer />
             </Route>
 
+            <Route exact path="/login">
+              <Login />
+            </Route>
 
             <Route path="*">
               <NoMatch />

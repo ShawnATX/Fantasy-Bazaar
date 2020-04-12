@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const shortid = require('shortid');
+
 
 //This file is used to initialize standard data for the application: items, admin user, example bazaar
 mongoose.connect(
@@ -10,7 +12,9 @@ mongoose.connect(
 const itemSeed = [
     {
         name: "Potion of Healing",
-        description: "A magical potion which heals 1d6 hit points to the user",
+        description: {
+            description: "A magical potion which heals 2d4 +2 hit points to the user"
+        },
         value: 50,
         weight: 0.5,
         type: "Consumable",
@@ -23,7 +27,8 @@ const userSeed = [
         userName: "GM",
         characterName: "Overlord",
         wallet: 0,
-        type: "GM"
+        type: "GM",
+        password: "pass"
     },
     {
         userName: "glass cannon",
@@ -38,6 +43,7 @@ const bazaarSeed =[
         bazaarName: "First World Junk",
         creator: {},
         system: "DnD"
+        , joinCode: shortid.generate()
     }
 ];
 
@@ -58,8 +64,6 @@ function seedItems() {
 
 const seedUsers = () => {
     //add seeded item to players item list
-
-
     db.User
         .remove({})
         .then(() => db.User.collection.insertMany(userSeed))
@@ -80,7 +84,10 @@ const seedBazaar = () => {
     })
     db.Bazaar
     .remove({})
-    .then(() => db.Bazaar.collection.insertMany(bazaarSeed))
+    .then(() => 
+        //console.log(bazaarSeed.joinCode);
+        db.Bazaar.collection.insertMany(bazaarSeed)
+    )
     .then(data => {
         console.log(data.result.n + " bazaar records inserted!");
         process.exit(0);
@@ -90,6 +97,5 @@ const seedBazaar = () => {
         process.exit(1);
     });
 }
-
 
 seedItems();

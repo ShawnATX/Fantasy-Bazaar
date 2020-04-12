@@ -28,7 +28,6 @@ export default {
     },
     //Save new user
     saveUser: function (userData) {
-        console.log(userData);
         return axios.post("/api/users", userData);
     },
     //Delete user with given id
@@ -38,6 +37,10 @@ export default {
     //update user 
     updateUser: function (id, userData) {
         return axios.put("/api/users/" + id, userData);
+    },
+    //user login
+    loginUser: function(userData) {
+        return axios.post("/api/users/login", userData);
     },
     // Gets the bazaar with the given id
     getBazaar: function (id) {

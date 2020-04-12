@@ -6,10 +6,13 @@ var db = require("../models");
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "userName"
+      usernameField: "userName",
+      passwordField: "password"
+
     },
     function(username, password, done) {
       var dbUser = db.User;
+      console.log(db.User, "From Passport");
       dbUser.find( { userName: username  }).then(function(dbUser) {
         // If there's no user with the given userName
         if (!dbUser) {

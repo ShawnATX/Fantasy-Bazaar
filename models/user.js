@@ -49,7 +49,6 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', function (next) {
-    console.log("Pre-save")
     var user = this;
 
     // only hash the password if it has been modified (or is new)

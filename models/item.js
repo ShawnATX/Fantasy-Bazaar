@@ -1,9 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const itemDescription = new Schema({
+  ac: String,
+  abilityReq: String,
+  skillModifier: String,
+  damage: String,
+  properties: String,
+  description: String
+});
+
+
+
+
 const itemSchema = new Schema({
   name: { type: String, required: true },
-  description: { type: String, required: true },
+  description: [itemDescription],
   value: {
       type: Number,
       required: true
@@ -16,6 +28,9 @@ const itemSchema = new Schema({
     type: String,
     required: true,
     validate: [({ value }) => value === ("Weapon" || "Armor" || "Wearable" || "Consumable" || "Gear" || "Kit" || "Service" || "Misc"), "Item type is invalid"]
+  },
+  subtype: {
+    type: String
   },
   system: {
     type: String,

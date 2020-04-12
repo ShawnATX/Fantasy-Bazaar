@@ -8,19 +8,24 @@ import { Link } from 'react-router-dom';
 
 const Splash = (props) => {
     return (
-        <Container fluid={true}>
-            <Row>
-                <Col>
+        <Container className="text-center">
+            <Row className="mt-5 px-5">
+                <Col >
                     <Link to="/newplayer" alt="Join a game" className="text-center">
                         Join a Bazaar
                     </Link>
                 </Col>
             </Row>
-            <Row>
+            <Row className="mt-5 px-5">
                 <Col>
-                    <Link>
+                    <Link to="/">
                         Curate a new Bazaar
                     </Link>
+                </Col>
+            </Row>
+            <Row className="fixed-bottom pb-5 mt-2">
+                <Col>
+                <Link to="/login">Login Here</Link>
                 </Col>
             </Row>
         </Container>

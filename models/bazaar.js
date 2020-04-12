@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const shortid = require('shortid');
 
-
-const bazaarSchema = new Schema({
+const BazaarSchema = new Schema({
     bazaarName: { 
         type: String, 
         required: true 
@@ -22,9 +20,8 @@ const bazaarSchema = new Schema({
     joinCode: {
         type: String,
         unique: true,
-        default: shortid.generate,
         required: true,
-        lowercase: true
+        uppercase: true
     },
     date: {
         type: Date,
@@ -45,12 +42,16 @@ const bazaarSchema = new Schema({
     system: {
         type: String,
         match: [({value}) => value === ("Pathfinder" || "DnD" || "Custom"), "Invalid system type"]
-    },
+    }
 
 });
 
+BazaarSchema.methods.createJoinCode = function() {
+    this.joinCode = shortid.generate();
+    console.log(this.joinCode);
+}
 
 
-const Bazaar = mongoose.model("Bazaar", bazaarSchema);
+const Bazaar = mongoose.model("Bazaar", BazaarSchema);
 
 module.exports = Bazaar;
