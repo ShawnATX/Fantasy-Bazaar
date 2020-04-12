@@ -20,16 +20,17 @@ const Login = () => {
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (formObject.characterName && formObject.password) {
+        if (formObject.userName && formObject.password) {
             const userLogin = {
-                username: formObject.characterName.trim(),
+                userName: formObject.userName.trim(),
                 password: formObject.password
             }
             API.loginUser(userLogin)
             .then((res) => {
-                console.log(res)
                 if (res.status === 200) {
-                    console.log(res.body);
+                    //set authentication on successful login, and set user info on the global state object
+                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items }); 
+                    history.push("/playerhome");
                 }
             })
             .catch(err => console.log(err));
@@ -45,8 +46,8 @@ const Login = () => {
             <Form onSubmit={handleFormSubmit}>
                 <FormGroup row>
                     <Input
-                        name="characterName"
-                        id="characterName"
+                        name="userName"
+                        id="userName"
                         placeholder="Character Name"
                         onChange={handleInputChange} />
                 </FormGroup>

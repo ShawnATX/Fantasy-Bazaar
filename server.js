@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const cookieParser = require("cookie-parser");
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -25,7 +24,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(routes);
+//app.use(routes);
+require("./routes/api-routes.js")(app);
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar");
 
