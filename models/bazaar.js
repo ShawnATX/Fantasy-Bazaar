@@ -20,8 +20,7 @@ const BazaarSchema = new Schema({
     joinCode: {
         type: String,
         unique: true,
-        required: true,
-        uppercase: true
+        required: true
     },
     date: {
         type: Date,

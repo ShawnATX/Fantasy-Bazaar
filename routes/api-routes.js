@@ -2,6 +2,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 const userController = require("../controllers/userController");
+const bazaarController = require("../controllers/bazaarController");
 
 
 module.exports = function (app) {
@@ -21,20 +22,20 @@ module.exports = function (app) {
     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
     // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
     // otherwise send back an error
-    app.post("/api/users",  userController.create
+    app.post("/api/users",  userController.create );
         // .then(function () {
         //     res.redirect(307, "/api/login");
         // })
         //     .catch(function (err) {
         //         res.status(401).json(err);
         //     })
-    );
+
 
     // Route for logging user out
-    //   app.get("/logout", function(req, res) {
-    //     req.logout();
-    //     res.redirect("/");
-    //   });
+      app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+      });
 
     //Route to get individual user public data
     app.get("/api/users/:id", function (req, res) {
@@ -44,8 +45,12 @@ module.exports = function (app) {
         } else {
             res.json({
                 userName: req.user.userName,
-                id: req.user.id
             });
         }
     });
+
+
+    //BAZAAR ROUTES
+    //check on bazzar from code
+    app.get("/api/bazaars/code/:joinCode", (bazaarController.findByJoinCode));
 };

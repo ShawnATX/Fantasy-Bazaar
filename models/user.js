@@ -42,6 +42,12 @@ const userSchema = new Schema({
             ref: "Item"
         }
     ],
+    bazaars: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Bazaar"
+        }
+    ],
     password: {
         type: String,
         required: true

@@ -31,7 +31,7 @@ const userSeed = [
         password: "pass"
     },
     {
-        userName: "glass cannon",
+        userName: "glasscannon",
         characterName: "Pembrick",
         wallet: 25,
         type: "Player",
@@ -42,6 +42,7 @@ const bazaarSeed =[
     {
         bazaarName: "First World Junk",
         creator: {},
+        players: [],
         system: "DnD"
         , joinCode: shortid.generate()
     }
@@ -81,6 +82,9 @@ const seedBazaar = () => {
     //get GM user to seed as bazaar creator
     db.User.findOne({userName: "GM"}, '_id', function (err, userId) {
         bazaarSeed[0].creator = userId;
+    })
+    db.User.findOne({userName: "glasscannon"}, '_id', function (err, userId) {
+        bazaarSeed[0].players.push(userId);
     })
     db.Bazaar
     .remove({})

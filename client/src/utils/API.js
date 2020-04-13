@@ -42,9 +42,10 @@ export default {
     loginUser: function(userData) {
         return axios.post("/api/users/login", userData);
     },
-    // Gets the bazaar with the given id
-    getBazaar: function (id) {
-        return axios.get("/api/bazaars/" + id);
+
+    // Gets the bazaar with the given joinCode
+    getBazaar: function (code) {
+        return axios.get("/api/bazaars/code/" + code);
     },
     // Deletes bazaar with the given id
     deleteBazaar: function (id) {

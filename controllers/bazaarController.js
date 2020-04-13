@@ -9,6 +9,13 @@ const BazaarController =  {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByJoinCode: function(req, res) {
+    db.Bazaar
+      .findOne({ joinCode: req.params.joinCode })
+      .then((dbModel) => {
+        res.json(dbModel)})
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
     db.Bazaar
       .findById(req.params.id)

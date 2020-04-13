@@ -10,7 +10,7 @@ const PlayerHome = (props) => {
     const history = useHistory();
     
     useEffect(() => {
-        //console.log(authenticationState);
+        console.log(authenticationState);
         if (!authenticationState.isAuthenticated) { 
             history.push("/newplayer");
         };

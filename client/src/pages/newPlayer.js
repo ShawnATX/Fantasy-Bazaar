@@ -15,33 +15,43 @@ function NewPlayer() {
 
 
     function handleInputChange(event) {
-        console.log(authenticationState);
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
     };
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (formObject.characterName && formObject.playerName && formObject.password) {
-            const newUser = {
-                userName: formObject.playerName,
-                characterName : formObject.characterName,
-                type: "Player",
-                wallet: formObject.wallet,
-                password: formObject.password,
-                items: []
-            }
-            API.saveUser(newUser)
+        //check on form input, @@TODO add further validation
+        if (formObject.characterName && formObject.playerName && formObject.password && formObject.bazaarId) {
+            //check if bazaar code exists, if so return Id to the page
+            API.getBazaar(formObject.bazaarId)
+            //bazaar exists, attemtping to create user and tie to bazaar
             .then((res) => {
-                console.log(res)
-                if (res.status === 200) {
-                    console.log(res.body);
-                    //set authentication on successful login, and set user info on the global state object
-                    authenticationState.userHasAuthenticated(true, { userName : newUser.userName, characterName : newUser.characterName, type : newUser.type, wallet : newUser.wallet, items : newUser.items }); 
-                    history.push("/playerhome");
+                console.log(res.data);
+                const bazaarId = res.data._id;
+                const newUser = {
+                    userName: formObject.playerName,
+                    characterName: formObject.characterName,
+                    type: "Player",
+                    wallet: formObject.wallet,
+                    password: formObject.password,
+                    items: [],
+                    bazaars: [ bazaarId]
                 }
+                API.saveUser(newUser)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            //set authentication on successful login, and set user info on the global state object
+                            authenticationState.userHasAuthenticated(true, { userName: newUser.userName, characterName: newUser.characterName, type: newUser.type, wallet: newUser.wallet, items: newUser.items });
+    
+                            history.push("/playerhome");
+                        }
+                    })
+                    .catch(err => console.log(err));
+
             })
             .catch(err => console.log(err));
+
         }
     };
 
