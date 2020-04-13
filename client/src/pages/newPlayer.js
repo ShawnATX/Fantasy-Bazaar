@@ -43,15 +43,17 @@ function NewPlayer() {
                         if (res.status === 200) {
                             //set authentication on successful login, and set user info on the global state object
                             authenticationState.userHasAuthenticated(true, { userName: newUser.userName, characterName: newUser.characterName, type: newUser.type, wallet: newUser.wallet, items: newUser.items });
-    
                             history.push("/playerhome");
                         }
+                        else{
+                            console.log(res);
+                        }
                     })
+                    //save user error @@TODO handle creation error
                     .catch(err => console.log(err));
-
             })
+            //check if bazaar exists error @@TODO handle check error
             .catch(err => console.log(err));
-
         }
     };
 

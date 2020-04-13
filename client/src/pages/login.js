@@ -29,7 +29,7 @@ const Login = () => {
             .then((res) => {
                 if (res.status === 200) {
                     //set authentication on successful login, and set user info on the global state object
-                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items }); 
+                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
                     history.push("/playerhome");
                 }
             })
@@ -43,7 +43,7 @@ const Login = () => {
 
     return(
         <Container>
-            <Form onSubmit={handleFormSubmit}>
+            <Form onSubmit={handleFormSubmit} className="mt-4">
                 <FormGroup row>
                     <Input
                         name="userName"
