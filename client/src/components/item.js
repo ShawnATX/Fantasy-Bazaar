@@ -18,7 +18,7 @@ const Item = (props) => {
             </Col>
             <Col>
             <Button onClick={() => props.action(props.item)}>
-                Purchase
+                {props.buttonPrompt}
             </Button>
             </Col>
         </Row>

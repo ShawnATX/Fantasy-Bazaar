@@ -31,7 +31,8 @@ const StoreFront = (props) => {
                 <Item 
                 key={item._id}
                 item={item}
-                action={props.purchase}/>
+                action={props.purchase}
+                buttonPrompt={"Purchase"}/>
             )}
         </div>
     );
