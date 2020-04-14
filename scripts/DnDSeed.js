@@ -554,9 +554,7 @@ const itemSeed = [
         subtype: "Martial Ranged",
         system: "DnD"
     },
-
 ];
-
 
 function seedItems() {
     db.Item.collection.insertMany(itemSeed)

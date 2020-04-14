@@ -8,7 +8,7 @@ const PlayerMain = (props) => {
             <Row className="mt-5 px-5">
                 <Col >
                     <Button
-                        href="#inventory"
+                        href="#Inventory"
                         alt="Manage Inventory"
                         className="text-center"
                         onClick={() => props.setPageState("Inventory")}>

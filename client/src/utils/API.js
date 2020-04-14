@@ -9,6 +9,10 @@ export default {
     getItem: function (id) {
         return axios.get("/api/items/" + id);
     },
+    // Gets the item with the given system
+    getItemsBySystem: function (system) {
+        return axios.get("/api/items/" + system);
+    },
     // Deletes item with the given id
     deleteItem: function (id) {
         return axios.delete("/api/items/" + id);
@@ -37,6 +41,10 @@ export default {
     //update user 
     updateUser: function (id, userData) {
         return axios.put("/api/users/" + id, userData);
+    },
+    //update user 
+    userPurchase: function (userData) {
+        return axios.put("/api/users/purchase", userData);
     },
     //user login
     loginUser: function(userData) {

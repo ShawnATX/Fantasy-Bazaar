@@ -14,12 +14,10 @@ const PlayerHome = () => {
     const history = useHistory();
     
     useEffect(() => {
-        console.log(authenticationState);
         if (!authenticationState.isAuthenticated) { 
             history.push("/newplayer");
         };
         setUserObject(authenticationState.user);
-        console.log(userObject);
     }, []);
 
     function renderPage () {
@@ -28,11 +26,23 @@ const PlayerHome = () => {
         } else if (pageState === "Inventory") {
           return <Inventory setPageState={setPageState}/>;
         } else if (pageState === "Store") {
-          return <StoreFront />;
+          return <StoreFront setPageState={setPageState} purchase={purchaseItem}/>;
         } else {
           return <PlayerMain />;
         }
       };
+
+    function purchaseItem(item) {
+        console.log(item);
+        if (item.value > userObject.wallet) {
+            return ("You need more money");
+        } 
+        else {
+            //    updateUser: function (id, userData) {
+            API.userPurchase(({wallet: (userObject.wallet - item.value), items: [item._id]}))
+        }
+
+    };
 
     return (
         <Container>

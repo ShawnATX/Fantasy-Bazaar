@@ -3,11 +3,12 @@ var db = require("../models");
 var passport = require("../config/passport");
 const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
+const itemController = require("../controllers/itemController");
 
 
 module.exports = function (app) {
     // Using the passport.authenticate middleware with our local strategy.
-    // If the user has valid login credentials, send them to the members page.
+    // If the user has valid login credentials, send them to the player page.
     // Otherwise the user will be sent an error
     app.post("/api/users/login", passport.authenticate("local"), function (req, res) {
         res.json({
@@ -30,7 +31,6 @@ module.exports = function (app) {
         //         res.status(401).json(err);
         //     })
 
-
     // Route for logging user out
       app.get("/logout", function(req, res) {
         req.logout();
@@ -49,8 +49,18 @@ module.exports = function (app) {
         }
     });
 
+    // //Update user (not modifying items, bazaars)
+    // app.put("/api/users/:userName", userController.update)
+
+    //Update user (item &  wallet)
+    app.put("/api/users/purchase", userController.purchase)
 
     //BAZAAR ROUTES
     //check on bazzar from code
     app.get("/api/bazaars/code/:joinCode", (bazaarController.findByJoinCode));
+
+
+    //ITEM ROUTES
+    //Route to get all inventory items of a particular system, passing {system: string}
+    app.get("/api/items/:system", (itemController.findAllBySystem));
 };
