@@ -8,10 +8,10 @@ const StoreFront = (props) => {
     const [itemList, setItemList] = useState([]);
     useEffect(() => {
         //loading default "DnD" items, @@TODO update to get bazaar-specific items
-        const items = (API.getItemsBySystem("DnD")
+        API.getItemsBySystem("DnD")
             .then(res => {
                 setItemList(res.data);
-            }));
+            });
     }, []);
 
     return (
@@ -31,7 +31,7 @@ const StoreFront = (props) => {
                 <Item 
                 key={item._id}
                 item={item}
-                purchase={props.purchase}/>
+                action={props.purchase}/>
             )}
         </div>
     );

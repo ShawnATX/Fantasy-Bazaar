@@ -22,6 +22,14 @@ const ItemController =  {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findManyById: function(req, res) {
+    console.log(req.body);
+    db.Item
+      .find().where('_id').in(req.body)
+      .then(dbModels => console.log(dbModels))
+      //.then(dbModels => res.json(dbModels))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Item
       .create(req.body)

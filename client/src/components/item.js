@@ -17,7 +17,7 @@ const Item = (props) => {
                 {props.item.description ? props.item.description.description : ""}
             </Col>
             <Col>
-            <Button onClick={() => props.purchase(props.item)}>
+            <Button onClick={() => props.action(props.item)}>
                 Purchase
             </Button>
             </Col>

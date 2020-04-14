@@ -13,6 +13,11 @@ export default {
     getItemsBySystem: function (system) {
         return axios.get("/api/items/" + system);
     },
+    //get multiple items from array of item ids
+    getItemsById: function (idArr) {
+        console.log(idArr);
+        return axios.get("/api/items/many", idArr);
+    },
     // Deletes item with the given id
     deleteItem: function (id) {
         return axios.delete("/api/items/" + id);

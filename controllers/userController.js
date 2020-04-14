@@ -28,7 +28,7 @@ const UserController =  {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  //route specifically for adding item to user item list and decrementing gold
+  //route specifically for adding item to user item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function(req, res) {
     console.log(req.user);
     console.log("Purchase route", req.body);
@@ -36,7 +36,7 @@ const UserController =  {
       .findOneAndUpdate( { _id: req.user._id}, { 
         $push: { items: req.body.items[0]}, 
         $set: { wallet: req.body.wallet} 
-      })
+      }, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
