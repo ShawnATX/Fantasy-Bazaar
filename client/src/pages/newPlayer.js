@@ -27,7 +27,7 @@ function NewPlayer() {
             API.getBazaar(formObject.bazaarId)
             //bazaar exists, attemtping to create user and tie to bazaar
             .then((res) => {
-                console.log(res.data);
+                console.log(res);
                 const bazaarId = res.data._id;
                 const newUser = {
                     userName: formObject.playerName,
@@ -40,10 +40,16 @@ function NewPlayer() {
                 }
                 API.saveUser(newUser)
                     .then((res) => {
+                        console.log(res);
                         if (res.status === 200) {
-                            //set authentication on successful login, and set user info on the global state object
-                            authenticationState.userHasAuthenticated(true, { userName: newUser.userName, characterName: newUser.characterName, type: newUser.type, wallet: newUser.wallet, items: newUser.items });
-                            history.push("/playerhome");
+                            API.loginUser({
+                                userName: newUser.userName,
+                                password: newUser.password
+                            }).then((res) => {
+                                //set authentication on successful login, and set user info on the global state object
+                                authenticationState.userHasAuthenticated(true, { userName: newUser.userName, characterName: newUser.characterName, type: newUser.type, wallet: newUser.wallet, items: newUser.items });
+                                history.push("/playerhome");
+                            }).catch(err => res.json(err));
                         }
                         else{
                             console.log(res);
