@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
-import API from "../utils/api";
+import api from "../utils/api";
 
 
 
@@ -23,7 +23,7 @@ function NewPlayer() {
         //check on form input, @@TODO add further validation
         if (formObject.characterName && formObject.playerName && formObject.password && formObject.bazaarId) {
             //check if bazaar code exists, if so return Id to the page
-            API.getBazaar(formObject.bazaarId)
+            api.getBazaar(formObject.bazaarId)
             //bazaar exists, attemtping to create user and tie to bazaar
             .then((res) => {
                 console.log(res);
@@ -37,11 +37,11 @@ function NewPlayer() {
                     items: [],
                     bazaars: [ bazaarId]
                 }
-                API.saveUser(newUser)
+                api.saveUser(newUser)
                     .then((res) => {
                         console.log(res);
                         if (res.status === 200) {
-                            API.loginUser({
+                            api.loginUser({
                                 userName: newUser.userName,
                                 password: newUser.password
                             }).then((res) => {
