@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'reactstrap'
-import API from "../utils/api";
+import API from "../utils/API";
 import ListSection from "./listSection";
 
 const StoreFront = (props) => {
