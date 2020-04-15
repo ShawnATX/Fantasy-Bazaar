@@ -6,7 +6,7 @@ const PlayerMain = (props) => {
         <div>
 
             <Row className="mt-5 px-5">
-                <Col >
+                <Col className="text-center">
                     <Button
                         href="#Inventory"
                         alt="Manage Inventory"
@@ -17,7 +17,7 @@ const PlayerMain = (props) => {
                 </Col>
             </Row>
             <Row className="mt-5 px-5">
-                <Col >
+                <Col className="text-center">
                     <Button
                         href="#Store"
                         alt="Visit The Bazaar"

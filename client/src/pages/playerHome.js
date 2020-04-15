@@ -23,23 +23,23 @@ const PlayerHome = () => {
             history.push("/login");
         };
         setUserObject(authenticationState.user);
-    }, [userObject]);
+    }, [authenticationState]);
 
     function sellItem(item) {
-        console.log(item._id);
-        let newItems = userObject.items
-        for (var i = 0; i < userObject.items.length; i++) {
-            if ( userObject.items[i] === item._id){
+        console.log(item._id, userObject);
+        let newItems = authenticationState.items
+        for (var i = 0; i < authenticationState.items.length; i++) {
+            if (authenticationState.items[i] === item._id) {
                 newItems.splice(i, 1);
-                i = userObject.items.length;
+                i = authenticationState.items.length;
             }
         }
         console.log(newItems);
         API.userSale(newItems)
-        .then((res) => {
-            console.log(res.data);
+            .then((res) => {
+                console.log(res.data);
 
-        });
+            });
     };
 
     function purchaseItem(item) {
@@ -50,7 +50,7 @@ const PlayerHome = () => {
             API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
                     console.log(res.data);
-                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
+                    authenticationState.userHasAuthenticated(true, { userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
                     setUserObject(authenticationState.user);
                 }
                 )
@@ -62,11 +62,11 @@ const PlayerHome = () => {
         if (pageState === "Home") {
             return <PlayerMain setPageState={setPageState} />;
         } else if (pageState === "Inventory") {
-            return <Inventory setPageState={setPageState} items={userObject.user.items} sell={sellItem} />;
+            return <Inventory setPageState={setPageState} items={authenticationState.items} sell={sellItem} />;
         } else if (pageState === "Store") {
             return <StoreFront setPageState={setPageState} purchase={purchaseItem} />;
         } else {
-            return <PlayerMain setPageState={"Home"}/>;
+            return <PlayerMain setPageState={"Home"} />;
         }
     };
 
@@ -74,13 +74,19 @@ const PlayerHome = () => {
     return (
         <Container>
             <Row className="border p-5  mb-3 text-center sticky-top">
-                <Col className="border py-3 mx-2">
+                <Col className="border text-center py-3 mx-2">
                     {userObject.characterName}
                 </Col>
                 <Col>
                 </Col>
-                <Col className="border py-3 mx-2">
-                    {userObject.wallet}
+                <Col className="border text-center py-3 mx-2">
+                    <Row>
+                        <Col>
+                            {userObject.wallet}
+                            <img className="img-fluid w-25 ml-1 mb-1" src="./gold-coin-icon.png" alt="gold coins" />
+                        </Col>
+
+                    </Row>
                 </Col>
             </Row>
             {renderPage()}

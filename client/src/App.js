@@ -8,9 +8,6 @@ import playerHome from "./pages/playerHome"
 import UserContext from "./utils/userContext";
 import Login from "./pages/login";
 
-
-
-
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
     updates: 0,

@@ -2,6 +2,7 @@
 
 import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
+import { useAlert } from 'react-alert'
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
 import API from "../utils/API";
@@ -12,6 +13,7 @@ function NewPlayer() {
     const { authenticationState } = useContext(UserContext);
     const [formObject, setFormObject] = useState({});
     const history = useHistory();
+    const alert = useAlert()
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -60,10 +62,15 @@ function NewPlayer() {
                         }
                     })
                     //save user error @@TODO handle creation error
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        alert.show("Unable to create a user with the provided username, please try a different one.")
+                        console.log(err)});
             })
             //check if bazaar exists error @@TODO handle check error
-            .catch(err => console.log(err));
+            .catch(err => {
+                alert.show("Bazaar with the provided join code not found.")
+                console.log(err)}
+                );
         }
     };
 
@@ -81,7 +88,7 @@ function NewPlayer() {
                     <Input
                         name="playerName"
                         id="playerName"
-                        placeholder="Player Name"
+                        placeholder="Username"
                         onChange={handleInputChange} />
                 </FormGroup>
                 <FormGroup row>

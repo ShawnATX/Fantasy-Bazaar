@@ -7,8 +7,10 @@ const Inventory = (props) => {
 
     const [itemList, setItemList] = useState([]);
     useEffect(() => {
+        console.log(props.items)
         API.getItemsById(props.items)
             .then(res => {
+                console.log(res);
                 setItemList(res.data);
             });
     }, []);
@@ -16,7 +18,7 @@ const Inventory = (props) => {
     return(
         <div>
             <Row className="mt-5 px-5">
-                <Col >
+                <Col className="mb-1 text-center">
                     <Button
                         href="#home"
                         alt="Back Home"
@@ -31,7 +33,7 @@ const Inventory = (props) => {
                 key={item._id}
                 item={item}
                 action={props.sell}
-                buttonPrompt={"Sell"}/>
+                button={"Sell"}/>
             )}
         </div>
     );
