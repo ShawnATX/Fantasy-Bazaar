@@ -18,9 +18,9 @@ const itemSeed = [
         value: 50,
         weight: 0.5,
         type: "Consumable",
-        system: "DnD"
+        system: "DnD",
+        subtype: "Potion"
     }
-
 ];
 const userSeed = [
     {

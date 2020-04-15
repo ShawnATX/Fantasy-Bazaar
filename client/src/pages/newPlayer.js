@@ -3,7 +3,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input, Button, Col, Row } from 'reactstrap';
+import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
 import API from "../utils/api";
 
 
@@ -12,7 +12,6 @@ function NewPlayer() {
     const { authenticationState } = useContext(UserContext);
     const [formObject, setFormObject] = useState({});
     const history = useHistory();
-
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -47,12 +46,17 @@ function NewPlayer() {
                                 password: newUser.password
                             }).then((res) => {
                                 //set authentication on successful login, and set user info on the global state object
-                                authenticationState.userHasAuthenticated(true, { userName: newUser.userName, characterName: newUser.characterName, type: newUser.type, wallet: newUser.wallet, items: newUser.items });
-                                history.push("/playerhome");
-                            }).catch(err => res.json(err));
+                                console.log(res);
+                                authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars });
+                            })
+                            .then(                                
+                                history.push("/playerhome")
+                            )
+                            .catch(err => res.json(err));
                         }
                         else{
                             console.log(res);
+                            history.push("/login")
                         }
                     })
                     //save user error @@TODO handle creation error

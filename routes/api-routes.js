@@ -16,7 +16,8 @@ module.exports = function (app) {
             characterName: req.user.characterName,
             type: req.user.type,
             wallet: req.user.wallet,
-            items: req.user.items
+            items: req.user.items,
+            bazaars: req.user.bazaars
         });
     });
 
@@ -53,7 +54,10 @@ module.exports = function (app) {
     // app.put("/api/users/:userName", userController.update)
 
     //Update user (item &  wallet)
-    app.put("/api/users/purchase", userController.purchase)
+    app.put("/api/users/purchase", userController.purchase);
+
+    //Update user (item list &  wallet)
+    app.put("/api/users/sell", userController.sell);
 
     //BAZAAR ROUTES
     //check on bazzar from code
@@ -64,7 +68,7 @@ module.exports = function (app) {
     //get multiple items from an array of _ids
     app.get("/api/items/many", itemController.findManyById);
 
-    
+
     //Route to get all inventory items of a particular system, passing {system: string}
     app.get("/api/items/:system", (itemController.findAllBySystem));
 

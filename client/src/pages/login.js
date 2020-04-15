@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import { Container, Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { useAlert } from 'react-alert'
 
 import UserContext from "../utils/userContext";
 import API from "../utils/api";
@@ -12,6 +13,8 @@ const Login = () => {
     const { authenticationState } = useContext(UserContext);
     const [formObject, setFormObject] = useState({});
     const history = useHistory();
+    const alert = useAlert()
+
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -35,8 +38,10 @@ const Login = () => {
             })
             .catch(err => console.log(err));
         }
+        //alert form fields are not completed
         else {
             //@@TODO display alert about username/password missing
+            alert.show('Please enter a username and password')
         }
     };
 

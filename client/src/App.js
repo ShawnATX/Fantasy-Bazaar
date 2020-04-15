@@ -9,13 +9,16 @@ import UserContext from "./utils/userContext";
 import Login from "./pages/login";
 
 
+
+
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
+    updates: 0,
     isAuthenticated: false,
     user: {},
-    userHasAuthenticated: (auth, user) => {
-      console.log(auth, user);
-      setAuthenticationState({...authenticationState, isAuthenticated: auth, user})
+    userHasAuthenticated: (auth, userData) => {
+      console.log(auth, userData);
+      setAuthenticationState({...authenticationState, isAuthenticated: auth, user: userData, updates: authenticationState.updates++ })
     }
   });
 

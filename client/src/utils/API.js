@@ -47,9 +47,13 @@ export default {
     updateUser: function (id, userData) {
         return axios.put("/api/users/" + id, userData);
     },
-    //update user 
+    //update user to purchase a single item and decrement wallet 
     userPurchase: function (userData) {
         return axios.put("/api/users/purchase", userData);
+    },
+    //  update user to sell a single item and increment wallet 
+    userSale: function (userData) {
+        return axios.put("/api/users/sell", userData);
     },
     //user login
     loginUser: function(userData) {

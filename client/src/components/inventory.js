@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
-import UserContext from "../utils/userContext";
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'reactstrap'
 import API from "../utils/api";
 import Item from "./item";
@@ -11,7 +10,7 @@ const Inventory = (props) => {
         API.getItemsById(props.items)
             .then(res => {
                 setItemList(res.data);
-            }).then(console.log(itemList));
+            });
     }, []);
 
     return(
@@ -19,7 +18,7 @@ const Inventory = (props) => {
             <Row className="mt-5 px-5">
                 <Col >
                     <Button
-                        href="/"
+                        href="#home"
                         alt="Back Home"
                         className="text-center"
                         onClick={() => props.setPageState("Home")}>
@@ -36,7 +35,6 @@ const Inventory = (props) => {
             )}
         </div>
     );
-    
 };
 
 export default Inventory;    
