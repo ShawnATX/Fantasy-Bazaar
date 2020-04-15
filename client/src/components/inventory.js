@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'reactstrap'
-import API from "../utils/api";
+import api from "../utils/api";
 import Item from "./item";
 
 const Inventory = (props) => {
 
     const [itemList, setItemList] = useState([]);
     useEffect(() => {
-        API.getItemsById(props.items)
+        api.getItemsById(props.items)
             .then(res => {
                 setItemList(res.data);
             });

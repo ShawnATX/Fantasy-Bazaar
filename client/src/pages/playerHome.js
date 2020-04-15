@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { Container, Col, Row } from 'reactstrap';
 import { useAlert } from 'react-alert'
-import api from "../utils/api";
+import API from "../utils/API";
 import Inventory from '../components/inventory';
 import StoreFront from '../components/storeFront';
 import PlayerMain from '../components/playerMain';
@@ -35,7 +35,7 @@ const PlayerHome = () => {
             }
         }
         console.log(newItems);
-        api.userSale(newItems)
+        API.userSale(newItems)
         .then((res) => {
             console.log(res.data);
 
@@ -47,7 +47,7 @@ const PlayerHome = () => {
             alert.show("Looks like that is a bit too expensive...")
         }
         else {
-            api.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
+            API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
                     console.log(res.data);
                     authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 

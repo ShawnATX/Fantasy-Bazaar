@@ -5,7 +5,7 @@ import { Container, Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { useAlert } from 'react-alert'
 
 import UserContext from "../utils/userContext";
-import API from "../utils/api";
+import API from "../utils/API";
 
 
 const Login = () => {

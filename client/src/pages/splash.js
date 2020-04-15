@@ -2,10 +2,6 @@ import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import { Link } from 'react-router-dom';
 
-
-
-
-
 const Splash = (props) => {
     return (
         <Container className="text-center">
