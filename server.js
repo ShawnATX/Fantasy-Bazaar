@@ -5,26 +5,23 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
-
+// app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 app.use(
-  session({ secret: "keyboard cat", resave: false, saveUninitialized: true })
+  session({ secret: "dootydootydoo", resave: false, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use(routes);
 require("./routes/api-routes.js")(app);
 
 

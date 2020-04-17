@@ -38,7 +38,6 @@ const PlayerHome = () => {
         API.userSale(newItems)
             .then((res) => {
                 console.log(res.data);
-
             });
     };
 
@@ -50,8 +49,9 @@ const PlayerHome = () => {
             API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
                     console.log(res.data);
-                    authenticationState.userHasAuthenticated(true, { userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
-                    setUserObject(authenticationState.user);
+                    console.log(authenticationState);
+                    setUserObject({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
+                    authenticationState.userHasAuthenticated(true, ({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars }));
                 }
                 )
                 .catch((err) => console.log(err));
@@ -62,7 +62,7 @@ const PlayerHome = () => {
         if (pageState === "Home") {
             return <PlayerMain setPageState={setPageState} />;
         } else if (pageState === "Inventory") {
-            return <Inventory setPageState={setPageState} items={authenticationState.items} sell={sellItem} />;
+            return <Inventory setPageState={setPageState} items={userObject.items} sell={sellItem} />;
         } else if (pageState === "Store") {
             return <StoreFront setPageState={setPageState} purchase={purchaseItem} />;
         } else {
@@ -73,11 +73,9 @@ const PlayerHome = () => {
 
     return (
         <Container>
-            <Row className="border p-5  mb-3 text-center sticky-top">
+            <Row className="border p-2  mb-3 text-center sticky-top">
                 <Col className="border text-center py-3 mx-2">
                     {userObject.characterName}
-                </Col>
-                <Col>
                 </Col>
                 <Col className="border text-center py-3 mx-2">
                     <Row>

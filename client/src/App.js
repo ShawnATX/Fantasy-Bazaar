@@ -14,7 +14,7 @@ function App() {
     isAuthenticated: false,
     user: {},
     userHasAuthenticated: (auth, userData) => {
-      console.log(auth, userData);
+      //console.log(auth, userData);
       setAuthenticationState({...authenticationState, isAuthenticated: auth, user: userData, updates: authenticationState.updates++ })
     }
   });

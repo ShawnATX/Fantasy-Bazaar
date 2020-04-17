@@ -36,7 +36,9 @@ const Login = () => {
                     history.push("/playerhome");
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                alert.show("No user found with those credentials")
+            });
         }
         //alert form fields are not completed
         else {
@@ -53,7 +55,7 @@ const Login = () => {
                     <Input
                         name="userName"
                         id="userName"
-                        placeholder="Character Name"
+                        placeholder="User Name"
                         onChange={handleInputChange} />
                 </FormGroup>
                 <FormGroup row>

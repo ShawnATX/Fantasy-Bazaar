@@ -63,11 +63,9 @@ module.exports = function (app) {
     //check on bazzar from code
     app.get("/api/bazaars/code/:joinCode", (bazaarController.findByJoinCode));
 
-
     //ITEM ROUTES
     //get multiple items from an array of _ids
-    app.get("/api/items/many", itemController.findManyById);
-
+    app.post("/api/items/many", itemController.findManyById);
 
     //Route to get all inventory items of a particular system, passing {system: string}
     app.get("/api/items/:system", (itemController.findAllBySystem));

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { Link } from 'react-router-dom';
 
 const Splash = (props) => {
@@ -21,7 +21,11 @@ const Splash = (props) => {
             </Row>
             <Row className="fixed-bottom pb-5 mt-2">
                 <Col>
-                <Link to="/login">Login Here</Link>
+                <Link to="/login">
+                    <Button>
+                        Login Here 
+                    </Button>
+                    </Link>
                 </Col>
             </Row>
         </Container>

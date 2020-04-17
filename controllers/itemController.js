@@ -10,8 +10,9 @@ const ItemController =  {
       .catch(err => res.status(422).json(err));
   },
   findAllBySystem: function(req, res) {
+    console.log(req.params)
     db.Item
-      .find(req.query)
+      .find(req.params)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -23,8 +24,9 @@ const ItemController =  {
       .catch(err => res.status(422).json(err));
   },
   findManyById: function(req, res) {
+    console.log(req.body)
     db.Item
-      .find().where('_id').in(req.user.items)
+      .find().where('_id').in(req.body.items)
       .then(dbModels => res.json(dbModels))
       //.then(dbModels => res.json(dbModels))
       .catch(err => res.status(422).json(err));

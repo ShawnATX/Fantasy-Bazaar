@@ -16,7 +16,7 @@ export default {
     //get multiple items from array of item ids
     getItemsById: function (idArr) {
         console.log(idArr);
-        return axios.get("/api/items/many", idArr);
+        return axios.post("/api/items/many", {"items" : idArr});
     },
     // Deletes item with the given id
     deleteItem: function (id) {
