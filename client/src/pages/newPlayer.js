@@ -6,6 +6,7 @@ import { useAlert } from 'react-alert'
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
 import API from "../utils/API";
+import ImageChoices from "../components/imageChoices";
 
 
 
@@ -68,7 +69,7 @@ function NewPlayer() {
             })
             //check if bazaar exists error @@TODO handle check error
             .catch(err => {
-                alert.show("Bazaar with the provided join code not found.")
+                alert.show("Bazaar with the provided Join Code not found.")
                 console.log(err)}
                 );
         }
@@ -101,13 +102,7 @@ function NewPlayer() {
                 </FormGroup>
                 <FormGroup>
                     <Label for="characterLogo">Select a character image</Label>
-                    <Input type="select" name="select" id="characterLogo" onChange={handleInputChange}>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Input>
+                        <ImageChoices handleInputChange={handleInputChange}/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="startingGold">Starting Wealth</Label>

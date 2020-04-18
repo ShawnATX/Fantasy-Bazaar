@@ -31,9 +31,15 @@ const Login = () => {
             API.loginUser(userLogin)
             .then((res) => {
                 if (res.status === 200) {
+                    console.log(res.data)
                     //set authentication on successful login, and set user info on the global state object
                     authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
-                    history.push("/playerhome");
+                    if (res.data.type === "GM") {
+                        history.push("/gmhome");
+                    }
+                    else {
+                        history.push("/playerhome");
+                    }
                 }
             })
             .catch(err => {

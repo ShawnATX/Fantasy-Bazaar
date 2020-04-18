@@ -25,26 +25,29 @@ const itemSeed = [
 const userSeed = [
     {
         userName: "GM",
-        characterName: "Overlord",
+        characterName: "GM",
         wallet: 0,
         type: "GM",
-        password: "pass"
+        password: "pass",
+        bazaars: []
     },
     {
         userName: "glasscannon",
         characterName: "Pembrick",
         wallet: 25,
         type: "Player",
-        items: []
+        items: [],
+        bazaars: []
     }
 ]
-const bazaarSeed =[
+const bazaarSeed = [
     {
         bazaarName: "First World Junk",
         creator: {},
         players: [],
         system: "DnD"
-        , joinCode: shortid.generate()
+        // , joinCode: shortid.generate()
+        , joinCode: "V5k0sfZWi" //previously generated join code
     }
 ];
 
@@ -80,26 +83,45 @@ const seedUsers = () => {
 
 const seedBazaar = () => {
     //get GM user to seed as bazaar creator
-    db.User.findOne({userName: "GM"}, '_id', function (err, userId) {
-        bazaarSeed[0].creator = userId;
-    })
-    db.User.findOne({userName: "glasscannon"}, '_id', function (err, userId) {
+
+    db.User.findOne({ userName: "glasscannon" }, '_id', function (err, userId) {
         bazaarSeed[0].players.push(userId);
     })
-    db.Bazaar
-    .remove({})
-    .then(() => 
-        //console.log(bazaarSeed.joinCode);
-        db.Bazaar.collection.insertMany(bazaarSeed)
-    )
-    .then(data => {
-        console.log(data.result.n + " bazaar records inserted!");
-        process.exit(0);
+    .then( () => {
+        db.User.findOne({userName: "GM" }, '_id', function(err, userId) {
+            console.log(userId);
+            bazaarSeed[0].creator = userId;
+        })
+        .then( () => {
+            db.Bazaar
+                .remove({})
+                .then(() =>
+                    //console.log(bazaarSeed.joinCode);
+                    db.Bazaar.collection.insertMany(bazaarSeed)
+                )
+                .then(data => {
+                    console.log(data.insertedIds[0]);
+                    console.log(data.result.n + " bazaar records inserted!");
+                    db.User.findOneAndUpdate({ _id: bazaarSeed[0].creator }, { bazaars: [data.insertedIds[0]] })
+                        .then((data) => {
+                            console.log(data + "GM updated");
+                        })
+                        .then(() => {
+                            process.exit(0);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                })
+                .catch(err => {
+                    console.error(err);
+                    process.exit(1);
+                });
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     })
-    .catch(err => {
-        console.error(err);
-        process.exit(1);
-    });
 }
 
 seedItems();

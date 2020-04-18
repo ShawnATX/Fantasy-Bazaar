@@ -21,7 +21,6 @@ const userSchema = new Schema({
     type: {
         type: String,
         required: true
-        // match: [({ value }) => value === ("GM" || "Player"), "Invalid user type"]
     },
     wallet: {
         type: Number,

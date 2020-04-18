@@ -23,7 +23,7 @@ const StoreFront = (props) => {
         //get all unique item types in a Set, casting to an Array
         typeArr = Array.from(new Set(itemList.map((item) => item.type)));
         subtypeArr = itemList.map((item) => { return  {type: item.type , subtype : item.subtype } } );
-        subtypeArr = subtypeArr.filter( (obj) => {} )
+        //subtypeArr = subtypeArr.filter( (obj) => {} )
         // let typeList = itemList.filter( (item) => (!typeList.includes(item.type)))
         // for (let i=0; i < itemList.length; i++) {
         // }
@@ -61,16 +61,8 @@ const StoreFront = (props) => {
                 ))}
                 
             </div>
-            {/* {itemList.map((item) =>
-                <Item 
-                key={item._id}
-                item={item}
-                action={props.purchase}
-                buttonPrompt={"Purchase"}/>
-            )} */}
         </div>
     );
-
 };
 
 

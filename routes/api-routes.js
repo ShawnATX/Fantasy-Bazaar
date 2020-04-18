@@ -62,6 +62,9 @@ module.exports = function (app) {
     //BAZAAR ROUTES
     //check on bazzar from code
     app.get("/api/bazaars/code/:joinCode", (bazaarController.findByJoinCode));
+    
+    //get bazzar with given ID
+    app.get("/api/bazaars/:id", (bazaarController.findById));
 
     //ITEM ROUTES
     //get multiple items from an array of _ids

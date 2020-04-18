@@ -64,6 +64,10 @@ export default {
     getBazaar: function (code) {
         return axios.get("/api/bazaars/code/" + code);
     },
+    // Gets the bazaar with the given id
+    getBazaarId: function (id) {
+        return axios.get("/api/bazaars/" + id);
+    },
     // Deletes bazaar with the given id
     deleteBazaar: function (id) {
         return axios.delete("/api/bazaars/" + id);

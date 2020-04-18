@@ -4,7 +4,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Splash from "./pages/splash";
 import NewPlayer from "./pages/newPlayer";
 import NoMatch from "./pages/NoMatch";
-import playerHome from "./pages/playerHome"
+import PlayerHome from "./pages/playerHome"
+import GmHome from "./pages/gmHome"
+
 import UserContext from "./utils/userContext";
 import Login from "./pages/login";
 
@@ -14,7 +16,6 @@ function App() {
     isAuthenticated: false,
     user: {},
     userHasAuthenticated: (auth, userData) => {
-      //console.log(auth, userData);
       setAuthenticationState({...authenticationState, isAuthenticated: auth, user: userData, updates: authenticationState.updates++ })
     }
   });
@@ -27,7 +28,14 @@ function App() {
             <Route exact path="/" >
               <Splash />
             </Route>
-            <Route exact path="/playerhome" component={playerHome} isPrivate />
+
+            <Route exact path="/playerhome">
+              <PlayerHome />
+            </Route>
+
+            <Route exact path="/gmhome">
+              <GmHome />
+            </Route>
 
             <Route exact path="/newplayer">
               <NewPlayer />

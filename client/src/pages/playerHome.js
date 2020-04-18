@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { Container, Col, Row } from 'reactstrap';
-import { useAlert } from 'react-alert'
+// import Animate from 'animate.css-react';
+import { useAlert } from 'react-alert';
 import API from "../utils/API";
 import Inventory from '../components/inventory';
 import StoreFront from '../components/storeFront';
@@ -10,12 +11,14 @@ import PlayerMain from '../components/playerMain';
 
 
 
+
 const PlayerHome = () => {
     const { authenticationState } = useContext(UserContext);
     const [userObject, setUserObject] = useState({});
     const [pageState, setPageState] = useState("Home");
+    // let spendMoney = false;
     const history = useHistory();
-    const alert = useAlert()
+    const alert = useAlert();
 
 
     useEffect(() => {
@@ -48,6 +51,7 @@ const PlayerHome = () => {
         else {
             API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
+                    // spendMoney=true;
                     console.log(res.data);
                     console.log(authenticationState);
                     setUserObject({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
@@ -79,11 +83,18 @@ const PlayerHome = () => {
                 </Col>
                 <Col className="border text-center py-3 mx-2">
                     <Row>
-                        <Col>
+                        <Col >
                             {userObject.wallet}
-                            <img className="img-fluid w-25 ml-1 mb-1" src="./gold-coin-icon.png" alt="gold coins" />
+                            {/* <Animate
+                                animate="false"
+                                change="bounce"
+                                durationChange={1200}
+                                component="span"
+                                // animateChangeIf={(spendMoney)}
+                            > */}
+                                <img className="img-fluid w-25 ml-1 mb-1" src="./gold-coin-icon.png" alt="gold coins" />
+                            {/* </Animate> */}
                         </Col>
-
                     </Row>
                 </Col>
             </Row>

@@ -14,7 +14,7 @@ const Splash = (props) => {
             </Row>
             <Row className="mt-5 px-5">
                 <Col>
-                    <Link to="/">
+                    <Link to="/gmhome">
                         Curate a new Bazaar
                     </Link>
                 </Col>

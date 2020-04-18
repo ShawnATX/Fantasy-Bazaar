@@ -1,29 +1,58 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
+import { useAlert } from "react-alert";
 import API from "../utils/API";
+import bazaarImg from "../images/bazaar.jpg";
 import { Container, Col, Row } from 'reactstrap';
 
 
-
-const GmHome = (props) => {
-    const [gmObject, setGmObject] = useState({});
+const GmHome = () => {
     const { authenticationState } = useContext(UserContext);
+    const [gmObject, setGmObject] = useState({});
+    const [bazaarObject, setbazaarObject] = useState({});
     const history = useHistory();
-    const alert = useAlert()
+    const alert = useAlert();
+
     useEffect(() => {
         if (!authenticationState.isAuthenticated) {
             history.push("/login");
         };
+        console.log(authenticationState);
+       API.getBazaarId(authenticationState.user.bazaars[0])
+       .then( (res) => {
+           console.log(res)
+           setbazaarObject(res.data);
+       })
+       .catch( (err) => {
+           console.log(err);
+       })
         setGmObject(authenticationState.user);
-    }, [authenticationState]);
+    }, []);
 
     return (
         <div>
+
+        <Container fluid={true}>
+            <img className="img-fluid" src={bazaarImg} alt="Bazaaz" />
             {gmObject.userName}
-            {gmObject.userName}
-            {gmObject.userName}
-            GM Home
+            <br/>
+            <br/>
+            <p className="text-center">
+                Player Join Code: {bazaarObject.joinCode}
+            </p>
+            <ul>
+                <p>
+                    Players:
+                </p>
+                {console.log(bazaarObject)}
+                {/* {bazaarObject.players.map((player) => {
+                  return (<li>
+                        (player)
+                    </li>)
+                }) } */}
+            </ul>
+        </Container>
         </div>
     );
 }
