@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 
-import { Container, Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
 import { useAlert } from 'react-alert'
 
 import UserContext from "../utils/userContext";
@@ -33,7 +33,7 @@ const Login = () => {
                 if (res.status === 200) {
                     console.log(res.data)
                     //set authentication on successful login, and set user info on the global state object
-                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
+                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
                     if (res.data.type === "GM") {
                         history.push("/gmhome");
                     }

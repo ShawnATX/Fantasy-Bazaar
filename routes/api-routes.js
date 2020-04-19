@@ -17,7 +17,8 @@ module.exports = function (app) {
             type: req.user.type,
             wallet: req.user.wallet,
             items: req.user.items,
-            bazaars: req.user.bazaars
+            bazaars: req.user.bazaars,
+            characterImage: req.user.characterImage
         });
     });
 

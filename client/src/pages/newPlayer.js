@@ -1,5 +1,4 @@
-//New player form with handles basic player creation. front-end validation ensures data is present before being sent to the server on required fields. useState React hook is being used to hold and handle form data as it is entered.
-
+//New player form which handles basic player creation. front-end validation ensures data is present before being sent to the server on required fields. useState React hook is being used to hold and handle form data as it is entered.
 import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import { useAlert } from 'react-alert'
@@ -7,8 +6,6 @@ import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
 import API from "../utils/API";
 import ImageChoices from "../components/imageChoices";
-
-
 
 function NewPlayer() {
     const { authenticationState } = useContext(UserContext);
@@ -18,13 +15,14 @@ function NewPlayer() {
 
     function handleInputChange(event) {
         const { name, value } = event.target;
+        console.log(name, value)
         setFormObject({ ...formObject, [name]: value })
     };
 
     function handleFormSubmit(event) {
         event.preventDefault();
         //check on form input, @@TODO add further validation
-        if (formObject.characterName && formObject.playerName && formObject.password && formObject.bazaarId) {
+        if (formObject.characterName && formObject.playerName && formObject.password && formObject.bazaarId && formObject.characterImage) {
             //check if bazaar code exists, if so return Id to the page
             API.getBazaar(formObject.bazaarId)
             //bazaar exists, attemtping to create user and tie to bazaar
@@ -37,8 +35,9 @@ function NewPlayer() {
                     type: "Player",
                     wallet: formObject.wallet,
                     password: formObject.password,
+                    characterImage: formObject.characterImage,
                     items: [],
-                    bazaars: [ bazaarId]
+                    bazaars: [ bazaarId ]
                 }
                 API.saveUser(newUser)
                     .then((res) => {
@@ -50,7 +49,7 @@ function NewPlayer() {
                             }).then((res) => {
                                 //set authentication on successful login, and set user info on the global state object
                                 console.log(res);
-                                authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars });
+                                authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars });
                             })
                             .then(                                
                                 history.push("/playerhome")
@@ -100,10 +99,9 @@ function NewPlayer() {
                         placeholder="Password"
                         onChange={handleInputChange} />
                 </FormGroup>
-                <FormGroup>
-                    <Label for="characterLogo">Select a character image</Label>
-                        <ImageChoices handleInputChange={handleInputChange}/>
-                </FormGroup>
+                
+                <ImageChoices handleInputChange={handleInputChange}/>
+
                 <FormGroup>
                     <Label for="startingGold">Starting Wealth</Label>
                     <Input

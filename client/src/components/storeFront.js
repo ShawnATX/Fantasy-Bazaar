@@ -14,19 +14,12 @@ const StoreFront = (props) => {
     }, []);
 
     let typeArr = [];
-    let subtypeArr;
 
     const buildList = () => {
         itemList.forEach((item) => {
-            //console.log(item.subtype);
         })
         //get all unique item types in a Set, casting to an Array
         typeArr = Array.from(new Set(itemList.map((item) => item.type)));
-        subtypeArr = itemList.map((item) => { return  {type: item.type , subtype : item.subtype } } );
-        //subtypeArr = subtypeArr.filter( (obj) => {} )
-        // let typeList = itemList.filter( (item) => (!typeList.includes(item.type)))
-        // for (let i=0; i < itemList.length; i++) {
-        // }
     }
 
     const getItems = (type) => {

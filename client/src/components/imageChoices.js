@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
+import React  from 'react'
+import { FormGroup, Label, Input, Col } from 'reactstrap';
+import { imgSet } from "../images/character/charImgs";
+
 
 
 const ImageChoices = (props) => {
-    const [imageState, setImageState] = useState({});
 
     return (
-        <Input type="select" name="select" id="characterLogo" onChange={props.handleInputChange}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </Input>
+        <FormGroup tag="fieldset" onChange={props.handleInputChange}>
+            <legend>Select a character image</legend>
+            <div className="row">
+                {imgSet.map((image) => {
+                    return (
+                        <div className="col-sm-3 p-4" key={image}>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="radio" name="characterImage" value={image} />
+                                    <img src={image} className="img-fluid" alt={image} />
+                                </Label>
+                            </FormGroup>
+                        </div>
+                    );
+                })}
+            </div>
+        </FormGroup>
     );
-
-
 }
 
 export default ImageChoices;

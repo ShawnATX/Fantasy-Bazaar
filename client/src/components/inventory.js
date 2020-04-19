@@ -12,7 +12,7 @@ const Inventory = (props) => {
             .then(res => {
                 setItemList(res.data);
             });
-    }, [authenticationState]);
+    }, [authenticationState, props.items]);
 
     return(
         <div>
