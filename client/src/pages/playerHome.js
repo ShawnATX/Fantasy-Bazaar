@@ -89,7 +89,7 @@ const PlayerHome = () => {
                 </Col>
                 <Col className="border text-center py-3 mx-2">
                     <Row>
-                        <Col >
+                        <Col className="justify-center">
                             {userObject.wallet}
                             {/* <Animate
                                 animate="false"

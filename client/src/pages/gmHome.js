@@ -15,19 +15,22 @@ const GmHome = () => {
     const alert = useAlert();
 
     useEffect(() => {
-        if (!authenticationState.isAuthenticated) {
+        if (!(authenticationState.isAuthenticated) || (!authenticationState.user.type === "GM")) {
             history.push("/login");
-        };
-        console.log(authenticationState);
-       API.getBazaarId(authenticationState.user.bazaars[0])
-       .then( (res) => {
-           console.log(res)
-           setbazaarObject(res.data);
-       })
-       .catch( (err) => {
-           console.log(err);
-       })
-        setGmObject(authenticationState.user);
+        }
+        else{
+            alert.show("Not currently logged in as a GM")
+            console.log(authenticationState);
+           API.getBazaarId(authenticationState.user.bazaars[0])
+           .then( (res) => {
+               console.log(res)
+               setbazaarObject(res.data);
+           })
+           .catch( (err) => {
+               console.log(err);
+           })
+            setGmObject(authenticationState.user);
+        }
     }, []);
 
     const handleLogout = () => {
