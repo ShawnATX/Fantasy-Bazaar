@@ -8,27 +8,27 @@ const Splash = (props) => {
             <Row className="mt-5 px-5">
                 <Col >
                     <Link to="/newplayer" alt="Join a game" className="text-center">
-                        <Button className="splashBtn">
+                        <button className="splashBtn">
                             Join a Bazaar
-                        </Button>
+                        </button>
                     </Link>
                 </Col>
             </Row>
             <Row className="mt-5 px-5">
                 <Col>
                     <Link to="/gmhome">
-                        <Button className="splashBtn">
+                        <button className="splashBtn">
                             Curate a new Bazaar
-                        </Button>
+                        </button>
                     </Link>
                 </Col>
             </Row>
-            <Row className="fixed-bottom pb-5 mt-2">
+            <Row className="pb-5 mt-5">
                 <Col>
                     <Link to="/login">
-                        <Button>
+                        <button>
                             Login Here
-                    </Button>
+                    </button>
                     </Link>
                 </Col>
             </Row>

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 
-import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Input, Row, Col } from 'reactstrap';
 import { useAlert } from 'react-alert'
 
 import UserContext from "../utils/userContext";
@@ -72,8 +72,11 @@ const Login = () => {
                         placeholder="Password"
                         onChange={handleInputChange} />
                 </FormGroup>
-
-                <Button>Submit</Button>
+                <Row>
+                    <Col className="text-center mt-3">
+                <button>Submit</button>
+                    </Col>
+                </Row>
             </Form>
         </Container>
     );

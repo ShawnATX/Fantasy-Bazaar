@@ -42,8 +42,8 @@ const PlayerHome = () => {
         console.log(newItems);
         API.userSale({ items: newItems, wallet: newWallet })
             .then((res) => {
-                setUserObject({ userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars });
-                authenticationState.userHasAuthenticated(true, ({ userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }));
+                setUserObject({ userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
+                authenticationState.userHasAuthenticated(true, ({ userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars }));
             });
     };
 
@@ -55,13 +55,26 @@ const PlayerHome = () => {
             API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
 
-                    setUserObject({ userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars });
-                    authenticationState.userHasAuthenticated(true, ({ userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }));
+                    setUserObject({ userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
+                    authenticationState.userHasAuthenticated(true, ({ userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars }));
                 }
                 )
                 .catch((err) => console.log(err));
         }
     };
+
+    const handleLogout = () => {
+        API.logoutUser()
+            .then((res) => {
+                if (res.status === 200) {
+                    authenticationState.userHasAuthenticated({ isAuthenticated: false, user: {} });
+                    history.push("/");
+                }
+                else {
+                    alert.show("Weird logout error happening...")
+                }
+            });
+    }
 
     function renderPage() {
         if (pageState === "Home") {
@@ -105,6 +118,15 @@ const PlayerHome = () => {
                 </Col>
             </Row>
             {renderPage()}
+            <Row className="sticky-footer mt-3">
+                <Col className="text-center">
+                    <button
+                        className="text-center"
+                        onClick={() => handleLogout()}>
+                        Logout
+                    </button>
+                </Col>
+            </Row>
         </Container>
     );
 }
