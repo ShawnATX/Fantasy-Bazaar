@@ -30,6 +30,19 @@ const GmHome = () => {
         setGmObject(authenticationState.user);
     }, []);
 
+    const handleLogout = () => {
+        API.logoutUser()
+        .then((res) => {
+            if (res.status === 200){
+                authenticationState.userHasAuthenticated({isAuthenticated: false, user: {}});
+                history.push("/");
+            }
+            else {
+                alert.show("Weird logout error happening...")
+            }
+        });
+    }
+
     return (
         <div>
 
@@ -46,13 +59,17 @@ const GmHome = () => {
                     Players:
                 </p>
                 {console.log(bazaarObject)}
-                {/* {bazaarObject.players.map((player) => {
+                {(bazaarObject.players) ? bazaarObject.players.map((player) => {
                   return (<li>
                         (player)
                     </li>)
-                }) } */}
+                }) : "No Players" }
             </ul>
         </Container>
+
+        <button onClick={() => handleLogout()}>
+                Logout
+        </button>
         </div>
     );
 }

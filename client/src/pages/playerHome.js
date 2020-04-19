@@ -30,17 +30,20 @@ const PlayerHome = () => {
 
     function sellItem(item) {
         console.log(item._id, userObject);
-        let newItems = authenticationState.items
-        for (var i = 0; i < authenticationState.items.length; i++) {
-            if (authenticationState.items[i] === item._id) {
+        let newItems = authenticationState.user.items;
+        let newWallet = authenticationState.user.wallet;
+        for (var i = 0; i < authenticationState.user.items.length; i++) {
+            if (authenticationState.user.items[i] === item._id) {
                 newItems.splice(i, 1);
-                i = authenticationState.items.length;
+                newWallet = newWallet + item.value;
+                i = authenticationState.user.items.length;
             }
         }
         console.log(newItems);
-        API.userSale(newItems)
+        API.userSale({items: newItems, wallet: newWallet})
             .then((res) => {
-                console.log(res.data);
+                setUserObject({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
+                    authenticationState.userHasAuthenticated(true, ({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars }));
             });
     };
 
@@ -51,9 +54,7 @@ const PlayerHome = () => {
         else {
             API.userPurchase(({ wallet: (userObject.wallet - item.value), items: [item._id] }))
                 .then((res) => {
-                    // spendMoney=true;
-                    console.log(res.data);
-                    console.log(authenticationState);
+
                     setUserObject({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
                     authenticationState.userHasAuthenticated(true, ({ userName: res.data.userName, characterName: res.data.characterName, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars }));
                 }

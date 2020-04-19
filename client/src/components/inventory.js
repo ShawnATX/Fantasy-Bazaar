@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import UserContext from "../utils/userContext";
 import { Row, Col, Button } from 'reactstrap'
 import API from "../utils/API";
 import Item from "./item";
 
 const Inventory = (props) => {
-
     const [itemList, setItemList] = useState([]);
+    const { authenticationState } = useContext(UserContext);
     useEffect(() => {
-        console.log(props.items)
         API.getItemsById(props.items)
             .then(res => {
-                console.log(res);
                 setItemList(res.data);
             });
-    }, []);
+    }, [authenticationState]);
 
     return(
         <div>
@@ -28,13 +27,13 @@ const Inventory = (props) => {
                     </Button>
                 </Col>
             </Row>
-            {itemList.map((item) =>
+            {(props.items.length > 0) ? itemList.map((item) =>
                 <Item 
                 key={item._id}
                 item={item}
                 action={props.sell}
                 button={"Sell"}/>
-            )}
+            ) : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
         </div>
     );
 };

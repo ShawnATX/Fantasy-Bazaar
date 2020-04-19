@@ -59,6 +59,10 @@ export default {
     loginUser: function(userData) {
         return axios.post("/api/users/login", userData);
     },
+    //user logout
+    logoutUser: function() {
+        return axios.get("/logout");
+    },
 
     // Gets the bazaar with the given joinCode
     getBazaar: function (code) {

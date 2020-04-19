@@ -46,7 +46,7 @@ const UserController =  {
     console.log("Sell route", req.body);
     db.User
       .findOneAndUpdate( { _id: req.user._id}, { 
-        $set: { items: req.body.items} 
+        $set: { items: req.body.items, wallet: req.body.wallet } 
       }, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
