@@ -116,7 +116,7 @@ const itemSeed = [
         description:{
             ac: "16",
             skillModifier: "Stealth: Disadvantage",
-            ailityReq: "Strength: 13"
+            abilityReq: "Strength: 13"
         }, 
         value: 75,
         weight: 55,

@@ -4,7 +4,7 @@ import Item from "./item";
 const ListSection = (props) => {
     return (
         <div className="card">
-            <div className="card-header" id={props.type + "head"}>
+            <div className="card-header p-2" id={props.type + "head"}>
                 <h2 className="mb-0 text-center">
                     <button className="btn" type="button" data-toggle="collapse" data-target={"#" + props.type + "body"} aria-expanded="true" aria-controls={props.type + "body"}>
                         {props.type}

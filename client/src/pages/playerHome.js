@@ -121,7 +121,7 @@ const PlayerHome = () => {
             <Row className="sticky-footer mt-3">
                 <Col className="text-center">
                     <button
-                        className="text-center"
+                        className="text-center btn-small"
                         onClick={() => handleLogout()}>
                         Logout
                     </button>

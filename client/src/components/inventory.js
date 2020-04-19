@@ -16,15 +16,15 @@ const Inventory = (props) => {
 
     return(
         <div>
-            <Row className="mt-5 px-5">
+            <Row className="mt-4 px-5">
                 <Col className="mb-1 text-center">
-                    <Button
+                    <button
                         href="#home"
                         alt="Back Home"
-                        className="text-center"
+                        className="text-center btn-small"
                         onClick={() => props.setPageState("Home")}>
                         Back Home
-                    </Button>
+                    </button>
                 </Col>
             </Row>
             {(props.items.length > 0) ? itemList.map((item) =>

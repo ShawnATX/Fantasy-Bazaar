@@ -20,6 +20,17 @@ button{
   font-size: x-large;
   font-weight: bold;
 }
+.btn-small{
+  padding: 1rem;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.btn-inline{
+  font-size: x-large;
+  font-weight: bold;
+}
+
 .splashBtn {
   font-size: x-large;
 }

@@ -30,13 +30,13 @@ const StoreFront = (props) => {
         <div>
             <Row className="mt-5 px-5">
                 <Col className="text-center">
-                    <Button
+                    <button
                         href=""
                         alt="Back Home"
-                        className="text-center mb-1"
+                        className="text-center mb-1 btn-small"
                         onClick={() => props.setPageState("Home")}>
                         Back Home
-                    </Button>
+                    </button>
                 </Col>
             </Row>
             {buildList()}
