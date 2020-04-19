@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { Container, Form, FormGroup, Input, Row, Col } from 'reactstrap';
 import { useAlert } from 'react-alert'
@@ -29,42 +29,40 @@ const Login = () => {
                 password: formObject.password
             }
             API.loginUser(userLogin)
-            .then((res) => {
-                if (res.status === 200) {
-                    console.log(res.data)
-                    //set authentication on successful login, and set user info on the global state object
-                    authenticationState.userHasAuthenticated(true, { userName : res.data.userName, characterName : res.data.characterName, characterImage: res.data.characterImage, type : res.data.type, wallet : res.data.wallet, items : res.data.items, bazaars: res.data.bazaars }); 
-                    if (res.data.type === "GM") {
-                        history.push("/gmhome");
+                .then((res) => {
+                    if (res.status === 200) {
+                        console.log(res.data)
+                        //set authentication on successful login, and set user info on the global state object
+                        authenticationState.userHasAuthenticated(true, { userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
+                        if (res.data.type === "GM") {
+                            history.push("/gmhome");
+                        }
+                        else {
+                            history.push("/playerhome");
+                        }
                     }
-                    else {
-                        history.push("/playerhome");
-                    }
-                }
-            })
-            .catch(err => {
-                alert.show("No user found with those credentials")
-            });
+                })
+                .catch(err => {
+                    alert.show("No user found with those credentials")
+                });
         }
         //alert form fields are not completed
         else {
-            //@@TODO display alert about username/password missing
             alert.show('Please enter a username and password')
         }
     };
 
-
-    return(
+    return (
         <Container>
-            <Form onSubmit={handleFormSubmit} className="mt-4">
-                <FormGroup row>
+            <Form onSubmit={handleFormSubmit} className="mt-5">
+                <FormGroup row className="mb-4">
                     <Input
                         name="userName"
                         id="userName"
                         placeholder="User Name"
                         onChange={handleInputChange} />
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup row className="mb-4">
                     <Input
                         type="password"
                         name="password"
@@ -74,10 +72,15 @@ const Login = () => {
                 </FormGroup>
                 <Row>
                     <Col className="text-center mt-3">
-                <button>Submit</button>
+                        <button>Submit</button>
                     </Col>
                 </Row>
             </Form>
+                    <Col className="text-center mt-3">
+                        <Link to="/">
+                            <button>Go Back</button>
+                        </Link>
+                    </Col>
         </Container>
     );
 }
