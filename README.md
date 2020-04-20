@@ -1,3 +1,13 @@
+# Description
+
+Fantasy Bazaar is a tabletop game companion app that is built for players and game masters of many different systems. The app is designed to help facilitate and manage player inventory and store interactions, allowing players to buy and sell inventory outside of precious session time.
+
+The application can be found here: 
+
+https://fantasy-bazaar.herokuapp.com/
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
