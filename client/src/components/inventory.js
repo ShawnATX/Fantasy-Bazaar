@@ -14,6 +14,16 @@ const Inventory = (props) => {
             });
     }, [authenticationState, props.items]);
 
+    const getQuantity = (item) => {  
+        let count = 0;
+        for(let i = 0; i < props.items.length; ++i){
+            if(props.items[i] === item)
+            count++;
+        }
+        return count;
+    }
+
+    
     return(
         <div>
             <Row className="mt-4 px-5">
@@ -31,6 +41,7 @@ const Inventory = (props) => {
                 <Item 
                 key={item._id}
                 item={item}
+                quantity={getQuantity(item._id)}
                 action={props.sell}
                 button={"Sell"}/>
             ) : "No items in inventory at this time. Maybe give the Bazaar a visit?"}

@@ -46,9 +46,7 @@ const Item = (props) => {
     return (
         <Row className="border align-middle">
             <Col className="align-middle">
-                <h4>
-                    {props.item.name}
-                </h4>
+                <h4>{props.item.name}</h4> {(props.quantity) ? `X${props.quantity}` : ''}
             </Col>
             <Col>
                 <h5>{props.item.value}</h5> Gold
@@ -61,8 +59,7 @@ const Item = (props) => {
             </Col>
             <Col>
                 {/* Disable purchase button if it is too expensive */}
-                {console.log(props.item.value > authenticationState.user.wallet)}
-                <button className="btn-small my-1 float-right" onClick={() => props.action(props.item)} disabled={props.item.value > authenticationState.user.wallet ? true : false}>
+                <button className="btn-small my-1 float-right" onClick={() => props.action(props.item)} disabled={( props.item.value > authenticationState.user.wallet && props.button === "Purchase")  ? true : false}>
                     {props.button}
                 </button>
             </Col>

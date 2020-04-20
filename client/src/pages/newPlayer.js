@@ -125,7 +125,7 @@ function NewPlayer() {
                     <Input
                         name="bazaarId"
                         id="bazaarId"
-                        placeholder="Bazaar ID Here"
+                        placeholder="Bazaar Code Here"
                         onChange={handleInputChange} />
                 </FormGroup>
                 <button className="btn-small mr-3">Submit</button>

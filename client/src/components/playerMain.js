@@ -23,7 +23,7 @@ const PlayerMain = (props) => {
                         alt="Visit The Bazaar"
                         className="text-center"
                         onClick={() => props.setPageState("Store")}>
-                            Visit The Bazaar!
+                            Visit The Bazaar
                     </button>
                 </Col>
             </Row>
