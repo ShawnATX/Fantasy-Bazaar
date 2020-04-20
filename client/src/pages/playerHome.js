@@ -82,7 +82,7 @@ const PlayerHome = () => {
         } else if (pageState === "Inventory") {
             return <Inventory setPageState={setPageState} items={userObject.items} sell={sellItem} />;
         } else if (pageState === "Store") {
-            return <StoreFront setPageState={setPageState} purchase={purchaseItem} />;
+            return <StoreFront setPageState={setPageState} purchase={purchaseItem}/>;
         } else {
             return <PlayerMain setPageState={"Home"} />;
         }
@@ -91,17 +91,17 @@ const PlayerHome = () => {
 
     return (
         <Container>
-            <Row className="border p-2  mb-3 text-center sticky-top">
-                <Col className="border text-center py-3 mx-2">
-                    <Row >
+            <Row className="border p-1  mb-3 text-center sticky-top playerHeader">
+                <Col className="border text-center p-0 mx-2 mh-75">
+                    <Row className="mx-0">
                         <Col sm="8" md={{ size: 6, offset: 3 }}>
                             <img src={userObject.characterImage} alt="Character Image" className="img-fluid mw-50" />
                         </Col>
                     </Row>
                     {userObject.characterName}
                 </Col>
-                <Col className="border text-center py-3 mx-2">
-                    <Row>
+                <Col className="border text-center p-0 mx-2">
+                    <Row className="mx-0">
                         <Col className="justify-center">
                             {userObject.wallet}
                             {/* <Animate

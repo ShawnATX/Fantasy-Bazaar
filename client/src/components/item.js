@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Row, Col } from 'reactstrap';
+import UserContext from "../utils/userContext";
 
 
 
 const Item = (props) => {
+    const { authenticationState } = useContext(UserContext);
+
     const getDescription = () => {
-        console.log(props.item.description);
         switch (props.item.type) {
             case "Weapon":
                 if (props.item.description.properties) {
@@ -18,8 +20,10 @@ const Item = (props) => {
             case "Armor":
                 if (props.item.description.skillModifier && props.item.description.abilityReq) {
                     return `Armor Class: ${props.item.description.ac}
-                            Skill Modifier: ${props.item.description.skillModifier}
-                            Ability Requirements: ${props.item.description.abilityReq}`;
+                            
+                    Skill Modifier: ${props.item.description.skillModifier}
+                            
+                    Ability Requirements: ${props.item.description.abilityReq}`;
                 }
                 else if (props.item.description.skillModifier) {
                     return `Armor Class: ${props.item.description.ac}
@@ -54,10 +58,11 @@ const Item = (props) => {
             </Col>
             <Col>
                 {getDescription()}
-                {/* {props.item.description ? props.item.description.description : ""} */}
             </Col>
             <Col>
-                <button className="btn-small my-1 float-right" onClick={() => props.action(props.item)}>
+                {/* Disable purchase button if it is too expensive */}
+                {console.log(props.item.value > authenticationState.user.wallet)}
+                <button className="btn-small my-1 float-right" onClick={() => props.action(props.item)} disabled={props.item.value > authenticationState.user.wallet ? true : false}>
                     {props.button}
                 </button>
             </Col>

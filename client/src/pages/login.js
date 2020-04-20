@@ -7,7 +7,6 @@ import { useAlert } from 'react-alert'
 import UserContext from "../utils/userContext";
 import API from "../utils/API";
 
-
 const Login = () => {
 
     const { authenticationState } = useContext(UserContext);
