@@ -554,6 +554,16 @@ const itemSeed = [
         subtype: "Martial Ranged",
         system: "DnD"
     },
+    {
+        name: "Poison, vial",
+        description:{
+            description: "Add 1d4 Poison damage to a weapon for 1 minute"
+        }, 
+        value: 100,
+        weight: 0,
+        type: "Consumable",
+        system: "DnD"
+    }
 ];
 
 function seedItems() {

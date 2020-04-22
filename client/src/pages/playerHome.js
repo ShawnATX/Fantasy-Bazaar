@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { Container, Col, Row } from 'reactstrap';
-// import Animate from 'animate.css-react';
 import { useAlert } from 'react-alert';
 import API from "../utils/API";
 import Inventory from '../components/inventory';
@@ -101,8 +100,8 @@ const PlayerHome = () => {
                     {userObject.characterName}
                 </Col>
                 <Col className="border text-center p-0 mx-2">
-                    <Row className="mx-0">
-                        <Col className="justify-center">
+                    <Row className="mx-0 mt-2">
+                        <Col className="justify-center mt-5">
                             {userObject.wallet}
                             {/* <Animate
                                 animate="false"

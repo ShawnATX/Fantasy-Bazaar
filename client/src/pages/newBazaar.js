@@ -3,11 +3,11 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import { useAlert } from 'react-alert'
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input, Button } from 'reactstrap';
+import { Container, FormGroup, Form, Label, Input } from 'reactstrap';
 import API from "../utils/API";
 import ImageChoices from "../components/imageChoices";
 
-function NewPlayer() {
+function NewBazaar() {
     const { authenticationState } = useContext(UserContext);
     const [formObject, setFormObject] = useState({});
     const history = useHistory();
@@ -15,6 +15,7 @@ function NewPlayer() {
 
     function handleInputChange(event) {
         const { name, value } = event.target;
+        console.log(name, value)
         setFormObject({ ...formObject, [name]: value })
     };
 
@@ -26,6 +27,7 @@ function NewPlayer() {
             API.getBazaar(formObject.bazaarId)
                 //bazaar exists, attemtping to create user and tie to bazaar
                 .then((res) => {
+                    console.log(res);
                     const bazaarId = res.data._id;
                     const newUser = {
                         userName: formObject.playerName,
@@ -39,23 +41,23 @@ function NewPlayer() {
                     }
                     API.saveUser(newUser)
                         .then((res) => {
+                            console.log(res);
                             if (res.status === 200) {
                                 API.loginUser({
                                     userName: newUser.userName,
                                     password: newUser.password
                                 }).then((res) => {
                                     //set authentication on successful login, and set user info on the global state object
+                                    console.log(res);
                                     authenticationState.userHasAuthenticated(true, { userName: res.data.userName, characterName: res.data.characterName, characterImage: res.data.characterImage, type: res.data.type, wallet: res.data.wallet, items: res.data.items, bazaars: res.data.bazaars });
                                 })
                                     .then(
                                         history.push("/playerhome")
                                     )
-                                    .catch(err => {
-                                        alert.show("Login problem :(")
-                                        console.log(err)
-                                    });
+                                    .catch(err => res.json(err));
                             }
                             else {
+                                console.log(res);
                                 history.push("/login")
                             }
                         })
@@ -133,4 +135,4 @@ function NewPlayer() {
     );
 };
 
-export default NewPlayer;
+export default NewBazaar;
