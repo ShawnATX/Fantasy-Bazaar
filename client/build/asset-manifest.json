@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.672a8a77.chunk.css",
+    "main.js": "/static/js/main.d1d75994.chunk.js",
+    "main.js.map": "/static/js/main.d1d75994.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7222f916.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7222f916.js.map",
+    "static/js/2.14bcdc69.chunk.js": "/static/js/2.14bcdc69.chunk.js",
+    "static/js/2.14bcdc69.chunk.js.map": "/static/js/2.14bcdc69.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.55d03559a6e36822c7b430da377d0889.js": "/precache-manifest.55d03559a6e36822c7b430da377d0889.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.672a8a77.chunk.css.map": "/static/css/main.672a8a77.chunk.css.map",
+    "static/js/2.14bcdc69.chunk.js.LICENSE.txt": "/static/js/2.14bcdc69.chunk.js.LICENSE.txt",
+    "static/media/bazaar.jpg": "/static/media/bazaar.1fb66236.jpg",
+    "static/media/female-assassin.png": "/static/media/female-assassin.bea0dac7.png",
+    "static/media/female-blue.png": "/static/media/female-blue.f7c81c7c.png",
+    "static/media/female-dress.png": "/static/media/female-dress.80670c2c.png",
+    "static/media/male-archer.png": "/static/media/male-archer.1aedf0f5.png",
+    "static/media/male-elf-green.png": "/static/media/male-elf-green.441ef791.png",
+    "static/media/male-fighter.png": "/static/media/male-fighter.9a29969a.png",
+    "static/media/male-rogue.png": "/static/media/male-rogue.ecc3ef84.png",
+    "static/media/orc-barbarian.png": "/static/media/orc-barbarian.e0001940.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7222f916.js",
+    "static/js/2.14bcdc69.chunk.js",
+    "static/css/main.672a8a77.chunk.css",
+    "static/js/main.d1d75994.chunk.js"
+  ]
+}

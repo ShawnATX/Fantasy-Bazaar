@@ -23,9 +23,13 @@ app.use(passport.session());
 
 require("./routes/api-routes.js")(app);
 
+if (process.env.MONGODB_URI) {
+  console.log(MONGODB_URI);
+}
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar"
+);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar");
-
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
