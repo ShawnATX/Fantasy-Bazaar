@@ -24,11 +24,17 @@ app.use(passport.session());
 require("./routes/api-routes.js")(app);
 
 if (process.env.MONGODB_URI) {
-  console.log(MONGODB_URI);
+  console.log(process.env.MONGODB_URI);
 }
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar"
+  process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar",
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  // we're connected!
+});
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
