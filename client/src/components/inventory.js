@@ -1,52 +1,53 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../utils/userContext";
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col } from "reactstrap";
 import API from "../utils/API";
 import Item from "./item";
 
 const Inventory = (props) => {
-    const [itemList, setItemList] = useState([]);
-    const { authenticationState } = useContext(UserContext);
-    useEffect(() => {
-        API.getItemsById(props.items)
-            .then(res => {
-                setItemList(res.data);
-            });
-    }, [authenticationState, props.items]);
+  const [itemList, setItemList] = useState([]);
+  const { authenticationState } = useContext(UserContext);
+  useEffect(() => {
+    API.getItemsById(props.items).then((res) => {
+      setItemList(res.data);
+    });
+  }, [authenticationState, props.items]);
 
-    const getQuantity = (item) => {  
-        let count = 0;
-        for(let i = 0; i < props.items.length; ++i){
-            if(props.items[i] === item)
-            count++;
-        }
-        return count;
+  const getQuantity = (item) => {
+    let count = 0;
+    for (let i = 0; i < props.items.length; ++i) {
+      if (props.items[i] === item) count++;
     }
+    return count;
+  };
 
-    
-    return(
-        <div>
-            <Row className="mt-4 px-5">
-                <Col className="mb-1 text-center">
-                    <button
-                        href="#home"
-                        alt="Back Home"
-                        className="text-center btn-small"
-                        onClick={() => props.setPageState("Home")}>
-                        Back Home
-                    </button>
-                </Col>
-            </Row>
-            {(props.items.length > 0) ? itemList.map((item) =>
-                <Item 
-                key={item._id}
-                item={item}
-                quantity={getQuantity(item._id)}
-                action={props.sell}
-                button={"Sell"}/>
-            ) : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
-        </div>
-    );
+  return (
+    <div>
+      <Row className="mt-4 px-5">
+        <Col className="mb-1 text-center">
+          <button
+            href="#home"
+            alt="Back Home"
+            className="text-center btn-small"
+            onClick={() => props.setPageState("Home")}
+          >
+            Back Home
+          </button>
+        </Col>
+      </Row>
+      {props.items.length > 0
+        ? itemList.map((item) => (
+            <Item
+              key={item._id}
+              item={item}
+              quantity={getQuantity(item._id)}
+              action={props.sell}
+              button={"Sell"}
+            />
+          ))
+        : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
+    </div>
+  );
 };
 
-export default Inventory;    
+export default Inventory;
