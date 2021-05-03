@@ -6,7 +6,7 @@ The deployed application can be found here:
 
 https://fantasy-bazaar.herokuapp.com/
 
-A demo user is available with the username/password combination *DemoDay/welcome*
+A demo user is available with the username/password combination *User/Password*
 
 
 
