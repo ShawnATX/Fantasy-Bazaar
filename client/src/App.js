@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Splash from "./pages/splash";
 import NewPlayer from "./pages/newPlayer";
 import NoMatch from "./pages/NoMatch";
-import PlayerHome from "./pages/playerHome"
-import GmHome from "./pages/gmHome"
-
+import PlayerHome from "./pages/playerHome";
+import GmHome from "./pages/gmHome";
+import NewUserType from "./pages/newUserType";
+import NewUserCreds from "./pages/newUserCreds";
 import UserContext from "./utils/userContext";
 import Login from "./pages/login";
 
@@ -16,8 +17,13 @@ function App() {
     isAuthenticated: false,
     user: {},
     userHasAuthenticated: (auth, userData) => {
-      setAuthenticationState({...authenticationState, isAuthenticated: auth, user: userData, updates: authenticationState.updates++ })
-    }
+      setAuthenticationState({
+        ...authenticationState,
+        isAuthenticated: auth,
+        user: userData,
+        updates: authenticationState.updates++,
+      });
+    },
   });
 
   return (
@@ -25,7 +31,7 @@ function App() {
       <BrowserRouter>
         <div className="app">
           <Switch>
-            <Route exact path="/" >
+            <Route exact path="/">
               <Splash />
             </Route>
 
@@ -39,6 +45,18 @@ function App() {
 
             <Route exact path="/newplayer">
               <NewPlayer />
+            </Route>
+
+            <Route exact path="/newusertype">
+              <NewUserType />
+            </Route>
+
+            <Route exact path="/newusercreds/:type">
+              <NewUserCreds />
+            </Route>
+
+            <Route exact path="/newbazaar">
+              {/* @@TODO */}
             </Route>
 
             <Route exact path="/login">

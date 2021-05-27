@@ -108,6 +108,7 @@
        "skillModifier":"Stealth: Disadvantage",
        "abilityReq":"Strength: 13"
     },
+
     "value":75,
     "weight":55,
     "type":"Armor",
@@ -544,13 +545,277 @@
     "system":"DnD"
  },
  {
-    "name":"Poison, vial",
+    "name":"Poison (vial)",
     "description":{
        "description":"Add 1d4 Poison damage to a weapon for 1 minute"
     },
     "value":100,
     "weight":0,
-    "type":"Consumable",
+    "type":"Adventuring Gear",
+    "subtype":"Consumable",
     "system":"DnD"
- }
+ },
+ {
+   "name":"Alchemist's fire (flask)",
+   "description":{
+      "description":"Flask of sticky fluid which ignites when broken",
+      "damage":"1d4 fire each turn",
+      "properties":"Thrown (range 20), Dex 10 to extinguish"
+   },
+   "value":50,
+   "weight":1,
+   "type":"Adventuring Gear",
+   "subtype":"Consumable",
+   "system":"DnD"
+},
+{
+   "name":"Antitoxin (vial)",
+   "description":{
+      "description":"Advantage on saving throws against poison for 1 hour"
+   },
+   "value":50,
+   "weight":0,
+   "type":"Adventuring Gear",
+   "subtype":"Consumable",
+   "system":"DnD"
+},
+{
+   "name":"Arrows x20",
+   "description":{
+   },
+   "value":1,
+   "weight":1,
+   "type":"Adventuring Gear",
+   "subtype":"Ammunition",
+   "system":"DnD"
+},
+{
+   "name":"Blowgun needles x50",
+   "description":{
+   },
+   "value":1,
+   "weight":1,
+   "type":"Adventuring Gear",
+   "subtype":"Ammunition",
+   "system":"DnD"
+},
+{
+   "name":"Crossbow bolts x20",
+   "description":{
+   },
+   "value":1,
+   "weight":1.5,
+   "type":"Adventuring Gear",
+   "subtype":"Ammunition",
+   "system":"DnD"
+},
+{
+   "name":"Sling bullets x40",
+   "description":{
+   },
+   "value":0.1,
+   "weight":3,
+   "type":"Adventuring Gear",
+   "subtype":"Ammunition",
+   "system":"DnD"
+},
+{
+   "name":"Backpack",
+   "description":{
+      "capacity":"1 cubic foot, 30 pounds"
+   },
+   "value":2,
+   "weight":5,
+   "type":"Adventuring Gear",
+   "subtype":"Container",
+   "system":"DnD"
+},
+{
+   "name":"Barrel",
+   "description":{
+      "capacity":"40 gallons fluid, 4 cubic feet solid"
+   },
+   "value":2,
+   "weight":70,
+   "type":"Adventuring Gear",
+   "subtype":"Container",
+   "system":"DnD"
+},
+{
+   "name":"Basket",
+   "description":{
+      "capacity":"2 cubic foot, 40 pounds"
+   },
+   "value":0.5,
+   "weight":2,
+   "type":"Adventuring Gear",
+   "subtype":"Container",
+   "system":"DnD"
+},
+{
+   "name":"Pot (iron)",
+   "description":{
+      "capacity":"1 gallons fluid"
+   },
+   "value":2,
+   "weight":10,
+   "type":"Adventuring Gear",
+   "subtype":"Container",
+   "system":"DnD"
+},
+{
+   "name":"Bedroll",
+   "description":{
+   },
+   "value":1,
+   "weight":7,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Blanket",
+   "description":{
+   },
+   "value":0.5,
+   "weight":3,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Block and tackle",
+   "description":{
+      "description": "Set of pulleys with a cable and hook attached"
+   },
+   "value":1,
+   "weight":5,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Ball bearings (bag of 1,000)",
+   "description":{
+      "description":"Tiny metal balls that can be used as action to cover a 10 foot square area",
+      "properties":"Dex 10 save to cross, or fall prone. Half speed can avoid the effect."
+   },
+   "value":1,
+   "weight":2,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Chain (10 feet)",
+   "description":{
+      "properties":"10 Hit Points. Can be broken with a Str 20 check"
+   },
+   "value":5,
+   "weight":10,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Chest",
+   "description":{
+      "capacity": "12 cubic feet, 300 pounds"
+   },
+   "value":5,
+   "weight":25,
+   "type":"Adventuring Gear",
+   "subtype":"Container",
+   "system":"DnD"
+},
+{
+   "name":"Climbers Kit",
+   "description":{
+      "description":"Special pitons, boot tips, gloves, and a harness",
+      "properties":"Anchor yourself as an action while climbing, you cannot fall or climb farther than 25 feet from this point."
+   },
+   "value":25,
+   "weight":12,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Crowbar",
+   "description":{
+      "properties":"Advantage on Str checks where the crowbar leverage can be applied"
+
+   },
+   "value":2,
+   "weight":5,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Fishing tackle",
+   "description":{
+      "description":"Wooden rod, silken line, corkwood bobbers, steel hooks, lead sinkers, velvet lures, and narrow netting"
+   },
+   "value":1,
+   "weight":4,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Healer's Kit",
+   "description":{
+      "description":"Pouch containing bandages, salves, and splints.",
+      "properties":"10 uses, an action to stabilize a creature with 0 hit points without making a check"
+   },
+   "value":5,
+   "weight":3,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Grappling hook",
+   "description":{
+   },
+   "value":2,
+   "weight":4,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Hammer",
+   "description":{
+   },
+   "value":1,
+   "weight":3,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Hammer, sledge",
+   "description":{
+   },
+   "value":2,
+   "weight":10,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+},
+{
+   "name":"Holy water (flask)",
+   "description":{
+      "description":"Glass flask of blessed water",
+      "damage":"2d6 radiant to fiends and undead",
+      "properties":"Thrown(range 20, improvised)"
+   },
+   "value":25,
+   "weight":1,
+   "type":"Adventuring Gear",
+   "subtype":"Trekking",
+   "system":"DnD"
+}
 ]
