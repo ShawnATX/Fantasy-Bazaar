@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input } from "reactstrap";
+import { Container, FormGroup, Form, Label, Input, Row, Col } from "reactstrap";
 import API from "../utils/API";
 
 function NewUserType() {
