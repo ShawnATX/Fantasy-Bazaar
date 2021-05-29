@@ -6,34 +6,33 @@ const UserModel = require("../models/user");
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "userName",
-      passwordField: "password"
-
+      emailField: "email",
+      passwordField: "password",
     },
-    function(userName, password, done) {
-      UserModel.findOne( { userName: userName  }).then(function(dbUser) {
-        const checkPass = async function(){
+    function (email, password, done) {
+      UserModel.findOne({ email: email }).then(function (dbUser) {
+        const checkPass = async function () {
           const rightPass = await dbUser.comparePassword(password);
           return rightPass;
-        }
-        // If there's no user with the given userName
+        };
+        // If there's no user with the given email
         if (!dbUser) {
-          console.log("no user")
+          console.log("no user");
           return done(null, false, {
-            message: "Incorrect username."
+            message: "Incorrect email.",
           });
         }
-        // If there is a user with the given userName, but the attempted password is incorrect
+        // If there is a user with the given email, but the attempted password is incorrect
         else if (!checkPass) {
-          console.log("wrong password")
+          console.log("wrong password");
           return done(null, false, {
-            message: "Incorrect password."
+            message: "Incorrect password.",
           });
         }
         // If none of the above, return the user
         else {
           return done(null, dbUser, {
-            message: "Log-in Successful."
+            message: "Log-in Successful.",
           });
         }
       });
@@ -41,12 +40,12 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   console.log(user);
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 

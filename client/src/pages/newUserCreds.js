@@ -33,7 +33,28 @@ function NewUserCreds(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.email && formObject.password) {
+      API.saveUser(formObject).then((res) => {
+        if (res.status === 200) {
+          API.loginUser({
+            email: res.data.email,
+            password: formObject.password,
+          }).then((res) => {
+            console.log("login response: " + res);
+          });
+        }
+      });
     }
+  }
+
+  function validateEmail() {
+    console.log(formObject.email);
+    API.checkEmail({ email: formObject.email })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -48,6 +69,7 @@ function NewUserCreds(props) {
             id="email"
             placeholder="myemailaddress@interwebs.com"
             onChange={handleInputChange}
+            onBlur={validateEmail}
           />
         </FormGroup>
         <FormGroup row>

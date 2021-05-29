@@ -13,19 +13,13 @@ module.exports = function (app) {
     passport.authenticate("local"),
     function (req, res) {
       res.json({
-        userName: req.user.userName,
-        characterName: req.user.characterName,
-        type: req.user.type,
-        wallet: req.user.wallet,
-        items: req.user.items,
-        bazaars: req.user.bazaars,
-        characterImage: req.user.characterImage,
+        email: req.email,
       });
     }
   );
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // how we configured our User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/users", userController.create);
   // .then(function () {
@@ -53,8 +47,8 @@ module.exports = function (app) {
     }
   });
 
-  // //Update user (not modifying items, bazaars)
-  // app.put("/api/users/:userName", userController.update)
+  //Check uniqueness of an email address before attempting to save a new user
+  app.post("/api/users/email/", userController.findByEmail);
 
   //Update user (item &  wallet)
   app.put("/api/users/purchase", userController.purchase);

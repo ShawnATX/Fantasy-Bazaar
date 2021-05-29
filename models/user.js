@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new Schema({
-  userName: {
+  email: {
     type: String,
     required: true,
     index: {
@@ -35,9 +35,7 @@ const userSchema = new Schema({
   },
 });
 
-userNewSchema.methods.comparePassword = function findSimilarType(
-  passwordAttempt
-) {
+userSchema.methods.comparePassword = function findSimilarType(passwordAttempt) {
   bcrypt.compare(passwordAttempt, this.password, function (err, res) {
     if (err) return err;
     return res;
