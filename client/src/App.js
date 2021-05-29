@@ -51,8 +51,12 @@ function App() {
               <NewUserType />
             </Route>
 
-            <Route exact path="/newusercreds/:type">
-              <NewUserCreds />
+            <Route exact path="/newusercreds/player/:code">
+              <NewUserCreds type={"player"} />
+            </Route>
+
+            <Route exact path="/newusercreds/gm">
+              <NewUserCreds type={"gm"} />
             </Route>
 
             <Route exact path="/newbazaar">

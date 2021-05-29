@@ -1,15 +1,24 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input } from "reactstrap";
 import API from "../utils/API";
 
-function NewUserCreds() {
+function NewUserCreds(props) {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({});
   const history = useHistory();
   const alert = useAlert();
+  const location = useLocation();
+  const params = useParams();
+  const type = props.type; //is this a player or gm user?
+
+  useEffect(() => {
+    if (authenticationState.isAuthenticated) {
+      history.push("/playerhome");
+    }
+  }, [authenticationState]);
 
   function handleInputChange(event) {
     const { name, value } = event.target;

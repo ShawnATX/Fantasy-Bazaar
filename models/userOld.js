@@ -11,33 +11,49 @@ const userSchema = new Schema({
       unique: true,
     },
   },
-  password: {
+  characterName: {
     type: String,
     required: true,
   },
-  // characters owned by this user
-  characters: [
+  characterImage: {
+    type: String,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  wallet: {
+    type: Number,
+    required: true,
+  },
+  priceModifier: {
+    type: Number,
+    required: true,
+    default: 1,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  items: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Character",
+      ref: "Item",
     },
   ],
-  // bazaars owned by this user
   bazaars: [
     {
       type: Schema.Types.ObjectId,
       ref: "Bazaar",
     },
   ],
-  date: {
-    type: Date,
-    default: Date.now,
+  password: {
+    type: String,
+    required: true,
   },
 });
 
-userNewSchema.methods.comparePassword = function findSimilarType(
-  passwordAttempt
-) {
+userSchema.methods.comparePassword = function findSimilarType(passwordAttempt) {
   bcrypt.compare(passwordAttempt, this.password, function (err, res) {
     if (err) return err;
     return res;
