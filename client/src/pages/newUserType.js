@@ -1,26 +1,53 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input, Row, Col } from "reactstrap";
+import {
+  Container,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  Row,
+  Col,
+  Button,
+} from "reactstrap";
 import API from "../utils/API";
 
 function NewUserType() {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({});
+  const [validBazaarCode, setValidBazaarCode] = useState(false);
   const history = useHistory();
   const alert = useAlert();
 
+  useEffect(() => {
+    if (authenticationState.isAuthenticated) {
+      history.push("/playerhome");
+    }
+  }, [authenticationState]);
+
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.email && formObject.password) {
-    }
   }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
-    // if bazaarID == {join code length} => check bazaar code API to validate and then activate the 'join' button
+    // if bazaarCode == {join code length} => check bazaar code API to validate and then activate the 'join' button
+    if (value.length === 8) {
+      API.getBazaar(value)
+        .then((res) => {
+          if (res.data) {
+            setValidBazaarCode(true);
+          }
+        })
+        .catch((err) => {
+          alert.show("Bazaar not found");
+        });
+    } else {
+      setValidBazaarCode(false);
+    }
   }
 
   return (
@@ -32,25 +59,44 @@ function NewUserType() {
             alt="Create a new Bazaar"
             className="text-center"
           >
-            <button className="splashBtn">Create a new Bazaar</button>
+            <Button className="splashBtn">Create a new Bazaar</Button>
           </Link>
         </Col>
       </Row>
-      <Form onSubmit={handleFormSubmit} className="text-center">
-        <Row className="mt-5 px-5">
+      <Form onSubmit={handleFormSubmit}>
+        <Row className="mt-5 px-5" className="text-center">
           <Col>
-            <Link to="/newnewusercreds/player?bazaarid=">
-              <button>Join a bazaar</button>
-            </Link>
+            {validBazaarCode ? (
+              <Link
+                to={"/newusercreds/player/" + formObject.bazaarCode}
+                alt="Create a new Bazaar"
+                className="text-center"
+              >
+                <Button size="lg" active>
+                  Join a bazaar
+                </Button>
+              </Link>
+            ) : (
+              <Button size="lg" disabled>
+                Join a bazaar
+              </Button>
+            )}
+
             <FormGroup>
-              <Label for="bazaarId">Bazaar Join Code</Label>
               <Input
-                name="bazaarId"
-                id="bazaarId"
-                placeholder="Bazaar Code Here"
+                name="bazaarCode"
+                id="bazaarCode"
+                placeholder="Bazaar Join Code"
                 onChange={handleInputChange}
               />
             </FormGroup>
+          </Col>
+        </Row>
+        <Row className="text-center">
+          <Col>
+            <Link to="/" alt="Home" className="text-center">
+              <Button className="splashBtn">Home</Button>
+            </Link>
           </Col>
         </Row>
       </Form>

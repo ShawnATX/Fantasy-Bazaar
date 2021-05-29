@@ -65,7 +65,7 @@ const BazaarSchema = new Schema({
 });
 
 BazaarSchema.methods.createJoinCode = function () {
-  this.joinCode = () => nanoid(7);
+  this.joinCode = () => nanoid(8);
   return joinCode;
 };
 

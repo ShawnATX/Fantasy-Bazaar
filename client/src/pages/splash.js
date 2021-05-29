@@ -7,7 +7,7 @@ const Splash = (props) => {
     <Container fluid={true} className="text-center">
       <Row className="mt-5 px-5">
         <Col>
-          <Link to="/newplayer" alt="Get Started" className="text-center">
+          <Link to="/newusertype" alt="Get Started" className="text-center">
             <button className="splashBtn">Get Started</button>
           </Link>
         </Col>
