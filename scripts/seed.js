@@ -4,7 +4,8 @@ const nanoid = require("nanoid");
 
 //This file is used to initialize standard data for the application: items, admin user, example bazaar
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar"
+  // process.env.MONGODB_URI ||
+  "mongodb://localhost/fantasybazaar"
 );
 
 const itemSeed = [
@@ -22,19 +23,13 @@ const itemSeed = [
 ];
 const userSeed = [
   {
-    userName: "GM",
-    characterName: "GM",
-    wallet: 0,
-    type: "GM",
+    email: "GM@gm.com",
     password: "pass",
     bazaars: [],
   },
   {
-    userName: "glasscannon",
-    characterName: "Pembrick",
-    wallet: 25,
-    type: "Player",
-    items: [],
+    email: "glasscannon@naish.com",
+    password: "pass",
     bazaars: [],
   },
 ];
@@ -80,10 +75,14 @@ const seedUsers = () => {
 const seedBazaar = () => {
   //get GM user to seed as bazaar creator
 
-  db.User.findOne({ userName: "glasscannon" }, "_id", function (err, userId) {
-    bazaarSeed[0].players.push(userId);
-  }).then(() => {
-    db.User.findOne({ userName: "GM" }, "_id", function (err, userId) {
+  db.User.findOne(
+    { email: "glasscannon@naish.com" },
+    "_id",
+    function (err, userId) {
+      bazaarSeed[0].players.push(userId);
+    }
+  ).then(() => {
+    db.User.findOne({ email: "GM@gm.com" }, "_id", function (err, userId) {
       console.log(userId);
       bazaarSeed[0].creator = userId;
     })

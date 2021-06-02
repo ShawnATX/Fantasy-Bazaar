@@ -2,16 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input } from "reactstrap";
+import { Container, FormGroup, Form, Label, Input, Button } from "reactstrap";
 import API from "../utils/API";
 
 function NewUserCreds(props) {
   const { authenticationState } = useContext(UserContext);
-  const [formObject, setFormObject] = useState({});
+  const [formObject, setFormObject] = useState({
+    email: "",
+    password: "",
+  });
+  const [formReady, setFormReady] = useState(false);
   const history = useHistory();
   const alert = useAlert();
   const location = useLocation();
-  const params = useParams();
+  // const params = useParams();
   const type = props.type; //is this a player or gm user?
 
   useEffect(() => {
@@ -46,11 +50,17 @@ function NewUserCreds(props) {
     }
   }
 
-  function validateEmail() {
+  function checkEmailUniqueness() {
     console.log(formObject.email);
     API.checkEmail({ email: formObject.email })
       .then((res) => {
-        console.log(res.data);
+        if (res.data === null) {
+          setFormReady(true);
+          console.log("no conflict");
+        } else {
+          setFormReady(false);
+          console.log("email conflict");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -69,7 +79,7 @@ function NewUserCreds(props) {
             id="email"
             placeholder="myemailaddress@interwebs.com"
             onChange={handleInputChange}
-            onBlur={validateEmail}
+            onBlur={checkEmailUniqueness}
           />
         </FormGroup>
         <FormGroup row>
@@ -82,10 +92,16 @@ function NewUserCreds(props) {
             onChange={handleInputChange}
           />
         </FormGroup>
-        <button className="btn-small mr-3">Submit</button>
-        <button className="btn-small ml-3" onClick={goHome}>
+        {formReady && formObject.password.length >= 7 ? (
+          <Button size="lg">Submit</Button>
+        ) : (
+          <Button size="lg" disabled>
+            Submit
+          </Button>
+        )}
+        <Button className="btn-small ml-3" onClick={goHome}>
           Back Home
-        </button>
+        </Button>
       </Form>
     </Container>
   );

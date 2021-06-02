@@ -14,18 +14,25 @@ const UserController = {
       .catch((err) => res.status(422).json(err));
   },
   findByEmail: function (req, res) {
-    console.log(req.body.email);
-    db.User.findOne({ email: req.body.email })
-      .then((dbModel) => res.json(dbModel.email))
-      .catch((err) => res.status(422).json(err));
+    db.User.findOne({ email: req.body.email }, "email")
+      .lean()
+      .then((dbModel) => {
+        if (dbModel === null) {
+          res.json(dbModel);
+        } else {
+          res.json("conflict");
+        }
+      })
+      .catch((err) => {
+        res.status(422).json(err);
+      });
   },
   create: function (req, res) {
-    db.User.create({ ...req.body, wallet: parseInt(req.body.wallet) })
+    db.User.create({ ...req.body })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    //console.log(req);
     db.User.findOneAndUpdate(req.params, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

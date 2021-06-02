@@ -64,7 +64,7 @@ function NewUserType() {
         </Col>
       </Row>
       <Form onSubmit={handleFormSubmit}>
-        <Row className="mt-5 px-5" className="text-center">
+        <Row className="mt-5 px-5 text-center">
           <Col>
             {validBazaarCode ? (
               <Link
