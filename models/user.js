@@ -37,6 +37,7 @@ const userSchema = new Schema({
 
 userSchema.methods.comparePassword = function findSimilarType(passwordAttempt) {
   bcrypt.compare(passwordAttempt, this.password, function (err, res) {
+    console.log(passwordAttempt, this.password);
     if (err) return err;
     return res;
   });

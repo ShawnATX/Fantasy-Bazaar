@@ -42,7 +42,7 @@ module.exports = function (app) {
       res.json({});
     } else {
       res.json({
-        userName: req.user.userName,
+        email: req.user.email,
       });
     }
   });

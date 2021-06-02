@@ -81,7 +81,7 @@ export default {
   deleteBazaar: function (id) {
     return axios.delete("/api/bazaars/" + id);
   },
-  // Saves an bazaar to the database
+  // Saves a bazaar to the database
   saveBazaar: function (bazaarData) {
     return axios.post("/api/bazaars", bazaarData);
   },

@@ -25,7 +25,10 @@ function NewUserCreds(props) {
   }, [authenticationState]);
 
   function handleInputChange(event) {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    if (name === "email") {
+      value = value.trim();
+    }
     setFormObject({ ...formObject, [name]: value });
   }
 
@@ -37,16 +40,19 @@ function NewUserCreds(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.email && formObject.password) {
-      API.saveUser(formObject).then((res) => {
-        if (res.status === 200) {
-          API.loginUser({
-            email: res.data.email,
-            password: formObject.password,
-          }).then((res) => {
-            console.log("login response: " + res);
-          });
-        }
-      });
+      API.saveUser(formObject)
+        .then((res) => {
+          if (res.status === 200) {
+            API.loginUser({
+              ...formObject,
+            }).then((res) => {
+              console.log("login response: " + res);
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
