@@ -23,7 +23,7 @@ function NewUserType() {
 
   useEffect(() => {
     if (authenticationState.isAuthenticated) {
-      history.push("/playerhome");
+      history.push("/userhome");
     }
   }, [authenticationState]);
 
@@ -68,7 +68,7 @@ function NewUserType() {
           <Col>
             {validBazaarCode ? (
               <Link
-                to={"/newusercreds/player/" + formObject.bazaarCode}
+                to={"/newusercreds/player?bazaar=" + formObject.bazaarCode}
                 alt="Create a new Bazaar"
                 className="text-center"
               >

@@ -8,7 +8,7 @@ import Inventory from "../components/inventory";
 import StoreFront from "../components/storeFront";
 import PlayerMain from "../components/playerMain";
 
-const PlayerHome = () => {
+const CharacterHome = () => {
   const { authenticationState } = useContext(UserContext);
   const [userObject, setUserObject] = useState({});
   const [pageState, setPageState] = useState("Home");
@@ -172,4 +172,4 @@ const PlayerHome = () => {
   );
 };
 
-export default PlayerHome;
+export default CharacterHome;

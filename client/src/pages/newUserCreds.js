@@ -14,9 +14,8 @@ function NewUserCreds(props) {
   const [formReady, setFormReady] = useState(false);
   const history = useHistory();
   const alert = useAlert();
-  const location = useLocation();
-  // const params = useParams();
   const type = props.type; //is this a player or gm user?
+  const params = new URLSearchParams(useLocation().search);
 
   useEffect(() => {
     if (authenticationState.isAuthenticated) {
@@ -40,20 +39,36 @@ function NewUserCreds(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.email && formObject.password) {
-      API.saveUser(formObject)
-        .then((res) => {
-          if (res.status === 200) {
-            API.loginUser({
-              ...formObject,
-            }).then((res) => {
-              console.log("login response: " + res);
-            });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      saveNewUser(formObject);
     }
+  }
+
+  function saveNewUser(user) {
+    API.saveUser(user)
+      .then((res) => {
+        if (res.status === 200) {
+          loginNewUser(user);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function loginNewUser(user) {
+    API.loginUser(user)
+      .then((res) => {
+        console.log("Login done");
+        if (type === "player") {
+          let code = params.get("bazaar");
+          history.push("/newCharacter?bazaar=" + code);
+        } else {
+          history.push("/newBazaar");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function checkEmailUniqueness() {

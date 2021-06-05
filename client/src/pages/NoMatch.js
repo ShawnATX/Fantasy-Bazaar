@@ -1,15 +1,15 @@
-import { Button } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const NoMatch = () => {
   return (
-    <div>
+    <Container>
       <div>Sorry, page not found! :(</div>
       <Link to="/">
         <Button>Head back Home</Button>
       </Link>
-    </div>
+    </Container>
   );
 };
 

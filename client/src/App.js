@@ -4,10 +4,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Splash from "./pages/splash";
 import NewPlayer from "./pages/newPlayer";
 import NoMatch from "./pages/NoMatch";
-import PlayerHome from "./pages/playerHome";
+import UserHome from "./pages/userHome";
 import GmHome from "./pages/gmHome";
 import NewUserType from "./pages/newUserType";
 import NewUserCreds from "./pages/newUserCreds";
+import NewCharacter from "./pages/newCharacter";
 import UserContext from "./utils/userContext";
 import Login from "./pages/login";
 
@@ -35,8 +36,8 @@ function App() {
               <Splash />
             </Route>
 
-            <Route exact path="/playerhome">
-              <PlayerHome />
+            <Route exact path="/userhome">
+              <UserHome />
             </Route>
 
             <Route exact path="/gmhome">
@@ -51,8 +52,12 @@ function App() {
               <NewUserType />
             </Route>
 
-            <Route exact path="/newusercreds/player/:code">
+            <Route exact path="/newusercreds/player">
               <NewUserCreds type={"player"} />
+            </Route>
+
+            <Route exact path="/newCharacter">
+              <NewCharacter />
             </Route>
 
             <Route exact path="/newusercreds/gm">

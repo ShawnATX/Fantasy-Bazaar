@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-
 import { Container, Form, FormGroup, Input, Row, Col } from "reactstrap";
 import { useAlert } from "react-alert";
-
 import UserContext from "../utils/userContext";
 import API from "../utils/API";
 
@@ -16,6 +14,10 @@ const Login = () => {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
+  }
+
+  function goToPlayerHome() {
+    history.push("/userhome");
   }
 
   function handleFormSubmit(event) {
@@ -36,6 +38,7 @@ const Login = () => {
             });
           }
         })
+        .then(goToPlayerHome())
         .catch((err) => {
           console.log(err);
           alert.show("No user found with those credentials");
