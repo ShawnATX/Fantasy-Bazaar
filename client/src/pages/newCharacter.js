@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input } from "reactstrap";
+import { Container, FormGroup, Form, Label, Input, Button } from "reactstrap";
 import API from "../utils/API";
 import ImageChoices from "../components/imageChoices";
 
@@ -47,8 +47,8 @@ function NewCharacter(props) {
             onChange={handleInputChange}
           />
         </FormGroup>
-        <button className="btn-small ml-3">Add Starting Equipment</button>
-        <button className="btn-small mr-3">Visit {bazaarName}</button>
+        <Button className="btn-small ml-3">Add Starting Equipment</Button>
+        <Button className="btn-small mr-3">Visit {bazaarName}</Button>
       </Form>
     </Container>
   );

@@ -19,9 +19,9 @@ function NewUserCreds(props) {
 
   useEffect(() => {
     if (authenticationState.isAuthenticated) {
-      history.push("/playerhome");
+      history.push("/userhome");
     }
-  }, [authenticationState]);
+  }, []);
 
   function handleInputChange(event) {
     let { name, value } = event.target;
@@ -47,7 +47,12 @@ function NewUserCreds(props) {
     API.saveUser(user)
       .then((res) => {
         if (res.status === 200) {
-          loginNewUser(user);
+          let userContext = {
+            email: res.data.email,
+            bazaars: res.data.bazaars,
+            characters: res.data.characters,
+          };
+          loginNewUser(user, userContext);
         }
       })
       .catch((err) => {
@@ -55,15 +60,19 @@ function NewUserCreds(props) {
       });
   }
 
-  function loginNewUser(user) {
+  function loginNewUser(user, userContext) {
+    console.log(user);
     API.loginUser(user)
       .then((res) => {
-        console.log("Login done");
-        if (type === "player") {
-          let code = params.get("bazaar");
-          history.push("/newCharacter?bazaar=" + code);
-        } else {
-          history.push("/newBazaar");
+        if (res.status === 200) {
+          authenticationState.userHasAuthenticated(true, { ...userContext });
+          console.log("Login done");
+          if (type === "player") {
+            let code = params.get("bazaar");
+            history.push("/newCharacter?bazaar=" + code);
+          } else {
+            history.push("/newBazaar");
+          }
         }
       })
       .catch((err) => {
@@ -72,20 +81,23 @@ function NewUserCreds(props) {
   }
 
   function checkEmailUniqueness() {
-    console.log(formObject.email);
-    API.checkEmail({ email: formObject.email })
-      .then((res) => {
-        if (res.data === null) {
-          setFormReady(true);
-          console.log("no conflict");
-        } else {
-          setFormReady(false);
-          console.log("email conflict");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //@@TODO update email length and add regex
+    if (formObject.email.length > 2) {
+      console.log(formObject.email);
+      API.checkEmail({ email: formObject.email })
+        .then((res) => {
+          if (res.data === null) {
+            setFormReady(true);
+            console.log("no conflict");
+          } else {
+            setFormReady(false);
+            console.log("email conflict");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   return (
@@ -114,9 +126,9 @@ function NewUserCreds(props) {
           />
         </FormGroup>
         {formReady && formObject.password.length >= 7 ? (
-          <Button size="lg">Submit</Button>
+          <Button className="btn-small ml-3">Submit</Button>
         ) : (
-          <Button size="lg" disabled>
+          <Button className="btn-small ml-3" disabled>
             Submit
           </Button>
         )}

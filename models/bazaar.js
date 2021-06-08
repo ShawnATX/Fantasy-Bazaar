@@ -54,6 +54,18 @@ const BazaarSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  requireWalletAdditionApproval: {
+    type: Boolean,
+    default: false,
+  },
+  requireCustomItemApproval: {
+    type: Boolean,
+    default: false,
+  },
+  limitedInventory: {
+    type: Boolean,
+    default: false,
+  },
   system: {
     type: String,
     match: [

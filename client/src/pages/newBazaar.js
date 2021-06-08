@@ -1,28 +1,68 @@
-//New player form which handles basic player creation. front-end validation ensures data is present before being sent to the server on required fields. useState React hook is being used to hold and handle form data as it is entered.
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import API from "../utils/API";
+import NewBazaarMain from "../components/newBazaarMain";
+import NewBazaarSettings from "../components/newBazaarSettings";
 
-function NewBazaar() {
+const NewBazaar = (props) => {
   const { authenticationState } = useContext(UserContext);
-  const [formObject, setFormObject] = useState({});
+  const [formObject, setFormObject] = useState({
+    requireCustomItemApproval: false,
+    requireWalletAdditionApproval: false,
+    requireWalletChangeApproval: false,
+    requireSaleApproval: false,
+    requirePurchaseApproval: false,
+    limitedInventory: false,
+  });
   const history = useHistory();
   const alert = useAlert();
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    console.log(name, value);
-    setFormObject({ ...formObject, [name]: value });
-  }
+  const [pageState, setPageState] = useState("Main");
 
   function goHome(event) {
     event.preventDefault();
     history.push("/");
   }
 
-  return <Container>Make A New Bazaar!</Container>;
-}
+  function saveNewBazaar(bazaarData) {
+    console.log(bazaarData);
+    console.log(authenticationState);
+    // API.saveBazaar(bazaarData);
+  }
+
+  function renderPage() {
+    if (pageState === "Main") {
+      return (
+        <NewBazaarMain
+          setPageState={setPageState}
+          formObject={formObject}
+          setFormObject={setFormObject}
+        />
+      );
+    } else if (pageState === "Settings") {
+      return (
+        <NewBazaarSettings
+          setPageState={setPageState}
+          formObject={formObject}
+          setFormObject={setFormObject}
+          saveNewBazaar={saveNewBazaar}
+        />
+      );
+    }
+  }
+
+  return (
+    <Container>
+      <Row className="my-2">
+        <Col className="text-center">
+          Make A New Bazaar!
+          {renderPage()}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default NewBazaar;

@@ -63,6 +63,9 @@ module.exports = function (app) {
   //get bazzar with given ID
   app.get("/api/bazaars/:id", bazaarController.findById);
 
+  //create a new bazaar
+  app.post("/api/bazaars", bazaarController.create);
+
   //ITEM ROUTES
   //get multiple items from an array of _ids
   app.post("/api/items/many", itemController.findManyById);

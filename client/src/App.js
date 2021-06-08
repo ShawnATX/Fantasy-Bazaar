@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Splash from "./pages/splash";
-import NewPlayer from "./pages/newPlayer";
 import NoMatch from "./pages/NoMatch";
 import UserHome from "./pages/userHome";
 import GmHome from "./pages/gmHome";
@@ -11,6 +10,7 @@ import NewUserCreds from "./pages/newUserCreds";
 import NewCharacter from "./pages/newCharacter";
 import UserContext from "./utils/userContext";
 import Login from "./pages/login";
+import NewBazaar from "./pages/newBazaar";
 
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
@@ -44,10 +44,6 @@ function App() {
               <GmHome />
             </Route>
 
-            <Route exact path="/newplayer">
-              <NewPlayer />
-            </Route>
-
             <Route exact path="/newusertype">
               <NewUserType />
             </Route>
@@ -65,7 +61,7 @@ function App() {
             </Route>
 
             <Route exact path="/newbazaar">
-              {/* @@TODO */}
+              <NewBazaar />
             </Route>
 
             <Route exact path="/login">
