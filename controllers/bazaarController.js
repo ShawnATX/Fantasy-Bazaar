@@ -23,8 +23,16 @@ const BazaarController = {
   create: function (req, res) {
     db.Bazaar.create(req.body)
       .then((dbModel) => {
-        console.log(dbModel);
-        res.json(dbModel);
+        db.User.findOneAndUpdate(
+          { _id: dbModel.creator },
+          { $push: { bazaars: dbModel._id } },
+          { new: true }
+        )
+          .then(() => {
+            res.json(dbModel);
+          })
+          .catch((err) => res.status(422).json(err));
+        // res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
   },

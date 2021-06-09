@@ -18,10 +18,6 @@ const ItemStock = new Schema({
 });
 
 const bazaarSchema = new Schema({
-  _id: {
-    type: String,
-    default: () => generate.english(16),
-  },
   bazaarName: {
     type: String,
     required: true,

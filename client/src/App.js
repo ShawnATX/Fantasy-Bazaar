@@ -33,45 +33,47 @@ function App() {
       <BrowserRouter>
         <div className="app">
           <Switch>
-            <Route exact path="/">
-              <Splash />
-            </Route>
+            <Route exact path="/" render={() => <Splash />}></Route>
 
-            <Route exact path="/userhome">
-              <UserHome />
-            </Route>
+            <Route exact path="/userhome" render={() => <UserHome />}></Route>
 
             <Route exact path="/gmhome">
               <GmHome />
             </Route>
 
-            <Route exact path="/newusertype">
-              <NewUserType />
-            </Route>
+            <Route
+              exact
+              path="/newusertype"
+              render={() => <NewUserType />}
+            ></Route>
 
-            <Route exact path="/newusercreds/player">
-              <NewUserCreds type={"player"} />
-            </Route>
+            <Route
+              exact
+              path="/newusercreds/player"
+              render={() => <NewUserCreds />}
+            ></Route>
 
-            <Route exact path="/newCharacter">
-              <NewCharacter />
-            </Route>
+            <Route
+              exact
+              path="/newusercreds/gm"
+              render={() => <NewUserCreds />}
+            ></Route>
 
-            <Route exact path="/newusercreds/gm">
-              <NewUserCreds type={"gm"} />
-            </Route>
+            <Route
+              exact
+              path="/newCharacter"
+              render={() => <NewCharacter />}
+            ></Route>
 
-            <Route exact path="/newbazaar">
-              <NewBazaar />
-            </Route>
+            <Route exact path="/newbazaar" render={() => <NewBazaar />}></Route>
 
-            <Route exact path="/bazaarhome">
-              <BazaarHome />
-            </Route>
+            <Route
+              exact
+              path="/bazaarhome"
+              render={() => <BazaarHome />}
+            ></Route>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+            <Route exact path="/login" render={() => <Login />}></Route>
 
             <Route path="*">
               <NoMatch />

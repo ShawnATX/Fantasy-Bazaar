@@ -39,7 +39,6 @@ const UserController = {
   },
   //route specifically for adding item to user item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function (req, res) {
-    console.log(req.user);
     console.log("Purchase route", req.body);
     db.User.findOneAndUpdate(
       { _id: req.user._id },
