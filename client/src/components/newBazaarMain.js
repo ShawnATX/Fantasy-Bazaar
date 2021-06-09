@@ -22,9 +22,9 @@ const NewBazaarMain = (props) => {
         lg={{ size: 8, offset: 2 }}
       >
         <Input
-          name="BazaarName"
+          name="bazaarName"
           placeholder="Bazaar Name"
-          id="BazaarName"
+          id="bazaarName"
           onChange={handleInputChange}
         ></Input>
         <ButtonGroup className="my-2" vertical>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import UserContext from "./utils/userContext";
 import Splash from "./pages/splash";
 import NoMatch from "./pages/NoMatch";
 import UserHome from "./pages/userHome";
@@ -8,7 +9,7 @@ import GmHome from "./pages/gmHome";
 import NewUserType from "./pages/newUserType";
 import NewUserCreds from "./pages/newUserCreds";
 import NewCharacter from "./pages/newCharacter";
-import UserContext from "./utils/userContext";
+import BazaarHome from "./pages/bazaarHome";
 import Login from "./pages/login";
 import NewBazaar from "./pages/newBazaar";
 
@@ -62,6 +63,10 @@ function App() {
 
             <Route exact path="/newbazaar">
               <NewBazaar />
+            </Route>
+
+            <Route exact path="/bazaarhome">
+              <BazaarHome />
             </Route>
 
             <Route exact path="/login">

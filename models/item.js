@@ -7,36 +7,48 @@ const itemDescription = new Schema({
   skillModifier: String,
   damage: String,
   properties: String,
-  description: String
+  description: String,
 });
-
-
-
 
 const itemSchema = new Schema({
   name: { type: String, required: true },
-  description: {itemDescription},
+  description: { itemDescription },
   value: {
-      type: Number,
-      required: true
+    type: Number,
+    required: true,
   },
   weight: {
-      type: Number,
-      required: true
+    type: Number,
+    required: true,
   },
   type: {
     type: String,
     required: true,
-    validate: [({ value }) => value === ("Weapon" || "Armor" || "Wearable" || "Consumable" || "Gear" || "Kit" || "Service" || "Misc"), "Item type is invalid"]
+    validate: [
+      ({ value }) =>
+        value ===
+        ("Weapon" ||
+          "Armor" ||
+          "Wearable" ||
+          "Consumable" ||
+          "Gear" ||
+          "Kit" ||
+          "Service" ||
+          "Misc"),
+      "Item type is invalid",
+    ],
   },
   subtype: {
-    type: String
+    type: String,
   },
   system: {
     type: String,
-    required: true
+    required: true,
   },
-  date: { type: Date, default: Date.now }
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Item = mongoose.model("Item", itemSchema);

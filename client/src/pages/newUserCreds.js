@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from "reactstrap";
@@ -43,16 +43,17 @@ function NewUserCreds(props) {
     }
   }
 
-  function saveNewUser(user) {
-    API.saveUser(user)
+  function saveNewUser(userCreds) {
+    API.saveUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
           let userContext = {
             email: res.data.email,
             bazaars: res.data.bazaars,
             characters: res.data.characters,
+            id: res.data._id,
           };
-          loginNewUser(user, userContext);
+          loginNewUser(userCreds, userContext);
         }
       })
       .catch((err) => {
@@ -60,9 +61,8 @@ function NewUserCreds(props) {
       });
   }
 
-  function loginNewUser(user, userContext) {
-    console.log(user);
-    API.loginUser(user)
+  function loginNewUser(userCreds, userContext) {
+    API.loginUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
           authenticationState.userHasAuthenticated(true, { ...userContext });
@@ -83,7 +83,6 @@ function NewUserCreds(props) {
   function checkEmailUniqueness() {
     //@@TODO update email length and add regex
     if (formObject.email.length > 2) {
-      console.log(formObject.email);
       API.checkEmail({ email: formObject.email })
         .then((res) => {
           if (res.data === null) {

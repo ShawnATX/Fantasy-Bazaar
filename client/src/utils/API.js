@@ -32,7 +32,7 @@ export default {
   getUser: function (id) {
     return axios.get("/api/users/" + id);
   },
-  // Gets the user with the given id
+  // Gets the user with the given email
   checkEmail: function (email) {
     return axios.post("/api/users/email/", email);
   },

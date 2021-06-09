@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const nanoid = require("nanoid");
+const generate = require("nanoid-generate");
 
 const InventoryItem = new Schema({
   item: {
@@ -17,7 +17,11 @@ const ItemStock = new Schema({
   items: [InventoryItem],
 });
 
-const BazaarSchema = new Schema({
+const bazaarSchema = new Schema({
+  _id: {
+    type: String,
+    default: () => generate.english(16),
+  },
   bazaarName: {
     type: String,
     required: true,
@@ -27,16 +31,19 @@ const BazaarSchema = new Schema({
     ref: "User",
     required: true,
   },
-  players: [
+  characters: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Character",
     },
   ],
   joinCode: {
     type: String,
     unique: true,
     required: true,
+    default: () => {
+      return generate.lowercase(8);
+    },
   },
   date: {
     type: Date,
@@ -68,21 +75,13 @@ const BazaarSchema = new Schema({
   },
   system: {
     type: String,
-    match: [
-      ({ value }) => value === ("Pathfinder" || "DnD" || "Custom"),
-      "Invalid system type",
-    ],
+    required: true,
   },
   stock: { ItemStock },
 });
 
-BazaarSchema.methods.createJoinCode = function () {
-  this.joinCode = () => nanoid(8);
-  return joinCode;
-};
-
 //itemArr is expecting an array of objects, each object has properties for ObjectId(Item) and quantity(number)
-BazaarSchema.methods.addInventory = function (itemArr) {
+bazaarSchema.methods.addInventory = function (itemArr) {
   itemArray.forEach((item) => {
     let newItem = new InventoryItem(item);
     this.stock = stock.push(newItem);
@@ -90,6 +89,6 @@ BazaarSchema.methods.addInventory = function (itemArr) {
   return this.stock;
 };
 
-const Bazaar = mongoose.model("Bazaar", BazaarSchema);
+const Bazaar = mongoose.model("Bazaar", bazaarSchema);
 
 module.exports = Bazaar;

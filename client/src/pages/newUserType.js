@@ -27,10 +27,6 @@ function NewUserType() {
     }
   }, [authenticationState]);
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-  }
-
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
@@ -38,6 +34,7 @@ function NewUserType() {
     if (value.length === 8) {
       API.getBazaar(value)
         .then((res) => {
+          console.log(res.data);
           if (res.data) {
             setValidBazaarCode(true);
           }
@@ -63,13 +60,13 @@ function NewUserType() {
           </Link>
         </Col>
       </Row>
-      <Form onSubmit={handleFormSubmit}>
+      <Form>
         <Row className="mt-5 px-5 text-center">
           <Col>
             {validBazaarCode ? (
               <Link
                 to={"/newusercreds/player?bazaar=" + formObject.bazaarCode}
-                alt="Create a new Bazaar"
+                alt="Join a bazaar"
                 className="text-center"
               >
                 <Button size="lg" active>

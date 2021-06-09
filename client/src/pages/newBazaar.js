@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import { Container, Row, Col } from "reactstrap";
 import API from "../utils/API";
@@ -18,7 +17,6 @@ const NewBazaar = (props) => {
     limitedInventory: false,
   });
   const history = useHistory();
-  const alert = useAlert();
   const [pageState, setPageState] = useState("Main");
 
   function goHome(event) {
@@ -27,9 +25,19 @@ const NewBazaar = (props) => {
   }
 
   function saveNewBazaar(bazaarData) {
-    console.log(bazaarData);
-    console.log(authenticationState);
-    // API.saveBazaar(bazaarData);
+    let newBazaar = {
+      ...bazaarData,
+      creator: authenticationState.user.id,
+    };
+    API.saveBazaar(newBazaar)
+      .then((res) => {
+        console.log(res);
+        var joinCode = res.data.joinCode;
+        history.push("/bazaarhome");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function renderPage() {
