@@ -28,7 +28,12 @@ if (process.env.MONGODB_URI) {
 }
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar",
-  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
 );
 
 const db = mongoose.connection;

@@ -3,6 +3,7 @@ var passport = require("../config/passport");
 const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
+const characterController = require("../controllers/characterController");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -19,15 +20,8 @@ module.exports = function (app) {
   );
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+  // how we configured our User Model.
   app.post("/api/users", userController.create);
-  // .then(function () {
-  //     res.redirect(307, "/api/login");
-  // })
-  //     .catch(function (err) {
-  //         res.status(401).json(err);
-  //     })
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
@@ -50,12 +44,6 @@ module.exports = function (app) {
   //Check uniqueness of an email address before attempting to save a new user
   app.post("/api/users/email/", userController.findByEmail);
 
-  //Update user (item &  wallet)
-  app.put("/api/users/purchase", userController.purchase);
-
-  //Update user (item list &  wallet)
-  app.put("/api/users/sell", userController.sell);
-
   //BAZAAR ROUTES
   //check on bazzar from code, returns bazaar _id
   app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
@@ -72,4 +60,21 @@ module.exports = function (app) {
 
   //Route to get all inventory items of a particular system, passing {system: string}
   app.get("/api/items/:system", itemController.findAllBySystem);
+
+  //CHARACTER ROUTES
+  app.post("/api/characters", characterController.create);
+
+  app.get("/api/characters/:id", characterController.findById);
+
+  app.post("/api/characters/many", characterController.findManyById);
+
+  app.put("/api/characters/:id", characterController.update);
+
+  app.put("/api/characters/items", characterController.addItems);
+
+  //Update character (item &  wallet)
+  app.put("/api/characters/purchase", characterController.purchase);
+
+  //Update character (item list &  wallet)
+  app.put("/api/characters/sell", characterController.sell);
 };

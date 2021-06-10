@@ -52,14 +52,6 @@ export default {
   updateUser: function (id, userData) {
     return axios.put("/api/users/" + id, userData);
   },
-  //update user to purchase a single item and decrement wallet
-  userPurchase: function (userData) {
-    return axios.put("/api/users/purchase", userData);
-  },
-  //  update user to sell a single item and increment wallet
-  userSale: function (userData) {
-    return axios.put("/api/users/sell", userData);
-  },
   //user login
   loginUser: function (userData) {
     return axios.post("/api/users/login", userData);
@@ -67,6 +59,33 @@ export default {
   //user logout
   logoutUser: function () {
     return axios.get("/logout");
+  },
+
+  //create new character
+  saveCharacter: function (characterData) {
+    return axios.post("/api/characters", characterData);
+  },
+  //get one character
+  getCharacter: function (characterId) {
+    return axios.get("/api/characters/" + characterId);
+  },
+  //get many characters
+  getCharacters: function (characterArr) {
+    return axios.post("/api/characters/many" + characterArr);
+  },
+  updateCharacter: function (id, characterData) {
+    return axios.put("/api/characters" + id, characterData);
+  },
+  //update character to purchase a single item and decrement wallet
+  characterPurchase: function (characterData) {
+    return axios.put("/api/characters/purchase", characterData);
+  },
+  //  update character to sell a single item and increment wallet
+  characterSale: function (characterData) {
+    return axios.put("/api/characters/sell", characterData);
+  },
+  characterAddItems: function (characterData) {
+    return axios.put("/api/characters/items", characterData);
   },
 
   // Gets the bazaar with the given joinCode

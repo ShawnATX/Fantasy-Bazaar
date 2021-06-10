@@ -12,6 +12,14 @@ const CharacterController = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findManyById: function (req, res) {
+    console.log(req.body);
+    db.Character.find()
+      .where("_id")
+      .in(req.body.characters)
+      .then((dbModels) => res.json(dbModels))
+      .catch((err) => res.status(422).json(err));
+  },
   create: function (req, res) {
     db.Character.create({ ...req.body })
       .then((dbModel) => res.json(dbModel))
@@ -49,6 +57,19 @@ const CharacterController = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  //route specificallt for adding items in bulk (for character creation)
+  addItems: function (req, res) {
+    db.Character.findOneAndUpdate(
+      { _id: req.character._id },
+      {
+        $set: { items: req.body.items },
+      },
+      { new: true }
+    )
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   remove: function (req, res) {
     db.Character.findById({ _id: req.params.id })
       .then((dbModel) => dbModel.remove())
