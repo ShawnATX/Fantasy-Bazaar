@@ -28,12 +28,10 @@ const characterSchema = new Schema({
       ref: "Item",
     },
   ],
-  bazaars: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Bazaar",
-    },
-  ],
+  bazaar: {
+    type: Schema.Types.ObjectId,
+    ref: "Bazaar",
+  },
 });
 
 const Character = mongoose.model("Character", characterSchema);
