@@ -19,15 +19,15 @@ module.exports = function (app) {
     }
   );
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our User Model.
-  app.post("/api/users", userController.create);
-
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
     res.json({});
   });
+
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // how we configured our User Model.
+  app.post("/api/users", userController.create);
 
   //Route to get individual user public data
   app.get("/api/users/:id", function (req, res) {

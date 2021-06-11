@@ -14,7 +14,7 @@ function NewUserCreds(props) {
   const [formReady, setFormReady] = useState(false);
   const history = useHistory();
   const alert = useAlert();
-  const type = props.type; //is this a player or gm user?
+  const { type } = props;
   const params = new URLSearchParams(useLocation().search);
 
   useEffect(() => {

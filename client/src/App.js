@@ -50,7 +50,7 @@ function App() {
             <Route
               exact
               path="/newusercreds/player"
-              render={() => <NewUserCreds />}
+              render={() => <NewUserCreds type={"player"} />}
             ></Route>
 
             <Route

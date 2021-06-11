@@ -11,7 +11,12 @@ const BazaarController = {
   findByJoinCode: function (req, res) {
     db.Bazaar.findOne({ joinCode: req.params.joinCode })
       .then((dbModel) => {
-        res.json(dbModel._id);
+        response = {
+          name: dbModel.bazaarName,
+          id: dbModel._id,
+          system: dbModel.system,
+        };
+        res.json(response);
       })
       .catch((err) => res.status(422).json(err));
   },

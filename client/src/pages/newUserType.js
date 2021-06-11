@@ -34,7 +34,6 @@ function NewUserType() {
     if (value.length === 8) {
       API.getBazaar(value)
         .then((res) => {
-          console.log(res.data);
           if (res.data) {
             setValidBazaarCode(true);
           }
