@@ -30,9 +30,7 @@ const itemSchema = new Schema({
         ("Weapon" ||
           "Armor" ||
           "Wearable" ||
-          "Consumable" ||
-          "Gear" ||
-          "Kit" ||
+          "Adventuring Gear" ||
           "Service" ||
           "Misc"),
       "Item type is invalid",

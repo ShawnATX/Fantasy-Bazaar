@@ -1,18 +1,20 @@
 import React from "react";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
-import ImageChoices from "../components/imageChoices";
+import ImageChoices from "../imageChoices";
 
 function NewCharacterMain(props) {
-  const { setPageState, handleInputChange, bazaarName, formObject } = props;
+  const { setPageState, handleInputChange, bazaarName, characterObject } =
+    props;
 
   const nextPage = () => {
-    console.log(formObject);
     if (
-      formObject.characterName &&
-      formObject.wallet &&
-      formObject.characterImage
+      characterObject.characterName &&
+      characterObject.wallet &&
+      characterObject.characterImage
     ) {
       setPageState("Equipment");
+    } else {
+      //Alert to finish form
     }
   };
 

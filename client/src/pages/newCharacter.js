@@ -4,13 +4,16 @@ import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import { Container, FormGroup, Form, Label, Input, Button } from "reactstrap";
 import API from "../utils/API";
-import NewCharacterMain from "../components/newCharacterMain";
-import NewCharacterEquipment from "../components/newCharacterEquipment";
+import NewCharacterMain from "../components/NewCharacter/newCharacterMain";
+import NewCharacterEquipment from "../components/NewCharacter/newCharacterEquipment";
 
 function NewCharacter(props) {
   const { authenticationState } = useContext(UserContext);
-  const [formObject, setFormObject] = useState({});
-  const [bazaarObject, setBazaarObject] = useState({});
+  const [characterObject, setCharacterObject] = useState({});
+  const [bazaarObject, setBazaarObject] = useState({
+    name: "",
+    system: "",
+  });
   const history = useHistory();
   const [pageState, setPageState] = useState("Main");
   const bazaarCode = new URLSearchParams(useLocation().search).get("bazaar");
@@ -32,7 +35,7 @@ function NewCharacter(props) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
+    setCharacterObject({ ...characterObject, [name]: value });
   };
 
   function handleFormSubmit() {
@@ -46,7 +49,7 @@ function NewCharacter(props) {
           setPageState={setPageState}
           handleInputChange={handleInputChange}
           bazaarName={bazaarObject.name}
-          formObject={formObject}
+          characterObject={characterObject}
         />
       );
     } else if (pageState === "Equipment") {
@@ -54,6 +57,9 @@ function NewCharacter(props) {
         <NewCharacterEquipment
           setPageState={setPageState}
           bazaarName={bazaarObject.name}
+          bazaarSystem={bazaarObject.system}
+          API={API}
+          characterObject={characterObject}
         />
       );
     }

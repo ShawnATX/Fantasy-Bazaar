@@ -9,9 +9,26 @@ const BazaarHome = (props) => {
 
   const history = useHistory();
 
+  const handleLogout = () => {
+    API.logoutUser().then((res) => {
+      if (res.status === 200) {
+        authenticationState.userHasAuthenticated({
+          isAuthenticated: false,
+          user: {},
+        });
+        history.push("/");
+      } else {
+        alert.show("Weird logout error happening...");
+      }
+    });
+  };
+
   return (
     <Container>
       <Row>Bazaar Home</Row>
+      <button className="text-center btn-small" onClick={() => handleLogout()}>
+        Logout
+      </button>
     </Container>
   );
 };
