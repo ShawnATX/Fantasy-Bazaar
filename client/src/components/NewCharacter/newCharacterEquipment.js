@@ -47,7 +47,7 @@ function NewCharacterEquipment(props) {
     console.log(bazaarObject);
     API.saveCharacter({
       characterName: characterObject.characterName,
-      characterImage: characterObject.image,
+      characterImage: characterObject.characterImage,
       wallet: characterObject.wallet,
       items: itemList,
       bazaar: bazaarObject.id,
