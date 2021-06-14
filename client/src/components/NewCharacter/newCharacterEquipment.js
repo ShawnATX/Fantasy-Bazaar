@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ListSection from "../listSection";
 import { Button, Row, Col } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import ListSection from "../listSection";
 import CharacterHeader from "../characterHeader";
 import EquipmentFooter from "./equipmentFooter";
 
@@ -12,6 +13,8 @@ function NewCharacterEquipment(props) {
     characterObject,
     authenticationState,
   } = props;
+  const history = useHistory();
+
   const [itemList, setItemList] = useState([]);
   const [chosenItemList, setChosenItemList] = useState([]);
   let typeArr = [];
@@ -49,7 +52,13 @@ function NewCharacterEquipment(props) {
       items: itemList,
       bazaar: bazaarObject.id,
       owner: authenticationState.user.id,
-    }).then((res) => console.log(res));
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          history.push("/characterhome");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -76,7 +85,7 @@ function NewCharacterEquipment(props) {
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
           <Button className="btn-small mr-3" onClick={saveNewCharacter}>
-            Visit {characterObject.name}'s Home Page
+            Save {characterObject.characterName}
           </Button>
         </Col>
       </Row>

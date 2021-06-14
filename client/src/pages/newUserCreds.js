@@ -2,7 +2,15 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import { Container, FormGroup, Form, Label, Input, Button } from "reactstrap";
+import {
+  Container,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  Button,
+  FormFeedback,
+} from "reactstrap";
 import API from "../utils/API";
 
 function NewUserCreds(props) {
@@ -23,27 +31,27 @@ function NewUserCreds(props) {
     }
   }, []);
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     let { name, value } = event.target;
     if (name === "email") {
       value = value.trim();
     }
     setFormObject({ ...formObject, [name]: value });
-  }
+  };
 
-  function goHome(event) {
+  const goHome = (event) => {
     event.preventDefault();
     history.push("/");
-  }
+  };
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     if (formObject.email && formObject.password) {
       saveNewUser(formObject);
     }
-  }
+  };
 
-  function saveNewUser(userCreds) {
+  const saveNewUser = (userCreds) => {
     API.saveUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
@@ -59,9 +67,9 @@ function NewUserCreds(props) {
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
-  function loginNewUser(userCreds, userContext) {
+  const loginNewUser = (userCreds, userContext) => {
     API.loginUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
@@ -80,7 +88,7 @@ function NewUserCreds(props) {
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   function checkEmailUniqueness() {
     //@@TODO update email length and add regex
@@ -104,28 +112,66 @@ function NewUserCreds(props) {
   return (
     <Container>
       <Form onSubmit={handleFormSubmit} className="text-center">
-        <FormGroup row className="mt-4">
-          <Label className="text-center" for="email">
-            Email Address
-          </Label>
-          <Input
-            name="email"
-            id="email"
-            placeholder="myemailaddress@interwebs.com"
-            onChange={handleInputChange}
-            onBlur={checkEmailUniqueness}
-          />
-        </FormGroup>
-        <FormGroup row>
-          <Label for="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+        {formReady || formObject.email.length === 0 ? (
+          <FormGroup row className="mt-4">
+            <Label className="text-center" for="email">
+              Email Address
+            </Label>
+            <Input
+              valid
+              name="email"
+              id="email"
+              placeholder="myemailaddress@interwebs.com"
+              onChange={handleInputChange}
+              onBlur={checkEmailUniqueness}
+            />
+          </FormGroup>
+        ) : (
+          <FormGroup row className="mt-4">
+            <Label className="text-center" for="email">
+              Email Address
+            </Label>
+            <Input
+              invalid
+              name="email"
+              id="email"
+              placeholder="myemailaddress@interwebs.com"
+              onChange={handleInputChange}
+              onBlur={checkEmailUniqueness}
+            />
+            <FormFeedback>
+              Looks like that email address is already registered
+            </FormFeedback>
+          </FormGroup>
+        )}
+        {formObject.password.length >= 7 || formObject.password.length === 0 ? (
+          <FormGroup row>
+            <Label for="password">Password</Label>
+            <Input
+              valid
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+        ) : (
+          <FormGroup row>
+            <Label for="password">Password</Label>
+            <Input
+              invalid
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              onChange={handleInputChange}
+            />
+            <FormFeedback>
+              Password needs to be 7 characters or longer
+            </FormFeedback>
+          </FormGroup>
+        )}
         {formReady && formObject.password.length >= 7 ? (
           <Button className="btn-small ml-3">Submit</Button>
         ) : (

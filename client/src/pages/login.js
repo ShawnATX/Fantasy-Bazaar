@@ -16,7 +16,7 @@ const Login = () => {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  function goToPlayerHome() {
+  function goToUserHome() {
     history.push("/userhome");
   }
 
@@ -38,7 +38,7 @@ const Login = () => {
             });
           }
         })
-        .then(goToPlayerHome())
+        .then(goToUserHome())
         .catch((err) => {
           console.log(err);
           alert.show("No user found with those credentials");

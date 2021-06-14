@@ -6,7 +6,7 @@ import { useAlert } from "react-alert";
 import API from "../utils/API";
 import Inventory from "../components/inventory";
 import StoreFront from "../components/storeFront";
-import PlayerMain from "../components/playerMain";
+import CharacterMain from "../components/characterMain";
 import CharacterHeader from "../components/characterHeader";
 
 const CharacterHome = () => {
@@ -101,7 +101,7 @@ const CharacterHome = () => {
 
   function renderPage() {
     if (pageState === "Home") {
-      return <PlayerMain setPageState={setPageState} />;
+      return <CharacterMain setPageState={setPageState} />;
     } else if (pageState === "Inventory") {
       return (
         <Inventory
@@ -113,7 +113,7 @@ const CharacterHome = () => {
     } else if (pageState === "Store") {
       return <StoreFront setPageState={setPageState} purchase={purchaseItem} />;
     } else {
-      return <PlayerMain setPageState={"Home"} />;
+      return <CharacterMain setPageState={"Home"} />;
     }
   }
 

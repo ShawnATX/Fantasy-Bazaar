@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 
-const PlayerMain = (props) => {
+const CharacterMain = (props) => {
   return (
     <div>
       <Row className="mt-5 px-5">
@@ -32,4 +32,4 @@ const PlayerMain = (props) => {
   );
 };
 
-export default PlayerMain;
+export default CharacterMain;
