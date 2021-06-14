@@ -5,8 +5,7 @@
 * {
   background-color: black;
   color: white;
-  font-family: 'MedievalSharp', cursive;
-
+  font-family: "MedievalSharp", cursive;
 }
 
 .btn {
@@ -15,18 +14,18 @@
   font-weight: 400;
 }
 
-button{
+button {
   padding: 2rem;
   font-size: x-large;
   font-weight: bold;
 }
-.btn-small{
+.btn-small {
   padding: 1rem;
   font-size: x-large;
   font-weight: bold;
 }
 
-.btn-inline{
+.btn-inline {
   font-size: x-large;
   font-weight: bold;
 }
@@ -34,7 +33,15 @@ button{
 .splashBtn {
   font-size: x-large;
 }
-
-/* .playerHeader {
-
-} */
+.accordion-button {
+  background-color: black !important;
+  color: white;
+  font-family: "MedievalSharp", cursive;
+  font-size: 1.4rem;
+}
+.subtype-button {
+  font-size: 1.1rem !important;
+}
+.accordion-button:not(.collapsed) {
+  color: white;
+}

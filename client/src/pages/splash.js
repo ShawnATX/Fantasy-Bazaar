@@ -7,6 +7,21 @@ const Splash = (props) => {
     <Container fluid={true} className="text-center">
       <Row className="mt-5 px-5">
         <Col>
+          <Link to="/newusertype" alt="Get Started" className="text-center">
+            <button className="splashBtn">Get Started</button>
+          </Link>
+        </Col>
+      </Row>
+      <Row className="mt-5 px-5">
+        <Col>
+          <Link to="/login">
+            <button>Login Here</button>
+          </Link>
+        </Col>
+      </Row>
+      {/* Old Layout */}
+      {/* <Row className="mt-5 px-5">
+        <Col>
           <Link to="/newplayer" alt="Join a game" className="text-center">
             <button className="splashBtn">Join a Bazaar</button>
           </Link>
@@ -25,7 +40,7 @@ const Splash = (props) => {
             <button>Login Here</button>
           </Link>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };

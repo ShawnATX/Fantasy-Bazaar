@@ -7,12 +7,12 @@ import API from "../utils/API";
 import Inventory from "../components/inventory";
 import StoreFront from "../components/storeFront";
 import PlayerMain from "../components/playerMain";
+import CharacterHeader from "../components/characterHeader";
 
-const PlayerHome = () => {
+const CharacterHome = () => {
   const { authenticationState } = useContext(UserContext);
-  const [userObject, setUserObject] = useState({});
+  const [characterObject, setCharacterObject] = useState({});
   const [pageState, setPageState] = useState("Home");
-  // let spendMoney = false;
   const history = useHistory();
   const alert = useAlert();
 
@@ -20,11 +20,11 @@ const PlayerHome = () => {
     if (!authenticationState.isAuthenticated) {
       history.push("/login");
     }
-    setUserObject(authenticationState.user);
+    setCharacterObject(authenticationState.user);
   }, [authenticationState]);
 
   function sellItem(item) {
-    console.log(item._id, userObject);
+    console.log(item._id, characterObject);
     let newItems = authenticationState.user.items;
     let newWallet = authenticationState.user.wallet;
     for (var i = 0; i < authenticationState.user.items.length; i++) {
@@ -36,11 +36,10 @@ const PlayerHome = () => {
     }
     console.log(newItems);
     API.userSale({ items: newItems, wallet: newWallet }).then((res) => {
-      setUserObject({
+      setCharacterObject({
         userName: res.data.userName,
         characterName: res.data.characterName,
         characterImage: res.data.characterImage,
-        type: res.data.type,
         wallet: res.data.wallet,
         items: res.data.items,
         bazaars: res.data.bazaars,
@@ -49,7 +48,6 @@ const PlayerHome = () => {
         userName: res.data.userName,
         characterName: res.data.characterName,
         characterImage: res.data.characterImage,
-        type: res.data.type,
         wallet: res.data.wallet,
         items: res.data.items,
         bazaars: res.data.bazaars,
@@ -58,19 +56,18 @@ const PlayerHome = () => {
   }
 
   function purchaseItem(item) {
-    if (item.value > userObject.wallet) {
+    if (item.value > characterObject.wallet) {
       alert.show("Looks like that is a bit too expensive...");
     } else {
       API.userPurchase({
-        wallet: userObject.wallet - item.value,
+        wallet: characterObject.wallet - item.value,
         items: [item._id],
       })
         .then((res) => {
-          setUserObject({
+          setCharacterObject({
             userName: res.data.userName,
             characterName: res.data.characterName,
             characterImage: res.data.characterImage,
-            type: res.data.type,
             wallet: res.data.wallet,
             items: res.data.items,
             bazaars: res.data.bazaars,
@@ -79,7 +76,6 @@ const PlayerHome = () => {
             userName: res.data.userName,
             characterName: res.data.characterName,
             characterImage: res.data.characterImage,
-            type: res.data.type,
             wallet: res.data.wallet,
             items: res.data.items,
             bazaars: res.data.bazaars,
@@ -110,7 +106,7 @@ const PlayerHome = () => {
       return (
         <Inventory
           setPageState={setPageState}
-          items={userObject.items}
+          items={characterObject.items}
           sell={sellItem}
         />
       );
@@ -123,40 +119,8 @@ const PlayerHome = () => {
 
   return (
     <Container>
-      <Row className="border p-1  mb-3 text-center sticky-top playerHeader">
-        <Col className="border text-center p-0 mx-2 mh-75">
-          <Row className="mx-0">
-            <Col sm="8" md={{ size: 6, offset: 3 }}>
-              <img
-                src={userObject.characterImage}
-                alt="Character Portrait"
-                className="img-fluid mw-50"
-              />
-            </Col>
-          </Row>
-          {userObject.characterName}
-        </Col>
-        <Col className="border text-center p-0 mx-2">
-          <Row className="mx-0 mt-2">
-            <Col className="justify-center mt-5">
-              {userObject.wallet}
-              {/* <Animate
-                                animate="false"
-                                change="bounce"
-                                durationChange={1200}
-                                component="span"
-                                // animateChangeIf={(spendMoney)}
-                            > */}
-              <img
-                className="img-fluid w-25 ml-1 mb-1"
-                src="./gold-coin-icon.png"
-                alt="gold coins"
-              />
-              {/* </Animate> */}
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      <CharacterHeader user={characterObject} />
+
       {renderPage()}
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
@@ -172,4 +136,4 @@ const PlayerHome = () => {
   );
 };
 
-export default PlayerHome;
+export default CharacterHome;

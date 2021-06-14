@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Splash from "./pages/splash";
-import NewPlayer from "./pages/newPlayer";
-import NoMatch from "./pages/NoMatch";
-import PlayerHome from "./pages/playerHome"
-import GmHome from "./pages/gmHome"
-
 import UserContext from "./utils/userContext";
+import Splash from "./pages/splash";
+import NoMatch from "./pages/NoMatch";
+import UserHome from "./pages/userHome";
+import GmHome from "./pages/gmHome";
+import NewUserType from "./pages/newUserType";
+import NewUserCreds from "./pages/newUserCreds";
+import NewCharacter from "./pages/newCharacter";
+import BazaarHome from "./pages/bazaarHome";
 import Login from "./pages/login";
+import NewBazaar from "./pages/newBazaar";
 
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
@@ -16,8 +19,13 @@ function App() {
     isAuthenticated: false,
     user: {},
     userHasAuthenticated: (auth, userData) => {
-      setAuthenticationState({...authenticationState, isAuthenticated: auth, user: userData, updates: authenticationState.updates++ })
-    }
+      setAuthenticationState({
+        ...authenticationState,
+        isAuthenticated: auth,
+        user: userData,
+        updates: authenticationState.updates++,
+      });
+    },
   });
 
   return (
@@ -25,25 +33,47 @@ function App() {
       <BrowserRouter>
         <div className="app">
           <Switch>
-            <Route exact path="/" >
-              <Splash />
-            </Route>
+            <Route exact path="/" render={() => <Splash />}></Route>
 
-            <Route exact path="/playerhome">
-              <PlayerHome />
-            </Route>
+            <Route exact path="/userhome" render={() => <UserHome />}></Route>
 
             <Route exact path="/gmhome">
               <GmHome />
             </Route>
 
-            <Route exact path="/newplayer">
-              <NewPlayer />
-            </Route>
+            <Route
+              exact
+              path="/newusertype"
+              render={() => <NewUserType />}
+            ></Route>
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+            <Route
+              exact
+              path="/newusercreds/player"
+              render={() => <NewUserCreds type={"player"} />}
+            ></Route>
+
+            <Route
+              exact
+              path="/newusercreds/gm"
+              render={() => <NewUserCreds />}
+            ></Route>
+
+            <Route
+              exact
+              path="/newCharacter"
+              render={() => <NewCharacter />}
+            ></Route>
+
+            <Route exact path="/newbazaar" render={() => <NewBazaar />}></Route>
+
+            <Route
+              exact
+              path="/bazaarhome"
+              render={() => <BazaarHome />}
+            ></Route>
+
+            <Route exact path="/login" render={() => <Login />}></Route>
 
             <Route path="*">
               <NoMatch />
