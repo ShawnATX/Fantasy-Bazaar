@@ -65,7 +65,9 @@ function NewUserCreds(props) {
     API.loginUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
-          authenticationState.userHasAuthenticated(true, { ...userContext });
+          authenticationState.userHasAuthenticated(true, {
+            ...userContext,
+          });
           console.log("Login done");
           if (type === "player") {
             let code = params.get("bazaar");

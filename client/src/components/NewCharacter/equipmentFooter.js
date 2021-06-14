@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
 function EquipmentFooter(props) {
-  const { API, items } = props;
+  const { items } = props;
 
   return (
     <div className="dropup">
@@ -15,8 +15,11 @@ function EquipmentFooter(props) {
         Items
       </button>
       <ul className="dropdown-menu dropdown-menu-dark">
-        <li className="dropdown-item">Item 1</li>
-        <li className="dropdown-item">Item 2</li>
+        {items.map((item) => (
+          <li className="dropdown-item" key={item.id}>
+            {item.name} - {item.value}
+          </li>
+        ))}
       </ul>
     </div>
   );

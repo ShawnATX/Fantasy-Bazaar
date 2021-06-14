@@ -5,14 +5,20 @@ import CharacterHeader from "../characterHeader";
 import EquipmentFooter from "./equipmentFooter";
 
 function NewCharacterEquipment(props) {
-  const { setPageState, bazaarName, bazaarSystem, API, characterObject } =
-    props;
+  const {
+    setPageState,
+    bazaarObject,
+    API,
+    characterObject,
+    authenticationState,
+  } = props;
   const [itemList, setItemList] = useState([]);
   const [chosenItemList, setChosenItemList] = useState([]);
   let typeArr = [];
 
   useEffect(() => {
-    API.getItemsBySystem(bazaarSystem).then((res) => {
+    console.log(authenticationState);
+    API.getItemsBySystem(bazaarObject.system).then((res) => {
       setItemList(res.data);
     });
   }, []);
@@ -27,7 +33,23 @@ function NewCharacterEquipment(props) {
   };
 
   const addItemToChosenList = (item) => {
-    setChosenItemList([...chosenItemList, item._id]);
+    setChosenItemList([
+      ...chosenItemList,
+      { name: item.name, value: item.value, id: item._id },
+    ]);
+  };
+
+  const saveNewCharacter = () => {
+    let itemList = chosenItemList.map((item) => item.id);
+    console.log(bazaarObject);
+    API.saveCharacter({
+      characterName: characterObject.characterName,
+      characterImage: characterObject.image,
+      wallet: characterObject.wallet,
+      items: itemList,
+      bazaar: bazaarObject.id,
+      owner: authenticationState.user.id,
+    }).then((res) => console.log(res));
   };
 
   return (
@@ -49,11 +71,13 @@ function NewCharacterEquipment(props) {
         ))}
       </div>
 
-      <EquipmentFooter items={itemList} API={API} />
+      <EquipmentFooter items={chosenItemList} API={API} />
 
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
-          <Button className="btn-small mr-3">Visit {bazaarName}</Button>
+          <Button className="btn-small mr-3" onClick={saveNewCharacter}>
+            Visit {characterObject.name}'s Home Page
+          </Button>
         </Col>
       </Row>
     </div>

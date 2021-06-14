@@ -45,7 +45,7 @@ module.exports = function (app) {
   app.post("/api/users/email/", userController.findByEmail);
 
   //BAZAAR ROUTES
-  //check on bazzar from code, returns bazaar _id
+  //check on bazzar from code, returns bazaar _id, name, system
   app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
 
   //get bazzar with given ID

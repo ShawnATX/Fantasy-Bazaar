@@ -4,9 +4,7 @@ import { Row, Col } from "reactstrap";
 function CharacterHeader(props) {
   const { characterInfo } = props;
 
-  useEffect(() => {
-    console.log(characterInfo);
-  }, []);
+  useEffect(() => {}, []);
   return (
     <Row className="border p-1  mb-3 text-center sticky-top playerHeader">
       <Col className="border text-center p-0 mx-2 mh-75">

@@ -43,7 +43,7 @@ const ListSection = (props) => {
       >
         {buildSubtypeList()}
         {subtypeArr.map((subtypeObject) => (
-          <div className="card">
+          <div className="card" key={subtypeObject.strippedSubtype}>
             <div
               className="card-header p-1"
               id={subtypeObject.strippedSubtype + "head"}

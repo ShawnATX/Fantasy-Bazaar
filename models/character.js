@@ -32,6 +32,10 @@ const characterSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Bazaar",
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Character = mongoose.model("Character", characterSchema);

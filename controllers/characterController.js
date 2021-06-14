@@ -20,11 +20,23 @@ const CharacterController = {
       .then((dbModels) => res.json(dbModels))
       .catch((err) => res.status(422).json(err));
   },
+  //create new character, then add character to the users list of characters
   create: function (req, res) {
     db.Character.create({ ...req.body })
-      .then((dbModel) => res.json(dbModel))
+      .then((dbModel) => {
+        db.User.findOneAndUpdate(
+          { _id: dbModel.owner },
+          { $push: { characters: dbModel._id } },
+          { new: true }
+        )
+          .then(() => {
+            res.json(dbModel);
+          })
+          .catch((err) => res.status(422).json(err));
+      })
       .catch((err) => res.status(422).json(err));
   },
+
   update: function (req, res) {
     db.Character.findOneAndUpdate(req.params, req.body)
       .then((dbModel) => res.json(dbModel))
