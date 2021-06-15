@@ -26,12 +26,11 @@ const Inventory = (props) => {
       <Row className="mt-4 px-5">
         <Col className="mb-1 text-center">
           <button
-            href="#home"
-            alt="Back Home"
+            alt="Character Home"
             className="text-center btn-small"
-            onClick={() => props.setPageState("Home")}
+            onClick={() => props.setViewState("Home")}
           >
-            Back Home
+            Back to Character Home
           </button>
         </Col>
       </Row>

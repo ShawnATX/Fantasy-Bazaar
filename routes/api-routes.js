@@ -14,7 +14,9 @@ module.exports = function (app) {
     passport.authenticate("local"),
     function (req, res) {
       res.json({
-        email: req.email,
+        email: req.user.email,
+        characters: req.user.characters,
+        bazaars: req.user.bazaars,
       });
     }
   );
@@ -50,6 +52,9 @@ module.exports = function (app) {
 
   //get bazzar with given ID
   app.get("/api/bazaars/:id", bazaarController.findById);
+
+  //get a list of bazaars
+  app.post("/api/bazaars/many", bazaarController.findManyById);
 
   //create a new bazaar
   app.post("/api/bazaars", bazaarController.create);

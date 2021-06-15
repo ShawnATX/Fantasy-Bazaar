@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Col, Row } from "reactstrap";
+import { Container } from "reactstrap";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
 import Inventory from "../components/inventory";
@@ -9,10 +9,11 @@ import StoreFront from "../components/storeFront";
 import CharacterMain from "../components/characterMain";
 import CharacterHeader from "../components/characterHeader";
 
-const CharacterHome = () => {
+const CharacterHome = (props) => {
+  const { setPageState } = props;
   const { authenticationState } = useContext(UserContext);
-  const [characterObject, setCharacterObject] = useState({});
-  const [pageState, setPageState] = useState("Home");
+  const [characterObject, setCharacterObject] = useState(props.character);
+  const [viewState, setViewState] = useState("Home");
   const history = useHistory();
   const alert = useAlert();
 
@@ -20,37 +21,22 @@ const CharacterHome = () => {
     if (!authenticationState.isAuthenticated) {
       history.push("/login");
     }
-    setCharacterObject(authenticationState.user);
   }, [authenticationState]);
 
   function sellItem(item) {
-    console.log(item._id, characterObject);
-    let newItems = authenticationState.user.items;
-    let newWallet = authenticationState.user.wallet;
-    for (var i = 0; i < authenticationState.user.items.length; i++) {
-      if (authenticationState.user.items[i] === item._id) {
+    let newItems = characterObject.items;
+    let newWallet = characterObject.wallet;
+    for (var i = 0; i < characterObject.items.length; i++) {
+      if (characterObject.items[i] === item._id) {
         newItems.splice(i, 1);
         newWallet = newWallet + item.value;
-        i = authenticationState.user.items.length;
+        i = characterObject.items.length;
       }
     }
-    console.log(newItems);
-    API.userSale({ items: newItems, wallet: newWallet }).then((res) => {
+    API.characterSale({ items: newItems, wallet: newWallet }).then((res) => {
+      console.log(res);
       setCharacterObject({
-        userName: res.data.userName,
-        characterName: res.data.characterName,
-        characterImage: res.data.characterImage,
-        wallet: res.data.wallet,
-        items: res.data.items,
-        bazaars: res.data.bazaars,
-      });
-      authenticationState.userHasAuthenticated(true, {
-        userName: res.data.userName,
-        characterName: res.data.characterName,
-        characterImage: res.data.characterImage,
-        wallet: res.data.wallet,
-        items: res.data.items,
-        bazaars: res.data.bazaars,
+        ...characterObject,
       });
     });
   }
@@ -59,79 +45,50 @@ const CharacterHome = () => {
     if (item.value > characterObject.wallet) {
       alert.show("Looks like that is a bit too expensive...");
     } else {
-      API.userPurchase({
+      API.characterPurchase({
         wallet: characterObject.wallet - item.value,
         items: [item._id],
       })
         .then((res) => {
+          console.log(res.data);
           setCharacterObject({
-            userName: res.data.userName,
-            characterName: res.data.characterName,
-            characterImage: res.data.characterImage,
-            wallet: res.data.wallet,
-            items: res.data.items,
-            bazaars: res.data.bazaars,
-          });
-          authenticationState.userHasAuthenticated(true, {
-            userName: res.data.userName,
-            characterName: res.data.characterName,
-            characterImage: res.data.characterImage,
-            wallet: res.data.wallet,
-            items: res.data.items,
-            bazaars: res.data.bazaars,
+            ...characterObject,
           });
         })
         .catch((err) => console.log(err));
     }
   }
 
-  const handleLogout = () => {
-    API.logoutUser().then((res) => {
-      if (res.status === 200) {
-        authenticationState.userHasAuthenticated({
-          isAuthenticated: false,
-          user: {},
-        });
-        history.push("/");
-      } else {
-        alert.show("Weird logout error happening...");
-      }
-    });
+  const userHome = () => {
+    setPageState("user");
   };
 
-  function renderPage() {
-    if (pageState === "Home") {
-      return <CharacterMain setPageState={setPageState} />;
-    } else if (pageState === "Inventory") {
+  const renderPage = () => {
+    if (viewState === "Home") {
+      return <CharacterMain setViewState={setViewState} />;
+    } else if (viewState === "Inventory") {
       return (
         <Inventory
-          setPageState={setPageState}
+          setViewState={setViewState}
           items={characterObject.items}
           sell={sellItem}
         />
       );
-    } else if (pageState === "Store") {
-      return <StoreFront setPageState={setPageState} purchase={purchaseItem} />;
+    } else if (viewState === "Store") {
+      return <StoreFront setViewState={setViewState} purchase={purchaseItem} />;
     } else {
-      return <CharacterMain setPageState={"Home"} />;
+      return <CharacterMain setViewState={"Home"} />;
     }
-  }
+  };
 
   return (
     <Container>
-      <CharacterHeader user={characterObject} />
+      <CharacterHeader characterInfo={characterObject} />
 
       {renderPage()}
-      <Row className="sticky-footer mt-3">
-        <Col className="text-center">
-          <button
-            className="text-center btn-small"
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </button>
-        </Col>
-      </Row>
+      <button className="text-center btn-small" onClick={() => userHome()}>
+        Back To User Home
+      </button>
     </Container>
   );
 };

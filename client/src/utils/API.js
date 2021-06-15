@@ -16,7 +16,6 @@ export default {
   },
   //get multiple items from array of item ids
   getItemsById: function (idArr) {
-    console.log(idArr);
     return axios.post("/api/items/many", { items: idArr });
   },
   // Deletes item with the given id
@@ -71,7 +70,7 @@ export default {
   },
   //get many characters
   getCharacters: function (characterArr) {
-    return axios.post("/api/characters/many" + characterArr);
+    return axios.post("/api/characters/many", characterArr);
   },
   updateCharacter: function (id, characterData) {
     return axios.put("/api/characters" + id, characterData);
@@ -95,6 +94,10 @@ export default {
   // Gets the bazaar with the given id
   getBazaarId: function (id) {
     return axios.get("/api/bazaars/" + id);
+  },
+  //get many bazaars
+  getBazaars: function (bazaarArr) {
+    return axios.post("/api/bazaars/many", bazaarArr);
   },
   // Deletes bazaar with the given id
   deleteBazaar: function (id) {

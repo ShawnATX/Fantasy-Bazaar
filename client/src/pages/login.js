@@ -38,15 +38,18 @@ const Login = () => {
             });
           }
         })
-        .then(goToUserHome())
+        .then(() => {
+          setTimeout(() => {
+            goToUserHome();
+          }, 500);
+        })
         .catch((err) => {
-          console.log(err);
           alert.show("No user found with those credentials");
         });
     }
     //alert form fields are not completed
     else {
-      alert.show("Please enter a email and password");
+      alert.show("Please enter an email and password");
     }
   }
 

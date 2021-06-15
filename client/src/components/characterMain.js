@@ -10,7 +10,7 @@ const CharacterMain = (props) => {
             href="#Inventory"
             alt="Manage Inventory"
             className="text-center"
-            onClick={() => props.setPageState("Inventory")}
+            onClick={() => props.setViewState("Inventory")}
           >
             Manage Inventory
           </button>
@@ -22,7 +22,7 @@ const CharacterMain = (props) => {
             href="#Store"
             alt="Visit The Bazaar"
             className="text-center"
-            onClick={() => props.setPageState("Store")}
+            onClick={() => props.setViewState("Store")}
           >
             Visit The Bazaar
           </button>

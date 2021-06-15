@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserContext from "./utils/userContext";
-import Splash from "./pages/splash";
+import Landing from "./pages/landing";
 import NoMatch from "./pages/NoMatch";
 import CharacterHome from "./pages/characterHome";
 import GmHome from "./pages/gmHome";
@@ -12,6 +12,7 @@ import NewCharacter from "./pages/newCharacter";
 import BazaarHome from "./pages/bazaarHome";
 import Login from "./pages/login";
 import NewBazaar from "./pages/newBazaar";
+import UserHome from "./pages/userHome";
 
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
@@ -33,7 +34,7 @@ function App() {
       <BrowserRouter>
         <div className="app">
           <Switch>
-            <Route exact path="/" render={() => <Splash />}></Route>
+            <Route exact path="/" render={() => <Landing />}></Route>
             <Route
               exact
               path="/characterhome"
@@ -68,6 +69,7 @@ function App() {
               path="/bazaarhome"
               render={() => <BazaarHome />}
             ></Route>
+            <Route exact path="/userhome" render={() => <UserHome />}></Route>
             <Route exact path="/login" render={() => <Login />}></Route>
             <Route path="*">
               <NoMatch />

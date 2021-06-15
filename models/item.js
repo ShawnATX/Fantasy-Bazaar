@@ -47,6 +47,11 @@ const itemSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  custom: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 });
 
 const Item = mongoose.model("Item", itemSchema);

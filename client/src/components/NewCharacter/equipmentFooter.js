@@ -1,5 +1,4 @@
 import React from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
 
 function EquipmentFooter(props) {
   const { items } = props;

@@ -10,7 +10,6 @@ passport.use(
       passwordField: "password",
     },
     function (email, password, done) {
-      console.log(email, password);
       User.findOne({ email: email })
         .then(function (dbUser) {
           const checkPass = async function () {

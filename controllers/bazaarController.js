@@ -20,6 +20,14 @@ const BazaarController = {
       })
       .catch((err) => res.status(422).json(err));
   },
+  findManyById: function (req, res) {
+    console.log(req.body);
+    db.Bazaar.find()
+      .where("_id")
+      .in(req.body)
+      .then((dbModels) => res.json(dbModels))
+      .catch((err) => res.status(422).json(err));
+  },
   findById: function (req, res) {
     db.Bazaar.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))

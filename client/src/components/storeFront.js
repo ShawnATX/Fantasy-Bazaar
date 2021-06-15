@@ -32,9 +32,9 @@ const StoreFront = (props) => {
             href=""
             alt="Back Home"
             className="text-center mb-1 btn-small"
-            onClick={() => props.setPageState("Home")}
+            onClick={() => props.setViewState("Home")}
           >
-            Back Home
+            Back To Character Home
           </button>
         </Col>
       </Row>

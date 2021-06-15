@@ -16,7 +16,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 app.use(
-  session({ secret: "dootydootydoo", resave: false, saveUninitialized: true })
+  session({
+    secret: process.env.sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());

@@ -1,26 +1,71 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Col, Row, Button } from "reactstrap";
+import { Container, Col, Row, ListGroup, ListGroupItem } from "reactstrap";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
-import Inventory from "../components/inventory";
-import StoreFront from "../components/storeFront";
-import PlayerMain from "../components/playerMain";
 import CharacterHome from "./characterHome";
+import BazaarHome from "./bazaarHome";
 
 function UserHome() {
   const { authenticationState } = useContext(UserContext);
-  const [userObject, setUserObject] = useState({});
-  const [pageState, setPageState] = useState("Home");
+  const [characters, setCharacters] = useState([]);
+  const [bazaars, setBazaars] = useState([]);
+  const [chosenEntity, setChosenEntity] = useState({});
+  const [pageState, setPageState] = useState("user");
   const history = useHistory();
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
       history.push("/login");
     }
-    setUserObject(authenticationState.user);
-  }, [authenticationState]);
+    getCharacters();
+    getBazaars();
+  }, []);
+
+  const getCharacters = () => {
+    if (
+      authenticationState.isAuthenticated &&
+      authenticationState.user.characters.length > 0
+    ) {
+      API.getCharacters(authenticationState.user.characters)
+        .then((res) => {
+          setCharacters(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const getBazaars = () => {
+    if (
+      authenticationState.isAuthenticated &&
+      authenticationState.user.bazaars.length > 0
+    ) {
+      API.getBazaars(authenticationState.user.bazaars)
+        .then((res) => {
+          setBazaars(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const goToCharacterHome = (character) => {
+    setChosenEntity(character);
+    setPageState("character");
+  };
+
+  const goToBazaarHome = (bazaar) => {
+    setChosenEntity(bazaar);
+    setPageState("bazaar");
+  };
+
+  const newCharacter = () => {
+    history.push("/");
+  };
+
+  const newBazaar = () => {
+    history.push("/");
+  };
 
   const handleLogout = () => {
     API.logoutUser().then((res) => {
@@ -36,10 +81,65 @@ function UserHome() {
     });
   };
 
-  return (
-    <Container>
-      <Row>User Home</Row>
+  const renderPage = () => {
+    if (pageState === "user") {
+      return (
+        <div>
+          <h1 className="display-3">User Home</h1>
+          <Row>
+            <Col xs="8" sm="6">
+              Characters
+              <ListGroup>
+                {characters.map((character) => (
+                  <ListGroupItem
+                    tag="button"
+                    key={character._id}
+                    onClick={() => {
+                      goToCharacterHome(character);
+                    }}
+                  >
+                    {character.characterName}
+                  </ListGroupItem>
+                ))}
+                <ListGroupItem tag="button" onClick={newCharacter}>
+                  + New Character
+                </ListGroupItem>
+              </ListGroup>
+            </Col>
 
+            <Col xs="8" sm="6">
+              Bazaars
+              <ListGroup>
+                {bazaars.map((bazaar) => (
+                  <ListGroupItem
+                    key={bazaar._id}
+                    onClick={goToBazaarHome(bazaar)}
+                  >
+                    {bazaar.name}
+                  </ListGroupItem>
+                ))}
+                <ListGroupItem tag="button" onClick={newBazaar}>
+                  + New Bazaar
+                </ListGroupItem>
+              </ListGroup>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
+    if (pageState === "character") {
+      return (
+        <CharacterHome character={chosenEntity} setPageState={setPageState} />
+      );
+    }
+    if (pageState === "bazaar") {
+      return <BazaarHome bazaar={chosenEntity} setPageState={setPageState} />;
+    }
+  };
+
+  return (
+    <Container className="text-center">
+      {renderPage()}
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
           <button
