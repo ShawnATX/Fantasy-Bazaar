@@ -55,7 +55,7 @@ function NewCharacterEquipment(props) {
     })
       .then((res) => {
         if (res.status === 200) {
-          history.push("/characterhome");
+          history.push("/userhome");
         }
       })
       .catch((err) => console.log(err));

@@ -10,7 +10,6 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -42,9 +41,7 @@ mongoose.connect(
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  // we're connected!
-});
+db.once("open", function () {});
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

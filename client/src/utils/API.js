@@ -26,7 +26,6 @@ export default {
   saveItem: function (itemData) {
     return axios.post("/api/items", itemData);
   },
-
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
@@ -59,7 +58,6 @@ export default {
   logoutUser: function () {
     return axios.get("/logout");
   },
-
   //create new character
   saveCharacter: function (characterData) {
     return axios.post("/api/characters", characterData);
@@ -77,16 +75,15 @@ export default {
   },
   //update character to purchase a single item and decrement wallet
   characterPurchase: function (characterData) {
-    return axios.put("/api/characters/purchase", characterData);
+    return axios.post("/api/characters/purchase", characterData);
   },
   //  update character to sell a single item and increment wallet
   characterSale: function (characterData) {
-    return axios.put("/api/characters/sell", characterData);
+    return axios.post("/api/characters/sell", characterData);
   },
   characterAddItems: function (characterData) {
     return axios.put("/api/characters/items", characterData);
   },
-
   // Gets the bazaar with the given joinCode
   getBazaar: function (code) {
     return axios.get("/api/bazaars/code/" + code);

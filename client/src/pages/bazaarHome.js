@@ -6,6 +6,7 @@ import API from "../utils/API";
 
 const BazaarHome = (props) => {
   const { authenticationState } = useContext(UserContext);
+  const { bazaar } = props;
 
   const history = useHistory();
 

@@ -78,8 +78,8 @@ module.exports = function (app) {
   app.put("/api/characters/items", characterController.addItems);
 
   //Update character (item &  wallet)
-  app.put("/api/characters/purchase", characterController.purchase);
+  app.post("/api/characters/purchase", characterController.purchase);
 
   //Update character (item list &  wallet)
-  app.put("/api/characters/sell", characterController.sell);
+  app.post("/api/characters/sell", characterController.sell);
 };

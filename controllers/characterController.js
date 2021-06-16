@@ -13,6 +13,7 @@ const CharacterController = {
       .catch((err) => res.status(422).json(err));
   },
   findManyById: function (req, res) {
+    console.log(req.body);
     db.Character.find()
       .where("_id")
       .in(req.body)
@@ -43,9 +44,9 @@ const CharacterController = {
   },
   //route specifically for adding item to character item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function (req, res) {
-    console.log("Purchase route", req.body);
+    console.log(req.body);
     db.Character.findOneAndUpdate(
-      { _id: req.character._id },
+      { _id: req.body.character },
       {
         $push: { items: req.body.items[0] },
         $set: { wallet: req.body.wallet },
@@ -53,26 +54,27 @@ const CharacterController = {
       { new: true }
     )
       .then((dbModel) => {
-        console.log(res);
+        console.log(dbModel);
         res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
   },
   //route specifically for updating character item array with a new array and incrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   sell: function (req, res) {
-    console.log("Sell route", req.body);
     db.Character.findOneAndUpdate(
-      { _id: req.character._id },
+      { _id: req.body.character },
       {
         $set: { items: req.body.items, wallet: req.body.wallet },
       },
       { new: true }
     )
       .then((dbModel) => {
-        console.log(res);
         res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
+  },
+  testSell: function (req, res) {
+    console.log("Test Sell Route Hit");
   },
   //route specificallt for adding items in bulk (for character creation)
   addItems: function (req, res) {

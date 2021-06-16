@@ -33,10 +33,16 @@ const CharacterHome = (props) => {
         i = characterObject.items.length;
       }
     }
-    API.characterSale({ items: newItems, wallet: newWallet }).then((res) => {
+    API.characterSale({
+      items: newItems,
+      wallet: newWallet,
+      character: characterObject._id,
+    }).then((res) => {
       console.log(res);
       setCharacterObject({
         ...characterObject,
+        items: res.data.items,
+        wallet: res.data.wallet,
       });
     });
   }
@@ -48,11 +54,14 @@ const CharacterHome = (props) => {
       API.characterPurchase({
         wallet: characterObject.wallet - item.value,
         items: [item._id],
+        character: characterObject._id,
       })
         .then((res) => {
           console.log(res.data);
           setCharacterObject({
             ...characterObject,
+            items: res.data.items,
+            wallet: res.data.wallet,
           });
         })
         .catch((err) => console.log(err));
