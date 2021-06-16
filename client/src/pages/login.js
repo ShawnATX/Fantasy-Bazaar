@@ -35,6 +35,7 @@ const Login = () => {
               email: res.data.email,
               bazaars: res.data.bazaars,
               characters: res.data.characters,
+              id: res.data.id,
             });
           }
         })

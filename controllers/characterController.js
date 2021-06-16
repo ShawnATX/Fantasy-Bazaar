@@ -19,17 +19,27 @@ const CharacterController = {
       .then((dbModels) => res.json(dbModels))
       .catch((err) => res.status(422).json(err));
   },
-  //create new character, then add character to the users list of characters
+  //create new character, then add character to the users list of characters, then add the character to a bazaars list of characters
   create: function (req, res) {
     db.Character.create({ ...req.body })
-      .then((dbModel) => {
+      .then((characterModel) => {
+        // console.log(characterModel);
         db.User.findOneAndUpdate(
-          { _id: dbModel.owner },
-          { $push: { characters: dbModel._id } },
+          { _id: req.body.owner },
+          { $push: { characters: characterModel._id } },
           { new: true }
         )
-          .then(() => {
-            res.json(dbModel);
+          .then((dbModel) => {
+            console.log(characterModel);
+            db.Bazaar.findOneAndUpdate(
+              { _id: characterModel.bazaar },
+              { $push: { characters: characterModel._id } },
+              { new: true }
+            )
+              .then(() => {
+                res.json(dbModel);
+              })
+              .catch((err) => res.status(422).json(err));
           })
           .catch((err) => res.status(422).json(err));
       })

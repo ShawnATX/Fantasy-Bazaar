@@ -69,6 +69,7 @@ const CharacterHome = (props) => {
   }
 
   const userHome = () => {
+    history.push("/userhome");
     setPageState("user");
   };
 

@@ -43,6 +43,7 @@ function UserHome() {
     ) {
       API.getBazaars(authenticationState.user.bazaars)
         .then((res) => {
+          console.log(res.data);
           setBazaars(res.data);
         })
         .catch((err) => console.log(err));
@@ -50,12 +51,15 @@ function UserHome() {
   };
 
   const goToCharacterHome = (character) => {
+    console.log(character);
     setChosenEntity(character);
+    history.push("/userhome/character/" + character._id);
     setPageState("character");
   };
 
   const goToBazaarHome = (bazaar) => {
     setChosenEntity(bazaar);
+    history.push("/userhome/bazaar/" + bazaar.joinCode);
     setPageState("bazaar");
   };
 
@@ -64,7 +68,7 @@ function UserHome() {
   };
 
   const newBazaar = () => {
-    history.push("/");
+    history.push("/newbazaar");
   };
 
   const handleLogout = () => {
@@ -112,10 +116,13 @@ function UserHome() {
               <ListGroup>
                 {bazaars.map((bazaar) => (
                   <ListGroupItem
+                    tag="button"
                     key={bazaar._id}
-                    onClick={goToBazaarHome(bazaar)}
+                    onClick={() => {
+                      goToBazaarHome(bazaar);
+                    }}
                   >
-                    {bazaar.name}
+                    {bazaar.bazaarName}
                   </ListGroupItem>
                 ))}
                 <ListGroupItem tag="button" onClick={newBazaar}>
@@ -126,13 +133,11 @@ function UserHome() {
           </Row>
         </div>
       );
-    }
-    if (pageState === "character") {
+    } else if (pageState === "character") {
       return (
         <CharacterHome character={chosenEntity} setPageState={setPageState} />
       );
-    }
-    if (pageState === "bazaar") {
+    } else if (pageState === "bazaar") {
       return <BazaarHome bazaar={chosenEntity} setPageState={setPageState} />;
     }
   };

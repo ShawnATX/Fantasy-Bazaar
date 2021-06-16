@@ -35,11 +35,6 @@ function App() {
         <div className="app">
           <Switch>
             <Route exact path="/" render={() => <Landing />}></Route>
-            <Route
-              exact
-              path="/characterhome"
-              render={() => <CharacterHome />}
-            ></Route>
             <Route exact path="/gmhome">
               <GmHome />
             </Route>
@@ -69,7 +64,7 @@ function App() {
               path="/bazaarhome"
               render={() => <BazaarHome />}
             ></Route>
-            <Route exact path="/userhome" render={() => <UserHome />}></Route>
+            <Route path="/userhome" render={() => <UserHome />}></Route>
             <Route exact path="/login" render={() => <Login />}></Route>
             <Route path="*">
               <NoMatch />
