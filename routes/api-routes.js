@@ -4,7 +4,7 @@ const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
 const characterController = require("../controllers/characterController");
-// const isAuth = require("../config/middleware/isAuthenticated").isAuth;
+const isAuth = require("../config/middleware/isAuthenticated").isAuth;
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -66,16 +66,20 @@ module.exports = function (app) {
 
   //BAZAAR ROUTES
   //check on bazzar from code, returns bazaar _id, name, system
-  app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
+  app.get(
+    "/api/bazaars/code/:joinCode",
+    isAuth,
+    bazaarController.findByJoinCode
+  );
 
   //get bazzar with given ID
-  app.get("/api/bazaars/:id", bazaarController.findById);
+  app.get("/api/bazaars/:id", isAuth, bazaarController.findById);
 
   //get a list of bazaars
-  app.post("/api/bazaars/many", bazaarController.findManyById);
+  app.post("/api/bazaars/many", isAuth, bazaarController.findManyById);
 
   //create a new bazaar
-  app.post("/api/bazaars", bazaarController.create);
+  app.post("/api/bazaars", isAuth, bazaarController.create);
 
   //ITEM ROUTES
   //get multiple items from an array of _ids
@@ -87,17 +91,17 @@ module.exports = function (app) {
   //CHARACTER ROUTES
   app.post("/api/characters", characterController.create);
 
-  app.get("/api/characters/:id", characterController.findById);
+  app.get("/api/characters/:id", isAuth, characterController.findById);
 
-  app.post("/api/characters/many", characterController.findManyById);
+  app.post("/api/characters/many", isAuth, characterController.findManyById);
 
-  app.put("/api/characters/:id", characterController.update);
+  app.put("/api/characters/:id", isAuth, characterController.update);
 
-  app.put("/api/characters/items", characterController.addItems);
+  app.put("/api/characters/items", isAuth, characterController.addItems);
 
   //Update character (item &  wallet)
-  app.post("/api/characters/purchase", characterController.purchase);
+  app.post("/api/characters/purchase", isAuth, characterController.purchase);
 
   //Update character (item list &  wallet)
-  app.post("/api/characters/sell", characterController.sell);
+  app.post("/api/characters/sell", isAuth, characterController.sell);
 };

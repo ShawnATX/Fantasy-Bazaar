@@ -2,10 +2,17 @@ require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+const store = new MongoDBStore({
+  uri: process.env.MONGODB_URI,
+  databaseName: "fantasybazaar",
+  collection: "sessions",
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,15 +25,7 @@ app.use(
     secret: process.env.sessionSecret,
     resave: false,
     saveUninitialized: true,
-    store: new (require("express-sessions"))({
-      storage: "mongodb",
-      instance: mongoose, // optional
-      // host: 'localhost', // optional
-      // port: 27017, // optional
-      db: "fantasybazaar", // optional
-      collection: "sessions", // optional
-      // expire: 86400, // optional
-    }),
+    store: store,
   })
 );
 app.use(passport.initialize());
