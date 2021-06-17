@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
@@ -19,6 +18,15 @@ app.use(
     secret: process.env.sessionSecret,
     resave: false,
     saveUninitialized: true,
+    store: new (require("express-sessions"))({
+      storage: "mongodb",
+      instance: mongoose, // optional
+      // host: 'localhost', // optional
+      // port: 27017, // optional
+      db: "fantasybazaar", // optional
+      collection: "sessions", // optional
+      // expire: 86400, // optional
+    }),
   })
 );
 app.use(passport.initialize());
@@ -27,7 +35,7 @@ app.use(passport.session());
 require("./routes/api-routes.js")(app);
 
 if (process.env.MONGODB_URI) {
-  console.log(process.env.MONGODB_URI);
+  console.log("connected to mongoDB");
 }
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/fantasybazaar",

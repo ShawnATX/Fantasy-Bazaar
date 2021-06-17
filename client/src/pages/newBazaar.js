@@ -33,7 +33,7 @@ const NewBazaar = (props) => {
       .then((res) => {
         console.log(res);
         var joinCode = res.data.joinCode;
-        history.push("/userhome/bazaar/" + joinCode);
+        history.push("/userhome?bazaar=" + joinCode);
       })
       .catch((err) => {
         console.log(err);

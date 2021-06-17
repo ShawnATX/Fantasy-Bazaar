@@ -51,7 +51,7 @@ const GmHome = () => {
   return (
     <div>
       <Container fluid={true}>
-        <img className="img-fluid" src={bazaarImg} alt="Bazaaz" />
+        <img className="img-fluid" src={bazaarImg} alt="Bazaar" />
         {gmObject.userName}
         <br />
         <br />

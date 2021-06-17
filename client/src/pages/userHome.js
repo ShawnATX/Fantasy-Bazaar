@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { Container, Col, Row, ListGroup, ListGroupItem } from "reactstrap";
 import { useAlert } from "react-alert";
@@ -9,6 +9,7 @@ import BazaarHome from "./bazaarHome";
 
 function UserHome() {
   const { authenticationState } = useContext(UserContext);
+  const params = new URLSearchParams(useLocation().search);
   const [characters, setCharacters] = useState([]);
   const [bazaars, setBazaars] = useState([]);
   const [chosenEntity, setChosenEntity] = useState({});
@@ -21,7 +22,17 @@ function UserHome() {
     }
     getCharacters();
     getBazaars();
+    checkParams();
   }, []);
+
+  const checkParams = () => {
+    if (params.get("bazaar")) {
+      console.log("bazaar");
+      console.log(bazaars);
+    } else if (params.get("character")) {
+      console.log("character");
+    }
+  };
 
   const getCharacters = () => {
     if (
@@ -43,7 +54,6 @@ function UserHome() {
     ) {
       API.getBazaars(authenticationState.user.bazaars)
         .then((res) => {
-          console.log(res.data);
           setBazaars(res.data);
         })
         .catch((err) => console.log(err));
@@ -53,13 +63,13 @@ function UserHome() {
   const goToCharacterHome = (character) => {
     console.log(character);
     setChosenEntity(character);
-    history.push("/userhome/character/" + character._id);
+    history.push("/userhome?character=" + character._id);
     setPageState("character");
   };
 
   const goToBazaarHome = (bazaar) => {
     setChosenEntity(bazaar);
-    history.push("/userhome/bazaar/" + bazaar.joinCode);
+    history.push("/userhome?bazaar=" + bazaar.joinCode);
     setPageState("bazaar");
   };
 

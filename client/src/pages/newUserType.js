@@ -47,7 +47,7 @@ function NewUserType() {
   }
 
   return (
-    <Container>
+    <Container className="text-center">
       <Row className="mt-5 px-5">
         <Col>
           <Link

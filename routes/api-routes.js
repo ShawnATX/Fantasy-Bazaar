@@ -13,7 +13,6 @@ module.exports = function (app) {
     "/api/users/login",
     passport.authenticate("local"),
     function (req, res) {
-      console.log(req.user);
       res.json({
         email: req.user.email,
         characters: req.user.characters,

@@ -6,33 +6,25 @@ import API from "../utils/API";
 
 const BazaarHome = (props) => {
   const { authenticationState } = useContext(UserContext);
-  const { bazaar } = props;
-
-  useEffect(() => {
-    console.log(bazaar);
-  }, []);
+  const { setPageState } = props;
+  const [bazaarObject, setBazaarObject] = useState(props.bazaar);
 
   const history = useHistory();
 
-  const handleLogout = () => {
-    API.logoutUser().then((res) => {
-      if (res.status === 200) {
-        authenticationState.userHasAuthenticated({
-          isAuthenticated: false,
-          user: {},
-        });
-        history.push("/");
-      } else {
-        alert.show("Weird logout error happening...");
-      }
-    });
+  useEffect(() => {
+    console.log(bazaarObject);
+  }, []);
+
+  const userHome = () => {
+    history.push("/userhome");
+    setPageState("user");
   };
 
   return (
     <Container>
       <Row>Bazaar Home</Row>
-      <button className="text-center btn-small" onClick={() => handleLogout()}>
-        Logout
+      <button className="text-center btn-small" onClick={() => userHome()}>
+        Back To User Home
       </button>
     </Container>
   );

@@ -4,8 +4,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserContext from "./utils/userContext";
 import Landing from "./pages/landing";
 import NoMatch from "./pages/NoMatch";
-import CharacterHome from "./pages/characterHome";
-import GmHome from "./pages/gmHome";
 import NewUserType from "./pages/newUserType";
 import NewUserCreds from "./pages/newUserCreds";
 import NewCharacter from "./pages/newCharacter";
@@ -35,9 +33,6 @@ function App() {
         <div className="app">
           <Switch>
             <Route exact path="/" render={() => <Landing />}></Route>
-            <Route exact path="/gmhome">
-              <GmHome />
-            </Route>
             <Route
               exact
               path="/newusertype"
