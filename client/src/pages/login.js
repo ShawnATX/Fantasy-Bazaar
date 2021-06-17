@@ -55,31 +55,35 @@ const Login = () => {
   }
 
   return (
-    <Container>
-      <Form onSubmit={handleFormSubmit} className="mt-5">
-        <FormGroup row className="mb-4">
-          <Input
-            name="email"
-            id="email"
-            placeholder="Email Address"
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup row className="mb-4">
-          <Input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <Row>
-          <Col className="text-center mt-3">
-            <button>Submit</button>
+    <Container className="text-center">
+      <Row>
+        <Form onSubmit={handleFormSubmit} className="mt-5">
+          <Col md={{ size: 6, offset: 3 }}>
+            <FormGroup row className="mb-4">
+              <Input
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                onChange={handleInputChange}
+              />
+            </FormGroup>
+            <FormGroup row className="mb-4">
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                onChange={handleInputChange}
+              />
+            </FormGroup>
           </Col>
-        </Row>
-      </Form>
+          <Row>
+            <Col className="text-center mt-3">
+              <button>Submit</button>
+            </Col>
+          </Row>
+        </Form>
+      </Row>
       <Col className="text-center mt-3">
         <Link to="/">
           <button>Go Back</button>

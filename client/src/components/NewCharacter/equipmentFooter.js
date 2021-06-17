@@ -1,4 +1,5 @@
 import React from "react";
+import { Badge } from "reactstrap";
 
 function EquipmentFooter(props) {
   const { items } = props;
@@ -11,7 +12,7 @@ function EquipmentFooter(props) {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Items
+        Items <Badge color="secondary">{items.length}</Badge>
       </button>
       <ul className="dropdown-menu dropdown-menu-dark">
         {items.map((item) => (

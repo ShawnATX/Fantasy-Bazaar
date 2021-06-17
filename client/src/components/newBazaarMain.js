@@ -1,5 +1,12 @@
 import React from "react";
-import { Row, Col, Input, Button, ButtonGroup } from "reactstrap";
+import {
+  Row,
+  Col,
+  Input,
+  Button,
+  ButtonGroup,
+  UncontrolledTooltip,
+} from "reactstrap";
 
 const NewBazaarMain = (props) => {
   const { formObject, setFormObject, setPageState } = props;
