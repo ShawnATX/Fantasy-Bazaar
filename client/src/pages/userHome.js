@@ -20,28 +20,31 @@ function UserHome() {
     if (!authenticationState.isAuthenticated) {
       API.getSessionUser()
         .then((res) => {
-          console.log(res.data);
-          authenticationState.userHasAuthenticated(true, {
-            email: res.data.email,
-            bazaars: res.data.bazaars,
-            characters: res.data.characters,
-            id: res.data.id,
-          });
-        })
-        .then(() => {
-          getCharacters();
-          getBazaars();
-          checkParams();
+          authenticationState
+            .userHasAuthenticated(true, {
+              email: res.data.email,
+              bazaars: res.data.bazaars,
+              characters: res.data.characters,
+              id: res.data.id,
+            })
+            .then(() => {
+              getCharacters();
+              getBazaars();
+              checkParams();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((err) => {
-          console.log(err);
+          history.push("/");
         });
     } else {
       getCharacters();
       getBazaars();
       checkParams();
     }
-  }, []);
+  }, [authenticationState]);
 
   const checkParams = () => {
     if (params.get("bazaar")) {

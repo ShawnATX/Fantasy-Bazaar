@@ -47,22 +47,20 @@ module.exports = function (app) {
       });
     }
   });
-
   //Route to get individual user public data
   app.get("/api/user", function (req, res) {
     if (!req.user) {
       // The user has no session key
-      res.json({});
+      res.status(401).json("no session found");
     } else {
       res.json({
         email: req.user.email,
-        chatacters: req.user.characters,
-        bazars: req.user.bazaars,
+        characters: req.user.characters,
+        bazaars: req.user.bazaars,
         id: req.user._id,
       });
     }
   });
-
   //Check uniqueness of an email address before attempting to save a new user
   app.post("/api/users/email/", userController.findByEmail);
 
