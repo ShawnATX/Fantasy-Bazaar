@@ -4,7 +4,7 @@ const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
 const characterController = require("../controllers/characterController");
-const isAuth = require("../config/middleware/isAuthenticated").isAuth;
+// const isAuth = require("../config/middleware/isAuthenticated").isAuth;
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -66,42 +66,38 @@ module.exports = function (app) {
 
   //BAZAAR ROUTES
   //check on bazzar from code, returns bazaar _id, name, system
-  app.get(
-    "/api/bazaars/code/:joinCode",
-    isAuth,
-    bazaarController.findByJoinCode
-  );
+  app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
 
   //get bazzar with given ID
-  app.get("/api/bazaars/:id", isAuth, bazaarController.findById);
+  app.get("/api/bazaars/:id", bazaarController.findById);
 
   //get a list of bazaars
-  app.post("/api/bazaars/many", isAuth, bazaarController.findManyById);
+  app.post("/api/bazaars/many", bazaarController.findManyById);
 
   //create a new bazaar
-  app.post("/api/bazaars", isAuth, bazaarController.create);
+  app.post("/api/bazaars", bazaarController.create);
 
   //ITEM ROUTES
   //get multiple items from an array of _ids
-  app.post("/api/items/many", isAuth, itemController.findManyById);
+  app.post("/api/items/many", itemController.findManyById);
 
   //Route to get all inventory items of a particular system, passing {system: string}
-  app.get("/api/items/:system", isAuth, itemController.findAllBySystem);
+  app.get("/api/items/:system", itemController.findAllBySystem);
 
   //CHARACTER ROUTES
-  app.post("/api/characters", isAuth, characterController.create);
+  app.post("/api/characters", characterController.create);
 
-  app.get("/api/characters/:id", isAuth, characterController.findById);
+  app.get("/api/characters/:id", characterController.findById);
 
-  app.post("/api/characters/many", isAuth, characterController.findManyById);
+  app.post("/api/characters/many", characterController.findManyById);
 
-  app.put("/api/characters/:id", isAuth, characterController.update);
+  app.put("/api/characters/:id", characterController.update);
 
-  app.put("/api/characters/items", isAuth, characterController.addItems);
+  app.put("/api/characters/items", characterController.addItems);
 
   //Update character (item &  wallet)
-  app.post("/api/characters/purchase", isAuth, characterController.purchase);
+  app.post("/api/characters/purchase", characterController.purchase);
 
   //Update character (item list &  wallet)
-  app.post("/api/characters/sell", isAuth, characterController.sell);
+  app.post("/api/characters/sell", characterController.sell);
 };
