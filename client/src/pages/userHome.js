@@ -18,11 +18,29 @@ function UserHome() {
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
-      history.push("/login");
+      API.getSessionUser()
+        .then((res) => {
+          console.log(res.data);
+          authenticationState.userHasAuthenticated(true, {
+            email: res.data.email,
+            bazaars: res.data.bazaars,
+            characters: res.data.characters,
+            id: res.data.id,
+          });
+        })
+        .then(() => {
+          getCharacters();
+          getBazaars();
+          checkParams();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      getCharacters();
+      getBazaars();
+      checkParams();
     }
-    getCharacters();
-    getBazaars();
-    checkParams();
   }, []);
 
   const checkParams = () => {
@@ -35,10 +53,7 @@ function UserHome() {
   };
 
   const getCharacters = () => {
-    if (
-      authenticationState.isAuthenticated &&
-      authenticationState.user.characters.length > 0
-    ) {
+    if (authenticationState.user.characters.length > 0) {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
           setCharacters(res.data);
@@ -48,10 +63,7 @@ function UserHome() {
   };
 
   const getBazaars = () => {
-    if (
-      authenticationState.isAuthenticated &&
-      authenticationState.user.bazaars.length > 0
-    ) {
+    if (authenticationState.user.bazaars.length > 0) {
       API.getBazaars(authenticationState.user.bazaars)
         .then((res) => {
           setBazaars(res.data);

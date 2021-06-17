@@ -6,5 +6,4 @@ module.exports.isAuth = (req, res, next) => {
       .status(401)
       .json({ msg: "Not authorized for this, try logging in first" });
   }
-  return res.redirect("/userhome");
 };

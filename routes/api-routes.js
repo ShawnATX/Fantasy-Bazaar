@@ -1,9 +1,10 @@
-var db = require("../models");
-var passport = require("../config/passport");
+const db = require("../models");
+const passport = require("../config/passport");
 const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
 const characterController = require("../controllers/characterController");
+const isAuth = require("../config/middleware/isAuthenticated").isAuth;
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -25,7 +26,10 @@ module.exports = function (app) {
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.json({});
+    res.status(200).clearCookie("connect.sid", { path: "/" });
+    req.session.destroy(function (err) {
+      res.redirect("/");
+    });
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -44,43 +48,62 @@ module.exports = function (app) {
     }
   });
 
+  //Route to get individual user public data
+  app.get("/api/user", function (req, res) {
+    if (!req.user) {
+      // The user has no session key
+      res.json({});
+    } else {
+      res.json({
+        email: req.user.email,
+        chatacters: req.user.characters,
+        bazars: req.user.bazaars,
+        id: req.user._id,
+      });
+    }
+  });
+
   //Check uniqueness of an email address before attempting to save a new user
   app.post("/api/users/email/", userController.findByEmail);
 
   //BAZAAR ROUTES
   //check on bazzar from code, returns bazaar _id, name, system
-  app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
+  app.get(
+    "/api/bazaars/code/:joinCode",
+    isAuth,
+    bazaarController.findByJoinCode
+  );
 
   //get bazzar with given ID
-  app.get("/api/bazaars/:id", bazaarController.findById);
+  app.get("/api/bazaars/:id", isAuth, bazaarController.findById);
 
   //get a list of bazaars
-  app.post("/api/bazaars/many", bazaarController.findManyById);
+  app.post("/api/bazaars/many", isAuth, bazaarController.findManyById);
 
   //create a new bazaar
-  app.post("/api/bazaars", bazaarController.create);
+  app.post("/api/bazaars", isAuth, bazaarController.create);
 
   //ITEM ROUTES
   //get multiple items from an array of _ids
-  app.post("/api/items/many", itemController.findManyById);
+  app.post("/api/items/many", isAuth, itemController.findManyById);
 
   //Route to get all inventory items of a particular system, passing {system: string}
-  app.get("/api/items/:system", itemController.findAllBySystem);
+  app.get("/api/items/:system", isAuth, itemController.findAllBySystem);
 
   //CHARACTER ROUTES
-  app.post("/api/characters", characterController.create);
+  app.post("/api/characters", isAuth, characterController.create);
 
-  app.get("/api/characters/:id", characterController.findById);
+  app.get("/api/characters/:id", isAuth, characterController.findById);
 
-  app.post("/api/characters/many", characterController.findManyById);
+  app.post("/api/characters/many", isAuth, characterController.findManyById);
 
-  app.put("/api/characters/:id", characterController.update);
+  app.put("/api/characters/:id", isAuth, characterController.update);
 
-  app.put("/api/characters/items", characterController.addItems);
+  app.put("/api/characters/items", isAuth, characterController.addItems);
 
   //Update character (item &  wallet)
-  app.post("/api/characters/purchase", characterController.purchase);
+  app.post("/api/characters/purchase", isAuth, characterController.purchase);
 
   //Update character (item list &  wallet)
-  app.post("/api/characters/sell", characterController.sell);
+  app.post("/api/characters/sell", isAuth, characterController.sell);
 };
