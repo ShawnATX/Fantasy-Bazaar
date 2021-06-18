@@ -32,6 +32,14 @@ const NewBazaar = (props) => {
     API.saveBazaar(newBazaar)
       .then((res) => {
         console.log(res);
+        let bazaars = authenticationState.user.bazaars;
+        bazaars.push(res.data._id);
+        authenticationState.userHasAuthenticated(true, {
+          email: authenticationState.user.email,
+          id: authenticationState.user.id,
+          characters: authenticationState.user.characters,
+          bazaars: bazaars,
+        });
         var joinCode = res.data.joinCode;
         history.push("/userhome?bazaar=" + joinCode);
       })

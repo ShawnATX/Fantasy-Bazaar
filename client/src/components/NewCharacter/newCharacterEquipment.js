@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import UserContext from "../../utils/userContext";
 import { Button, Row, Col } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import ListSection from "../listSection";
@@ -6,13 +7,9 @@ import CharacterHeader from "../characterHeader";
 import EquipmentFooter from "./equipmentFooter";
 
 function NewCharacterEquipment(props) {
-  const {
-    setPageState,
-    bazaarObject,
-    API,
-    characterObject,
-    authenticationState,
-  } = props;
+  const { setPageState, bazaarObject, API, characterObject } = props;
+  const { authenticationState } = useContext(UserContext);
+
   const history = useHistory();
 
   const [itemList, setItemList] = useState([]);
@@ -20,7 +17,6 @@ function NewCharacterEquipment(props) {
   let typeArr = [];
 
   useEffect(() => {
-    console.log(authenticationState);
     API.getItemsBySystem(bazaarObject.system).then((res) => {
       setItemList(res.data);
     });
@@ -41,10 +37,17 @@ function NewCharacterEquipment(props) {
       { name: item.name, value: item.value, id: item._id },
     ]);
   };
+  const updateAuthenticationState = (userData) => {
+    authenticationState.userHasAuthenticated(true, {
+      email: userData.email,
+      bazaars: userData.bazaars,
+      characters: userData.characters,
+      id: userData._id,
+    });
+  };
 
   const saveNewCharacter = () => {
     let itemList = chosenItemList.map((item) => item.id);
-    console.log(bazaarObject);
     API.saveCharacter({
       characterName: characterObject.characterName,
       characterImage: characterObject.characterImage,
@@ -54,6 +57,7 @@ function NewCharacterEquipment(props) {
       owner: authenticationState.user.id,
     })
       .then((res) => {
+        updateAuthenticationState(res.data);
         if (res.status === 200) {
           history.push("/userhome");
         }

@@ -18,33 +18,33 @@ function UserHome() {
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
-      API.getSessionUser()
-        .then((res) => {
-          authenticationState
-            .userHasAuthenticated(true, {
-              email: res.data.email,
-              bazaars: res.data.bazaars,
-              characters: res.data.characters,
-              id: res.data.id,
-            })
-            .then(() => {
-              getCharacters();
-              getBazaars();
-              checkParams();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          history.push("/");
-        });
+      getSessionUser();
     } else {
       getCharacters();
       getBazaars();
       checkParams();
     }
   }, [authenticationState]);
+
+  const getSessionUser = () => {
+    API.getSessionUser()
+      .then((res) => {
+        authenticationState.userHasAuthenticated(true, {
+          email: res.data.email,
+          bazaars: res.data.bazaars,
+          characters: res.data.characters,
+          id: res.data.id,
+        });
+      })
+      .then(() => {
+        getCharacters();
+        getBazaars();
+        checkParams();
+      })
+      .catch((err) => {
+        history.push("/");
+      });
+  };
 
   const checkParams = () => {
     if (params.get("bazaar")) {
@@ -56,9 +56,13 @@ function UserHome() {
   };
 
   const getCharacters = () => {
-    if (authenticationState.user.characters.length > 0) {
+    if (
+      authenticationState.user &&
+      authenticationState.user.characters.length > 0
+    ) {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
+          console.log(res.data);
           setCharacters(res.data);
         })
         .catch((err) => console.log(err));
@@ -66,7 +70,10 @@ function UserHome() {
   };
 
   const getBazaars = () => {
-    if (authenticationState.user.bazaars.length > 0) {
+    if (
+      authenticationState.user &&
+      authenticationState.user.bazaars.length > 0
+    ) {
       API.getBazaars(authenticationState.user.bazaars)
         .then((res) => {
           setBazaars(res.data);
@@ -89,7 +96,7 @@ function UserHome() {
   };
 
   const newCharacter = () => {
-    history.push("/");
+    history.push("/newcharacter");
   };
 
   const newBazaar = () => {

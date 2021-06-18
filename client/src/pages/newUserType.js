@@ -30,7 +30,6 @@ function NewUserType() {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
-    // if bazaarCode == {join code length} => check bazaar code API to validate and then activate the 'join' button
     if (value.length === 8) {
       API.getBazaar(value)
         .then((res) => {

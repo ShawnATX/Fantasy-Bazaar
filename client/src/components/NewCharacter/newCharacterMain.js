@@ -6,6 +6,8 @@ import {
   Input,
   Button,
   FormFeedback,
+  Row,
+  Col,
 } from "reactstrap";
 import { useAlert } from "react-alert";
 import ImageChoices from "../imageChoices";
@@ -37,54 +39,55 @@ function NewCharacterMain(props) {
       setPageState("Equipment");
     } else {
       alert.show("Please finish filling out the form");
-      //Alert to finish form
     }
   };
 
   return (
-    <Form className="text-center">
-      <FormGroup row className="mt-4">
-        <Label className="text-center" for="characterName">
-          Character Name
-        </Label>
-        <Input
-          name="characterName"
-          id="characterName"
-          placeholder="Lester Ressoration"
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <ImageChoices handleInputChange={handleInputChange} />
+    <Col md={{ size: 8, offset: 2 }}>
+      <Form className="text-center">
+        <FormGroup row className="mt-4">
+          <Label className="text-center" for="characterName">
+            Character Name
+          </Label>
+          <Input
+            name="characterName"
+            id="characterName"
+            placeholder="Lester Ressoration"
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <ImageChoices handleInputChange={handleInputChange} />
 
-      <FormGroup>
-        <Label for="startingGold">Starting Gold</Label>
+        <FormGroup>
+          <Label for="startingGold">Starting Gold</Label>
 
-        {walletValid ? (
-          <FormGroup>
-            <Input
-              valid
-              name="wallet"
-              id="startingGold"
-              onChange={validateNumberInput}
-            />
-          </FormGroup>
-        ) : (
-          <FormGroup>
-            <Input
-              invalid
-              name="wallet"
-              id="startingGold"
-              placeholder="Enter your starting gold"
-              onChange={validateNumberInput}
-            />
-            <FormFeedback>Oh noes! You need a number in here</FormFeedback>
-          </FormGroup>
-        )}
-      </FormGroup>
-      <Button onClick={nextPage} className="btn-small ml-3">
-        Add Starting Equipment
-      </Button>
-    </Form>
+          {walletValid ? (
+            <FormGroup>
+              <Input
+                valid
+                name="wallet"
+                id="startingGold"
+                onChange={validateNumberInput}
+              />
+            </FormGroup>
+          ) : (
+            <FormGroup>
+              <Input
+                invalid
+                name="wallet"
+                id="startingGold"
+                placeholder="Enter your starting gold"
+                onChange={validateNumberInput}
+              />
+              <FormFeedback>Oh noes! You need a number in here</FormFeedback>
+            </FormGroup>
+          )}
+        </FormGroup>
+        <Button onClick={nextPage} className="btn-small ml-3">
+          Add Starting Equipment
+        </Button>
+      </Form>
+    </Col>
   );
 }
 
