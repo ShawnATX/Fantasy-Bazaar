@@ -7,6 +7,13 @@ const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_USER,
+  api_key: process.env.CLOUDINARY_API,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
 
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI,

@@ -14,6 +14,7 @@ const CharacterHome = (props) => {
   const { authenticationState } = useContext(UserContext);
   const [characterObject, setCharacterObject] = useState(props.character);
   const [viewState, setViewState] = useState("Home");
+  const [waitingResponse, setWaitingResponse] = useState(false);
   const history = useHistory();
   const alert = useAlert();
 
@@ -51,12 +52,14 @@ const CharacterHome = (props) => {
     if (item.value > characterObject.wallet) {
       alert.show("Looks like that is a bit too expensive...");
     } else {
+      setWaitingResponse(true);
       API.characterPurchase({
         wallet: characterObject.wallet - item.value,
         items: [item._id],
         character: characterObject._id,
       })
         .then((res) => {
+          setWaitingResponse(false);
           console.log(res.data);
           setCharacterObject({
             ...characterObject,
@@ -82,10 +85,17 @@ const CharacterHome = (props) => {
           setViewState={setViewState}
           items={characterObject.items}
           sell={sellItem}
+          waitingResponse={waitingResponse}
         />
       );
     } else if (viewState === "Store") {
-      return <StoreFront setViewState={setViewState} purchase={purchaseItem} />;
+      return (
+        <StoreFront
+          setViewState={setViewState}
+          waitingResponse={waitingResponse}
+          purchase={purchaseItem}
+        />
+      );
     } else {
       return <CharacterMain setViewState={"Home"} />;
     }

@@ -60,7 +60,7 @@ function NewUserType() {
       </Row>
       <Form>
         <Row className="mt-5 px-5 text-center">
-          <Col>
+          <Col md={{ size: 6, offset: 3 }}>
             {validBazaarCode ? (
               <Link
                 to={"/newusercreds/player?bazaar=" + formObject.bazaarCode}

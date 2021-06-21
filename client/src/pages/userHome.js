@@ -1,11 +1,20 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Col, Row, ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Container,
+  Col,
+  Row,
+  ListGroup,
+  ListGroupItem,
+  Navbar,
+  Nav,
+} from "reactstrap";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
+import NavbarComponent from "../components/navbar";
 
 function UserHome() {
   const { authenticationState } = useContext(UserContext);
@@ -121,9 +130,10 @@ function UserHome() {
     if (pageState === "user") {
       return (
         <div>
+          <NavbarComponent />
           <h1 className="display-3">User Home</h1>
           <Row>
-            <Col xs="8" sm="6">
+            <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
               Characters
               <ListGroup>
                 {characters.map((character) => (
@@ -143,7 +153,7 @@ function UserHome() {
               </ListGroup>
             </Col>
 
-            <Col xs="8" sm="6">
+            <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
               Bazaars
               <ListGroup>
                 {bazaars.map((bazaar) => (

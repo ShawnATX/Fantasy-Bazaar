@@ -25,11 +25,11 @@ module.exports = function (app) {
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
+    //remove passport user/session
     req.logout();
-    res.status(200).clearCookie("connect.sid", { path: "/" });
-    req.session.destroy(function (err) {
-      res.redirect("/");
-    });
+    //clear express session
+    req.session.destroy();
+    res.status(200).clearCookie("connect.sid", { path: "/" }).redirect("/");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to

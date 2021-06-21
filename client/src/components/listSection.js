@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./item";
 
 const ListSection = (props) => {
-  const { type, items } = props;
+  const { type, items, waitingResponse, action, button } = props;
   //create a whitespace-free version to use in element ids and names
   const strippedType = type.replace(/\s+/g, "");
   let subtypeArr = [];
@@ -72,8 +72,9 @@ const ListSection = (props) => {
                   <Item
                     key={item._id}
                     item={item}
-                    action={props.action}
-                    button={props.button}
+                    action={action}
+                    button={button}
+                    waitingResponse={waitingResponse}
                   />
                 ))}
               </div>

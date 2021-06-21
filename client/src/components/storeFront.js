@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Spinner } from "reactstrap";
 import API from "../utils/API";
 import ListSection from "./listSection";
 
 const StoreFront = (props) => {
+  const { waitingResponse, setViewState, purchase } = props;
   const [itemList, setItemList] = useState([]);
   useEffect(() => {
     //loading default "DnD" items, @@TODO update to get bazaar-specific items
@@ -32,7 +33,7 @@ const StoreFront = (props) => {
             href=""
             alt="Back Home"
             className="text-center mb-1 btn-small"
-            onClick={() => props.setViewState("Home")}
+            onClick={() => setViewState("Home")}
           >
             Back To Character Home
           </button>
@@ -46,8 +47,9 @@ const StoreFront = (props) => {
             type={type}
             items={getItems(type)}
             expanded={type === "Consumable" ? "collapse show" : "collapse"}
-            action={props.purchase}
+            action={purchase}
             button={"Purchase"}
+            waitingResponse={waitingResponse}
           ></ListSection>
         ))}
       </div>

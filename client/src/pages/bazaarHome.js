@@ -13,6 +13,7 @@ const BazaarHome = (props) => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log(bazaarObject);
     const getCharacterDetails = () => {
       if (bazaarObject.characters.length !== 0) {
         API.getCharacters(bazaarObject.characters).then((res) => {
@@ -35,7 +36,10 @@ const BazaarHome = (props) => {
   return (
     <Container fluid={true}>
       <h2 className="display-3">{bazaarObject.bazaarName}</h2>
-      <p>Player Join Code: {bazaarObject.joinCode}</p>
+      <p>
+        Player Join Code:{" "}
+        <span className="display-5">{bazaarObject.joinCode}</span>
+      </p>
       Characters
       {bazaarObject.characters.length > 0 ? (
         <ListGroup>

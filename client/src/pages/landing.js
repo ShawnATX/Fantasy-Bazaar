@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import API from "../utils/API";
 import { Container, Row, Col } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
@@ -10,6 +11,12 @@ const Landing = () => {
   useEffect(() => {
     if (authenticationState.isAuthenticated) {
       history.push("/userhome");
+    } else {
+      try {
+        getSessionUser();
+      } catch (error) {
+        //no session exixts, do nothing
+      }
     }
     //   const threeScript = document.createElement("script");
     //   threeScript.async = false;
@@ -46,7 +53,22 @@ const Landing = () => {
     //     document.body.removeChild(vantaScript);
     //     document.body.removeChild(fogScript);
     //   };
-  }, []);
+  });
+
+  const getSessionUser = () => {
+    API.getSessionUser()
+      .then((res) => {
+        authenticationState.userHasAuthenticated(true, {
+          email: res.data.email,
+          bazaars: res.data.bazaars,
+          characters: res.data.characters,
+          id: res.data.id,
+        });
+      })
+      .then(() => {
+        history.push("/userhome");
+      });
+  };
 
   return (
     <Container fluid={true} className="text-center">
