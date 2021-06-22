@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Spinner } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import API from "../utils/API";
 import ListSection from "./listSection";
 

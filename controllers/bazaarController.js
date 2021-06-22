@@ -21,7 +21,6 @@ const BazaarController = {
       .catch((err) => res.status(422).json(err));
   },
   findManyById: function (req, res) {
-    console.log(req.body);
     db.Bazaar.find()
       .where("_id")
       .in(req.body)

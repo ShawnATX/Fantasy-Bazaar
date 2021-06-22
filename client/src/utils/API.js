@@ -107,4 +107,19 @@ export default {
   saveBazaar: function (bazaarData) {
     return axios.post("/api/bazaars", bazaarData);
   },
+  // upload character image
+  uploadImage: async function (formData, characterObject) {
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/ddpe6rr7l/upload",
+        formData,
+        {
+          headers: { "X-Requested-With": "XMLHttpRequest" },
+        }
+      );
+      characterObject.characterImage = response.data.url;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 };

@@ -21,6 +21,7 @@ function NewCharacter(props) {
   const [characterObject, setCharacterObject] = useState({
     wallet: 0,
     characterName: "",
+    characterImage: "",
   });
   const [bazaarObject, setBazaarObject] = useState({});
   const [pageState, setPageState] = useState("Main");
@@ -35,7 +36,6 @@ function NewCharacter(props) {
   }, []);
 
   const getBazaarDeets = (bazaarCode) => {
-    console.log("get deets");
     if (bazaarCode) {
       API.getBazaar(bazaarCode)
         .then((res) => {
@@ -70,9 +70,7 @@ function NewCharacter(props) {
             toggle();
           }
         })
-        .catch((err) => {
-          alert.show("Bazaar not found");
-        });
+        .catch((err) => {});
     }
   };
 

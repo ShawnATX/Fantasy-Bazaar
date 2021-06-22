@@ -3,17 +3,9 @@ const passport = require("passport");
 const express = require("express");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
-const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const cloudinary = require("cloudinary").v2;
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_USER,
-  api_key: process.env.CLOUDINARY_API,
-  api_secret: process.env.CLOUDINARY_SECRET,
-});
 
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI,
@@ -21,8 +13,10 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: "20mb" }));
+app.use(
+  express.urlencoded({ limit: "20mb", extended: true, parameterLimit: 50000 })
+);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

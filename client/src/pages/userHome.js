@@ -1,16 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import {
-  Container,
-  Col,
-  Row,
-  ListGroup,
-  ListGroupItem,
-  Navbar,
-  Nav,
-} from "reactstrap";
-import { useAlert } from "react-alert";
+import { Container, Col, Row, ListGroup, ListGroupItem } from "reactstrap";
 import API from "../utils/API";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
@@ -71,7 +62,6 @@ function UserHome() {
     ) {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
-          console.log(res.data);
           setCharacters(res.data);
         })
         .catch((err) => console.log(err));
@@ -92,7 +82,6 @@ function UserHome() {
   };
 
   const goToCharacterHome = (character) => {
-    console.log(character);
     setChosenEntity(character);
     history.push("/userhome?character=" + character._id);
     setPageState("character");
