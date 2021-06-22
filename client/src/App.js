@@ -11,6 +11,7 @@ import BazaarHome from "./pages/bazaarHome";
 import Login from "./pages/login";
 import NewBazaar from "./pages/newBazaar";
 import UserHome from "./pages/userHome";
+import Logout from "./pages/logout";
 
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
@@ -61,6 +62,7 @@ function App() {
             ></Route>
             <Route path="/userhome" render={() => <UserHome />}></Route>
             <Route exact path="/login" render={() => <Login />}></Route>
+            <Route exact path="/logout" render={() => <Logout />}></Route>
             <Route path="*">
               <NoMatch />
             </Route>

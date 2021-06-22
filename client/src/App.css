@@ -45,3 +45,6 @@ button {
 .accordion-button:not(.collapsed) {
   color: white;
 }
+.sticky-top {
+  z-index: 999;
+}

@@ -41,7 +41,7 @@ const BazaarController = {
           { new: true }
         )
           .then(() => {
-            res.json(dbModel);
+            res.status(201).json(dbModel);
           })
           .catch((err) => res.status(422).json(err));
       })

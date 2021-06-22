@@ -39,7 +39,6 @@ const CharacterHome = (props) => {
       wallet: newWallet,
       character: characterObject._id,
     }).then((res) => {
-      console.log(res);
       setCharacterObject({
         ...characterObject,
         items: res.data.items,
@@ -60,7 +59,6 @@ const CharacterHome = (props) => {
       })
         .then((res) => {
           setWaitingResponse(false);
-          console.log(res.data);
           setCharacterObject({
             ...characterObject,
             items: res.data.items,
@@ -78,7 +76,12 @@ const CharacterHome = (props) => {
 
   const renderPage = () => {
     if (viewState === "Home") {
-      return <CharacterMain setViewState={setViewState} />;
+      return (
+        <CharacterMain
+          setViewState={setViewState}
+          characterObject={characterObject}
+        />
+      );
     } else if (viewState === "Inventory") {
       return (
         <Inventory

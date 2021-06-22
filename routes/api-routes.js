@@ -25,11 +25,15 @@ module.exports = function (app) {
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
-    //remove passport user/session
-    req.logout();
-    //clear express session
-    req.session.destroy();
-    res.status(200).clearCookie("connect.sid", { path: "/" }).redirect("/");
+    if (req.session) {
+      //clear express session
+      req.session.destroy();
+      //remove passport user/session
+      req.logout();
+      res.status(200).clearCookie("connect.sid", { path: "/" });
+    } else {
+      res.status(200).json({ msg: "already logged out" });
+    }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -51,9 +55,9 @@ module.exports = function (app) {
   app.get("/api/user", function (req, res) {
     if (!req.user) {
       // The user has no session key
-      res.status(401).json("no session found");
+      res.status(204).json("no session found");
     } else {
-      res.json({
+      res.status(200).json({
         email: req.user.email,
         characters: req.user.characters,
         bazaars: req.user.bazaars,

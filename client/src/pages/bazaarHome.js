@@ -13,7 +13,6 @@ const BazaarHome = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log(bazaarObject);
     const getCharacterDetails = () => {
       if (bazaarObject.characters.length !== 0) {
         API.getCharacters(bazaarObject.characters).then((res) => {

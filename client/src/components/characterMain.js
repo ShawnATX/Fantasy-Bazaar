@@ -4,7 +4,7 @@ import { Row, Col } from "reactstrap";
 const CharacterMain = (props) => {
   return (
     <div>
-      <Row className="mt-5 px-5">
+      <Row className="mt-5 px-5 mb-3">
         <Col className="text-center">
           <button
             href="#Inventory"
@@ -12,11 +12,10 @@ const CharacterMain = (props) => {
             className="text-center"
             onClick={() => props.setViewState("Inventory")}
           >
-            Manage Inventory
+            Manage {props.characterObject.characterName}'s Inventory
           </button>
         </Col>
-      </Row>
-      <Row className="my-5 px-5">
+
         <Col className="text-center">
           <button
             href="#Store"
@@ -24,7 +23,7 @@ const CharacterMain = (props) => {
             className="text-center"
             onClick={() => props.setViewState("Store")}
           >
-            Visit The Bazaar
+            Go Shopping
           </button>
         </Col>
       </Row>

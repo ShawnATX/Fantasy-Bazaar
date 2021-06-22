@@ -18,56 +18,27 @@ const Landing = () => {
         //no session exixts, do nothing
       }
     }
-    //   const threeScript = document.createElement("script");
-    //   threeScript.async = false;
-    //   const vantaScript = document.createElement("script");
-    //   vantaScript.async = true;
-    //   const fogScript = document.createElement("script");
-    //   threeScript.src =
-    //     "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js";
-    //   vantaScript.src =
-    //     "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js";
-    //   fogScript.innerHTML = `
-    //   if (window.VANTA){
-    //     VANTA.FOG({
-    //       el: ".app",
-    //       mouseControls: true,
-    //       touchControls: true,
-    //       gyroControls: false,
-    //       minHeight: 200.00,
-    //       minWidth: 200.00,
-    //       highlightColor: 0x64b61,
-    //       midtoneColor: 0x1556b1,
-    //       lowlightColor: 0x343452,
-    //       baseColor: 0x0,
-    //       blurFactor: 0.50,
-    //       speed: 0.90,
-    //       zoom: 2.30
-    //     })
-    //   }`;
-    //   document.body.appendChild(threeScript);
-    //   document.body.appendChild(vantaScript);
-    //   document.body.appendChild(fogScript);
-    //   return () => {
-    //     document.body.removeChild(threeScript);
-    //     document.body.removeChild(vantaScript);
-    //     document.body.removeChild(fogScript);
-    //   };
   });
 
   const getSessionUser = () => {
     API.getSessionUser()
       .then((res) => {
-        authenticationState.userHasAuthenticated(true, {
-          email: res.data.email,
-          bazaars: res.data.bazaars,
-          characters: res.data.characters,
-          id: res.data.id,
-        });
+        if (res.status === 200) {
+          authenticationState
+            .userHasAuthenticated(true, {
+              email: res.data.email,
+              bazaars: res.data.bazaars,
+              characters: res.data.characters,
+              id: res.data.id,
+            })
+            .then(() => {
+              history.push("/userhome");
+            });
+        } else {
+          return;
+        }
       })
-      .then(() => {
-        history.push("/userhome");
-      });
+      .catch((err) => {});
   };
 
   return (

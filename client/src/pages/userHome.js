@@ -29,12 +29,16 @@ function UserHome() {
   const getSessionUser = () => {
     API.getSessionUser()
       .then((res) => {
-        authenticationState.userHasAuthenticated(true, {
-          email: res.data.email,
-          bazaars: res.data.bazaars,
-          characters: res.data.characters,
-          id: res.data.id,
-        });
+        if (res.status === 200) {
+          authenticationState.userHasAuthenticated(true, {
+            email: res.data.email,
+            bazaars: res.data.bazaars,
+            characters: res.data.characters,
+            id: res.data.id,
+          });
+        } else {
+          history.push("/");
+        }
       })
       .then(() => {
         getCharacters();
@@ -48,7 +52,6 @@ function UserHome() {
 
   const checkParams = () => {
     if (params.get("bazaar")) {
-      console.log("bazaar");
       console.log(bazaars);
     } else if (params.get("character")) {
       console.log("character");
@@ -102,24 +105,13 @@ function UserHome() {
   };
 
   const handleLogout = () => {
-    API.logoutUser().then((res) => {
-      if (res.status === 200) {
-        authenticationState.userHasAuthenticated({
-          isAuthenticated: false,
-          user: {},
-        });
-        history.push("/");
-      } else {
-        alert.show("Weird logout error happening...");
-      }
-    });
+    history.push("/logout");
   };
 
   const renderPage = () => {
     if (pageState === "user") {
       return (
         <div>
-          <NavbarComponent />
           <h1 className="display-3">User Home</h1>
           <Row>
             <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
@@ -175,6 +167,12 @@ function UserHome() {
 
   return (
     <Container className="text-center">
+      <NavbarComponent
+        characters={characters}
+        bazaars={bazaars}
+        goToCharacterHome={goToCharacterHome}
+        goToBazaarHome={goToBazaarHome}
+      />
       {renderPage()}
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
