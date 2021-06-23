@@ -24,12 +24,33 @@ button {
   font-size: x-large;
   font-weight: bold;
 }
-
 .btn-inline {
   font-size: x-large;
   font-weight: bold;
 }
-
+.list-group-item {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}
+.card {
+  border-color: #6c757d;
+}
+.card-header {
+  color: white;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  font-size: large;
+  font-weight: bold;
+}
+.navbar-brand {
+  background-color: #343a40;
+  color: white;
+}
+.nav-link {
+  background-color: #343a40;
+  color: white;
+}
 .splashBtn {
   font-size: x-large;
 }

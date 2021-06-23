@@ -2,16 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import {
-  Container,
-  FormGroup,
-  Form,
-  Label,
-  Input,
-  Row,
-  Col,
-  Button,
-} from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import API from "../utils/API";
 
 function NewUserType() {
@@ -54,43 +49,45 @@ function NewUserType() {
             alt="Create a new Bazaar"
             className="text-center"
           >
-            <Button className="splashBtn">Create a new Bazaar</Button>
+            <Button variant="dark" size="lg" block>
+              Create a new Bazaar
+            </Button>
           </Link>
         </Col>
       </Row>
       <Form>
         <Row className="mt-5 px-5 text-center">
-          <Col md={{ size: 6, offset: 3 }}>
+          <Col md={12}>
             {validBazaarCode ? (
               <Link
                 to={"/newusercreds/player?bazaar=" + formObject.bazaarCode}
                 alt="Join a bazaar"
                 className="text-center"
               >
-                <Button size="lg" active>
+                <Button variant="dark" size="lg" active>
                   Join a bazaar
                 </Button>
               </Link>
             ) : (
-              <Button size="lg" disabled>
+              <Button variant="dark" size="lg" disabled>
                 Join a bazaar
               </Button>
             )}
 
-            <FormGroup>
-              <Input
+            <Form.Group>
+              <Form.Control
                 name="bazaarCode"
                 id="bazaarCode"
                 placeholder="Bazaar Join Code"
                 onChange={handleInputChange}
               />
-            </FormGroup>
+            </Form.Group>
           </Col>
         </Row>
         <Row className="text-center">
           <Col>
             <Link to="/" alt="Home" className="text-center">
-              <Button className="splashBtn">Home</Button>
+              <Button variant="dark">Home</Button>
             </Link>
           </Col>
         </Row>

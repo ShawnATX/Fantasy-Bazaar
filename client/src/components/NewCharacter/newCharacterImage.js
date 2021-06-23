@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Container, Row, Input } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import ImageChoices from "./imageChoices";
 import API from "../../utils/API";
-// import { Image, CloudinaryContext } from "cloudinary-react";
 
 const NewCharacterImage = (props) => {
   const { handleInputChange, characterObject } = props;
@@ -25,8 +27,14 @@ const NewCharacterImage = (props) => {
     <Container>
       <Row>
         <legend>Upload Your Own Image:</legend>
-        <Input type="file" name="fileInput" onChange={fileChangedHandler} />
-        <button onClick={uploadHandler}>Upload</button>
+        <Form.Control
+          type="file"
+          name="fileInput"
+          onChange={fileChangedHandler}
+        />
+        <Button variant="secondary" onClick={uploadHandler}>
+          Upload
+        </Button>
       </Row>
 
       <ImageChoices handleInputChange={handleInputChange} />

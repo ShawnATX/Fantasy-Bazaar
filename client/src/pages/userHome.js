@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Col, Row, ListGroup, ListGroupItem } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ListGroup from "react-bootstrap/ListGroup";
 import API from "../utils/API";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
@@ -118,7 +121,7 @@ function UserHome() {
               Characters
               <ListGroup>
                 {characters.map((character) => (
-                  <ListGroupItem
+                  <ListGroup.Item
                     tag="button"
                     key={character._id}
                     onClick={() => {
@@ -126,11 +129,11 @@ function UserHome() {
                     }}
                   >
                     {character.characterName}
-                  </ListGroupItem>
+                  </ListGroup.Item>
                 ))}
-                <ListGroupItem tag="button" onClick={newCharacter}>
+                <ListGroup.Item tag="button" onClick={newCharacter}>
                   + New Character
-                </ListGroupItem>
+                </ListGroup.Item>
               </ListGroup>
             </Col>
 
@@ -138,7 +141,7 @@ function UserHome() {
               Bazaars
               <ListGroup>
                 {bazaars.map((bazaar) => (
-                  <ListGroupItem
+                  <ListGroup.Item
                     tag="button"
                     key={bazaar._id}
                     onClick={() => {
@@ -146,11 +149,11 @@ function UserHome() {
                     }}
                   >
                     {bazaar.bazaarName}
-                  </ListGroupItem>
+                  </ListGroup.Item>
                 ))}
-                <ListGroupItem tag="button" onClick={newBazaar}>
+                <ListGroup.Item tag="button" onClick={newBazaar}>
                   + New Bazaar
-                </ListGroupItem>
+                </ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>

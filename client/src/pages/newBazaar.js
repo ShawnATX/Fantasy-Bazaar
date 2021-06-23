@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Row, Col } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import API from "../utils/API";
 import NewBazaarMain from "../components/newBazaarMain";
 import NewBazaarSettings from "../components/newBazaarSettings";

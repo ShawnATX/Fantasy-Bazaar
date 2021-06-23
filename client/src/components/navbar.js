@@ -1,60 +1,42 @@
 import React from "react";
-
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavbarBrand,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavbarComponent = (props) => {
   const { characters, bazaars, goToCharacterHome, goToBazaarHome } = props;
   return (
-    <Navbar dark expand="md">
-      <NavbarBrand>Fantasy Bazaar</NavbarBrand>
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
       <Nav className="mr-auto" navbar>
-        <NavItem>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Characters
-            </DropdownToggle>
-            <DropdownMenu>
-              {characters.map((character) => (
-                <DropdownItem
-                  key={character._id}
-                  onClick={() => {
-                    goToCharacterHome(character);
-                  }}
-                >
-                  {character.characterName}
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </NavItem>
-        <NavItem>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Bazaars
-            </DropdownToggle>
-            <DropdownMenu>
-              {bazaars.map((bazaar) => (
-                <DropdownItem
-                  key={bazaar._id}
-                  onClick={() => {
-                    goToBazaarHome(bazaar);
-                  }}
-                >
-                  {bazaar.bazaarName}
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </NavItem>
+        <Nav.Item>
+          <NavDropdown id="nav-dropdown-chracters" title="Characters">
+            {characters.map((character) => (
+              <NavDropdown.Item
+                key={character._id}
+                onClick={() => {
+                  goToCharacterHome(character);
+                }}
+              >
+                {character.characterName}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+        </Nav.Item>
+        <Nav.Item>
+          <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
+            {bazaars.map((bazaar) => (
+              <NavDropdown.Item
+                key={bazaar._id}
+                onClick={() => {
+                  goToBazaarHome(bazaar);
+                }}
+              >
+                {bazaar.bazaarName}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+        </Nav.Item>
       </Nav>
     </Navbar>
   );

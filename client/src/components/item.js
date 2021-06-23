@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
-import { Row, Col, Spinner } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import UserContext from "../utils/userContext";
 
 const Item = (props) => {
@@ -107,11 +110,12 @@ const Item = (props) => {
       <Col>
         {/* Disable purchase button if it is too expensive */}
         {waitingResponse ? (
-          <Spinner color="light" role="status">
+          <Spinner variant="light" role="status">
             <span className="sr-only"></span>
           </Spinner>
         ) : (
-          <button
+          <Button
+            variant="secondary"
             className="btn-small my-1 float-right"
             onClick={() => props.action(props.item)}
             disabled={
@@ -122,7 +126,7 @@ const Item = (props) => {
             }
           >
             {props.button}
-          </button>
+          </Button>
         )}
       </Col>
     </Row>

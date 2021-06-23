@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Input,
-  Button,
-  ButtonGroup,
-  UncontrolledTooltip,
-} from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const NewBazaarMain = (props) => {
   const { formObject, setFormObject, setPageState } = props;
@@ -24,16 +20,16 @@ const NewBazaarMain = (props) => {
     <Row className="my-1">
       <Col
         className="text-center"
-        sm="12"
-        md={{ size: 6, offset: 3 }}
-        lg={{ size: 8, offset: 2 }}
+        sm={12}
+        md={{ span: 6, offset: 3 }}
+        lg={{ span: 8, offset: 2 }}
       >
-        <Input
+        <input
           name="bazaarName"
           placeholder="Bazaar Name"
           id="bazaarName"
           onChange={handleInputChange}
-        ></Input>
+        ></input>
         <ButtonGroup className="my-2" vertical>
           <Button
             className="my-1"

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../utils/userContext";
-import { Button, Row, Col } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import ListSection from "../listSection";
 import CharacterHeader from "../characterHeader";

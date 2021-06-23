@@ -1,5 +1,9 @@
 import React from "react";
-import { Row, Col, UncontrolledTooltip } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const NewBazaarSettings = (props) => {
   const { formObject, setFormObject, setPageState, saveNewBazaar } = props;
@@ -25,12 +29,7 @@ const NewBazaarSettings = (props) => {
 
   return (
     <Row className="my-1">
-      <Col
-        className="text-center"
-        sm="12"
-        md={{ size: 6, offset: 3 }}
-        lg={{ size: 8, offset: 2 }}
-      >
+      <Col className="text-center" sm={12} md={6} lg={8}>
         Require Approval For:
         <div className="form-check form-switch">
           <input
@@ -41,16 +40,22 @@ const NewBazaarSettings = (props) => {
             checked={formObject.requireCustomItemApproval}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="requireCustomItemApproval"
-            id="customItem"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-customItem">
+                Require your approval for any custom items that players add
+              </Tooltip>
+            }
           >
-            Custom Item Addition
-          </label>
-          <UncontrolledTooltip placement="right" target="customItem">
-            Require your approval for any custom items that players add
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="requireCustomItemApproval"
+              id="customItem"
+            >
+              Custom Item Addition
+            </label>
+          </OverlayTrigger>
         </div>
         <div className="form-check form-switch">
           <input
@@ -61,110 +66,143 @@ const NewBazaarSettings = (props) => {
             checked={formObject.requireWalletAdditionApproval}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="requireWalletAdditionApproval"
-            id="walletAdditions"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-walletAddition">
+                Require your approval for any gold added to character wallets,
+                such as loot or payments from in-game
+              </Tooltip>
+            }
           >
-            Wallet Additions
-          </label>
-          <UncontrolledTooltip placement="right" target="walletAdditions">
-            Require your approval for any gold added to character wallets, such
-            as loot or payments from in-game
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="requireWalletAdditionApproval"
+              id="walletAdditions"
+            >
+              Wallet Additions
+            </label>
+          </OverlayTrigger>
         </div>
         <div className="form-check form-switch">
           <input
-            className="form-check-input form-control"
+            className="form-check-input"
             type="checkbox"
             id="requireWalletChangeApproval"
             name="requireWalletChangeApproval"
             checked={formObject.requireWalletChangeApproval}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="requireWalletChangeApproval"
-            id="walletChanges"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-walletChanges">
+                Require your approval for any gold added to or removed from
+                character wallets
+              </Tooltip>
+            }
           >
-            All Wallet Changes
-          </label>
-          <UncontrolledTooltip placement="right" target="walletChanges">
-            Require your approval for any gold added to or removed from
-            character wallets
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="requireWalletChangeApproval"
+              id="walletChanges"
+            >
+              All Wallet Changes
+            </label>
+          </OverlayTrigger>
         </div>
         <div className="form-check form-switch">
           <input
-            className="form-check-input form-control"
+            className="form-check-input"
             type="checkbox"
             id="requireSaleApproval"
             name="requireSaleApproval"
             checked={formObject.requireSaleApproval}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="requireSaleApproval"
-            id="itemSale"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-itemSales">
+                Require your approval for items sold to your bazaar by
+                characters
+              </Tooltip>
+            }
           >
-            Item Sales
-          </label>
-          <UncontrolledTooltip placement="right" target="itemSale">
-            Require your approval for items sold to your bazaar by characters
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="requireSaleApproval"
+              id="itemSale"
+            >
+              Item Sales
+            </label>
+          </OverlayTrigger>
         </div>
         <div className="form-check form-switch">
           <input
-            className="form-check-input form-control"
+            className="form-check-input"
             type="checkbox"
             id="requirePurchaseApproval"
             name="requirePurchaseApproval"
             checked={formObject.requirePurchaseApproval}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="requirePurchaseApproval"
-            id="itemPurchase"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-itemPurchases">
+                Require your approval for items purchased from your bazaar by
+                characters
+              </Tooltip>
+            }
           >
-            Item Purchases
-          </label>
-          <UncontrolledTooltip placement="right" target="itemPurchase">
-            Require your approval for items purchased from your bazaar by
-            characters
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="requirePurchaseApproval"
+              id="itemPurchase"
+            >
+              Item Purchases
+            </label>
+          </OverlayTrigger>
         </div>
         General Settings:
         <div className="form-check form-switch">
           <input
-            className="form-check-input form-control"
+            className="form-check-input"
             type="checkbox"
             id="limitedInventory"
             name="limitedInventory"
             checked={formObject.limitedInventory}
             onChange={handleInputChange}
           />
-          <label
-            className="form-check-label"
-            htmlFor="itemPurchases"
-            id="stockLimits"
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-limitedInventory">
+                Set limits on available inventory items and amounts in your
+                bazaar
+              </Tooltip>
+            }
           >
-            Set Stock Limits
-          </label>
-          <UncontrolledTooltip placement="right" target="stockLimits">
-            Set limits on available inventory items and amounts in your bazaar
-          </UncontrolledTooltip>
+            <label
+              className="form-check-label"
+              htmlFor="itemPurchases"
+              id="stockLimits"
+            >
+              Set Stock Limits
+            </label>
+          </OverlayTrigger>
         </div>
         <Row className="sticky-footer mt-3">
           <Col className="text-center">
-            <button
+            <Button
+              variant="secondary"
               type="submit"
               className="text-center btn-small"
               onClick={handleFormSubmit}
             >
               Finish!
-            </button>
+            </Button>
           </Col>
         </Row>
       </Col>

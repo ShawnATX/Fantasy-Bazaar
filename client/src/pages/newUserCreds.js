@@ -1,35 +1,24 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
-import {
-  Container,
-  FormGroup,
-  Form,
-  Label,
-  Input,
-  Button,
-  FormFeedback,
-} from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import API from "../utils/API";
 
-function NewUserCreds(props) {
+const NewUserCreds = (props) => {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({
     email: "",
     password: "",
   });
+  const [uniqueEmail, setUniqueEmail] = useState(false);
   const [formReady, setFormReady] = useState(false);
   const history = useHistory();
-  const alert = useAlert();
   const { type } = props;
   const params = new URLSearchParams(useLocation().search);
-
-  useEffect(() => {
-    if (authenticationState.isAuthenticated) {
-      history.push("/userhome");
-    }
-  }, []);
 
   const handleInputChange = (event) => {
     let { name, value } = event.target;
@@ -37,6 +26,15 @@ function NewUserCreds(props) {
       value = value.trim();
     }
     setFormObject({ ...formObject, [name]: value });
+    if (name === "password") {
+      if (value.length > 6 && uniqueEmail) {
+        setFormReady(true);
+      }
+    } else {
+      if (value.length > 6 && uniqueEmail) {
+        setFormReady(true);
+      }
+    }
   };
 
   const goHome = (event) => {
@@ -44,9 +42,8 @@ function NewUserCreds(props) {
     history.push("/");
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    if (formObject.email && formObject.password) {
+  const handleFormSubmit = () => {
+    if (formReady) {
       saveNewUser(formObject);
     }
   };
@@ -54,14 +51,14 @@ function NewUserCreds(props) {
   const saveNewUser = (userCreds) => {
     API.saveUser(userCreds)
       .then((res) => {
-        if (res.status === 200) {
-          let userContext = {
+        if (res.status === 201) {
+          let userData = {
             email: res.data.email,
             bazaars: res.data.bazaars,
             characters: res.data.characters,
             id: res.data._id,
           };
-          loginNewUser(userCreds, userContext);
+          loginNewUser(userCreds, userData);
         }
       })
       .catch((err) => {
@@ -69,14 +66,13 @@ function NewUserCreds(props) {
       });
   };
 
-  const loginNewUser = (userCreds, userContext) => {
+  const loginNewUser = (userCreds, userData) => {
     API.loginUser(userCreds)
       .then((res) => {
         if (res.status === 200) {
           authenticationState.userHasAuthenticated(true, {
-            ...userContext,
+            ...userData,
           });
-          console.log("Login done");
           if (type === "player") {
             let code = params.get("bazaar");
             history.push("/newCharacter?bazaar=" + code);
@@ -91,16 +87,13 @@ function NewUserCreds(props) {
   };
 
   function checkEmailUniqueness() {
-    //@@TODO update email length and add regex
-    if (formObject.email.length > 2) {
+    if (formObject.email.length > 4) {
       API.checkEmail({ email: formObject.email })
         .then((res) => {
           if (res.data === null) {
-            setFormReady(true);
-            console.log("no conflict");
+            setUniqueEmail(true);
           } else {
-            setFormReady(false);
-            console.log("email conflict");
+            setUniqueEmail(false);
           }
         })
         .catch((err) => {
@@ -111,80 +104,54 @@ function NewUserCreds(props) {
 
   return (
     <Container>
-      <Form onSubmit={handleFormSubmit} className="text-center">
-        {formReady || formObject.email.length === 0 ? (
-          <FormGroup row className="mt-4">
-            <Label className="text-center" for="email">
-              Email Address
-            </Label>
-            <Input
-              valid
-              name="email"
-              id="email"
-              placeholder="myemailaddress@interwebs.com"
-              onChange={handleInputChange}
-              onBlur={checkEmailUniqueness}
-            />
-          </FormGroup>
-        ) : (
-          <FormGroup row className="mt-4">
-            <Label className="text-center" for="email">
-              Email Address
-            </Label>
-            <Input
-              invalid
-              name="email"
-              id="email"
-              placeholder="myemailaddress@interwebs.com"
-              onChange={handleInputChange}
-              onBlur={checkEmailUniqueness}
-            />
-            <FormFeedback>
-              Looks like that email address is already registered
-            </FormFeedback>
-          </FormGroup>
-        )}
-        {formObject.password.length >= 7 || formObject.password.length === 0 ? (
-          <FormGroup row>
-            <Label for="password">Password</Label>
-            <Input
-              valid
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              onChange={handleInputChange}
-            />
-          </FormGroup>
-        ) : (
-          <FormGroup row>
-            <Label for="password">Password</Label>
-            <Input
-              invalid
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              onChange={handleInputChange}
-            />
-            <FormFeedback>
-              Password needs to be 7 characters or longer
-            </FormFeedback>
-          </FormGroup>
-        )}
-        {formReady && formObject.password.length >= 7 ? (
-          <Button className="btn-small ml-3">Submit</Button>
-        ) : (
-          <Button className="btn-small ml-3" disabled>
-            Submit
-          </Button>
-        )}
-        <Button className="btn-small ml-3" onClick={goHome}>
+      <Form
+        onSubmit={handleFormSubmit}
+        className="text-center"
+        validated={formReady}
+        noValidate
+      >
+        <Form.Group className="mt-4">
+          <Form.Label className="text-center">Email Address</Form.Label>
+          <Form.Control
+            required
+            name="email"
+            id="email"
+            type="email"
+            placeholder="myemailaddress@interwebs.com"
+            onChange={handleInputChange}
+            onBlur={checkEmailUniqueness}
+          />
+          <Form.Control.Feedback type="invalid">
+            Looks like thats not an email address, or it is already registered
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            required
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Super Secure Password"
+            onChange={handleInputChange}
+          />
+          <Form.Control.Feedback type="invalid">
+            Password needs to be 7 characters or longer
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Button
+          className="btn-small ml-3"
+          variant="dark"
+          onClick={() => handleFormSubmit()}
+        >
+          Submit
+        </Button>
+        <Button className="btn-small ml-3" variant="dark" onClick={goHome}>
           Back Home
         </Button>
       </Form>
     </Container>
   );
-}
+};
 
 export default NewUserCreds;

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import API from "../utils/API";
-import { Container, Row, Col } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 

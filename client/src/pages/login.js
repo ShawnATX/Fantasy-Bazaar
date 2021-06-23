@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { Container, Form, FormGroup, Input, Row, Col } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import API from "../utils/API";
@@ -56,33 +59,36 @@ const Login = () => {
 
   return (
     <Container className="text-center">
-      <Row>
-        <Form onSubmit={handleFormSubmit} className="mt-5">
-          <Col md={{ size: 6, offset: 3 }}>
-            <FormGroup row className="mb-4">
-              <Input
-                name="email"
-                id="email"
-                placeholder="Email Address"
-                onChange={handleInputChange}
-              />
-            </FormGroup>
-            <FormGroup row className="mb-4">
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                onChange={handleInputChange}
-              />
-            </FormGroup>
-          </Col>
-          <Row>
-            <Col className="text-center mt-3">
-              <button>Submit</button>
+      <Row className="text-center">
+        <Col>
+          <Form onSubmit={handleFormSubmit} className="mt-5">
+            <Col>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
             </Col>
-          </Row>
-        </Form>
+            <Row>
+              <Col className="text-center mt-3">
+                <button>Submit</button>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
       </Row>
       <Col className="text-center mt-3">
         <Link to="/">

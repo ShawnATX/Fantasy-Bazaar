@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import API from "../utils/API";
 import ListSection from "./listSection";
 
@@ -29,14 +31,14 @@ const StoreFront = (props) => {
     <div>
       <Row className="mt-5 px-5">
         <Col className="text-center">
-          <button
-            href=""
+          <Button
+            variant="secondary"
             alt="Back Home"
             className="text-center mb-1 btn-small"
             onClick={() => setViewState("Home")}
           >
             Back To Character Home
-          </button>
+          </Button>
         </Col>
       </Row>
       {buildList()}

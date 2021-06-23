@@ -1,17 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import {
-  Container,
-  Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  FormGroup,
-  Button,
-} from "reactstrap";
-import { useAlert } from "react-alert";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalFooter from "react-bootstrap/ModalFooter";
 import API from "../utils/API";
 import NewCharacterMain from "../components/NewCharacter/newCharacterMain";
 import NewCharacterEquipment from "../components/NewCharacter/newCharacterEquipment";
@@ -26,10 +22,9 @@ function NewCharacter(props) {
   const [bazaarObject, setBazaarObject] = useState({});
   const [pageState, setPageState] = useState("Main");
   const history = useHistory();
-  const alert = useAlert();
   const bazaarCode = new URLSearchParams(useLocation().search).get("bazaar");
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  const [showModal, setShowModal] = useState(false);
+  const toggle = () => setShowModal(!showModal);
 
   useEffect(() => {
     getBazaarDeets(bazaarCode);
@@ -47,7 +42,7 @@ function NewCharacter(props) {
         })
         .catch((err) => console.log(err));
     } else {
-      setModal(true);
+      setShowModal(true);
     }
   };
 
@@ -99,25 +94,22 @@ function NewCharacter(props) {
 
   return (
     <Container className="text-center">
-      <Modal isOpen={modal} toggle={toggle}>
+      <Modal show={showModal}>
         <ModalHeader>
           Enter the Join Code for the bazaar you wish to join
         </ModalHeader>
         <ModalBody>
-          <FormGroup>
-            <Input
+          <Form.Group>
+            <Form.Control
               name="bazaarCode"
               id="bazaarCode"
               placeholder="Bazaar Join Code"
               onChange={handleBazaarCodeInput}
             />
-          </FormGroup>
+          </Form.Group>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Save
-          </Button>{" "}
-          <Button color="secondary" onClick={() => history.push("/userhome")}>
+          <Button variant="dark" onClick={() => history.push("/userhome")}>
             Back Home
           </Button>
         </ModalFooter>

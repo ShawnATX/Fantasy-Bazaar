@@ -1,30 +1,32 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const CharacterMain = (props) => {
   return (
     <div>
       <Row className="mt-5 px-5 mb-3">
         <Col className="text-center">
-          <button
-            href="#Inventory"
+          <Button
+            variant="secondary"
             alt="Manage Inventory"
             className="text-center"
             onClick={() => props.setViewState("Inventory")}
           >
             Manage {props.characterObject.characterName}'s Inventory
-          </button>
+          </Button>
         </Col>
 
         <Col className="text-center">
-          <button
-            href="#Store"
+          <Button
+            variant="secondary"
             alt="Visit The Bazaar"
             className="text-center"
             onClick={() => props.setViewState("Store")}
           >
             Go Shopping
-          </button>
+          </Button>
         </Col>
       </Row>
     </div>

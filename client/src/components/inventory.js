@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../utils/userContext";
-import { Row, Col } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import API from "../utils/API";
 import Item from "./item";
 
@@ -25,13 +27,14 @@ const Inventory = (props) => {
     <div>
       <Row className="mt-4 px-5">
         <Col className="mb-1 text-center">
-          <button
+          <Button
+            variant="secondary"
             alt="Character Home"
             className="text-center btn-small"
             onClick={() => props.setViewState("Home")}
           >
             Back to Character Home
-          </button>
+          </Button>
         </Col>
       </Row>
       {props.items.length > 0

@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import API from "../utils/API";
-import { Container, Spinner } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 
 const Logout = () => {
   const { authenticationState } = useContext(UserContext);
@@ -22,7 +23,7 @@ const Logout = () => {
   return (
     <Container className="text-center">
       <legend>Logout working</legend>
-      <Spinner color="light" role="status">
+      <Spinner variant="light" role="status">
         <span className="sr-only"> </span>
       </Spinner>
     </Container>

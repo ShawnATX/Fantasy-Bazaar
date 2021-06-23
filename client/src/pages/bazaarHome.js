@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ListGroup from "react-bootstrap/ListGroup";
 import API from "../utils/API";
 
 const BazaarHome = (props) => {
@@ -43,7 +46,7 @@ const BazaarHome = (props) => {
       {bazaarObject.characters.length > 0 ? (
         <ListGroup>
           {charactersObject.map((character) => (
-            <ListGroupItem
+            <ListGroup.Item
               tag="button"
               key={character._id}
               onClick={() => {
@@ -51,7 +54,7 @@ const BazaarHome = (props) => {
               }}
             >
               {character.characterName}
-            </ListGroupItem>
+            </ListGroup.Item>
           ))}
         </ListGroup>
       ) : (

@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  FormGroup,
-  Form,
-  Label,
-  Input,
-  Button,
-  FormFeedback,
-  Row,
-  Col,
-} from "reactstrap";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { useAlert } from "react-alert";
 import NewCharacterImage from "./newCharacterImage";
 
@@ -44,66 +37,70 @@ function NewCharacterMain(props) {
   };
 
   return (
-    <Col md={{ size: 8, offset: 2 }}>
+    <Col md={{ span: 8, offset: 2 }}>
       <Form className="text-center">
         {characterObject.characterName.length === 0 ? (
-          <FormGroup row className="mt-4">
-            <Label className="text-center" for="characterName">
-              Character Name
-            </Label>
-            <Input
+          <Form.Group row className="mt-4">
+            <Form.Label className="text-center">Character Name</Form.Label>
+            <Form.Control
               invalid
               name="characterName"
               id="characterName"
               placeholder="Awesome Character Name"
               onChange={handleInputChange}
             />
-            <FormFeedback>Every character needs a name...</FormFeedback>
-          </FormGroup>
+            <Form.Control.Feedback>
+              Every character needs a name...
+            </Form.Control.Feedback>
+          </Form.Group>
         ) : (
-          <FormGroup row className="mt-4">
-            <Label className="text-center" for="characterName">
-              Character Name
-            </Label>
-            <Input
+          <Form.Group row className="mt-4">
+            <Form.Label className="text-center">Character Name</Form.Label>
+            <Form.Control
               valid
               name="characterName"
               id="characterName"
               placeholder="Awesome Character Name"
               onChange={handleInputChange}
             />
-          </FormGroup>
+          </Form.Group>
         )}
         <NewCharacterImage
           handleInputChange={handleInputChange}
           characterObject={characterObject}
         />
 
-        <Label for="startingGold">Starting Gold</Label>
-
         {walletValid ? (
-          <FormGroup>
-            <Input
+          <Form.Group>
+            <Form.Label>Starting Gold</Form.Label>
+            <Form.Control
               valid
               name="wallet"
               id="startingGold"
               onChange={validateNumberInput}
             />
-          </FormGroup>
+          </Form.Group>
         ) : (
-          <FormGroup>
-            <Input
+          <Form.Group>
+            <Form.Label>Starting Gold</Form.Label>
+            <Form.Control
               invalid
               name="wallet"
               id="startingGold"
               placeholder="Enter your starting gold"
               onChange={validateNumberInput}
             />
-            <FormFeedback>Oh noes! You need a number in here</FormFeedback>
-          </FormGroup>
+            <Form.Control.Feedback>
+              Oh noes! You need a number in here
+            </Form.Control.Feedback>
+          </Form.Group>
         )}
 
-        <Button onClick={nextPage} className="btn-small ml-3">
+        <Button
+          variant="secondary"
+          onClick={nextPage}
+          className="btn-small ml-3"
+        >
           Add Starting Equipment
         </Button>
       </Form>
