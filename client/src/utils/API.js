@@ -108,7 +108,7 @@ export default {
     return axios.post("/api/bazaars", bazaarData);
   },
   // upload character image
-  uploadImage: async function (formData, characterObject) {
+  uploadImage: async function (formData) {
     try {
       const response = await axios.post(
         "https://api.cloudinary.com/v1_1/ddpe6rr7l/upload",
@@ -117,7 +117,10 @@ export default {
           headers: { "X-Requested-With": "XMLHttpRequest" },
         }
       );
-      characterObject.characterImage = response.data.url;
+      if (response.status === 400) {
+        console.log(response);
+      }
+      return response.data;
     } catch (err) {
       return console.log(err);
     }

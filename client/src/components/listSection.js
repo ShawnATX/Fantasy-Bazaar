@@ -1,5 +1,7 @@
 import React from "react";
 import Item from "./item";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
 
 const ListSection = (props) => {
   const { type, items, waitingResponse, action, button } = props;
@@ -20,69 +22,53 @@ const ListSection = (props) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-header p-1" id={strippedType + "head"}>
+    <Accordion>
+      <Card>
         <h1 className="mb-0 text-center">
-          <button
-            className="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target={"#" + strippedType + "body"}
-            aria-expanded="true"
-            aria-controls={strippedType + "body"}
-          >
+          <Accordion.Toggle as={Card.Header} eventKey={strippedType + "head"}>
             {type}
-          </button>
+          </Accordion.Toggle>
         </h1>
-      </div>
-      <div
-        id={strippedType + "body"}
-        className={"accordion-collapse " + props.expanded}
-        aria-labelledby={strippedType + "head"}
-        data-parent="#itemMenu"
-      >
-        {buildSubtypeList()}
-        {subtypeArr.map((subtypeObject) => (
-          <div className="card" key={subtypeObject.strippedSubtype}>
-            <div
-              className="card-header p-1"
-              id={subtypeObject.strippedSubtype + "head"}
-            >
-              <h3 className="mb-0 text-center">
-                <button
-                  className="accordion-button subtype-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target={"#" + subtypeObject.strippedSubtype + "body"}
-                  aria-expanded="true"
-                  aria-controls={subtypeObject.strippedSubtype + "body"}
-                >
-                  {subtypeObject.subtype}
-                </button>
-              </h3>
-            </div>
-            <div
-              id={subtypeObject.strippedSubtype + "body"}
-              className={"accordion-collapse " + props.expanded}
-              aria-labelledby={subtypeObject.strippedSubtype + "head"}
-              data-parent="#itemMenu"
-            >
-              <div className="card-body">
-                {getItems(subtypeObject.subtype).map((item) => (
-                  <Item
-                    key={item._id}
-                    item={item}
-                    action={action}
-                    button={button}
-                    waitingResponse={waitingResponse}
-                  />
-                ))}
-              </div>
-            </div>
+        <Accordion.Collapse
+          eventKey={strippedType + "head"}
+          id={strippedType + "body"}
+          data-parent="#itemMenu"
+        >
+          <div>
+            {buildSubtypeList()}
+            {subtypeArr.map((subtypeObject) => (
+              <Accordion key={subtypeObject.strippedSubtype}>
+                <Card key={subtypeObject.strippedSubtype}>
+                  <Accordion.Toggle
+                    className="p-1"
+                    as={Card.Header}
+                    eventKey={subtypeObject.strippedSubtype}
+                    id={subtypeObject.strippedSubtype + "head"}
+                  >
+                    <h4 className="mb-0 text-center">
+                      {subtypeObject.subtype}
+                    </h4>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey={subtypeObject.strippedSubtype}>
+                    <Card.Body>
+                      {getItems(subtypeObject.subtype).map((item) => (
+                        <Item
+                          key={item._id}
+                          item={item}
+                          action={action}
+                          button={button}
+                          waitingResponse={waitingResponse}
+                        />
+                      ))}
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
   );
 };
 

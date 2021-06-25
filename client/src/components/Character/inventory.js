@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../utils/userContext";
+import UserContext from "../../utils/userContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import API from "../utils/API";
-import Item from "./item";
+import API from "../../utils/API";
+import Item from "../item";
 
 const Inventory = (props) => {
   const [itemList, setItemList] = useState([]);

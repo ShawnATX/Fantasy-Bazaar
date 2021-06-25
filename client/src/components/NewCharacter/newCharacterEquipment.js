@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import ListSection from "../listSection";
-import CharacterHeader from "../characterHeader";
+import CharacterHeader from "../Character/characterHeader";
 import EquipmentFooter from "./equipmentFooter";
 
 function NewCharacterEquipment(props) {
@@ -60,7 +60,7 @@ function NewCharacterEquipment(props) {
     })
       .then((res) => {
         updateAuthenticationState(res.data);
-        if (res.status === 200) {
+        if (res.status === 201) {
           history.push("/userhome");
         }
       })

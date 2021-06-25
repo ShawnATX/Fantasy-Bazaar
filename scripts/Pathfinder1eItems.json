@@ -1,0 +1,1261 @@
+[
+  {
+    "name": "Padded",
+    "description": {
+      "ac": "+1 Armor",
+      "dexBonus": "+8",
+      "armorCheckPenalty": "0",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 5,
+    "weight": 10,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Leather",
+    "description": {
+      "ac": "+2 Armor",
+      "dexBonus": "+6",
+      "armorCheckPenalty": "0",
+      "arcaneSpellFailure": "10%"
+    },
+    "value": 10,
+    "weight": 15,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Studded leather",
+    "description": {
+      "ac": "+3 Armor",
+      "dexBonus": "+5",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 25,
+    "weight": 20,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Chain shirt",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+4",
+      "armorCheckPenalty": "2",
+      "arcaneSpellFailure": "20%"
+    },
+    "value": 100,
+    "weight": 25,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Hide",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+4",
+      "armorCheckPenalty": "-3",
+      "arcaneSpellFailure": "20%"
+    },
+    "value": 15,
+    "weight": 25,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Scale mail",
+    "description": {
+      "ac": "+5 Armor",
+      "dexBonus": "+3",
+      "armorCheckPenalty": "-4",
+      "arcaneSpellFailure": "25%"
+    },
+    "value": 50,
+    "weight": 30,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Chainmail",
+    "description": {
+      "ac": "+6 Armor",
+      "dexBonus": "+2",
+      "armorCheckPenalty": "-5",
+      "arcaneSpellFailure": "30%"
+    },
+    "value": 150,
+    "weight": 40,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Breastplate",
+    "description": {
+      "ac": "+6 Armor",
+      "dexBonus": "+3",
+      "armorCheckPenalty": "-4",
+      "arcaneSpellFailure": "25%"
+    },
+    "value": 200,
+    "weight": 30,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Splint mail",
+    "description": {
+      "ac": "+7 Armor",
+      "dexBonus": "+0",
+      "armorCheckPenalty": "-7",
+      "arcaneSpellFailure": "40%"
+    },
+    "value": 200,
+    "weight": 45,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Banded mail",
+    "description": {
+      "ac": "+7 Armor",
+      "dexBonus": "+1",
+      "armorCheckPenalty": "-6",
+      "arcaneSpellFailure": "35%"
+    },
+    "value": 250,
+    "weight": 35,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Half-plate",
+    "description": {
+      "ac": "+8 Armor",
+      "dexBonus": "+0",
+      "armorCheckPenalty": "-7",
+      "arcaneSpellFailure": "40%"
+    },
+    "value": 600,
+    "weight": 50,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Full plate",
+    "description": {
+      "ac": "+9 Armor",
+      "dexBonus": "+1",
+      "armorCheckPenalty": "-6",
+      "arcaneSpellFailure": "35%"
+    },
+    "value": 1500,
+    "weight": 50,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Buckler",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 5,
+    "weight": 5,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Light Wooden",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 3,
+    "weight": 5,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Light steel",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 9,
+    "weight": 6,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Heavy wooden",
+    "description": {
+      "ac": "+2 Armor",
+      "armorCheckPenalty": "-2",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 7,
+    "weight": 10,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Heavy steel",
+    "description": {
+      "ac": "+2 Armor",
+      "armorCheckPenalty": "-2",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 20,
+    "weight": 15,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Tower",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+2",
+      "armorCheckPenalty": "-10",
+      "arcaneSpellFailure": "50%"
+    },
+    "value": 30,
+    "weight": 45,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Gauntlet",
+    "description": {
+      "damage": "1d3 bludgeoning",
+      "properties": "Unarmed",
+      "crit": "x2"
+    },
+    "value": 2,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Dagger",
+    "description": {
+      "damage": "1d4 piercing or slashing",
+      "properties": "Light Melee, Thrown, range 10",
+      "crit": "19-20/x2"
+    },
+    "value": 2,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Dagger, punching",
+    "description": {
+      "damage": "1d4 piercing or slashing",
+      "properties": "Light Melee",
+      "crit": "x3"
+    },
+    "value": 2,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Gauntlet, spiked",
+    "description": {
+      "damage": "1d4 piercing",
+      "properties": "Light Melee",
+      "crit": "x2"
+    },
+    "value": 5,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Mace, light",
+    "description": {
+      "damage": "1d6 bludgeoning",
+      "properties": "Light Melee",
+      "crit": "x2"
+    },
+    "value": 5,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sickle",
+    "description": {
+      "damage": "1d6 slashing",
+      "properties": "Light Melee, trip",
+      "crit": "x2"
+    },
+    "value": 6,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Club",
+    "description": {
+      "damage": "1d6 bludgeoning",
+      "properties": "One-Handed Melee, Thrown range 10",
+      "crit": "x2"
+    },
+    "value": 0,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Mace, heavy",
+    "description": {
+      "damage": "1d8 bludgeoning",
+      "properties": "One-Handed Melee",
+      "crit": "x2"
+    },
+    "value": 12,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Morningstar",
+    "description": {
+      "damage": "1d8 bludgeoning and piercing",
+      "properties": "One-Handed Melee",
+      "crit": "x2"
+    },
+    "value": 8,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Shortspear",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "One-Handed Melee, thrown range 20",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Longspear",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Two-Handed Melee, brace, reach",
+      "crit": "x3"
+    },
+    "value": 5,
+    "weight": 9,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Quarterstaff",
+    "description": {
+      "damage": "1d6/1d6 bludgeoning",
+      "properties": "Two-Handed Melee, double, monk",
+      "crit": "x2"
+    },
+    "value": 0,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Spear",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Two-Handed Melee, thrown range 20, brace",
+      "crit": "x3"
+    },
+    "value": 2,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Blowgun",
+    "description": {
+      "damage": "1d2 piercing",
+      "properties": "Ranged 20",
+      "crit": "x2"
+    },
+    "value": 2,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Crossbow, heavy",
+    "description": {
+      "damage": "1d10 piercing",
+      "properties": "Ranged 120",
+      "crit": "19-20/x2"
+    },
+    "value": 50,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Crossbow, light",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Ranged 80",
+      "crit": "19-20/x2"
+    },
+    "value": 35,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Dart",
+    "description": {
+      "damage": "1d4 piercing",
+      "properties": "Ranged 20",
+      "crit": "x2"
+    },
+    "value": 0.5,
+    "weight": 0.5,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Javelin",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "Ranged 30",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sling",
+    "description": {
+      "damage": "1d4 bludgeoning",
+      "properties": "Ranged 50",
+      "crit": "x2"
+    },
+    "value": 0,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Simple",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Axe, throwing",
+    "description": {
+      "damage": "1d6 slashing",
+      "properties": "Light Melee, thrown 10",
+      "crit": "x2"
+    },
+    "value": 8,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Hammer, light",
+    "description": {
+      "damage": "1d4 bludgeoning",
+      "properties": "Light Melee, thrown 20",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Handaxe",
+    "description": {
+      "damage": "1d6 slashing",
+      "properties": "Light Melee",
+      "crit": "x3"
+    },
+    "value": 6,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Kukri",
+    "description": {
+      "damage": "1d4 slashing",
+      "properties": "Light Melee",
+      "crit": "18-20/x2"
+    },
+    "value": 8,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Pick, light",
+    "description": {
+      "damage": "1d4 piercing",
+      "properties": "Light Melee",
+      "crit": "x4"
+    },
+    "value": 4,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sap",
+    "description": {
+      "damage": "1d6 bludgeoning",
+      "properties": "Light Melee, nonlethal",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Starknife",
+    "description": {
+      "damage": "1d4 piercing",
+      "properties": "Light Melee, thrown 20",
+      "crit": "x3"
+    },
+    "value": 24,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sword, short",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "Light Melee, thrown 20",
+      "crit": "19-20/x2"
+    },
+    "value": 10,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Battleaxe",
+    "description": {
+      "damage": "1d8 slashing",
+      "properties": "One-Handed Melee",
+      "crit": "x3"
+    },
+    "value": 10,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Flail",
+    "description": {
+      "damage": "1d8 bludgeoning",
+      "properties": "One-Handed Melee, disarm, trip",
+      "crit": "x2"
+    },
+    "value": 8,
+    "weight": 5,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Longsword",
+    "description": {
+      "damage": "1d8 slashing",
+      "properties": "One-Handed Melee",
+      "crit": "19-20/x2"
+    },
+    "value": 15,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Pick, heavy",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "One-Handed Melee",
+      "crit": "x4"
+    },
+    "value": 8,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Rapier",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "One-Handed Melee",
+      "crit": "18-20/x2"
+    },
+    "value": 20,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Scimitar",
+    "description": {
+      "damage": "1d6 slashing",
+      "properties": "One-Handed Melee",
+      "crit": "18-20/x2"
+    },
+    "value": 15,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Trident",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "One-Handed Melee, brace, thrown range 10",
+      "crit": "x2"
+    },
+    "value": 15,
+    "weight": 4,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Warhammer",
+    "description": {
+      "damage": "1d8 bludgeoning",
+      "properties": "One-Handed Melee",
+      "crit": "x3"
+    },
+    "value": 12,
+    "weight": 5,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Falchion",
+    "description": {
+      "damage": "2d4 slashing",
+      "properties": "Two-Handed Melee",
+      "crit": "18-20/x2"
+    },
+    "value": 75,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Glaive",
+    "description": {
+      "damage": "1d10 slashing",
+      "properties": "Two-Handed Melee, reach",
+      "crit": "x3"
+    },
+    "value": 8,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Greataxe",
+    "description": {
+      "damage": "1d12 slashing",
+      "properties": "Two-Handed Melee",
+      "crit": "x3"
+    },
+    "value": 20,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Greatclub",
+    "description": {
+      "damage": "1d10 bludgeoning",
+      "properties": "Two-Handed Melee",
+      "crit": "x2"
+    },
+    "value": 5,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Flail, heavy",
+    "description": {
+      "damage": "1d10 bludgeoning",
+      "properties": "Two-Handed Melee, disarm, trip",
+      "crit": "19-20/x2"
+    },
+    "value": 15,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Greatsword",
+    "description": {
+      "damage": "2d6 slashing",
+      "properties": "Two-Handed Melee",
+      "crit": "19-20/x2"
+    },
+    "value": 50,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Guisarme",
+    "description": {
+      "damage": "2d4 slashing",
+      "properties": "Two-Handed Melee, reach, trip",
+      "crit": "x3"
+    },
+    "value": 9,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Halberd",
+    "description": {
+      "damage": "1d10 piercing or slashing",
+      "properties": "Two-Handed Melee, brace, trip",
+      "crit": "x3"
+    },
+    "value": 10,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Lance",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Two-Handed Melee, reach",
+      "crit": "x3"
+    },
+    "value": 10,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Ranseur",
+    "description": {
+      "damage": "2d4 piercing",
+      "properties": "Two-Handed Melee, disarm, reach",
+      "crit": "x3"
+    },
+    "value": 10,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Scythe",
+    "description": {
+      "damage": "2d4 piercing or slashing",
+      "properties": "Two-Handed Melee, trip",
+      "crit": "x4"
+    },
+    "value": 18,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Longbow",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Ranged 100",
+      "crit": "x3"
+    },
+    "value": 75,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Longbow, composite",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Ranged 110",
+      "crit": "x3"
+    },
+    "value": 100,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Shortbow, composite",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "Ranged 70",
+      "crit": "x3"
+    },
+    "value": 75,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Shortbow",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "Ranged 60",
+      "crit": "x3"
+    },
+    "value": 30,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Martial",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Kama",
+    "description": {
+      "damage": "1d6 slashing",
+      "properties": "Light Melee, monk, trip",
+      "crit": "x2"
+    },
+    "value": 2,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Nunchaku",
+    "description": {
+      "damage": "1d6 bludgeoning",
+      "properties": "Light Melee, monk, disarm",
+      "crit": "x2"
+    },
+    "value": 2,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sai",
+    "description": {
+      "damage": "1d4 bludgeoning",
+      "properties": "Light Melee, monk, disarm",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Siangham",
+    "description": {
+      "damage": "1d6 piercing",
+      "properties": "Light Melee, monk",
+      "crit": "x2"
+    },
+    "value": 3,
+    "weight": 1,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sword, bastard",
+    "description": {
+      "damage": "1d10 slashing",
+      "properties": "One-Handed Melee",
+      "crit": "19-20/x2"
+    },
+    "value": 35,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Waraxe, dwarven",
+    "description": {
+      "damage": "1d10 slashing",
+      "properties": "One-Handed Melee",
+      "crit": "x3"
+    },
+    "value": 30,
+    "weight": 8,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Whip",
+    "description": {
+      "damage": "1d3 slashing",
+      "properties": "One-Handed Melee, disarm, nonlethal, reach, trip",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Axe, orc double",
+    "description": {
+      "damage": "1d8/1d8 slashing",
+      "properties": "Two-Handed Melee, double",
+      "crit": "x3"
+    },
+    "value": 60,
+    "weight": 15,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Chain, spiked",
+    "description": {
+      "damage": "2d4 piercing",
+      "properties": "Two-Handed Melee, disarm, trip",
+      "crit": "x2"
+    },
+    "value": 25,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Curved blade, elven",
+    "description": {
+      "damage": "1d10 slashing",
+      "properties": "Two-Handed Melee",
+      "crit": "18-20/x2"
+    },
+    "value": 80,
+    "weight": 7,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Flail, dire",
+    "description": {
+      "damage": "1d8/1d8 bludgeoning",
+      "properties": "Two-Handed Melee, disarm, double, trip",
+      "crit": "x2"
+    },
+    "value": 90,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Hammer, gnome hooked",
+    "description": {
+      "damage": "1d8/1d6 bludgeoning or piercing",
+      "properties": "Two-Handed Melee, double, trip",
+      "crit": "x3/x4"
+    },
+    "value": 20,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sword, two-bladed",
+    "description": {
+      "damage": "1d8/1d8 slashing",
+      "properties": "Two-Handed Melee, double",
+      "crit": "19-20/x2"
+    },
+    "value": 100,
+    "weight": 10,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Urgrosh, dwarven",
+    "description": {
+      "damage": "1d8/1d6 piercing or slashing",
+      "properties": "Two-Handed Melee, brace, double",
+      "crit": "x3"
+    },
+    "value": 50,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Bolas",
+    "description": {
+      "damage": "1d4 bludgeoning",
+      "properties": "Ranged 10, nonlethal, trip",
+      "crit": "x2"
+    },
+    "value": 5,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Crossbow, hand",
+    "description": {
+      "damage": "1d4 piercing",
+      "properties": "Ranged 30",
+      "crit": "19-20/x2"
+    },
+    "value": 100,
+    "weight": 2,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Crossbow, repeating heavy",
+    "description": {
+      "damage": "1d10 piercing",
+      "properties": "Ranged 120",
+      "crit": "19-20/x2"
+    },
+    "value": 400,
+    "weight": 12,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Crossbow, repeating light",
+    "description": {
+      "damage": "1d8 piercing",
+      "properties": "Ranged 80",
+      "crit": "19-20/x2"
+    },
+    "value": 250,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Net",
+    "description": {
+      "damage": "-",
+      "properties": "Ranged 10",
+      "crit": "-"
+    },
+    "value": 20,
+    "weight": 6,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Shuriken (5)",
+    "description": {
+      "damage": "1d2 piercing",
+      "properties": "Ranged 10, monk",
+      "crit": "x2"
+    },
+    "value": 1,
+    "weight": 0.5,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Sling staff, halfling",
+    "description": {
+      "damage": "1d8 bludgeoning",
+      "properties": "Ranged 80",
+      "crit": "x3"
+    },
+    "value": 20,
+    "weight": 3,
+    "type": "Weapon",
+    "subtype": "Exotic",
+    "system": "Pathfinder1e",
+    "custom": false
+  }
+]

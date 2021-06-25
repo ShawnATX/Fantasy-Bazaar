@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import API from "../utils/API";
-import ListSection from "./listSection";
+import API from "../../utils/API";
+import ListSection from "../listSection";
 
 const StoreFront = (props) => {
   const { waitingResponse, setViewState, purchase } = props;

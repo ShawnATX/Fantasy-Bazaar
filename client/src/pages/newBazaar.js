@@ -5,10 +5,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../utils/API";
-import NewBazaarMain from "../components/newBazaarMain";
-import NewBazaarSettings from "../components/newBazaarSettings";
+import NewBazaarMain from "../components/NewBazaar/newBazaarMain";
+import NewBazaarSettings from "../components/NewBazaar/newBazaarSettings";
 
-const NewBazaar = (props) => {
+const NewBazaar = () => {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({
     requireCustomItemApproval: false,

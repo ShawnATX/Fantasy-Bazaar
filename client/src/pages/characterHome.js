@@ -4,10 +4,10 @@ import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
-import Inventory from "../components/inventory";
-import StoreFront from "../components/storeFront";
-import CharacterMain from "../components/characterMain";
-import CharacterHeader from "../components/characterHeader";
+import Inventory from "../components/Character/inventory";
+import StoreFront from "../components/Character/storeFront";
+import CharacterMain from "../components/Character/characterMain";
+import CharacterHeader from "../components/Character/characterHeader";
 
 const CharacterHome = (props) => {
   const { setPageState } = props;

@@ -16,15 +16,16 @@ const BazaarHome = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    const getCharacterDetails = () => {
-      if (bazaarObject.characters.length !== 0) {
-        API.getCharacters(bazaarObject.characters).then((res) => {
-          setCharactersObject(res.data);
-        });
-      }
-    };
-    getCharacterDetails();
+    getCharactersDetails();
   });
+
+  const getCharactersDetails = () => {
+    if (bazaarObject.characters.length !== 0) {
+      API.getCharacters(bazaarObject.characters).then((res) => {
+        setCharactersObject(res.data);
+      });
+    }
+  };
 
   const userHome = () => {
     history.push("/userhome");

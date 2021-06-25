@@ -1,28 +1,27 @@
 import React from "react";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 function EquipmentFooter(props) {
   const { items } = props;
 
   return (
-    <div className="dropup">
-      <Button
+    <div>
+      <DropdownButton
+        as={Button}
+        drop="up"
         variant="secondary"
-        type="button"
-        className="btn btn-secondary dropdown-toggle"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
+        title={items.length + ` Items`}
       >
-        Items <Badge variant="secondary">{items.length}</Badge>
-      </Button>
-      <ul className="dropdown-menu dropdown-menu-dark">
         {items.map((item) => (
-          <li className="dropdown-item" key={item.id}>
+          <Dropdown.Item key={item.id}>
             {item.name} - {item.value}
-          </li>
+          </Dropdown.Item>
         ))}
-      </ul>
+      </DropdownButton>
+      {/* <Badge variant="secondary">{items.length}</Badge> */}
     </div>
   );
 }
