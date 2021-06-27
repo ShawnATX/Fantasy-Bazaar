@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import UserContext from "./utils/userContext";
 import Landing from "./pages/landing";
 import NoMatch from "./pages/NoMatch";
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ authenticationState }}>
-      <BrowserRouter>
+      <HashRouter>
         <div className="app">
           <Switch>
             <Route exact path="/" render={() => <Landing />}></Route>
@@ -66,7 +66,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </UserContext.Provider>
   );
 }
