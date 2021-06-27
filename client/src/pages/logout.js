@@ -10,15 +10,14 @@ const Logout = () => {
   const history = useHistory();
 
   useEffect(() => {
+    authenticationState.userHasAuthenticated({
+      isAuthenticated: false,
+      user: {},
+    });
     API.logoutUser().then((res) => {
-      console.log("logged out");
-      authenticationState.userHasAuthenticated({
-        isAuthenticated: false,
-        user: {},
-      });
       history.push("/");
     });
-  });
+  }, []);
 
   return (
     <Container className="text-center">

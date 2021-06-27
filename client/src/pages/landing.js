@@ -11,16 +11,12 @@ const Landing = () => {
 
   const history = useHistory();
   useEffect(() => {
-    if (authenticationState.isAuthenticated) {
-      history.push("/userhome");
-    } else {
-      try {
-        getSessionUser();
-      } catch (error) {
-        //no session exixts, do nothing
-      }
+    try {
+      getSessionUser();
+    } catch (error) {
+      //no session exixts, do nothing
     }
-  });
+  }, []);
 
   const getSessionUser = () => {
     API.getSessionUser()

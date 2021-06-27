@@ -73,18 +73,16 @@ function NewCharacterEquipment(props) {
 
       {buildTypeList()}
 
-      <div className="accordion" id="itemMenu">
-        {typeArr.map((type) => (
-          <ListSection
-            key={type}
-            type={type}
-            items={getItems(type)}
-            expanded={"collapse"}
-            action={addItemToChosenList}
-            button={"Add"}
-          ></ListSection>
-        ))}
-      </div>
+      {typeArr.map((type) => (
+        <ListSection
+          key={type}
+          type={type}
+          items={getItems(type)}
+          expanded={"collapse"}
+          action={addItemToChosenList}
+          button={"Add"}
+        ></ListSection>
+      ))}
 
       <EquipmentFooter items={chosenItemList} API={API} />
 

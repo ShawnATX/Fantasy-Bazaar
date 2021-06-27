@@ -25,14 +25,15 @@ module.exports = function (app) {
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
-    if (req.session) {
+    if (req.user) {
       //clear express session
       req.session.destroy();
       //remove passport user/session
       req.logout();
-      res.status(200).clearCookie("connect.sid", { path: "/" });
+      res.clearCookie("connect.sid", { path: "/" });
+      res.status(200).json({ msg: "logged out" });
     } else {
-      res.status(200).json({ msg: "already logged out" });
+      res.status(204).json({ msg: "already logged out" });
     }
   });
 

@@ -1,22 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function CharacterHeader(props) {
   const { characterInfo } = props;
 
-  useEffect(() => {}, []);
   return (
     <Row className="border p-1 mb-3 text-center sticky-top">
       <Col
         className="text-center p-0 mx-2 mh-50"
-        sm={{ span: 8, offset: 2 }}
+        sm={{ span: 6, offset: 3 }}
         md={{ span: 6, offset: 3 }}
         lg={{ span: 5, offset: 3 }}
       >
         <Row className="mx-0">
           <Col
-            sm={{ span: 8, offset: 2 }}
+            sm={{ span: 6, offset: 3 }}
             md={{ span: 6, offset: 3 }}
             lg={{ span: 5, offset: 3 }}
           >

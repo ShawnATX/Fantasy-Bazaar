@@ -7,7 +7,6 @@ import NoMatch from "./pages/NoMatch";
 import NewUserType from "./pages/newUserType";
 import NewUserCreds from "./pages/newUserCreds";
 import NewCharacter from "./pages/newCharacter";
-import BazaarHome from "./pages/bazaarHome";
 import Login from "./pages/login";
 import NewBazaar from "./pages/newBazaar";
 import UserHome from "./pages/userHome";
@@ -55,14 +54,13 @@ function App() {
               render={() => <NewCharacter />}
             ></Route>
             <Route exact path="/newbazaar" render={() => <NewBazaar />}></Route>
-            <Route
-              exact
-              path="/bazaarhome"
-              render={() => <BazaarHome />}
-            ></Route>
+
             <Route path="/userhome" render={() => <UserHome />}></Route>
+
             <Route exact path="/login" render={() => <Login />}></Route>
+
             <Route exact path="/logout" render={() => <Logout />}></Route>
+
             <Route path="*">
               <NoMatch />
             </Route>

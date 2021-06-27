@@ -12,12 +12,11 @@ const BazaarHome = (props) => {
   const { setPageState } = props;
   const [bazaarObject, setBazaarObject] = useState(props.bazaar);
   const [charactersObject, setCharactersObject] = useState([]);
-
   const history = useHistory();
 
   useEffect(() => {
     getCharactersDetails();
-  });
+  }, []);
 
   const getCharactersDetails = () => {
     if (bazaarObject.characters.length !== 0) {

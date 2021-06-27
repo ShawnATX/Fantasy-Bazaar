@@ -27,7 +27,7 @@ function UserHome() {
       getBazaars();
       checkParams();
     }
-  }, [authenticationState]);
+  }, []);
 
   const getSessionUser = () => {
     API.getSessionUser()
@@ -57,7 +57,13 @@ function UserHome() {
     if (params.get("bazaar")) {
       console.log(bazaars);
     } else if (params.get("character")) {
-      console.log("character");
+      console.log(characters);
+      let characterId = params.get("character");
+      let userCharacters = authenticationState.user.characters;
+      const character = userCharacters.filter((character) => {
+        return character._id === characterId;
+      });
+      console.log(character);
     }
   };
 
