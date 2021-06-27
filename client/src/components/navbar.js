@@ -21,50 +21,53 @@ const NavbarComponent = (props) => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" expand="md">
       <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
-      <Nav className="mr-auto" navbar>
-        <Nav.Item>
-          <NavDropdown id="nav-dropdown-chracters" title="Characters">
-            {characters.map((character) => (
-              <NavDropdown.Item
-                key={character._id}
-                onClick={() => {
-                  goToCharacterHome(character);
-                }}
-              >
-                {character.characterName}
-              </NavDropdown.Item>
-            ))}
+      <Navbar.Toggle aria-controls="user-navbar-nav" />
+      <Navbar.Collapse id="user-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Item>
+            <NavDropdown id="nav-dropdown-chracters" title="Characters">
+              {characters.map((character) => (
+                <NavDropdown.Item
+                  key={character._id}
+                  onClick={() => {
+                    goToCharacterHome(character);
+                  }}
+                >
+                  {character.characterName}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
+          </Nav.Item>
+          <Nav.Item>
+            <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
+              {bazaars.map((bazaar) => (
+                <NavDropdown.Item
+                  key={bazaar._id}
+                  onClick={() => {
+                    goToBazaarHome(bazaar);
+                  }}
+                >
+                  {bazaar.bazaarName}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
+          </Nav.Item>
+        </Nav>
+        <Nav>
+          <NavDropdown title="User Menu" className="nav-user">
+            <NavDropdown.Item key={"Home"} onClick={() => userHome()}>
+              User Home
+            </NavDropdown.Item>
+            <NavDropdown.Item key={"User"}>User Settings</NavDropdown.Item>
+            <Dropdown.Divider />
+            <NavDropdown.Item key={"logout"} onClick={handleLogout}>
+              Logout
+            </NavDropdown.Item>
           </NavDropdown>
-        </Nav.Item>
-        <Nav.Item>
-          <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
-            {bazaars.map((bazaar) => (
-              <NavDropdown.Item
-                key={bazaar._id}
-                onClick={() => {
-                  goToBazaarHome(bazaar);
-                }}
-              >
-                {bazaar.bazaarName}
-              </NavDropdown.Item>
-            ))}
-          </NavDropdown>
-        </Nav.Item>
-      </Nav>
-      <Nav>
-        <NavDropdown title="User Menu" className="nav-user">
-          <NavDropdown.Item key={"Home"} onClick={() => userHome()}>
-            User Home
-          </NavDropdown.Item>
-          <NavDropdown.Item key={"User"}>User Settings</NavDropdown.Item>
-          <Dropdown.Divider />
-          <NavDropdown.Item key={"logout"} onClick={handleLogout}>
-            Logout
-          </NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

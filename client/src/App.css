@@ -52,6 +52,9 @@ button {
   background-color: #343a40;
   color: white;
 }
+.navbar-collapse {
+  background-color: #343a40;
+}
 .navbar-nav .dropdown-menu {
   left: auto;
   right: auto;
