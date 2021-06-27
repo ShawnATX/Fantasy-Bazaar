@@ -13,18 +13,21 @@ const CharacterHome = (props) => {
   const { setPageState } = props;
   const { authenticationState } = useContext(UserContext);
   const [characterObject, setCharacterObject] = useState(props.character);
+  const [bazaarObject, setBazaarObject] = useState({});
   const [viewState, setViewState] = useState("Home");
   const [waitingResponse, setWaitingResponse] = useState(false);
   const history = useHistory();
   const alert = useAlert();
 
   useEffect(() => {
+    console.log(characterObject);
     if (!authenticationState.isAuthenticated) {
       history.push("/login");
     }
+    getBazaarSetting();
   }, [authenticationState]);
 
-  function sellItem(item) {
+  const sellItem = (item) => {
     let newItems = characterObject.items;
     let newWallet = characterObject.wallet;
     for (var i = 0; i < characterObject.items.length; i++) {
@@ -45,7 +48,7 @@ const CharacterHome = (props) => {
         wallet: res.data.wallet,
       });
     });
-  }
+  };
 
   function purchaseItem(item) {
     if (item.value > characterObject.wallet) {
@@ -68,6 +71,22 @@ const CharacterHome = (props) => {
         .catch((err) => console.log(err));
     }
   }
+
+  const getBazaarSetting = () => {
+    API.getBazaarId(characterObject.bazaar).then((res) => {
+      console.log(res);
+      setBazaarObject({
+        bazaarName: res.data.bazaarName,
+        system: res.data.system,
+        limitedInventory: res.data.limitedInventory,
+        requireCustomItemApproval: res.data.requireCustomItemApproval,
+        requirePurchaseApproval: res.data.requirePurchaseApproval,
+        requireSaleApproval: res.data.requireSaleApproval,
+        requireWalletAdditionApproval: res.data.requireWalletAdditionApproval,
+        requireWalletChangeApproval: res.data.requireWalletChangeApproval,
+      });
+    });
+  };
 
   const userHome = () => {
     history.push("/userhome");
@@ -97,6 +116,7 @@ const CharacterHome = (props) => {
           setViewState={setViewState}
           waitingResponse={waitingResponse}
           purchase={purchaseItem}
+          bazaarSettings={bazaarObject}
         />
       );
     } else {

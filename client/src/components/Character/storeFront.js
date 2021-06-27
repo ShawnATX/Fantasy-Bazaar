@@ -6,11 +6,10 @@ import API from "../../utils/API";
 import ListSection from "../listSection";
 
 const StoreFront = (props) => {
-  const { waitingResponse, setViewState, purchase } = props;
+  const { waitingResponse, setViewState, purchase, bazaarSettings } = props;
   const [itemList, setItemList] = useState([]);
   useEffect(() => {
-    //loading default "DnD" items, @@TODO update to get bazaar-specific items
-    API.getItemsBySystem("DnD").then((res) => {
+    API.getItemsBySystem(bazaarSettings.system).then((res) => {
       setItemList(res.data);
     });
   }, []);
