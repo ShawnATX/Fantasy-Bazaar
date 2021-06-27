@@ -23,7 +23,7 @@ const ImageChoices = (props) => {
                       key={image}
                     >
                       <Form.Group check>
-                        <Form.Label check>
+                        <Form.Label>
                           <Form.Control
                             type="radio"
                             name="characterImage"

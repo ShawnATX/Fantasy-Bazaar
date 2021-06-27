@@ -22,16 +22,13 @@ const Landing = () => {
     API.getSessionUser()
       .then((res) => {
         if (res.status === 200) {
-          authenticationState
-            .userHasAuthenticated(true, {
-              email: res.data.email,
-              bazaars: res.data.bazaars,
-              characters: res.data.characters,
-              id: res.data.id,
-            })
-            .then(() => {
-              history.push("/userhome");
-            });
+          authenticationState.userHasAuthenticated(true, {
+            email: res.data.email,
+            bazaars: res.data.bazaars,
+            characters: res.data.characters,
+            id: res.data.id,
+          });
+          history.push("/userhome");
         } else {
           return;
         }

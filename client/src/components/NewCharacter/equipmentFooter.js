@@ -10,7 +10,6 @@ function EquipmentFooter(props) {
   return (
     <div>
       <DropdownButton
-        as={Button}
         drop="up"
         variant="secondary"
         title={items.length + ` Items`}

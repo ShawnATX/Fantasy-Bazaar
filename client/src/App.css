@@ -13,7 +13,12 @@
   font-size: large;
   font-weight: 400;
 }
-
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 button {
   padding: 2rem;
   font-size: x-large;
@@ -46,6 +51,10 @@ button {
 .navbar-brand {
   background-color: #343a40;
   color: white;
+}
+.navbar-nav .dropdown-menu {
+  left: auto;
+  right: auto;
 }
 .nav-link {
   background-color: #343a40;

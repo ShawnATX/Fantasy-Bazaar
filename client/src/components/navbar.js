@@ -2,9 +2,24 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const NavbarComponent = (props) => {
-  const { characters, bazaars, goToCharacterHome, goToBazaarHome } = props;
+  const {
+    characters,
+    bazaars,
+    goToCharacterHome,
+    goToBazaarHome,
+    handleLogout,
+    history,
+    setPageState,
+  } = props;
+
+  const userHome = () => {
+    history.push("/userhome");
+    setPageState("user");
+  };
+
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
@@ -37,6 +52,18 @@ const NavbarComponent = (props) => {
             ))}
           </NavDropdown>
         </Nav.Item>
+      </Nav>
+      <Nav>
+        <NavDropdown title="User Menu" className="nav-user">
+          <NavDropdown.Item key={"Home"} onClick={() => userHome()}>
+            User Home
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"User"}>User Settings</NavDropdown.Item>
+          <Dropdown.Divider />
+          <NavDropdown.Item key={"logout"} onClick={handleLogout}>
+            Logout
+          </NavDropdown.Item>
+        </NavDropdown>
       </Nav>
     </Navbar>
   );

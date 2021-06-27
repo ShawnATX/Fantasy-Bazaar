@@ -88,9 +88,9 @@ function NewCharacterEquipment(props) {
 
       <Row className="sticky-footer mt-3">
         <Col className="text-center">
-          <Button className="btn-small mr-3" onClick={saveNewCharacter}>
+          <button className="btn-small mr-3" onClick={saveNewCharacter}>
             Save {characterObject.characterName}
-          </Button>
+          </button>
         </Col>
       </Row>
     </div>

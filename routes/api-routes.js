@@ -33,6 +33,8 @@ module.exports = function (app) {
       res.clearCookie("connect.sid", { path: "/" });
       res.status(200).json({ msg: "logged out" });
     } else {
+      req.session.destroy();
+      res.clearCookie("connect.sid", { path: "/" });
       res.status(204).json({ msg: "already logged out" });
     }
   });
@@ -56,6 +58,8 @@ module.exports = function (app) {
   app.get("/api/user", function (req, res) {
     if (!req.user) {
       // The user has no session key
+      req.session.destroy();
+      res.clearCookie("connect.sid", { path: "/" });
       res.status(204).json("no session found");
     } else {
       res.status(200).json({

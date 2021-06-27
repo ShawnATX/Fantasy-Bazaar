@@ -33,7 +33,6 @@ const Login = () => {
       API.loginUser(userLogin)
         .then((res) => {
           if (res.status === 200) {
-            //set authentication on successful login, and set user info on the global state object
             authenticationState.userHasAuthenticated(true, {
               email: res.data.email,
               bazaars: res.data.bazaars,
@@ -43,58 +42,53 @@ const Login = () => {
           }
         })
         .then(() => {
-          setTimeout(() => {
-            goToUserHome();
-          }, 500);
+          goToUserHome();
         })
         .catch((err) => {
           alert.show("No user found with those credentials");
         });
-    }
-    //alert form fields are not completed
-    else {
+    } else {
       alert.show("Please enter an email and password");
     }
   }
 
   return (
-    <Container className="text-center">
-      <Row className="text-center">
-        <Col>
-          <Form onSubmit={handleFormSubmit} className="mt-5">
-            <Col>
-              <Form.Group className="mb-4">
-                <Form.Control
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email Address"
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Control
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-            </Col>
-            <Row>
-              <Col className="text-center mt-3">
-                <button>Submit</button>
-              </Col>
-            </Row>
-          </Form>
-        </Col>
-      </Row>
-      <Col className="text-center mt-3">
-        <Link to="/">
-          <button>Go Back</button>
-        </Link>
-      </Col>
+    <Container className="text-center center">
+      <Form onSubmit={handleFormSubmit}>
+        <Row className="text-center ">
+          <Col sm={12}>
+            <Form.Group className="mb-4">
+              <Form.Control
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Control
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+          </Col>
+
+          <Col className="text-center mt-3">
+            <button>Submit</button>
+          </Col>
+        </Row>
+        <Row className="text-center ">
+          <Col className="text-center mt-3">
+            <Link to="/">
+              <button>Go Back</button>
+            </Link>
+          </Col>
+        </Row>
+      </Form>
     </Container>
   );
 };

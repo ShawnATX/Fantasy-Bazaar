@@ -4,7 +4,7 @@ import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
 import API from "../utils/API";
 
 const BazaarHome = (props) => {
@@ -44,19 +44,21 @@ const BazaarHome = (props) => {
       </p>
       Characters
       {bazaarObject.characters.length > 0 ? (
-        <ListGroup>
+        <Row xs={1} sm={2} md={3} lg={4}>
           {charactersObject.map((character) => (
-            <ListGroup.Item
-              tag="button"
-              key={character._id}
-              onClick={() => {
-                goToCharacterDetails(character);
-              }}
-            >
-              {character.characterName}
-            </ListGroup.Item>
+            <Col key={character._id}>
+              <Card onClick={() => goToCharacterDetails(character)}>
+                <Card.Img variant="top" src={character.characterImage} />
+                <Card.Title className="mb-0">
+                  {character.characterName}
+                </Card.Title>
+                <Card.Body>
+                  <Card.Text></Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </ListGroup>
+        </Row>
       ) : (
         <p>No Characters Yet</p>
       )}

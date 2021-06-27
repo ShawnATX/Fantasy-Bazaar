@@ -181,18 +181,11 @@ function UserHome() {
         bazaars={bazaars}
         goToCharacterHome={goToCharacterHome}
         goToBazaarHome={goToBazaarHome}
+        handleLogout={handleLogout}
+        setPageState={setPageState}
+        history={history}
       />
       {renderPage()}
-      <Row className="sticky-footer mt-3">
-        <Col className="text-center">
-          <button
-            className="text-center btn-small"
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </button>
-        </Col>
-      </Row>
     </Container>
   );
 }
