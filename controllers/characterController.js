@@ -1,3 +1,4 @@
+const { Character, Item } = require("../models");
 const db = require("../models");
 
 const CharacterController = {
@@ -23,7 +24,6 @@ const CharacterController = {
   create: function (req, res) {
     db.Character.create({ ...req.body })
       .then((characterModel) => {
-        // console.log(characterModel);
         db.User.findOneAndUpdate(
           { _id: req.body.owner },
           { $push: { characters: characterModel._id } },
@@ -53,30 +53,41 @@ const CharacterController = {
   },
   //route specifically for adding item to character item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function (req, res) {
-    db.Character.findOneAndUpdate(
-      { _id: req.body.character },
-      {
-        $push: { items: req.body.items[0] },
-        $set: { wallet: req.body.wallet },
-      },
-      { new: true }
-    )
+    db.Item.findById(req.body.items[0], "value")
       .then((dbModel) => {
-        res.json(dbModel);
+        let price = dbModel.value * -1;
+        db.Character.findOneAndUpdate(
+          { _id: req.body.character },
+          {
+            $push: { items: req.body.items[0] },
+            $inc: { wallet: price },
+          },
+          { new: true }
+        )
+          .then((dbModel) => {
+            res.json(dbModel);
+          })
+          .catch((err) => res.status(422).json(err));
       })
       .catch((err) => res.status(422).json(err));
   },
   //route specifically for updating character item array with a new array and incrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   sell: function (req, res) {
-    db.Character.findOneAndUpdate(
-      { _id: req.body.character },
-      {
-        $set: { items: req.body.items, wallet: req.body.wallet },
-      },
-      { new: true }
-    )
+    db.Item.findById(req.body.soldItem, "value")
       .then((dbModel) => {
-        res.json(dbModel);
+        let price = dbModel.value;
+        db.Character.findOneAndUpdate(
+          { _id: req.body.character },
+          {
+            $set: { items: req.body.items },
+            $inc: { wallet: price },
+          },
+          { new: true }
+        )
+          .then((dbModel) => {
+            res.json(dbModel);
+          })
+          .catch((err) => res.status(422).json(err));
       })
       .catch((err) => res.status(422).json(err));
   },

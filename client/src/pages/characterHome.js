@@ -20,7 +20,6 @@ const CharacterHome = (props) => {
   const alert = useAlert();
 
   useEffect(() => {
-    console.log(characterObject);
     if (!authenticationState.isAuthenticated) {
       history.push("/login");
     }
@@ -29,17 +28,19 @@ const CharacterHome = (props) => {
 
   const sellItem = (item) => {
     let newItems = characterObject.items;
-    let newWallet = characterObject.wallet;
+    // let newWallet = characterObject.wallet;
     for (var i = 0; i < characterObject.items.length; i++) {
       if (characterObject.items[i] === item._id) {
         newItems.splice(i, 1);
-        newWallet = newWallet + item.value;
+        console.log(newItems);
+        // newWallet = newWallet + item.value;
         i = characterObject.items.length;
       }
     }
     API.characterSale({
+      soldItem: item._id,
       items: newItems,
-      wallet: newWallet,
+      // wallet: newWallet,
       character: characterObject._id,
     }).then((res) => {
       setCharacterObject({
@@ -56,7 +57,6 @@ const CharacterHome = (props) => {
     } else {
       setWaitingResponse(true);
       API.characterPurchase({
-        wallet: characterObject.wallet - item.value,
         items: [item._id],
         character: characterObject._id,
       })
@@ -74,7 +74,6 @@ const CharacterHome = (props) => {
 
   const getBazaarSetting = () => {
     API.getBazaarId(characterObject.bazaar).then((res) => {
-      console.log(res);
       setBazaarObject({
         bazaarName: res.data.bazaarName,
         system: res.data.system,
