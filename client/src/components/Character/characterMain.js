@@ -6,23 +6,23 @@ import Button from "react-bootstrap/Button";
 const CharacterMain = (props) => {
   return (
     <div>
-      <Row className="mt-5 px-5 mb-3">
-        <Col className="text-center">
+      <Row className="mt-5 px-5 mb-5">
+        <Col>
           <Button
             variant="secondary"
             alt="Manage Inventory"
-            className="text-center"
+            className="text-center btn-small"
             onClick={() => props.setViewState("Inventory")}
           >
             Manage {props.characterObject.characterName}'s Inventory
           </Button>
         </Col>
 
-        <Col className="text-center">
+        <Col>
           <Button
             variant="secondary"
             alt="Visit The Bazaar"
-            className="text-center"
+            className="text-center btn-small"
             onClick={() => props.setViewState("Store")}
           >
             Go Shopping

@@ -5,8 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import OffcanvasTitle from "react-bootstrap/OffcanvasTitle";
-import OffcanvasBody from "react-bootstrap/OffcanvasBody";
 import API from "../utils/API";
 import CharacterDetails from "../components/Bazaar/CharacterDetails";
 
@@ -39,8 +37,7 @@ const BazaarHome = (props) => {
 
   const goToCharacterDetails = (character) => {
     setCanvasCharacter(character);
-    setShowOffcanvas(true);
-    // console.log(character);
+    handleShowOffcanvas();
   };
 
   return (
@@ -49,7 +46,6 @@ const BazaarHome = (props) => {
       <p>
         Player Join Code: <span className="display-5">{bazaar.joinCode}</span>
       </p>
-      Characters
       {bazaar.characters.length > 0 ? (
         <div>
           <Row xs={1} sm={2} md={3} lg={4}>
@@ -60,9 +56,7 @@ const BazaarHome = (props) => {
                   <Card.Title className="mb-0">
                     {character.characterName}
                   </Card.Title>
-                  <Card.Body>
-                    <Card.Text></Card.Text>
-                  </Card.Body>
+                  <Card.Body></Card.Body>
                 </Card>
               </Col>
             ))}
@@ -74,11 +68,13 @@ const BazaarHome = (props) => {
             placement="bottom"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title>{canvasCharacter.characterName}</Offcanvas.Title>
+              <Offcanvas.Title className="mx-auto">
+                {canvasCharacter.characterName} - {canvasCharacter.wallet} gold
+              </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              Some text as placeholder. In real life you can have the elements
-              you have chosen. Like, text, images, lists, etc.
+              {" "}
+              <CharacterDetails character={canvasCharacter} />
             </Offcanvas.Body>
           </Offcanvas>
         </div>

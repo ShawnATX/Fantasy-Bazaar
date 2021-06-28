@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../../utils/userContext";
+import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -8,12 +7,11 @@ import Item from "../item";
 
 const Inventory = (props) => {
   const [itemList, setItemList] = useState([]);
-  const { authenticationState } = useContext(UserContext);
   useEffect(() => {
     API.getItemsById(props.items).then((res) => {
       setItemList(res.data);
     });
-  }, [authenticationState, props.items]);
+  }, [props.items]);
 
   const getQuantity = (item) => {
     let count = 0;

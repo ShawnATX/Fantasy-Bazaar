@@ -64,6 +64,9 @@ button {
   background-color: #343a40;
   color: white;
 }
+.offcanvas-bottom {
+  height: 60vh;
+}
 .splashBtn {
   font-size: x-large;
 }

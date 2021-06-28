@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
 import Inventory from "../components/Character/inventory";
@@ -125,9 +126,13 @@ const CharacterHome = (props) => {
       <CharacterHeader characterInfo={characterObject} />
 
       {renderPage()}
-      <button className="text-center btn-small" onClick={() => userHome()}>
+      <Button
+        className="text-center btn-small"
+        variant="secondary"
+        onClick={() => userHome()}
+      >
         Back To User Home
-      </button>
+      </Button>
     </Container>
   );
 };

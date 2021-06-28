@@ -84,7 +84,7 @@ const Login = () => {
                 <Button
                   className="btn-small mx-auto"
                   variant="dark"
-                  onClick={() => handleFormSubmit()}
+                  type="submit"
                 >
                   Submit
                 </Button>
