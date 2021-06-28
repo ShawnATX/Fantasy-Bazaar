@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -43,7 +44,7 @@ const NewCharacterImage = (props) => {
       {defaultImageSelected ? (
         ` `
       ) : (
-        <Form.Row className="text-center">
+        <Row className="text-center">
           <Form.Group as={Col} controlId="imageUploadValidation">
             <Form.Label>Upload Your Own Image:</Form.Label>
             <Form.Control
@@ -56,13 +57,23 @@ const NewCharacterImage = (props) => {
               Upload
             </Button>
           </Form.Group>
-        </Form.Row>
+        </Row>
       )}
 
       {imageUploaded ? (
-        <Col xs={6} md={4}>
-          <Image src={characterObject.characterImage} rounded />
-        </Col>
+        <Row className="text-center">
+          <Col
+            xs={{ span: 6, offset: 3 }}
+            md={{ span: 4, offset: 4 }}
+            lg={{ span: 4, offset: 4 }}
+          >
+            <Image
+              src={characterObject.characterImage}
+              rounded
+              className="img-fluid"
+            />
+          </Col>
+        </Row>
       ) : (
         <ImageChoices handleInputChange={handleImageInputChange} />
       )}

@@ -9,11 +9,11 @@ const ImageChoices = (props) => {
   return (
     <Accordion>
       <Card className="m-3">
-        <Accordion.Toggle as={Card.Header} eventKey="0">
-          Or choose a cool default image
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header as={Card.Header}>
+            Or choose a cool default image
+          </Accordion.Header>
+          <Accordion.Body as={Card.Body}>
             <Form.Group tag="fieldset" onChange={props.handleInputChange}>
               <Row>
                 {imgSet.map((image) => {
@@ -22,9 +22,9 @@ const ImageChoices = (props) => {
                       className="col-sm-8-offset-2 col-md-6 col-lg-3 p-4"
                       key={image}
                     >
-                      <Form.Group check>
+                      <Form.Group>
                         <Form.Label>
-                          <Form.Control
+                          <Form.Check
                             type="radio"
                             name="characterImage"
                             value={image}
@@ -37,8 +37,8 @@ const ImageChoices = (props) => {
                 })}
               </Row>
             </Form.Group>
-          </Card.Body>
-        </Accordion.Collapse>
+          </Accordion.Body>
+        </Accordion.Item>
       </Card>
     </Accordion>
   );

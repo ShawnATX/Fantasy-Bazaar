@@ -48,6 +48,9 @@ button {
   font-size: large;
   font-weight: bold;
 }
+.navbar {
+  background-color: #343a40;
+}
 .navbar-brand {
   background-color: #343a40;
   color: white;

@@ -28,19 +28,16 @@ const CharacterHome = (props) => {
 
   const sellItem = (item) => {
     let newItems = characterObject.items;
-    // let newWallet = characterObject.wallet;
     for (var i = 0; i < characterObject.items.length; i++) {
       if (characterObject.items[i] === item._id) {
         newItems.splice(i, 1);
         console.log(newItems);
-        // newWallet = newWallet + item.value;
         i = characterObject.items.length;
       }
     }
     API.characterSale({
       soldItem: item._id,
       items: newItems,
-      // wallet: newWallet,
       character: characterObject._id,
     }).then((res) => {
       setCharacterObject({
@@ -51,7 +48,7 @@ const CharacterHome = (props) => {
     });
   };
 
-  function purchaseItem(item) {
+  const purchaseItem = (item) => {
     if (item.value > characterObject.wallet) {
       alert.show("Looks like that is a bit too expensive...");
     } else {
@@ -70,7 +67,7 @@ const CharacterHome = (props) => {
         })
         .catch((err) => console.log(err));
     }
-  }
+  };
 
   const getBazaarSetting = () => {
     API.getBazaarId(characterObject.bazaar).then((res) => {

@@ -3,6 +3,7 @@ import API from "../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 
@@ -38,18 +39,22 @@ const Landing = () => {
 
   return (
     <Container fluid={true} className="text-center">
-      <h1 className="display-2">Fantasy Bazaar</h1>
+      <h1 className="display-2 mt-3">Fantasy Bazaar</h1>
       <Row className="mt-5 px-5">
         <Col>
           <Link to="/newusertype" alt="Get Started" className="text-center">
-            <button className="splashBtn">Get Started</button>
+            <Button className="btn-small ml-3" variant="dark">
+              Get Started
+            </Button>
           </Link>
         </Col>
       </Row>
       <Row className="mt-5 px-5">
         <Col>
           <Link to="/login">
-            <button>Login Here</button>
+            <Button className="btn-small ml-3" variant="dark">
+              Login Here
+            </Button>
           </Link>
         </Col>
       </Row>

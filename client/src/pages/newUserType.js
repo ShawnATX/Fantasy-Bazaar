@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
-import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,17 +9,10 @@ import Button from "react-bootstrap/Button";
 import API from "../utils/API";
 
 function NewUserType() {
-  const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({});
   const [validBazaarCode, setValidBazaarCode] = useState(false);
   const history = useHistory();
   const alert = useAlert();
-
-  useEffect(() => {
-    if (authenticationState.isAuthenticated) {
-      history.push("/userhome");
-    }
-  }, [authenticationState]);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -49,7 +41,7 @@ function NewUserType() {
             alt="Create a new Bazaar"
             className="text-center"
           >
-            <Button variant="dark" size="lg" block>
+            <Button className="btn-small ml-3" variant="dark">
               Create a new Bazaar
             </Button>
           </Link>
@@ -64,30 +56,37 @@ function NewUserType() {
                 alt="Join a bazaar"
                 className="text-center"
               >
-                <Button variant="dark" size="lg" active>
+                <Button className="btn-small ml-3" variant="dark" active>
                   Join a bazaar
                 </Button>
               </Link>
             ) : (
-              <Button variant="dark" size="lg" disabled>
+              <Button className="btn-small ml-3" variant="dark" disabled>
                 Join a bazaar
               </Button>
             )}
-
-            <Form.Group>
-              <Form.Control
-                name="bazaarCode"
-                id="bazaarCode"
-                placeholder="Bazaar Join Code"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
+            <Col
+              md={{ span: 8, offset: 2 }}
+              lg={{ span: 6, offset: 3 }}
+              className="my-3"
+            >
+              <Form.Group>
+                <Form.Control
+                  name="bazaarCode"
+                  id="bazaarCode"
+                  placeholder="Bazaar Join Code"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </Col>
           </Col>
         </Row>
         <Row className="text-center">
           <Col>
             <Link to="/" alt="Home" className="text-center">
-              <Button variant="dark">Home</Button>
+              <Button className="btn-small ml-3" variant="dark">
+                Home
+              </Button>
             </Link>
           </Col>
         </Row>

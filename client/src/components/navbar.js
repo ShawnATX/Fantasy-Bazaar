@@ -21,39 +21,35 @@ const NavbarComponent = (props) => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
+    <Navbar collapseOnSelect variant="dark" expand="md">
       <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
       <Navbar.Toggle aria-controls="user-navbar-nav" />
       <Navbar.Collapse id="user-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Item>
-            <NavDropdown id="nav-dropdown-chracters" title="Characters">
-              {characters.map((character) => (
-                <NavDropdown.Item
-                  key={character._id}
-                  onClick={() => {
-                    goToCharacterHome(character);
-                  }}
-                >
-                  {character.characterName}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
-          </Nav.Item>
-          <Nav.Item>
-            <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
-              {bazaars.map((bazaar) => (
-                <NavDropdown.Item
-                  key={bazaar._id}
-                  onClick={() => {
-                    goToBazaarHome(bazaar);
-                  }}
-                >
-                  {bazaar.bazaarName}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
-          </Nav.Item>
+        <Nav className="me-auto">
+          <NavDropdown id="nav-dropdown-chracters" title="Characters">
+            {characters.map((character) => (
+              <NavDropdown.Item
+                key={character._id}
+                onClick={() => {
+                  goToCharacterHome(character);
+                }}
+              >
+                {character.characterName}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+          <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
+            {bazaars.map((bazaar) => (
+              <NavDropdown.Item
+                key={bazaar._id}
+                onClick={() => {
+                  goToBazaarHome(bazaar);
+                }}
+              >
+                {bazaar.bazaarName}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
         </Nav>
         <Nav>
           <NavDropdown title="User Menu" className="nav-user">

@@ -36,6 +36,11 @@ const characterSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  pendingApproval: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 const Character = mongoose.model("Character", characterSchema);

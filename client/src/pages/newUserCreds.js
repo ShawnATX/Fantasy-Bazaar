@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import API from "../utils/API";
@@ -102,52 +104,57 @@ const NewUserCreds = (props) => {
 
   return (
     <Container>
-      <Form
-        onSubmit={handleFormSubmit}
-        className="text-center"
-        validated={formReady}
-        noValidate
-      >
-        <Form.Group className="mt-4">
-          <Form.Label className="text-center">Email Address</Form.Label>
-          <Form.Control
-            required
-            name="email"
-            id="email"
-            type="email"
-            placeholder="myemailaddress@interwebs.com"
-            onChange={handleInputChange}
-            onBlur={checkEmailUniqueness}
-          />
-          <Form.Control.Feedback type="invalid">
-            Looks like thats not an email address, or it is already registered
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            required
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Super Secure Password"
-            onChange={handleInputChange}
-          />
-          <Form.Control.Feedback type="invalid">
-            Password needs to be 7 characters or longer
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          className="btn-small ml-3"
-          variant="dark"
-          onClick={() => handleFormSubmit()}
-        >
-          Submit
-        </Button>
-        <Button className="btn-small ml-3" variant="dark" onClick={goHome}>
-          Back Home
-        </Button>
-      </Form>
+      <Row>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+          <Form
+            onSubmit={handleFormSubmit}
+            className="text-center"
+            validated={formReady}
+            noValidate
+          >
+            <Form.Group className="mt-4">
+              <Form.Label className="text-center">Email Address</Form.Label>
+              <Form.Control
+                required
+                name="email"
+                id="email"
+                type="email"
+                placeholder="myemailaddress@interwebs.com"
+                onChange={handleInputChange}
+                onBlur={checkEmailUniqueness}
+              />
+              <Form.Control.Feedback type="invalid">
+                Looks like thats not an email address, or it is already
+                registered
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Super Secure Password"
+                onChange={handleInputChange}
+              />
+              <Form.Control.Feedback type="invalid">
+                Password needs to be 7 characters or longer
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Button
+              className="btn-small ml-3"
+              variant="dark"
+              onClick={() => handleFormSubmit()}
+            >
+              Submit
+            </Button>
+            <Button className="btn-small ml-3" variant="dark" onClick={goHome}>
+              Back Home
+            </Button>
+          </Form>
+        </Col>
+      </Row>
     </Container>
   );
 };

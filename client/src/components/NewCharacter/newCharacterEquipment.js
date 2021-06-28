@@ -8,7 +8,7 @@ import ListSection from "../listSection";
 import CharacterHeader from "../Character/characterHeader";
 import EquipmentFooter from "./equipmentFooter";
 
-function NewCharacterEquipment(props) {
+const NewCharacterEquipment = (props) => {
   const { setPageState, bazaarObject, API, characterObject } = props;
   const { authenticationState } = useContext(UserContext);
 
@@ -59,6 +59,7 @@ function NewCharacterEquipment(props) {
       owner: authenticationState.user.id,
     })
       .then((res) => {
+        console.log(res.data);
         updateAuthenticationState(res.data);
         if (res.status === 201) {
           history.push("/userhome");
@@ -95,6 +96,6 @@ function NewCharacterEquipment(props) {
       </Row>
     </div>
   );
-}
+};
 
 export default NewCharacterEquipment;

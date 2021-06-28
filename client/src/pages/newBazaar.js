@@ -75,7 +75,8 @@ const NewBazaar = () => {
     <Container>
       <Row className="my-2">
         <Col className="text-center">
-          Make A New Bazaar!
+          <h2 className="display-3">Make A New Bazaar!</h2>
+
           {renderPage()}
         </Col>
       </Row>

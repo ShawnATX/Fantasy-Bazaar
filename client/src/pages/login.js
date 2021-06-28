@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
@@ -56,7 +57,8 @@ const Login = () => {
     <Container className="text-center center">
       <Form onSubmit={handleFormSubmit}>
         <Row className="text-center ">
-          <Col sm={12}>
+          <h1 className="display-2 mb-5">Fantasy Bazaar</h1>
+          <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
             <Form.Group className="mb-4">
               <Form.Control
                 type="email"
@@ -76,17 +78,28 @@ const Login = () => {
               />
             </Form.Group>
           </Col>
-
-          <Col className="text-center mt-3">
-            <button>Submit</button>
-          </Col>
-        </Row>
-        <Row className="text-center ">
-          <Col className="text-center mt-3">
-            <Link to="/">
-              <button>Go Back</button>
-            </Link>
-          </Col>
+          <Row xs={1} sm={2} md={2}>
+            <Col>
+              <Button
+                className="btn-small mx-auto"
+                variant="dark"
+                onClick={() => handleFormSubmit()}
+              >
+                Submit
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                className="btn-small mx-auto"
+                variant="dark"
+                onClick={() => {
+                  history.push("/");
+                }}
+              >
+                Back Home
+              </Button>
+            </Col>
+          </Row>
         </Row>
       </Form>
     </Container>

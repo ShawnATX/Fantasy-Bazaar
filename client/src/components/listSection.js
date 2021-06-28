@@ -24,33 +24,32 @@ const ListSection = (props) => {
   return (
     <Accordion>
       <Card>
-        <h1 className="mb-0 text-center">
-          <Accordion.Toggle as={Card.Header} eventKey={strippedType + "head"}>
-            {type}
-          </Accordion.Toggle>
-        </h1>
-        <Accordion.Collapse
-          eventKey={strippedType + "head"}
-          id={strippedType + "body"}
-          data-parent="#itemMenu"
-        >
-          <div>
-            {buildSubtypeList()}
-            {subtypeArr.map((subtypeObject) => (
-              <Accordion key={subtypeObject.strippedSubtype}>
-                <Card key={subtypeObject.strippedSubtype}>
-                  <Accordion.Toggle
-                    className="p-1"
-                    as={Card.Header}
-                    eventKey={subtypeObject.strippedSubtype}
-                    id={subtypeObject.strippedSubtype + "head"}
+        <Accordion.Item eventKey="0">
+          <Accordion.Header as={Card.Header}>{type}</Accordion.Header>
+
+          <Accordion.Body id={strippedType + "body"}>
+            <div>
+              {buildSubtypeList()}
+              {subtypeArr.map((subtypeObject) => (
+                <Accordion key={subtypeObject.strippedSubtype}>
+                  <Accordion.Item
+                    as={Card}
+                    eventKey="0"
+                    key={subtypeObject.strippedSubtype}
                   >
-                    <h4 className="mb-0 text-center">
-                      {subtypeObject.subtype}
-                    </h4>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey={subtypeObject.strippedSubtype}>
-                    <Card.Body>
+                    <Accordion.Header
+                      className="p-1"
+                      as={Card.Header}
+                      id={subtypeObject.strippedSubtype + "head"}
+                    >
+                      <h4 className="mb-0 text-center">
+                        {subtypeObject.subtype}
+                      </h4>
+                    </Accordion.Header>
+                    <Accordion.Body
+                      as={Card.Body}
+                      eventKey={subtypeObject.strippedSubtype}
+                    >
                       {getItems(subtypeObject.subtype).map((item) => (
                         <Item
                           key={item._id}
@@ -60,13 +59,13 @@ const ListSection = (props) => {
                           waitingResponse={waitingResponse}
                         />
                       ))}
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-            ))}
-          </div>
-        </Accordion.Collapse>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              ))}
+            </div>
+          </Accordion.Body>
+        </Accordion.Item>
       </Card>
     </Accordion>
   );

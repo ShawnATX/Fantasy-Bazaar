@@ -30,7 +30,7 @@ function NewCharacterMain(props) {
       onSubmit={handleFormSubmit}
       className="text-center"
     >
-      <Form.Row>
+      <Row>
         <Col md="6">
           <Form.Group className="my-4" controlId="characterNameValidation">
             <Form.Label className="text-center">Character Name</Form.Label>
@@ -61,7 +61,7 @@ function NewCharacterMain(props) {
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
-      </Form.Row>
+      </Row>
       <NewCharacterImage
         handleInputChange={handleInputChange}
         characterObject={characterObject}
