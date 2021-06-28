@@ -45,6 +45,10 @@ const bazaarSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  requireNewCharacterApproval: {
+    type: Boolean,
+    default: true,
+  },
   requirePurchaseApproval: {
     type: Boolean,
     default: false,

@@ -42,7 +42,7 @@ const ListSection = (props) => {
                       as={Card.Header}
                       id={subtypeObject.strippedSubtype + "head"}
                     >
-                      <h4 className="mb-0 text-center">
+                      <h4 className="mb-0 text-center bg-grey">
                         {subtypeObject.subtype}
                       </h4>
                     </Accordion.Header>

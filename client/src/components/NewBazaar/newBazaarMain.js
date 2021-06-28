@@ -31,7 +31,7 @@ const NewBazaarMain = (props) => {
 
   return (
     <Row className="my-1">
-      <Col className="text-center" sm={12} md={{ span: 6, offset: 3 }}>
+      <Col className="" sm={12} md={{ span: 6, offset: 3 }}>
         <Form onSubmit={handleFormSubmit}>
           <Form.Control
             required
@@ -41,10 +41,10 @@ const NewBazaarMain = (props) => {
             onChange={handleInputChange}
             className="mt-3"
           ></Form.Control>
-          <Col sm={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col sm={{ span: 8, offset: 2 }} className="justify-content-start">
             <Form.Check
+              className="my-3 bazaar-radio"
               size="lg"
-              className="my-3"
               type="radio"
               onClick={handleInputChange}
               name="system"
@@ -54,7 +54,7 @@ const NewBazaarMain = (props) => {
             />
             <Form.Check
               required
-              className="my-3"
+              className="my-3 bazaar-radio"
               type="radio"
               onClick={handleInputChange}
               name="system"
@@ -64,7 +64,7 @@ const NewBazaarMain = (props) => {
             />
           </Col>
 
-          <Row className="sticky-footer mt-3">
+          <Row className="sticky-footer mt-4">
             <Col className="text-center">
               <Button
                 className="text-center btn-small"

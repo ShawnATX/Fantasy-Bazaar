@@ -13,6 +13,7 @@ const NewCharacterImage = (props) => {
   const [chosenImageFile, setChosenImageFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [defaultImageSelected, setDefaultImageSelected] = useState(false);
+  const [imageSet, setImageSet] = useState(false);
 
   const fileChangedHandler = (event) => {
     setChosenImageFile(event.target.files[0]);
@@ -27,7 +28,7 @@ const NewCharacterImage = (props) => {
     API.uploadImage(formData)
       .then((res) => {
         characterObject.characterImage = res.eager[0].secure_url;
-        setImageUploaded(true);
+        setImageSet(true);
       })
       .catch((err) => {
         console.log("invalid image selected");
@@ -36,13 +37,37 @@ const NewCharacterImage = (props) => {
 
   const handleImageInputChange = (event) => {
     handleInputChange(event);
-    setDefaultImageSelected(true);
+    setImageSet(true);
+  };
+
+  const changeImage = () => {
+    characterObject.characterImage = "";
+    setImageSet(false);
   };
 
   return (
     <Container>
-      {defaultImageSelected ? (
-        ` `
+      {imageSet ? (
+        <Row className="text-center">
+          <Col
+            xs={{ span: 6, offset: 3 }}
+            md={{ span: 4, offset: 4 }}
+            lg={{ span: 4, offset: 4 }}
+          >
+            <Image
+              src={characterObject.characterImage}
+              rounded
+              className="img-fluid"
+            />
+            <Button
+              variant="secondary"
+              className="btn-small ml-3"
+              onClick={changeImage}
+            >
+              Choose a different image
+            </Button>
+          </Col>
+        </Row>
       ) : (
         <Row className="text-center">
           <Form.Group as={Col} controlId="imageUploadValidation">
@@ -57,25 +82,8 @@ const NewCharacterImage = (props) => {
               Upload
             </Button>
           </Form.Group>
+          <ImageChoices handleInputChange={handleImageInputChange} />
         </Row>
-      )}
-
-      {imageUploaded ? (
-        <Row className="text-center">
-          <Col
-            xs={{ span: 6, offset: 3 }}
-            md={{ span: 4, offset: 4 }}
-            lg={{ span: 4, offset: 4 }}
-          >
-            <Image
-              src={characterObject.characterImage}
-              rounded
-              className="img-fluid"
-            />
-          </Col>
-        </Row>
-      ) : (
-        <ImageChoices handleInputChange={handleImageInputChange} />
       )}
     </Container>
   );

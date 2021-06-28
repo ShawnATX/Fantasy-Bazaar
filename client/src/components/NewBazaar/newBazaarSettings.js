@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const NewBazaarSettings = (props) => {
   const { formObject, setFormObject, setPageState, saveNewBazaar } = props;
@@ -28,10 +29,43 @@ const NewBazaarSettings = (props) => {
   }
 
   return (
-    <Row className="my-1">
-      <Col className="text-center" sm={12} md={6} lg={8}>
-        Require Approval For:
-        <div className="form-check form-switch">
+    <Row className="mt-4 text-center">
+      <Col
+        className="text-center"
+        xs={{ span: 8, offset: 2 }}
+        sm={{ span: 6, offset: 3 }}
+        md={{ span: 6, offset: 3 }}
+        lg={{ span: 4, offset: 4 }}
+      >
+        <h4 className="mb-3">Require Approval For:</h4>
+        <div className="form-check form-switch mx-2 my-2">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="requireNewCharacterApproval"
+            name="requireNewCharacterApproval"
+            checked={formObject.requireNewCharacterApproval}
+            onChange={handleInputChange}
+          />
+          <OverlayTrigger
+            placement={"right"}
+            overlay={
+              <Tooltip id="tooltip-newCharacterApproval">
+                Require your approval for a new character's entered starting
+                gold and items.
+              </Tooltip>
+            }
+          >
+            <label
+              className="form-check-label bazaar-form-check-label"
+              htmlFor="requireNewCharacterApproval"
+              id="newCharacter"
+            >
+              New Character Gold & Inventory
+            </label>
+          </OverlayTrigger>
+        </div>
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -49,7 +83,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="requireCustomItemApproval"
               id="customItem"
             >
@@ -57,7 +91,7 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch">
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -76,7 +110,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="requireWalletAdditionApproval"
               id="walletAdditions"
             >
@@ -84,7 +118,7 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch">
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -103,7 +137,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="requireWalletChangeApproval"
               id="walletChanges"
             >
@@ -111,7 +145,7 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch">
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -130,7 +164,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="requireSaleApproval"
               id="itemSale"
             >
@@ -138,7 +172,7 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch">
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -157,7 +191,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="requirePurchaseApproval"
               id="itemPurchase"
             >
@@ -165,8 +199,8 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
-        General Settings:
-        <div className="form-check form-switch">
+        <h4 className="mt-4 mb-3">General Settings:</h4>
+        <div className="form-check form-switch mx-2 my-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -185,7 +219,7 @@ const NewBazaarSettings = (props) => {
             }
           >
             <label
-              className="form-check-label"
+              className="form-check-label bazaar-form-check-label"
               htmlFor="itemPurchases"
               id="stockLimits"
             >

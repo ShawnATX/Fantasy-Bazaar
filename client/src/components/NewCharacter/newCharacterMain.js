@@ -66,10 +66,13 @@ function NewCharacterMain(props) {
         handleInputChange={handleInputChange}
         characterObject={characterObject}
       />
-
-      <Button type="submit" variant="secondary" className="btn-small ml-3">
-        Add Starting Equipment
-      </Button>
+      <Row>
+        <Col>
+          <Button type="submit" variant="secondary" className="btn-small ml-3">
+            Add Starting Equipment
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 }

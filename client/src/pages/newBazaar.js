@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
@@ -11,6 +11,7 @@ import NewBazaarSettings from "../components/NewBazaar/newBazaarSettings";
 const NewBazaar = () => {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({
+    requireNewCharacterApproval: true,
     requireCustomItemApproval: false,
     requireWalletAdditionApproval: false,
     requireWalletChangeApproval: false,
@@ -18,13 +19,35 @@ const NewBazaar = () => {
     requirePurchaseApproval: false,
     limitedInventory: false,
   });
-  const history = useHistory();
   const [pageState, setPageState] = useState("Main");
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!authenticationState.isAuthenticated) {
+      getSessionUser();
+    }
+  }, []);
 
   function goHome(event) {
     event.preventDefault();
     history.push("/");
   }
+  const getSessionUser = () => {
+    API.getSessionUser()
+      .then((res) => {
+        if (res.status === 200) {
+          authenticationState.userHasAuthenticated(true, {
+            email: res.data.email,
+            bazaars: res.data.bazaars,
+            characters: res.data.characters,
+            id: res.data.id,
+          });
+        } else {
+          history.push("/login");
+        }
+      })
+      .catch((err) => {});
+  };
 
   function saveNewBazaar(bazaarData) {
     let newBazaar = {

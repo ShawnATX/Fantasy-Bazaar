@@ -67,14 +67,26 @@ button {
 .offcanvas-bottom {
   height: 60vh;
 }
+.bazaar-radio {
+  font-size: 1.3rem;
+}
+.bazaar-form-check-label {
+  font-size: 1.1rem;
+}
 .splashBtn {
   font-size: x-large;
 }
 .accordion-button {
-  background-color: black !important;
+  background-color: #6c757d;
   color: white;
   font-family: "MedievalSharp", cursive;
   font-size: 1.4rem;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #6c757d;
+}
+.bg-grey {
+  background-color: #6c757d;
 }
 .subtype-button {
   font-size: 1.1rem !important;
