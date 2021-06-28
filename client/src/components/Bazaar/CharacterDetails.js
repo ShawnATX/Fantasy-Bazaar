@@ -11,7 +11,6 @@ const CharacterDetails = (props) => {
   useEffect(() => {
     //returns a set of unique items
     if (props.character.items.length > 0) {
-      console.log(props.character.items);
       API.getItemsById(props.character.items).then((res) => {
         setItemList(res.data);
       });

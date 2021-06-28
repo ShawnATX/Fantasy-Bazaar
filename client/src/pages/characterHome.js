@@ -21,11 +21,8 @@ const CharacterHome = (props) => {
   const alert = useAlert();
 
   useEffect(() => {
-    if (!authenticationState.isAuthenticated) {
-      history.push("/login");
-    }
     getBazaarSetting();
-  }, [authenticationState]);
+  }, []);
 
   const sellItem = (item) => {
     let newItems = characterObject.items;

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import API from "../utils/API";
@@ -81,9 +82,13 @@ const BazaarHome = (props) => {
       ) : (
         <p>No Characters Yet</p>
       )}
-      <button className="text-center btn-small" onClick={() => userHome()}>
+      <Button
+        className="text-center btn-small"
+        variant="secondary"
+        onClick={() => userHome()}
+      >
         Back To User Home
-      </button>
+      </Button>
     </Container>
   );
 };
