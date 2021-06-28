@@ -54,55 +54,57 @@ const Login = () => {
   }
 
   return (
-    <Container className="text-center center">
-      <Form onSubmit={handleFormSubmit}>
-        <Row className="text-center ">
-          <h1 className="display-2 mb-5">Fantasy Bazaar</h1>
-          <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-            <Form.Group className="mb-4">
-              <Form.Control
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email Address"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-4">
-              <Form.Control
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-          <Row xs={1} sm={2} md={2}>
-            <Col>
-              <Button
-                className="btn-small mx-auto"
-                variant="dark"
-                onClick={() => handleFormSubmit()}
-              >
-                Submit
-              </Button>
+    <div>
+      <h1 className="display-2 mt-3 pb-5 text-center"> Fantasy Bazaar</h1>
+      <Container className="text-center mt-5">
+        <Form className="mt-5" onSubmit={handleFormSubmit}>
+          <Row className="text-center pt-5">
+            <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
             </Col>
-            <Col>
-              <Button
-                className="btn-small mx-auto"
-                variant="dark"
-                onClick={() => {
-                  history.push("/");
-                }}
-              >
-                Back Home
-              </Button>
-            </Col>
+            <Row xs={1} sm={2} md={2}>
+              <Col>
+                <Button
+                  className="btn-small mx-auto"
+                  variant="dark"
+                  onClick={() => handleFormSubmit()}
+                >
+                  Submit
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  className="btn-small mx-auto"
+                  variant="dark"
+                  onClick={() => {
+                    history.push("/");
+                  }}
+                >
+                  Back Home
+                </Button>
+              </Col>
+            </Row>
           </Row>
-        </Row>
-      </Form>
-    </Container>
+        </Form>
+      </Container>
+    </div>
   );
 };
 

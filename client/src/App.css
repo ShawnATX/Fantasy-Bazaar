@@ -1,13 +1,11 @@
 .App {
   text-align: center;
 }
-
 * {
   background-color: black;
   color: white;
   font-family: "MedievalSharp", cursive;
 }
-
 .btn {
   color: white;
   font-size: large;
