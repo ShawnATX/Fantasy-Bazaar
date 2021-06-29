@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
 
@@ -42,19 +43,24 @@ const Landing = () => {
       <h1 className="display-2 mt-3">Fantasy Bazaar</h1>
       <Row className="mt-5 px-5">
         <Col>
-          <Link to="/newusertype" alt="Get Started" className="text-center">
-            <Button className="btn-small ml-3" variant="dark">
-              Get Started
-            </Button>
-          </Link>
+          <ButtonGroup aria-label="Landing Page Actions">
+            <Link to="/newusertype" alt="Get Started" className="text-center">
+              <Button className="btn-small ml-3" variant="secondary">
+                Get Started
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button className="btn-small ml-3" variant="secondary">
+                Login Here
+              </Button>
+            </Link>
+          </ButtonGroup>
         </Col>
       </Row>
-      <Row className="mt-5 px-5">
-        <Col>
-          <Link to="/login">
-            <Button className="btn-small ml-3" variant="dark">
-              Login Here
-            </Button>
+      <Row className="align-items-end mt-5">
+        <Col className="align-self-end">
+          <Link to="/about" alt="About Fantasy Bazaar">
+            <Button variant="secondary">About</Button>
           </Link>
         </Col>
       </Row>

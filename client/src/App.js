@@ -11,6 +11,7 @@ import Login from "./pages/login";
 import NewBazaar from "./pages/newBazaar";
 import UserHome from "./pages/userHome";
 import Logout from "./pages/logout";
+import About from "./pages/about";
 
 function App() {
   const [authenticationState, setAuthenticationState] = useState({
@@ -60,6 +61,8 @@ function App() {
             <Route exact path="/login" render={() => <Login />}></Route>
 
             <Route exact path="/logout" render={() => <Logout />}></Route>
+
+            <Route exact path="/about" render={() => <About />}></Route>
 
             <Route path="*">
               <NoMatch />

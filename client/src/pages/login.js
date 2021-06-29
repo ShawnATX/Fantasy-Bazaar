@@ -83,7 +83,7 @@ const Login = () => {
               <Col>
                 <Button
                   className="btn-small mx-auto"
-                  variant="dark"
+                  variant="secondary"
                   type="submit"
                 >
                   Submit
@@ -92,7 +92,7 @@ const Login = () => {
               <Col>
                 <Button
                   className="btn-small mx-auto"
-                  variant="dark"
+                  variant="secondary"
                   onClick={() => {
                     history.push("/");
                   }}
