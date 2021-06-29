@@ -74,7 +74,7 @@ export default {
     return axios.post("/api/characters/many", characterArr);
   },
   updateCharacter: function (id, characterData) {
-    return axios.put("/api/characters" + id, characterData);
+    return axios.put("/api/characters/" + id, characterData);
   },
   //update character to purchase a single item and decrement wallet
   characterPurchase: function (characterData) {

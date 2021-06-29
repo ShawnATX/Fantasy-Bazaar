@@ -46,10 +46,7 @@ const ListSection = (props) => {
                         {subtypeObject.subtype}
                       </h4>
                     </Accordion.Header>
-                    <Accordion.Body
-                      as={Card.Body}
-                      eventKey={subtypeObject.strippedSubtype}
-                    >
+                    <Accordion.Body as={Card.Body}>
                       {getItems(subtypeObject.subtype).map((item) => (
                         <Item
                           key={item._id}

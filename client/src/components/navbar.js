@@ -21,7 +21,7 @@ const NavbarComponent = (props) => {
   };
 
   return (
-    <Navbar collapseOnSelect variant="dark" expand="md">
+    <Navbar collapseOnSelect variant="dark" expand="sm">
       <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
       <Navbar.Toggle aria-controls="user-navbar-nav" />
       <Navbar.Collapse id="user-navbar-nav">

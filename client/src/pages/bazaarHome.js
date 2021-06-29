@@ -31,6 +31,10 @@ const BazaarHome = (props) => {
     }
   };
 
+  const approvePendingChanges = (character) => {
+    API.updateCharacter(character._id, { pendingApproval: false });
+  };
+
   const userHome = () => {
     history.push("/userhome");
     setPageState("user");
@@ -51,18 +55,39 @@ const BazaarHome = (props) => {
         <div>
           <Row xs={1} sm={2} md={3} lg={4}>
             {charactersObject.map((character) => (
-              <Col key={character._id}>
-                <Card onClick={() => goToCharacterDetails(character)}>
-                  <Card.Img variant="top" src={character.characterImage} />
-                  <Card.Title className="mb-0">
-                    {character.characterName}
-                  </Card.Title>
-                  <Card.Body></Card.Body>
-                </Card>
-              </Col>
+              <div>
+                {character.pendingApproval ? (
+                  <Col key={character._id}>
+                    <Card onClick={() => goToCharacterDetails(character)}>
+                      <Card.Img variant="top" src={character.characterImage} />
+                      <Card.Title className="mb-0 py-2">
+                        {character.characterName}
+                        <i
+                          className="bi bi-exclamation-diamond-fill"
+                          style={{
+                            fontSize: "1.1em",
+                            color: "white",
+                            position: "absolute",
+                            zIndex: 2,
+                            marginLeft: "3rem",
+                          }}
+                        ></i>
+                      </Card.Title>
+                    </Card>
+                  </Col>
+                ) : (
+                  <Col key={character._id}>
+                    <Card onClick={() => goToCharacterDetails(character)}>
+                      <Card.Img variant="top" src={character.characterImage} />
+                      <Card.Title className="mb-0 py-2">
+                        {character.characterName}
+                      </Card.Title>
+                    </Card>
+                  </Col>
+                )}
+              </div>
             ))}
           </Row>
-
           <Offcanvas
             show={showOffCanvas}
             onHide={handleCloseOffcanvas}
@@ -72,10 +97,20 @@ const BazaarHome = (props) => {
               <Offcanvas.Title className="mx-auto">
                 {canvasCharacter.characterName} - {canvasCharacter.wallet} gold
               </Offcanvas.Title>
+              {canvasCharacter.pendingApproval && (
+                <Button
+                  variant="secondary"
+                  onClick={() => approvePendingChanges(canvasCharacter)}
+                >
+                  Approve Pending Character Changes
+                </Button>
+              )}
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {" "}
-              <CharacterDetails character={canvasCharacter} />
+              <CharacterDetails
+                character={canvasCharacter}
+                approvePendingChanges={approvePendingChanges}
+              />
             </Offcanvas.Body>
           </Offcanvas>
         </div>

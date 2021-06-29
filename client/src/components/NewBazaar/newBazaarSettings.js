@@ -9,7 +9,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 const NewBazaarSettings = (props) => {
   const { formObject, setFormObject, setPageState, saveNewBazaar } = props;
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     let newFormObj = Object.fromEntries(
       Object.entries(formObject).map(([key, value]) => {
         if (key === `${event.target.name}`) {
@@ -21,13 +21,15 @@ const NewBazaarSettings = (props) => {
     setFormObject({
       ...newFormObj,
     });
-  }
+  };
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     saveNewBazaar(formObject);
-  }
-
+  };
+  const handleGoBack = () => {
+    setPageState("Main");
+  };
   return (
     <Row className="mt-4 text-center">
       <Col
@@ -229,6 +231,14 @@ const NewBazaarSettings = (props) => {
         </div>
         <Row className="sticky-footer mt-3">
           <Col className="text-center">
+            <Button
+              variant="secondary"
+              type="submit"
+              className="text-center btn-small"
+              onClick={handleGoBack}
+            >
+              Go Back
+            </Button>
             <Button
               variant="secondary"
               type="submit"

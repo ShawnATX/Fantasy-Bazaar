@@ -7,6 +7,8 @@ import Card from "react-bootstrap/Card";
 const CharacterDetails = (props) => {
   const [itemList, setItemList] = useState([]);
 
+  //props.approvePendingChanges
+
   useEffect(() => {
     //returns a set of unique items
     if (props.character.items.length > 0) {

@@ -45,10 +45,13 @@ const CharacterController = {
       })
       .catch((err) => res.status(422).json(err));
   },
-
   update: function (req, res) {
-    db.Character.findOneAndUpdate(req.params, req.body)
-      .then((dbModel) => res.json(dbModel))
+    db.Character.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true,
+    })
+      .then((dbModel) => {
+        res.status(200).json(dbModel);
+      })
       .catch((err) => res.status(422).json(err));
   },
   //route specifically for adding item to character item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)

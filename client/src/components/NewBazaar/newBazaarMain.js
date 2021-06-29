@@ -39,6 +39,7 @@ const NewBazaarMain = (props) => {
             placeholder="Bazaar Name"
             id="bazaarName"
             onChange={handleInputChange}
+            value={formObject.bazaarName}
             className="mt-3"
           ></Form.Control>
           <Col sm={{ span: 8, offset: 2 }} className="justify-content-start">

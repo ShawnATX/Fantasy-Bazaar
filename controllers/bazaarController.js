@@ -15,6 +15,9 @@ const BazaarController = {
           name: dbModel.bazaarName,
           id: dbModel._id,
           system: dbModel.system,
+          limitedInventory: dbModel.limitedInventory,
+          requireNewCharacterApproval: dbModel.requireNewCharacterApproval,
+          requireCustomItemApproval: dbModel.requireCustomItemApproval,
         };
         res.json(response);
       })

@@ -57,9 +57,9 @@ const NewCharacterEquipment = (props) => {
       items: itemList,
       bazaar: bazaarObject.id,
       owner: authenticationState.user.id,
+      pendingApproval: bazaarObject.requireNewCharacterApproval,
     })
       .then((res) => {
-        console.log(res.data);
         updateAuthenticationState(res.data);
         if (res.status === 201) {
           history.push("/userhome");

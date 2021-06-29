@@ -34,10 +34,14 @@ function NewCharacter(props) {
     if (bazaarCode) {
       API.getBazaar(bazaarCode)
         .then((res) => {
+          console.log(res.data);
           setBazaarObject({
             name: res.data.name,
             system: res.data.system,
             id: res.data.id,
+            limitedInventory: res.data.limitedInventory,
+            requireNewCharacterApproval: res.data.requireNewCharacterApproval,
+            requireCustomItemApproval: res.data.requireCustomItemApproval,
           });
         })
         .catch((err) => console.log(err));
@@ -61,6 +65,9 @@ function NewCharacter(props) {
               name: res.data.name,
               system: res.data.system,
               id: res.data.id,
+              limitedInventory: res.data.limitedInventory,
+              requireNewCharacterApproval: res.data.requireNewCharacterApproval,
+              requireCustomItemApproval: res.data.requireCustomItemApproval,
             });
             toggle();
           }
