@@ -27,11 +27,11 @@ const CharacterDetails = (props) => {
   };
 
   return (
-    <Row sm={2} md={4} lg={5} className="text-center">
+    <Row sm={2} md={4} lg={5} className="text-center bg-grey">
       {props.character.items.length > 0 ? (
         itemList.map((item) => (
-          <Col className="my-1">
-            <Card key={item._id} style={{ width: "12rem" }}>
+          <Col className="my-1 bg-grey" key={item._id}>
+            <Card style={{ width: "12rem" }}>
               <Card.Body>
                 <Card.Text>
                   {item.name} - {getQuantity(item._id)}

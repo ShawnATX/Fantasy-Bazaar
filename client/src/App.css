@@ -73,6 +73,10 @@ button {
 .bazaar-form-check-label {
   font-size: 1.1rem;
 }
+.form-floating > label {
+  background-color: transparent;
+  color: black;
+}
 .splashBtn {
   font-size: x-large;
 }
@@ -87,6 +91,9 @@ button {
 }
 .bg-grey {
   background-color: #6c757d;
+}
+.bg-dark-grey {
+  background-color: #343a40;
 }
 .subtype-button {
   font-size: 1.1rem !important;

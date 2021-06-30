@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import InputGroup from "react-bootstrap/InputGroup";
 
 const NewBazaarSettings = (props) => {
   const { formObject, setFormObject, setPageState, saveNewBazaar } = props;

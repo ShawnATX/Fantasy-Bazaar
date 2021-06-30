@@ -15,16 +15,16 @@ const Login = () => {
   const history = useHistory();
   const alert = useAlert();
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
-  }
+  };
 
-  function goToUserHome() {
+  const goToUserHome = () => {
     history.push("/userhome");
-  }
+  };
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     if (formObject.email && formObject.password) {
       const userLogin = {
@@ -51,7 +51,7 @@ const Login = () => {
     } else {
       alert.show("Please enter an email and password");
     }
-  }
+  };
 
   return (
     <div>
