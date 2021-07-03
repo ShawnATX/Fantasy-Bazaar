@@ -24,7 +24,7 @@ button {
 }
 .btn-small {
   padding: 1rem;
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
 }
 .btn-inline {
@@ -46,6 +46,9 @@ button {
   font-size: large;
   font-weight: bold;
 }
+.input-group-text-base {
+  align-items: flex-end;
+}
 .navbar {
   background-color: #343a40;
 }
@@ -55,6 +58,12 @@ button {
 }
 .navbar-collapse {
   background-color: #343a40;
+}
+.navbar-toggler-icon {
+  background-color: #6c757d;
+}
+.navbar-toggler {
+  background-color: #6c757d;
 }
 .navbar-nav .dropdown-menu {
   left: auto;

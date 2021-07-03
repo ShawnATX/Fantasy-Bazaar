@@ -32,6 +32,20 @@ const ItemController = {
       .then((dbModel) => res.status(201).json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+
+  addCustom: function (req, res) {
+    console.log(req.body);
+    db.Item.create(req.body.item)
+      .then((dbModel) => {
+        db.Bazaar.findById(req.body.bazaar)
+          .addInventory({ item: dbModel._id })
+          .then()
+          .catch((err) => res.status(422).json(err));
+        res.status(201).json(dbModel);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+
   update: function (req, res) {
     db.Item.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))

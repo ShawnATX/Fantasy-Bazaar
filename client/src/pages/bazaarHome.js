@@ -8,7 +8,8 @@ import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import API from "../utils/API";
 import CharacterOffcanvas from "../components/Bazaar/characterOffcanvas";
-import CustomItem from "../components/customItem";
+import CustomItemDnD from "../components/CustomItem/customItemDnD";
+import CustomItemPF1e from "../components/CustomItem/customItemPF1e";
 
 const BazaarHome = (props) => {
   const { setPageState, bazaar } = props;
@@ -37,7 +38,13 @@ const BazaarHome = (props) => {
   };
 
   const approvePendingChanges = (character) => {
-    API.updateCharacter(character._id, { pendingApproval: false });
+    API.updateCharacter(character._id, { pendingApproval: false })
+      .then(() =>
+        API.getCharacters(bazaar.characters).then((res) => {
+          setCharactersObject(res.data);
+        })
+      )
+      .catch((err) => console.log(err));
   };
 
   const userHome = () => {
@@ -54,9 +61,9 @@ const BazaarHome = (props) => {
 
   return (
     <Container fluid={true}>
-      <h2 className="display-3">{bazaar.bazaarName}</h2>
+      <h2 className='display-3'>{bazaar.bazaarName}</h2>
       <p>
-        Player Join Code: <span className="display-5">{bazaar.joinCode}</span>
+        Player Join Code: <span className='display-5'>{bazaar.joinCode}</span>
       </p>
       {bazaar.characters.length > 0 ? (
         <div>
@@ -66,11 +73,11 @@ const BazaarHome = (props) => {
                 {character.pendingApproval ? (
                   <Col key={character._id}>
                     <Card onClick={() => goToCharacterDetails(character)}>
-                      <Card.Img variant="top" src={character.characterImage} />
-                      <Card.Title className="mb-0 py-2">
+                      <Card.Img variant='top' src={character.characterImage} />
+                      <Card.Title className='mb-0 py-2'>
                         {character.characterName}
                         <i
-                          className="bi bi-exclamation-diamond-fill"
+                          className='bi bi-exclamation-diamond-fill'
                           style={{
                             fontSize: "1.1em",
                             color: "white",
@@ -85,8 +92,8 @@ const BazaarHome = (props) => {
                 ) : (
                   <Col key={character._id}>
                     <Card onClick={() => goToCharacterDetails(character)}>
-                      <Card.Img variant="top" src={character.characterImage} />
-                      <Card.Title className="mb-0 py-2">
+                      <Card.Img variant='top' src={character.characterImage} />
+                      <Card.Title className='mb-0 py-2'>
                         {character.characterName}
                       </Card.Title>
                     </Card>
@@ -105,11 +112,11 @@ const BazaarHome = (props) => {
       ) : (
         <p>No Characters Yet</p>
       )}
-      <Row className="my-3">
+      <Row className='my-3'>
         <Col>
           <Button
-            className="text-center btn-small float-end"
-            variant="secondary"
+            className='text-center btn-small float-end'
+            variant='secondary'
             onClick={handleShowModal}
           >
             Add Custom Item
@@ -117,8 +124,8 @@ const BazaarHome = (props) => {
         </Col>
         <Col>
           <Button
-            className="text-center btn-small float-start"
-            variant="secondary"
+            className='text-center btn-small float-start'
+            variant='secondary'
             onClick={() => userHome()}
           >
             Back To User Home
@@ -126,30 +133,28 @@ const BazaarHome = (props) => {
         </Col>
       </Row>
       <Modal
-        fullscreen="sm-down"
-        size="lg"
+        fullscreen='sm-down'
+        size='lg'
         show={showModal}
         onHide={handleCloseModal}
-        dialogClassName="bg-dark-grey"
+        dialogClassName='bg-dark-grey'
       >
-        <Modal.Header className="bg-dark-grey">
-          <Modal.Title className="bg-dark-grey">New Item</Modal.Title>
+        <Modal.Header className='bg-dark-grey'>
+          <Modal.Title className='bg-dark-grey'>New Item</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark-grey">
-          <CustomItem
-            bazaarSystem={bazaar.system}
-            bazaarId={bazaar._id}
-            handleCloseModal={handleCloseModal}
-          />
+        <Modal.Body className='bg-dark-grey'>
+          {bazaar.system === "DnD" ? (
+            <CustomItemDnD
+              bazaarId={bazaar._id}
+              handleCloseModal={handleCloseModal}
+            />
+          ) : (
+            <CustomItemPF1e
+              bazaarId={bazaar._id}
+              handleCloseModal={handleCloseModal}
+            />
+          )}
         </Modal.Body>
-        {/* <Modal.Footer className="bg-dark-grey">
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-          <Button variant="secondary" type="submit">
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </Container>
   );

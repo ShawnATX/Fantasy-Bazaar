@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useAlert } from "react-alert";
@@ -12,7 +11,6 @@ import CharacterHeader from "../components/Character/characterHeader";
 
 const CharacterHome = (props) => {
   const { setPageState } = props;
-  const { authenticationState } = useContext(UserContext);
   const [characterObject, setCharacterObject] = useState(props.character);
   const [bazaarObject, setBazaarObject] = useState({});
   const [viewState, setViewState] = useState("Home");

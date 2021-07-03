@@ -24,8 +24,9 @@ export default {
   },
   // Saves an item to the database
   saveItem: function (itemData) {
-    return axios.post("/api/items", itemData);
+    return axios.post("/api/items/custom", itemData);
   },
+
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);

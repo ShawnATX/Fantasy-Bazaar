@@ -7,8 +7,6 @@ import Card from "react-bootstrap/Card";
 const CharacterDetails = (props) => {
   const [itemList, setItemList] = useState([]);
 
-  //props.approvePendingChanges
-
   useEffect(() => {
     //returns a set of unique items
     if (props.character.items.length > 0) {
@@ -27,10 +25,10 @@ const CharacterDetails = (props) => {
   };
 
   return (
-    <Row sm={2} md={4} lg={5} className="text-center bg-grey">
+    <Row sm={2} md={4} lg={5} className="text-center bg-dark-grey">
       {props.character.items.length > 0 ? (
         itemList.map((item) => (
-          <Col className="my-1 bg-grey" key={item._id}>
+          <Col className="my-1 bg-dark-grey" key={item._id}>
             <Card style={{ width: "12rem" }}>
               <Card.Body>
                 <Card.Text>

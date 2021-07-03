@@ -21,12 +21,12 @@ const NavbarComponent = (props) => {
   };
 
   return (
-    <Navbar collapseOnSelect variant="dark" expand="sm">
+    <Navbar collapseOnSelect variant='dark' expand='sm'>
       <Navbar.Brand>Fantasy Bazaar</Navbar.Brand>
-      <Navbar.Toggle aria-controls="user-navbar-nav" />
-      <Navbar.Collapse id="user-navbar-nav">
-        <Nav className="me-auto">
-          <NavDropdown id="nav-dropdown-chracters" title="Characters">
+      <Navbar.Toggle aria-controls='user-navbar-nav' />
+      <Navbar.Collapse id='user-navbar-nav'>
+        <Nav className='me-auto'>
+          <NavDropdown id='nav-dropdown-chracters' title='Characters'>
             {characters.map((character) => (
               <NavDropdown.Item
                 key={character._id}
@@ -38,7 +38,7 @@ const NavbarComponent = (props) => {
               </NavDropdown.Item>
             ))}
           </NavDropdown>
-          <NavDropdown id="nav-dropdown-bazaars" title="Bazaars">
+          <NavDropdown id='nav-dropdown-bazaars' title='Bazaars'>
             {bazaars.map((bazaar) => (
               <NavDropdown.Item
                 key={bazaar._id}
@@ -52,7 +52,7 @@ const NavbarComponent = (props) => {
           </NavDropdown>
         </Nav>
         <Nav>
-          <NavDropdown title="User Menu" className="nav-user">
+          <NavDropdown title='User Menu' className='nav-user'>
             <NavDropdown.Item key={"Home"} onClick={() => userHome()}>
               User Home
             </NavDropdown.Item>

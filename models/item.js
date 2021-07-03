@@ -8,9 +8,10 @@ const itemDescription = new Schema({
   damage: String,
   properties: String,
   description: String,
+  capacity: String,
   dexBonus: String,
   armorCheckPenalty: String,
-  arcaneSpellFailuer: String,
+  arcaneSpellFailure: String,
   crit: String,
 });
 
@@ -28,16 +29,13 @@ const itemSchema = new Schema({
   type: {
     type: String,
     required: true,
-    validate: [
-      ({ value }) =>
-        value ===
-        ("Weapon" ||
-          "Armor" ||
-          "Wearable" ||
-          "Adventuring Gear" ||
-          "Service" ||
-          "Misc"),
-      "Item type is invalid",
+    enum: [
+      "Weapon",
+      "Armor",
+      "Wearable",
+      "Adventuring Gear",
+      "Service",
+      "Misc",
     ],
   },
   subtype: {

@@ -1,0 +1,267 @@
+[
+  {
+    "name": "Padded",
+    "description": {
+      "ac": "+1 Armor",
+      "dexBonus": "+8",
+      "armorCheckPenalty": "0",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 5,
+    "weight": 10,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Leather",
+    "description": {
+      "ac": "+2 Armor",
+      "dexBonus": "+6",
+      "armorCheckPenalty": "0",
+      "arcaneSpellFailure": "10%"
+    },
+    "value": 10,
+    "weight": 15,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Studded leather",
+    "description": {
+      "ac": "+3 Armor",
+      "dexBonus": "+5",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 25,
+    "weight": 20,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Chain shirt",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+4",
+      "armorCheckPenalty": "2",
+      "arcaneSpellFailure": "20%"
+    },
+    "value": 100,
+    "weight": 25,
+    "type": "Armor",
+    "subtype": "Light Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Hide",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+4",
+      "armorCheckPenalty": "-3",
+      "arcaneSpellFailure": "20%"
+    },
+    "value": 15,
+    "weight": 25,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Scale mail",
+    "description": {
+      "ac": "+5 Armor",
+      "dexBonus": "+3",
+      "armorCheckPenalty": "-4",
+      "arcaneSpellFailure": "25%"
+    },
+    "value": 50,
+    "weight": 30,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Chainmail",
+    "description": {
+      "ac": "+6 Armor",
+      "dexBonus": "+2",
+      "armorCheckPenalty": "-5",
+      "arcaneSpellFailure": "30%"
+    },
+    "value": 150,
+    "weight": 40,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Breastplate",
+    "description": {
+      "ac": "+6 Armor",
+      "dexBonus": "+3",
+      "armorCheckPenalty": "-4",
+      "arcaneSpellFailure": "25%"
+    },
+    "value": 200,
+    "weight": 30,
+    "type": "Armor",
+    "subtype": "Medium Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Splint mail",
+    "description": {
+      "ac": "+7 Armor",
+      "dexBonus": "+0",
+      "armorCheckPenalty": "-7",
+      "arcaneSpellFailure": "40%"
+    },
+    "value": 200,
+    "weight": 45,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Banded mail",
+    "description": {
+      "ac": "+7 Armor",
+      "dexBonus": "+1",
+      "armorCheckPenalty": "-6",
+      "arcaneSpellFailure": "35%"
+    },
+    "value": 250,
+    "weight": 35,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Half-plate",
+    "description": {
+      "ac": "+8 Armor",
+      "dexBonus": "+0",
+      "armorCheckPenalty": "-7",
+      "arcaneSpellFailure": "40%"
+    },
+    "value": 600,
+    "weight": 50,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Full plate",
+    "description": {
+      "ac": "+9 Armor",
+      "dexBonus": "+1",
+      "armorCheckPenalty": "-6",
+      "arcaneSpellFailure": "35%"
+    },
+    "value": 1500,
+    "weight": 50,
+    "type": "Armor",
+    "subtype": "Heavy Armor",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Buckler",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 5,
+    "weight": 5,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Light Wooden",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 3,
+    "weight": 5,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Light steel",
+    "description": {
+      "ac": "+1 Armor",
+      "armorCheckPenalty": "-1",
+      "arcaneSpellFailure": "5%"
+    },
+    "value": 9,
+    "weight": 6,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Heavy wooden",
+    "description": {
+      "ac": "+2 Armor",
+      "armorCheckPenalty": "-2",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 7,
+    "weight": 10,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Heavy steel",
+    "description": {
+      "ac": "+2 Armor",
+      "armorCheckPenalty": "-2",
+      "arcaneSpellFailure": "15%"
+    },
+    "value": 20,
+    "weight": 15,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  },
+  {
+    "name": "Tower",
+    "description": {
+      "ac": "+4 Armor",
+      "dexBonus": "+2",
+      "armorCheckPenalty": "-10",
+      "arcaneSpellFailure": "50%"
+    },
+    "value": 30,
+    "weight": 45,
+    "type": "Armor",
+    "subtype": "Shield",
+    "system": "Pathfinder1e",
+    "custom": false
+  }
+]
