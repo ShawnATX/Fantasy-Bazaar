@@ -22,6 +22,13 @@ const CustomItem = (props) => {
   });
   const [validated, setValidated] = useState(false);
 
+  const saveItem = (item) => {
+    console.log(item);
+    API.saveItem(item).then((res) => {
+      console.log(res);
+    });
+  };
+
   const handleFormSubmit = (event) => {
     let form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -31,13 +38,16 @@ const CustomItem = (props) => {
       event.preventDefault();
       setValidated(true);
       let newItem = buildCustomItem(formObject);
+      saveItem({
+        item: newItem,
+        bazaar: bazaarId,
+      });
     }
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
-    // console.log(formObject);
   };
 
   return (

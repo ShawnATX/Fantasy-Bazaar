@@ -24,7 +24,6 @@ const ItemController = {
       .where("_id")
       .in(req.body.items)
       .then((dbModels) => res.json(dbModels))
-      //.then(dbModels => res.json(dbModels))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -34,14 +33,28 @@ const ItemController = {
   },
 
   addCustom: function (req, res) {
-    console.log(req.body);
+    console.log(req.body.item);
     db.Item.create(req.body.item)
       .then((dbModel) => {
-        db.Bazaar.findById(req.body.bazaar)
-          .addInventory({ item: dbModel._id })
-          .then()
+        console.log(dbModel);
+        db.Bazaar.findOneAndUpdate(
+          { _id: req.body.bazaar },
+          { $push: { stock: { item: dbModel._id, quantity: null } } },
+          { new: true }
+        )
+          .then((bazaarmodel) => {
+            res
+              .status(201)
+              .json(
+                dbModel.name,
+                dbModel.value,
+                dbModel.weight,
+                dbModel.description,
+                dbModel.type,
+                dbModel.subtype
+              );
+          })
           .catch((err) => res.status(422).json(err));
-        res.status(201).json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
   },

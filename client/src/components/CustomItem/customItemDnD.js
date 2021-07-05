@@ -9,6 +9,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import InputGroup from "react-bootstrap/InputGroup";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 import buildCustomItem from "./buildCustomItem";
 
@@ -21,6 +22,10 @@ const CustomItem = (props) => {
     system: "DnD",
   });
   const [validated, setValidated] = useState(false);
+  const [sweetAlert, setSweetAlert] = useState({
+    title: "",
+  });
+  const [showAlert, setShowAlert] = useState(false);
 
   const saveItem = (item) => {
     console.log(item);
@@ -52,6 +57,11 @@ const CustomItem = (props) => {
 
   return (
     <Container fluid={true} className='bg-dark-grey'>
+      <SweetAlert
+        success
+        title={SweetAlert.title}
+        onConfirm={setShowAlert(false)}
+      ></SweetAlert>
       <Form
         onSubmit={handleFormSubmit}
         className='bg-dark-grey'

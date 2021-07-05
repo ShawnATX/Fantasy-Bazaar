@@ -13,9 +13,7 @@ const InventoryItem = new Schema({
   },
 });
 
-const ItemStock = new Schema({
-  items: [InventoryItem],
-});
+const ItemStock = new Schema([InventoryItem]);
 
 const bazaarSchema = new Schema({
   bazaarName: {
@@ -77,15 +75,22 @@ const bazaarSchema = new Schema({
     type: String,
     required: true,
   },
-  stock: { ItemStock },
+  stock: {
+    type: ItemStock,
+    default: [],
+  },
 });
 
 //itemArr is expecting an array of objects, each object has properties for ObjectId(Item) and quantity(number)
 bazaarSchema.methods.addInventory = function (itemArr) {
-  itemArray.forEach((item) => {
-    let newItem = new InventoryItem(item);
+  console.log("addInventory hit");
+  console.log(itemArr);
+  itemArray.forEach(function (item) {
+    console.log(item);
+    var newItem = new InventoryItem(item);
+    console.log(newItem);
     this.stock = stock.push(newItem);
-  });
+  }, bazaarSchema);
   return this.stock;
 };
 

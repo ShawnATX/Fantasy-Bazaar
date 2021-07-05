@@ -17,7 +17,7 @@ const itemDescription = new Schema({
 
 const itemSchema = new Schema({
   name: { type: String, required: true },
-  description: { itemDescription },
+  description: { type: itemDescription, default: {} },
   value: {
     type: Number,
     required: true,
