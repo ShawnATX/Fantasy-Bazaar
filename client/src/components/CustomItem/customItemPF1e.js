@@ -9,6 +9,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import InputGroup from "react-bootstrap/InputGroup";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 import buildCustomItem from "./buildCustomItem";
 
@@ -21,12 +22,31 @@ const CustomItem = (props) => {
     system: "Pathfinder1e",
   });
   const [validated, setValidated] = useState(false);
+  const [sweetAlertContent, setSweetAlertContent] = useState({
+    title: "",
+  });
+  const [showAlert, setShowAlert] = useState(false);
 
   const saveItem = (item) => {
     console.log(item);
     API.saveItem(item).then((res) => {
-      console.log(res);
+      if (res.status === 201) {
+        setSweetAlertContent({
+          title: res.data.name,
+          value: res.data.value,
+          weight: res.data.weight,
+          type: res.data.type,
+          subtype: res.data.subtype,
+        });
+        setShowAlert(true);
+      } else {
+        console.log(res.data);
+      }
     });
+  };
+
+  const confirmAlert = () => {
+    setShowAlert(false);
   };
 
   const handleFormSubmit = (event) => {
@@ -52,6 +72,38 @@ const CustomItem = (props) => {
 
   return (
     <Container fluid={true} className='bg-dark-grey'>
+      {showAlert && (
+        <SweetAlert
+          custom
+          customIcon={<i class='bi bi-check-lg' style={{ fontSize: "3rem" }} />}
+          style={{ backgroundColor: "#6c757d" }}
+          confirmBtnBsStyle={"secondary"}
+          title={sweetAlertContent.title}
+          onConfirm={confirmAlert}
+          onCancel={confirmAlert}
+        >
+          <p>
+            <span style={{ color: "#a4bace", backgroundColor: "#6c757d" }}>
+              Value:{" "}
+            </span>
+            {sweetAlertContent.value}{" "}
+            <span style={{ color: "#a4bace", backgroundColor: "#6c757d" }}>
+              Weight:
+            </span>{" "}
+            {sweetAlertContent.weight}
+          </p>
+          <p>
+            <span style={{ color: "#a4bace", backgroundColor: "#6c757d" }}>
+              Type:
+            </span>{" "}
+            {sweetAlertContent.type}{" "}
+            <span style={{ color: "#a4bace", backgroundColor: "#6c757d" }}>
+              Subtype:
+            </span>{" "}
+            {sweetAlertContent.subtype}
+          </p>
+        </SweetAlert>
+      )}
       <Form
         onSubmit={handleFormSubmit}
         className='bg-dark-grey'

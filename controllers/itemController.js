@@ -42,17 +42,15 @@ const ItemController = {
           { $push: { stock: { item: dbModel._id, quantity: null } } },
           { new: true }
         )
-          .then((bazaarmodel) => {
-            res
-              .status(201)
-              .json(
-                dbModel.name,
-                dbModel.value,
-                dbModel.weight,
-                dbModel.description,
-                dbModel.type,
-                dbModel.subtype
-              );
+          .then(() => {
+            res.status(201).json({
+              name: dbModel.name,
+              value: dbModel.value,
+              weight: dbModel.weight,
+              description: dbModel.description,
+              type: dbModel.type,
+              subtype: dbModel.subtype,
+            });
           })
           .catch((err) => res.status(422).json(err));
       })

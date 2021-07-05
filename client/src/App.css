@@ -113,3 +113,18 @@ button {
 .sticky-top {
   z-index: 999;
 }
+.sweet-alert > h2 {
+  background-color: #6c757d;
+}
+.sweet-alert > i {
+  background-color: #6c757d;
+}
+.sweet-alert > p {
+  background-color: #6c757d;
+}
+.sweet-alert > div > p {
+  background-color: #6c757d;
+}
+.sweet-alert > div {
+  background-color: #6c757d;
+}

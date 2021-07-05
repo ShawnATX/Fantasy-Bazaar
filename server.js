@@ -44,6 +44,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
+    autoIndex: false,
   }
 );
 
