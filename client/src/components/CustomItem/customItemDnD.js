@@ -75,7 +75,9 @@ const CustomItem = (props) => {
       {showAlert && (
         <SweetAlert
           custom
-          customIcon={<i class='bi bi-check-lg' style={{ fontSize: "3rem" }} />}
+          customIcon={
+            <i className='bi bi-check-lg' style={{ fontSize: "3rem" }} />
+          }
           style={{ backgroundColor: "#6c757d" }}
           confirmBtnBsStyle={"secondary"}
           title={sweetAlertContent.title}

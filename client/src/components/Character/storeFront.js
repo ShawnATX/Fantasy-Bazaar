@@ -9,7 +9,7 @@ const StoreFront = (props) => {
   const { waitingResponse, setViewState, purchase, bazaarSettings } = props;
   const [itemList, setItemList] = useState([]);
   useEffect(() => {
-    API.getItemsBySystem(bazaarSettings.system).then((res) => {
+    API.getBazaarItems(bazaarSettings.id).then((res) => {
       setItemList(res.data);
     });
   }, []);
@@ -17,7 +17,6 @@ const StoreFront = (props) => {
   let typeArr = [];
 
   const buildList = () => {
-    itemList.forEach((item) => {});
     //get all unique item types in a Set, casting to an Array
     typeArr = Array.from(new Set(itemList.map((item) => item.type)));
   };
@@ -28,12 +27,12 @@ const StoreFront = (props) => {
 
   return (
     <div>
-      <Row className="mt-5 px-5">
-        <Col className="text-center">
+      <Row className='mt-5 px-5'>
+        <Col className='text-center'>
           <Button
-            variant="secondary"
-            alt="Back Home"
-            className="text-center mb-1 btn-small"
+            variant='secondary'
+            alt='Back Home'
+            className='text-center mb-1 btn-small'
             onClick={() => setViewState("Home")}
           >
             Back To Character Home
@@ -41,13 +40,13 @@ const StoreFront = (props) => {
         </Col>
       </Row>
       {buildList()}
-      <div className="accordion" id="itemMenu">
+      <div className='accordion' id='itemMenu'>
         {typeArr.map((type) => (
           <ListSection
             key={type}
             type={type}
             items={getItems(type)}
-            expanded={type === "Consumable" ? "collapse show" : "collapse"}
+            expanded='false'
             action={purchase}
             button={"Purchase"}
             waitingResponse={waitingResponse}

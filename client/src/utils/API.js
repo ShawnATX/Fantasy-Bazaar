@@ -14,6 +14,10 @@ export default {
   getItemsBySystem: function (system) {
     return axios.get("/api/items/" + system);
   },
+  //Gets all relevant items by bazaar
+  getBazaarItems: function (bazaarId) {
+    return axios.get("/api/items/bazaar/" + bazaarId);
+  },
   //get multiple items from array of item ids
   getItemsById: function (idArr) {
     return axios.post("/api/items/many", { items: idArr });

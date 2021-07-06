@@ -76,6 +76,7 @@ const CharacterHome = (props) => {
         requireSaleApproval: res.data.requireSaleApproval,
         requireWalletAdditionApproval: res.data.requireWalletAdditionApproval,
         requireWalletChangeApproval: res.data.requireWalletChangeApproval,
+        id: res.data._id,
       });
     });
   };
@@ -122,8 +123,8 @@ const CharacterHome = (props) => {
 
       {renderPage()}
       <Button
-        className="text-center btn-small"
-        variant="secondary"
+        className='text-center btn-small'
+        variant='secondary'
         onClick={() => userHome()}
       >
         Back To User Home

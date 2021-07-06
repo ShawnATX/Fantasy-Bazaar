@@ -93,6 +93,9 @@ module.exports = function (app) {
   //Route to get all inventory items of a particular system, passing {system: string}
   app.get("/api/items/:system", itemController.findAllBySystem);
 
+  //Route to get all inventory items relevant to a particular bazaar
+  app.get("/api/items/bazaar/:id", itemController.findAllByBazaar);
+
   //Route to save a new custom item
   app.post("/api/items/custom", isAuth, itemController.addCustom);
 

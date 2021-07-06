@@ -30,7 +30,6 @@ const CharacterController = {
           { new: true }
         )
           .then((dbModel) => {
-            console.log(characterModel);
             db.Bazaar.findOneAndUpdate(
               { _id: characterModel.bazaar },
               { $push: { characters: characterModel._id } },
