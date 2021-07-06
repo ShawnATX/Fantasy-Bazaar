@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import Item from "../item";
+import CharacterFooter from "./characterFooter";
 
 const Inventory = (props) => {
   const [itemList, setItemList] = useState([]);
@@ -20,32 +21,29 @@ const Inventory = (props) => {
     }
     return count;
   };
+  const characterHome = () => {
+    props.setViewState("Home");
+  };
 
   return (
     <div>
-      <Row className="mt-4 px-5">
-        <Col className="mb-1 text-center">
-          <Button
-            variant="secondary"
-            alt="Character Home"
-            className="text-center btn-small"
-            onClick={() => props.setViewState("Home")}
-          >
-            Back to Character Home
-          </Button>
-        </Col>
+      <Row className='mt-4 px-5 mb-5'>
+        {props.items.length > 0
+          ? itemList.map((item) => (
+              <Item
+                key={item._id}
+                item={item}
+                quantity={getQuantity(item._id)}
+                action={props.sell}
+                button={"Sell"}
+              />
+            ))
+          : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
       </Row>
-      {props.items.length > 0
-        ? itemList.map((item) => (
-            <Item
-              key={item._id}
-              item={item}
-              quantity={getQuantity(item._id)}
-              action={props.sell}
-              button={"Sell"}
-            />
-          ))
-        : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
+      <CharacterFooter
+        userHome={props.userHome}
+        characterHome={characterHome}
+      />
     </div>
   );
 };

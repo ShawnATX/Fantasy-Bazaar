@@ -11,8 +11,6 @@ import API from "../../utils/API";
 const NewCharacterImage = (props) => {
   const { handleInputChange, characterObject } = props;
   const [chosenImageFile, setChosenImageFile] = useState(null);
-  const [imageUploaded, setImageUploaded] = useState(false);
-  const [defaultImageSelected, setDefaultImageSelected] = useState(false);
   const [imageSet, setImageSet] = useState(false);
 
   const fileChangedHandler = (event) => {
@@ -48,7 +46,7 @@ const NewCharacterImage = (props) => {
   return (
     <Container>
       {imageSet ? (
-        <Row className="text-center">
+        <Row className='text-center'>
           <Col
             xs={{ span: 6, offset: 3 }}
             md={{ span: 4, offset: 4 }}
@@ -57,11 +55,11 @@ const NewCharacterImage = (props) => {
             <Image
               src={characterObject.characterImage}
               rounded
-              className="img-fluid"
+              className='img-fluid'
             />
             <Button
-              variant="secondary"
-              className="btn-small ml-3"
+              variant='secondary'
+              className='btn-small ml-3'
               onClick={changeImage}
             >
               Choose a different image
@@ -69,16 +67,16 @@ const NewCharacterImage = (props) => {
           </Col>
         </Row>
       ) : (
-        <Row className="text-center">
-          <Form.Group as={Col} controlId="imageUploadValidation">
+        <Row className='text-center'>
+          <Form.Group as={Col} controlId='imageUploadValidation'>
             <Form.Label>Upload Your Own Image:</Form.Label>
             <Form.Control
               required
-              type="file"
-              name="fileInput"
+              type='file'
+              name='fileInput'
               onChange={fileChangedHandler}
             />
-            <Button variant="secondary" onClick={uploadHandler}>
+            <Button variant='secondary' onClick={uploadHandler}>
               Upload
             </Button>
           </Form.Group>

@@ -22,7 +22,9 @@ const ItemController = {
       let stock = dbModel.getInventory();
       stock.forEach((item) => {
         db.Item.findById(item.item).then((itemModel) => {
-          items.push(itemModel);
+          if (!itemModel === null) {
+            items.push(itemModel);
+          }
         });
       });
       if (!dbModel.limitedInventory) {

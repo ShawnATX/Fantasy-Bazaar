@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../utils/userContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import ListSection from "../listSection";
 import CharacterHeader from "../Character/characterHeader";
@@ -69,7 +68,7 @@ const NewCharacterEquipment = (props) => {
   };
 
   return (
-    <div className="text-center">
+    <div className='text-center'>
       <CharacterHeader characterInfo={characterObject} />
 
       {buildTypeList()}
@@ -87,9 +86,9 @@ const NewCharacterEquipment = (props) => {
 
       <EquipmentFooter items={chosenItemList} API={API} />
 
-      <Row className="sticky-footer mt-3">
-        <Col className="text-center">
-          <button className="btn-small mr-3" onClick={saveNewCharacter}>
+      <Row className='sticky-footer mt-3'>
+        <Col className='text-center'>
+          <button className='btn-small mr-3' onClick={saveNewCharacter}>
             Save {characterObject.characterName}
           </button>
         </Col>

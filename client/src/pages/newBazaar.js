@@ -28,10 +28,6 @@ const NewBazaar = () => {
     }
   }, []);
 
-  function goHome(event) {
-    event.preventDefault();
-    history.push("/");
-  }
   const getSessionUser = () => {
     API.getSessionUser()
       .then((res) => {
@@ -46,7 +42,9 @@ const NewBazaar = () => {
           history.push("/login");
         }
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   function saveNewBazaar(bazaarData) {
@@ -96,9 +94,9 @@ const NewBazaar = () => {
 
   return (
     <Container>
-      <Row className="my-2">
-        <Col className="text-center">
-          <h2 className="display-3">Make A New Bazaar!</h2>
+      <Row className='my-2'>
+        <Col className='text-center'>
+          <h2 className='display-3'>Make A New Bazaar!</h2>
 
           {renderPage()}
         </Col>

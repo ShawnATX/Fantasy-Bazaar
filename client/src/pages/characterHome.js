@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -8,6 +8,7 @@ import Inventory from "../components/Character/inventory";
 import StoreFront from "../components/Character/storeFront";
 import CharacterMain from "../components/Character/characterMain";
 import CharacterHeader from "../components/Character/characterHeader";
+import CharacterFooter from "../components/Character/characterFooter";
 
 const CharacterHome = (props) => {
   const { setPageState } = props;
@@ -92,6 +93,7 @@ const CharacterHome = (props) => {
         <CharacterMain
           setViewState={setViewState}
           characterObject={characterObject}
+          userHome={userHome}
         />
       );
     } else if (viewState === "Inventory") {
@@ -101,6 +103,7 @@ const CharacterHome = (props) => {
           items={characterObject.items}
           sell={sellItem}
           waitingResponse={waitingResponse}
+          userHome={userHome}
         />
       );
     } else if (viewState === "Store") {
@@ -110,6 +113,7 @@ const CharacterHome = (props) => {
           waitingResponse={waitingResponse}
           purchase={purchaseItem}
           bazaarSettings={bazaarObject}
+          userHome={userHome}
         />
       );
     } else {
@@ -122,13 +126,13 @@ const CharacterHome = (props) => {
       <CharacterHeader characterInfo={characterObject} />
 
       {renderPage()}
-      <Button
+      {/* <Button
         className='text-center btn-small'
         variant='secondary'
         onClick={() => userHome()}
       >
         Back To User Home
-      </Button>
+      </Button> */}
     </Container>
   );
 };

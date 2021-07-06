@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 
@@ -15,24 +15,24 @@ const CharacterOffcanvas = (props) => {
     <Offcanvas
       show={showOffCanvas}
       onHide={handleCloseOffcanvas}
-      placement="bottom"
+      placement='bottom'
     >
-      <Offcanvas.Header closeButton className="bg-grey">
-        <Offcanvas.Title className="mx-auto bg-grey">
-          <h3 className="bg-grey">
+      <Offcanvas.Header closeButton className='bg-grey'>
+        <Offcanvas.Title className='mx-auto bg-grey'>
+          <h3 className='bg-grey'>
             {character.characterName} - {character.wallet} gold
           </h3>
         </Offcanvas.Title>
         {character.pendingApproval && (
           <Button
-            variant="secondary bg-dark-grey"
+            variant='secondary bg-dark-grey'
             onClick={() => approvePendingChanges(character)}
           >
             Approve Pending Character Changes
           </Button>
         )}
       </Offcanvas.Header>
-      <Offcanvas.Body className="bg-dark-grey">
+      <Offcanvas.Body className='bg-dark-grey'>
         <CharacterDetails
           character={character}
           approvePendingChanges={approvePendingChanges}

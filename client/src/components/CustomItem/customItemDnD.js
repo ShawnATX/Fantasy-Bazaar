@@ -38,6 +38,7 @@ const CustomItem = (props) => {
           type: res.data.type,
           subtype: res.data.subtype,
         });
+        handleCloseModal();
         setShowAlert(true);
       } else {
         console.log(res.data);

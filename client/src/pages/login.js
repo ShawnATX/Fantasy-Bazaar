@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -55,26 +55,26 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="display-2 mt-3 pb-5 text-center"> Fantasy Bazaar</h1>
-      <Container className="text-center mt-5">
-        <Form className="mt-5" onSubmit={handleFormSubmit}>
-          <Row className="text-center pt-5">
+      <h1 className='display-2 mt-3 pb-5 text-center'> Fantasy Bazaar</h1>
+      <Container className='text-center mt-5'>
+        <Form className='mt-5' onSubmit={handleFormSubmit}>
+          <Row className='text-center pt-5'>
             <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-              <Form.Group className="mb-4">
+              <Form.Group className='mb-4'>
                 <Form.Control
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email Address"
+                  type='email'
+                  name='email'
+                  id='email'
+                  placeholder='Email Address'
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              <Form.Group className="mb-4">
+              <Form.Group className='mb-4'>
                 <Form.Control
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
+                  type='password'
+                  name='password'
+                  id='password'
+                  placeholder='Password'
                   onChange={handleInputChange}
                 />
               </Form.Group>
@@ -82,17 +82,17 @@ const Login = () => {
             <Row xs={1} sm={2} md={2}>
               <Col>
                 <Button
-                  className="btn-small mx-auto"
-                  variant="secondary"
-                  type="submit"
+                  className='btn-small float-end'
+                  variant='secondary'
+                  type='submit'
                 >
                   Submit
                 </Button>
               </Col>
               <Col>
                 <Button
-                  className="btn-small mx-auto"
-                  variant="secondary"
+                  className='btn-small float-start'
+                  variant='secondary'
                   onClick={() => {
                     history.push("/");
                   }}

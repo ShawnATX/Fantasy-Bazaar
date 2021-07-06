@@ -73,6 +73,9 @@ button {
   background-color: #343a40;
   color: white;
 }
+.navbar-footer {
+  background-color: black;
+}
 .offcanvas-bottom {
   height: 60vh;
 }

@@ -4,9 +4,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import ListSection from "../listSection";
+import CharacterFooter from "./characterFooter";
 
 const StoreFront = (props) => {
-  const { waitingResponse, setViewState, purchase, bazaarSettings } = props;
+  const { waitingResponse, setViewState, purchase, bazaarSettings, userHome } =
+    props;
   const [itemList, setItemList] = useState([]);
   useEffect(() => {
     API.getBazaarItems(bazaarSettings.id).then((res) => {
@@ -25,20 +27,13 @@ const StoreFront = (props) => {
     return itemList.filter((item) => item.type === type);
   };
 
+  const characterHome = () => {
+    setViewState("Home");
+  };
+
   return (
     <div>
-      <Row className='mt-5 px-5'>
-        <Col className='text-center'>
-          <Button
-            variant='secondary'
-            alt='Back Home'
-            className='text-center mb-1 btn-small'
-            onClick={() => setViewState("Home")}
-          >
-            Back To Character Home
-          </Button>
-        </Col>
-      </Row>
+      <Row className='mt-5 px-5 mb-5'></Row>
       {buildList()}
       <div className='accordion' id='itemMenu'>
         {typeArr.map((type) => (
@@ -53,6 +48,7 @@ const StoreFront = (props) => {
           ></ListSection>
         ))}
       </div>
+      <CharacterFooter userHome={userHome} characterHome={characterHome} />
     </div>
   );
 };

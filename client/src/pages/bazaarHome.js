@@ -6,6 +6,9 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
+import Popover from "react-bootstrap/Popover";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Overlay from "react-bootstrap/Overlay";
 import API from "../utils/API";
 import CharacterOffcanvas from "../components/Bazaar/characterOffcanvas";
 import CustomItemDnD from "../components/CustomItem/customItemDnD";
@@ -16,6 +19,7 @@ const BazaarHome = (props) => {
 
   const [showOffCanvas, setShowOffcanvas] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const handleCloseOffcanvas = () => setShowOffcanvas(false);
   const handleShowOffcanvas = () => setShowOffcanvas(true);
@@ -40,9 +44,11 @@ const BazaarHome = (props) => {
   const approvePendingChanges = (character) => {
     API.updateCharacter(character._id, { pendingApproval: false })
       .then(() =>
-        API.getCharacters(bazaar.characters).then((res) => {
-          setCharactersObject(res.data);
-        })
+        API.getCharacters(bazaar.characters)
+          .then((res) => {
+            setCharactersObject(res.data);
+          })
+          .catch((err) => console.log(err))
       )
       .catch((err) => console.log(err));
   };
@@ -57,14 +63,48 @@ const BazaarHome = (props) => {
     handleShowOffcanvas();
   };
 
-  const saveCustomItem = () => {};
+  const handleLinkCopy = () => {
+    setLinkCopied(true);
+    setTimeout(() => {
+      setLinkCopied(false);
+    }, 4000);
+  };
+
+  const popover = (
+    <Popover id='popover-join'>
+      <Popover.Body className='bg-dark-grey'>
+        <p
+          style={{
+            fontSize: "1.3em",
+          }}
+          className='bg-dark-grey'
+        >
+          Player Join Code: <strong>{bazaar.joinCode}</strong>
+        </p>
+        <p
+          className='bg-dark-grey'
+          style={{
+            fontSize: "1.5em",
+          }}
+          onClick={() => {
+            navigator.clipboard.writeText(
+              `https://www.fantasybazaar.app/#/newusercreds/player?bazaar=${bazaar.joinCode}`
+            );
+            handleLinkCopy();
+          }}
+        >
+          {linkCopied ? `Copied!` : `Click here to copy your direct join link!`}
+        </p>
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <Container fluid={true}>
-      <h2 className='display-3'>{bazaar.bazaarName}</h2>
-      <p>
-        Player Join Code: <span className='display-5'>{bazaar.joinCode}</span>
-      </p>
+      <OverlayTrigger trigger='click' placement='bottom' overlay={popover}>
+        <h2 className='display-3'>{bazaar.bazaarName}</h2>
+      </OverlayTrigger>
+
       {bazaar.characters.length > 0 ? (
         <div>
           <Row xs={1} sm={2} md={3} lg={4}>

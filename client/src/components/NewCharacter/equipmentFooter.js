@@ -1,6 +1,4 @@
 import React from "react";
-import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
@@ -10,8 +8,8 @@ function EquipmentFooter(props) {
   return (
     <div>
       <DropdownButton
-        drop="up"
-        variant="secondary"
+        drop='up'
+        variant='secondary'
         title={items.length + ` Items`}
       >
         {items.map((item) => (
@@ -20,7 +18,6 @@ function EquipmentFooter(props) {
           </Dropdown.Item>
         ))}
       </DropdownButton>
-      {/* <Badge variant="secondary">{items.length}</Badge> */}
     </div>
   );
 }
