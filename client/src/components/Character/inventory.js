@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+
 import API from "../../utils/API";
-import Item from "../item";
+import Item from "../Item/item";
 import CharacterFooter from "./characterFooter";
 
 const Inventory = (props) => {

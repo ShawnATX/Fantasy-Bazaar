@@ -6,13 +6,13 @@ const itemDescription = new Schema({
   abilityReq: String,
   skillModifier: String,
   damage: String,
+  crit: String,
   properties: String,
   description: String,
   capacity: String,
   dexBonus: String,
   armorCheckPenalty: String,
   arcaneSpellFailure: String,
-  crit: String,
 });
 
 const itemSchema = new Schema({

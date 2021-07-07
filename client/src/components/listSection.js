@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "./item";
+import Item from "./Item/item";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 
@@ -24,7 +24,7 @@ const ListSection = (props) => {
   return (
     <Accordion>
       <Card>
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey='0'>
           <Accordion.Header as={Card.Header}>{type}</Accordion.Header>
 
           <Accordion.Body id={strippedType + "body"}>
@@ -34,15 +34,15 @@ const ListSection = (props) => {
                 <Accordion key={subtypeObject.strippedSubtype}>
                   <Accordion.Item
                     as={Card}
-                    eventKey="0"
+                    eventKey='0'
                     key={subtypeObject.strippedSubtype}
                   >
                     <Accordion.Header
-                      className="p-1"
+                      className='p-1'
                       as={Card.Header}
                       id={subtypeObject.strippedSubtype + "head"}
                     >
-                      <h4 className="mb-0 text-center bg-grey">
+                      <h4 className='mb-0 text-center bg-grey'>
                         {subtypeObject.subtype}
                       </h4>
                     </Accordion.Header>
