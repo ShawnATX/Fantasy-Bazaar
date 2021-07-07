@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import { useAlert } from "react-alert";
 import API from "../utils/API";
 import Inventory from "../components/Character/inventory";
 import StoreFront from "../components/Character/storeFront";
 import CharacterMain from "../components/Character/characterMain";
 import CharacterHeader from "../components/Character/characterHeader";
-import CharacterFooter from "../components/Character/characterFooter";
 
 const CharacterHome = (props) => {
   const { setPageState } = props;
@@ -23,12 +21,13 @@ const CharacterHome = (props) => {
     getBazaarSetting();
   }, []);
 
+  const updateWallet = () => {};
+
   const sellItem = (item) => {
     let newItems = characterObject.items;
     for (var i = 0; i < characterObject.items.length; i++) {
       if (characterObject.items[i] === item._id) {
         newItems.splice(i, 1);
-        console.log(newItems);
         i = characterObject.items.length;
       }
     }
@@ -123,16 +122,13 @@ const CharacterHome = (props) => {
 
   return (
     <Container>
-      <CharacterHeader characterInfo={characterObject} />
-
+      <CharacterHeader
+        characterInfo={characterObject}
+        setCharacterObject={setCharacterObject}
+        viewState={viewState}
+        updateWallet={updateWallet}
+      />
       {renderPage()}
-      {/* <Button
-        className='text-center btn-small'
-        variant='secondary'
-        onClick={() => userHome()}
-      >
-        Back To User Home
-      </Button> */}
     </Container>
   );
 };

@@ -8,7 +8,6 @@ import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Overlay from "react-bootstrap/Overlay";
 import API from "../utils/API";
 import CharacterOffcanvas from "../components/Bazaar/characterOffcanvas";
 import CustomItemDnD from "../components/CustomItem/customItemDnD";
@@ -144,9 +143,11 @@ const BazaarHome = (props) => {
           </Row>
           <CharacterOffcanvas
             character={canvasCharacter}
+            setCanvasCharacter={setCanvasCharacter}
             showOffCanvas={showOffCanvas}
             setShowOffcanvas={setShowOffcanvas}
             approvePendingChanges={approvePendingChanges}
+            API={API}
           />
         </div>
       ) : (

@@ -1,14 +1,109 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Popover from "react-bootstrap/Popover";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
+import API from "../../utils/API";
 
 function CharacterHeader(props) {
-  const { characterInfo } = props;
+  const { characterInfo, viewState } = props;
+  const [goldEdit, setGoldEdit] = useState(false);
+  const [formObject, setFormObject] = useState({});
+  const [goldModifier, setGoldModifier] = useState("+");
+  const [validated, setValidated] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  useEffect(() => {
+    if (viewState === "Inventory") {
+      setGoldEdit(true);
+    } else {
+      setGoldEdit(false);
+    }
+  }, [viewState]);
+
+  const handleShowOverlay = () => {
+    setShowOverlay(!showOverlay);
+  };
+
+  const adjustGoldModifier = () => {
+    if (goldModifier === "+") {
+      setGoldModifier("-");
+    } else {
+      setGoldModifier("+");
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+  };
+
+  const handleFormSubmit = (event) => {
+    let form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      setValidated(false);
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+      setValidated(true);
+      let walletChange = formObject.gold;
+      if (goldModifier === "-") {
+        walletChange = walletChange * -1;
+      }
+      API.updateGold(characterInfo._id, { wallet: walletChange })
+        .then((res) => {
+          if (res.status === 200) {
+            props.setCharacterObject({
+              ...characterInfo,
+              wallet: res.data,
+            });
+            handleShowOverlay();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const popover = (
+    <Popover id='popover-wallet'>
+      <Popover.Body className='bg-dark-grey'>
+        <Form
+          validated={validated}
+          className='bg-dark-grey'
+          onSubmit={handleFormSubmit}
+        >
+          <Form.Label className='bg-dark-grey'>Add or Subtract gold</Form.Label>
+          <InputGroup hasValidation className='bg-dark-grey'>
+            <InputGroup.Text onClick={adjustGoldModifier}>
+              {goldModifier}
+            </InputGroup.Text>
+            <Form.Control
+              required
+              type='number'
+              name='gold'
+              onChange={handleInputChange}
+            />
+            <Button variant='secondary' type='submit'>
+              <i
+                className='bi bi-check-lg bg-grey'
+                style={{ fontSize: "1rem" }}
+              />
+            </Button>
+          </InputGroup>
+        </Form>
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <Row className='border p-1 mb-3 text-center sticky-top'>
       <Col
         className='text-center p-0 mx-2 mh-50'
+        xs={{ span: 5, offset: 4 }}
         sm={{ span: 6, offset: 3 }}
         md={{ span: 6, offset: 3 }}
         lg={{ span: 5, offset: 3 }}
@@ -28,23 +123,45 @@ function CharacterHeader(props) {
         </Row>
         {characterInfo.characterName}
       </Col>
-      <Col className='text-center p-0 mx-2'>
-        <Row className='mx-0 mt-2'>
+      <Col className='text-center p-0 mx-2 my-auto'>
+        <Row className='mx-0 mt-2 my-auto'>
           <Col className='justify-center mt-1'>
-            {characterInfo.wallet}
-            {/* <Animate
-                                animate="false"
-                                change="bounce"
-                                durationChange={1200}
-                                component="span"
-                                // animateChangeIf={(spendMoney)}
-                            > */}
-            <img
-              className='img-fluid w-25 ml-1 mb-1'
-              src='./gold-coin-icon.png'
-              alt='gold coins'
-            />
-            {/* </Animate> */}
+            {goldEdit ? (
+              <>
+                <OverlayTrigger
+                  trigger='click'
+                  placement='bottom'
+                  overlay={popover}
+                  show={showOverlay}
+                  onToggle={handleShowOverlay}
+                >
+                  <div>
+                    {characterInfo.wallet}
+                    <img
+                      className='img-fluid w-25 ml-1 mb-1'
+                      src='./gold-coin-icon.png'
+                      alt='gold coins'
+                    />
+
+                    <i
+                      className='bi bi-pencil-square'
+                      style={{
+                        fontSize: "1.6em",
+                      }}
+                    ></i>
+                  </div>
+                </OverlayTrigger>
+              </>
+            ) : (
+              <>
+                {characterInfo.wallet}
+                <img
+                  className='img-fluid w-25 ml-1 mb-1'
+                  src='./gold-coin-icon.png'
+                  alt='gold coins'
+                />
+              </>
+            )}
           </Col>
         </Row>
       </Col>

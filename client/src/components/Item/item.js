@@ -12,17 +12,19 @@ const Item = (props) => {
 
   return (
     <Row className='border align-middle'>
-      <Col md={3} className='align-middle'>
+      <Col md={3} className='align-middle my-auto'>
         <h4>{props.item.name}</h4> {props.quantity ? `X${props.quantity}` : ""}
       </Col>
-      <Col md={1}>
+      <Col md={1} className='align-middle my-auto'>
         <h5>{props.item.value}</h5> Gold
       </Col>
-      <Col md={1}>
+      <Col md={1} className='align-middle my-auto'>
         <h5>{props.item.weight}</h5> lbs.
       </Col>
-      <Col md={4}>{BuildDescription(props.item)}</Col>
-      <Col md={3}>
+      <Col md={4} className='my-auto'>
+        {BuildDescription(props.item)}
+      </Col>
+      <Col md={3} className='align-middle my-auto'>
         {waitingResponse ? (
           <Spinner variant='light' role='status'>
             <span className='sr-only'></span>

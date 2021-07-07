@@ -108,6 +108,12 @@ module.exports = function (app) {
 
   app.put("/api/characters/:id", isAuth, characterController.update);
 
+  app.put(
+    "/api/characters/wallet/:id",
+    isAuth,
+    characterController.updateWallet
+  );
+
   app.put("/api/characters/items", isAuth, characterController.addItems);
 
   //Update character (item &  wallet)

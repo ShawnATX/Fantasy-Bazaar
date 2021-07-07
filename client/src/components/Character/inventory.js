@@ -24,7 +24,7 @@ const Inventory = (props) => {
   };
 
   return (
-    <div>
+    <>
       <Row className='mt-4 px-5 mb-5'>
         {props.items.length > 0
           ? itemList.map((item) => (
@@ -43,7 +43,7 @@ const Inventory = (props) => {
         characterHome={characterHome}
         userHome={props.userHome}
       />
-    </div>
+    </>
   );
 };
 

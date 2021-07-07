@@ -81,6 +81,9 @@ export default {
   updateCharacter: function (id, characterData) {
     return axios.put("/api/characters/" + id, characterData);
   },
+  updateGold: function (id, characterData) {
+    return axios.put("/api/characters/wallet/" + id, characterData);
+  },
   //update character to purchase a single item and decrement wallet
   characterPurchase: function (characterData) {
     return axios.post("/api/characters/purchase", characterData);

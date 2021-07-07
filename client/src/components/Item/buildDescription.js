@@ -31,7 +31,11 @@ const BuildDescription = (item) => {
     }
   }
   let descJSX = description.map((item) => {
-    return <p className='mb-1'>{item}</p>;
+    return (
+      <p className='mb-1' key={item}>
+        {item}
+      </p>
+    );
   });
 
   return descJSX;
