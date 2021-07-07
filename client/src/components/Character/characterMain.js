@@ -8,23 +8,21 @@ const CharacterMain = (props) => {
   const { userHome } = props;
   return (
     <div>
-      <Row className='mt-5 px-5 mb-5'>
+      <Row className='mt-5 px-5 mb-5 d-flex justify-content-center'>
         <Col>
           <Button
             variant='secondary'
             alt='Manage Inventory'
-            className='text-center btn-small'
+            className='text-center btn-small mx-3'
             onClick={() => props.setViewState("Inventory")}
           >
             Manage {props.characterObject.characterName}'s Inventory
           </Button>
-        </Col>
 
-        <Col>
           <Button
             variant='secondary'
             alt='Visit The Bazaar'
-            className='text-center btn-small'
+            className='text-center btn-small mx-3'
             onClick={() => props.setViewState("Store")}
           >
             Go Shopping

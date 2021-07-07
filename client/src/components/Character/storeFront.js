@@ -35,7 +35,7 @@ const StoreFront = (props) => {
     <div>
       <Row className='mt-5 px-5 mb-5'></Row>
       {buildList()}
-      <div className='accordion' id='itemMenu'>
+      <div className='accordion mb-5' id='itemMenu'>
         {typeArr.map((type) => (
           <ListSection
             key={type}
@@ -48,7 +48,8 @@ const StoreFront = (props) => {
           ></ListSection>
         ))}
       </div>
-      <CharacterFooter userHome={userHome} characterHome={characterHome} />
+      <Row className='mb-3'></Row>
+      <CharacterFooter characterHome={characterHome} userHome={userHome} />
     </div>
   );
 };

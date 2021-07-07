@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
-
 import API from "../../utils/API";
 import Item from "../Item/item";
 import CharacterFooter from "./characterFooter";
@@ -39,9 +38,10 @@ const Inventory = (props) => {
             ))
           : "No items in inventory at this time. Maybe give the Bazaar a visit?"}
       </Row>
+      <Row className='mb-3'></Row>
       <CharacterFooter
-        userHome={props.userHome}
         characterHome={characterHome}
+        userHome={props.userHome}
       />
     </div>
   );
