@@ -30,218 +30,218 @@ const NewBazaarSettings = (props) => {
     setPageState("Main");
   };
   return (
-    <Row className="mt-4 text-center">
+    <Row className='mt-4 text-center'>
       <Col
-        className="text-center"
+        className='text-center'
         xs={{ span: 8, offset: 2 }}
         sm={{ span: 6, offset: 3 }}
         md={{ span: 6, offset: 3 }}
         lg={{ span: 4, offset: 4 }}
       >
-        <h4 className="mb-3">Require Approval For:</h4>
-        <div className="form-check form-switch mx-2 my-2">
+        <h4 className='mb-3'>Require Approval For:</h4>
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requireNewCharacterApproval"
-            name="requireNewCharacterApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requireNewCharacterApproval'
+            name='requireNewCharacterApproval'
             checked={formObject.requireNewCharacterApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-newCharacterApproval">
+              <Tooltip id='tooltip-newCharacterApproval'>
                 Require your approval for a new character's entered starting
                 gold and items.
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requireNewCharacterApproval"
-              id="newCharacter"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requireNewCharacterApproval'
+              id='newCharacter'
             >
               New Character Gold & Inventory
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch mx-2 my-2">
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requireCustomItemApproval"
-            name="requireCustomItemApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requireCustomItemApproval'
+            name='requireCustomItemApproval'
             checked={formObject.requireCustomItemApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-customItem">
+              <Tooltip id='tooltip-customItem'>
                 Require your approval for any custom items that players add
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requireCustomItemApproval"
-              id="customItem"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requireCustomItemApproval'
+              id='customItem'
             >
-              Custom Item Addition
+              Custom Item Addition*
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch mx-2 my-2">
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requireWalletAdditionApproval"
-            name="requireWalletAdditionApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requireWalletAdditionApproval'
+            name='requireWalletAdditionApproval'
             checked={formObject.requireWalletAdditionApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-walletAddition">
+              <Tooltip id='tooltip-walletAddition'>
                 Require your approval for any gold added to character wallets,
                 such as loot or payments from in-game
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requireWalletAdditionApproval"
-              id="walletAdditions"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requireWalletAdditionApproval'
+              id='walletAdditions'
             >
-              Wallet Additions
+              Wallet Additions*
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch mx-2 my-2">
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requireWalletChangeApproval"
-            name="requireWalletChangeApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requireWalletChangeApproval'
+            name='requireWalletChangeApproval'
             checked={formObject.requireWalletChangeApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-walletChanges">
+              <Tooltip id='tooltip-walletChanges'>
                 Require your approval for any gold added to or removed from
                 character wallets
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requireWalletChangeApproval"
-              id="walletChanges"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requireWalletChangeApproval'
+              id='walletChanges'
             >
-              All Wallet Changes
+              All Wallet Changes*
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch mx-2 my-2">
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requireSaleApproval"
-            name="requireSaleApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requireSaleApproval'
+            name='requireSaleApproval'
             checked={formObject.requireSaleApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-itemSales">
+              <Tooltip id='tooltip-itemSales'>
                 Require your approval for items sold to your bazaar by
                 characters
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requireSaleApproval"
-              id="itemSale"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requireSaleApproval'
+              id='itemSale'
             >
-              Item Sales
+              Item Sales*
             </label>
           </OverlayTrigger>
         </div>
-        <div className="form-check form-switch mx-2 my-2">
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="requirePurchaseApproval"
-            name="requirePurchaseApproval"
+            className='form-check-input'
+            type='checkbox'
+            id='requirePurchaseApproval'
+            name='requirePurchaseApproval'
             checked={formObject.requirePurchaseApproval}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-itemPurchases">
+              <Tooltip id='tooltip-itemPurchases'>
                 Require your approval for items purchased from your bazaar by
                 characters
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="requirePurchaseApproval"
-              id="itemPurchase"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='requirePurchaseApproval'
+              id='itemPurchase'
             >
-              Item Purchases
+              Item Purchases*
             </label>
           </OverlayTrigger>
         </div>
-        <h4 className="mt-4 mb-3">General Settings:</h4>
-        <div className="form-check form-switch mx-2 my-2">
+        <h4 className='mt-4 mb-3'>General Settings:</h4>
+        <div className='form-check form-switch mx-2 my-2'>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="limitedInventory"
-            name="limitedInventory"
+            className='form-check-input'
+            type='checkbox'
+            id='limitedInventory'
+            name='limitedInventory'
             checked={formObject.limitedInventory}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id="tooltip-limitedInventory">
+              <Tooltip id='tooltip-limitedInventory'>
                 Set limits on available inventory items and amounts in your
                 bazaar
               </Tooltip>
             }
           >
             <label
-              className="form-check-label bazaar-form-check-label"
-              htmlFor="itemPurchases"
-              id="stockLimits"
+              className='form-check-label bazaar-form-check-label'
+              htmlFor='itemPurchases'
+              id='stockLimits'
             >
-              Set Stock Limits
+              Set Stock Limits*
             </label>
           </OverlayTrigger>
         </div>
-        <Row className="sticky-footer mt-3">
-          <Col className="text-center">
+        <Row className='sticky-footer mt-3'>
+          <Col className='text-center'>
             <Button
-              variant="secondary"
-              type="submit"
-              className="text-center btn-small"
+              variant='secondary'
+              type='submit'
+              className='text-center btn-small'
               onClick={handleGoBack}
             >
               Go Back
             </Button>
             <Button
-              variant="secondary"
-              type="submit"
-              className="text-center btn-small"
+              variant='secondary'
+              type='submit'
+              className='text-center btn-small'
               onClick={handleFormSubmit}
             >
               Finish!
@@ -249,6 +249,7 @@ const NewBazaarSettings = (props) => {
           </Col>
         </Row>
       </Col>
+      <p>* This setting will be functional in a future release version </p>
     </Row>
   );
 };

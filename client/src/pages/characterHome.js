@@ -9,8 +9,7 @@ import CharacterMain from "../components/Character/characterMain";
 import CharacterHeader from "../components/Character/characterHeader";
 
 const CharacterHome = (props) => {
-  const { setPageState } = props;
-  const [characterObject, setCharacterObject] = useState(props.character);
+  //props = character, setCharacter, setPageState
   const [bazaarObject, setBazaarObject] = useState({});
   const [viewState, setViewState] = useState("Home");
   const [waitingResponse, setWaitingResponse] = useState(false);
@@ -19,25 +18,23 @@ const CharacterHome = (props) => {
 
   useEffect(() => {
     getBazaarSetting();
-  }, []);
-
-  const updateWallet = () => {};
+  }, [props.character]);
 
   const sellItem = (item) => {
-    let newItems = characterObject.items;
-    for (var i = 0; i < characterObject.items.length; i++) {
-      if (characterObject.items[i] === item._id) {
+    let newItems = props.character.items;
+    for (var i = 0; i < props.character.items.length; i++) {
+      if (props.character.items[i] === item._id) {
         newItems.splice(i, 1);
-        i = characterObject.items.length;
+        i = props.character.items.length;
       }
     }
     API.characterSale({
       soldItem: item._id,
       items: newItems,
-      character: characterObject._id,
+      character: props.character._id,
     }).then((res) => {
-      setCharacterObject({
-        ...characterObject,
+      props.setCharacter({
+        ...props.character,
         items: res.data.items,
         wallet: res.data.wallet,
       });
@@ -45,18 +42,18 @@ const CharacterHome = (props) => {
   };
 
   const purchaseItem = (item) => {
-    if (item.value > characterObject.wallet) {
+    if (item.value > props.character.wallet) {
       alert.show("Looks like that is a bit too expensive...");
     } else {
       setWaitingResponse(true);
       API.characterPurchase({
         items: [item._id],
-        character: characterObject._id,
+        character: props.character._id,
       })
         .then((res) => {
           setWaitingResponse(false);
-          setCharacterObject({
-            ...characterObject,
+          props.setCharacter({
+            ...props.character,
             items: res.data.items,
             wallet: res.data.wallet,
           });
@@ -66,7 +63,7 @@ const CharacterHome = (props) => {
   };
 
   const getBazaarSetting = () => {
-    API.getBazaarId(characterObject.bazaar).then((res) => {
+    API.getBazaarId(props.character.bazaar).then((res) => {
       setBazaarObject({
         bazaarName: res.data.bazaarName,
         system: res.data.system,
@@ -83,7 +80,7 @@ const CharacterHome = (props) => {
 
   const userHome = () => {
     history.push("/userhome");
-    setPageState("user");
+    props.setPageState("user");
   };
 
   const renderPage = () => {
@@ -91,7 +88,7 @@ const CharacterHome = (props) => {
       return (
         <CharacterMain
           setViewState={setViewState}
-          characterObject={characterObject}
+          characterObject={props.character}
           userHome={userHome}
         />
       );
@@ -99,7 +96,7 @@ const CharacterHome = (props) => {
       return (
         <Inventory
           setViewState={setViewState}
-          items={characterObject.items}
+          items={props.character.items}
           sell={sellItem}
           waitingResponse={waitingResponse}
           userHome={userHome}
@@ -123,10 +120,9 @@ const CharacterHome = (props) => {
   return (
     <Container>
       <CharacterHeader
-        characterInfo={characterObject}
-        setCharacterObject={setCharacterObject}
+        characterInfo={props.character}
+        setCharacterObject={props.setCharacter}
         viewState={viewState}
-        updateWallet={updateWallet}
       />
       {renderPage()}
     </Container>

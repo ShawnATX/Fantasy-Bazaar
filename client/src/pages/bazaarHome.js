@@ -30,7 +30,7 @@ const BazaarHome = (props) => {
 
   useEffect(() => {
     getCharactersDetails();
-  }, []);
+  }, [bazaar]);
 
   const getCharactersDetails = () => {
     if (bazaar.characters.length !== 0) {

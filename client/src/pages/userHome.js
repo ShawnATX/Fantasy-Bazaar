@@ -13,7 +13,7 @@ import NavbarComponent from "../components/navbar";
 function UserHome() {
   const { authenticationState } = useContext(UserContext);
   const params = new URLSearchParams(useLocation().search);
-  const [characters, setCharacters] = useState([]);
+  const [charactersDetails, setCharactersDetails] = useState([]);
   const [bazaars, setBazaars] = useState([]);
   const [chosenEntity, setChosenEntity] = useState({});
   const [pageState, setPageState] = useState("user");
@@ -27,12 +27,13 @@ function UserHome() {
       getBazaars();
       checkParams();
     }
-  }, []);
+  }, [pageState]);
 
   const getSessionUser = () => {
     API.getSessionUser()
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data);
           authenticationState.userHasAuthenticated(true, {
             email: res.data.email,
             bazaars: res.data.bazaars,
@@ -54,17 +55,14 @@ function UserHome() {
   };
 
   const checkParams = () => {
-    if (params.get("bazaar")) {
-      console.log(bazaars);
-    } else if (params.get("character")) {
-      console.log(characters);
-      let characterId = params.get("character");
-      let userCharacters = authenticationState.user.characters;
-      const character = userCharacters.filter((character) => {
-        return character._id === characterId;
-      });
-      console.log(character);
-    }
+    // if (params.get("bazaar")) {
+    // } else if (params.get("character")) {
+    //   let characterId = params.get("character");
+    //   let userCharacters = authenticationState.user.characters;
+    //   const character = userCharacters.filter((character) => {
+    //     return character._id === characterId;
+    //   });
+    // }
   };
 
   const getCharacters = () => {
@@ -74,7 +72,7 @@ function UserHome() {
     ) {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
-          setCharacters(res.data);
+          setCharactersDetails(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -121,14 +119,14 @@ function UserHome() {
     if (pageState === "user") {
       return (
         <div>
-          <h1 className="display-3">User Home</h1>
+          <h1 className='display-3'>User Home</h1>
           <Row>
             <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
               Characters
               <ListGroup>
-                {characters.map((character) => (
+                {charactersDetails.map((character) => (
                   <ListGroup.Item
-                    tag="button"
+                    tag='button'
                     key={character._id}
                     onClick={() => {
                       goToCharacterHome(character);
@@ -137,7 +135,7 @@ function UserHome() {
                     {character.characterName}
                   </ListGroup.Item>
                 ))}
-                <ListGroup.Item tag="button" onClick={newCharacter}>
+                <ListGroup.Item tag='button' onClick={newCharacter}>
                   + New Character
                 </ListGroup.Item>
               </ListGroup>
@@ -148,7 +146,7 @@ function UserHome() {
               <ListGroup>
                 {bazaars.map((bazaar) => (
                   <ListGroup.Item
-                    tag="button"
+                    tag='button'
                     key={bazaar._id}
                     onClick={() => {
                       goToBazaarHome(bazaar);
@@ -157,7 +155,7 @@ function UserHome() {
                     {bazaar.bazaarName}
                   </ListGroup.Item>
                 ))}
-                <ListGroup.Item tag="button" onClick={newBazaar}>
+                <ListGroup.Item tag='button' onClick={newBazaar}>
                   + New Bazaar
                 </ListGroup.Item>
               </ListGroup>
@@ -167,7 +165,11 @@ function UserHome() {
       );
     } else if (pageState === "character") {
       return (
-        <CharacterHome character={chosenEntity} setPageState={setPageState} />
+        <CharacterHome
+          character={chosenEntity}
+          setCharacter={setChosenEntity}
+          setPageState={setPageState}
+        />
       );
     } else if (pageState === "bazaar") {
       return <BazaarHome bazaar={chosenEntity} setPageState={setPageState} />;
@@ -175,9 +177,9 @@ function UserHome() {
   };
 
   return (
-    <Container className="text-center">
+    <Container className='text-center'>
       <NavbarComponent
-        characters={characters}
+        characters={charactersDetails}
         bazaars={bazaars}
         goToCharacterHome={goToCharacterHome}
         goToBazaarHome={goToBazaarHome}
