@@ -25,11 +25,11 @@ const CharacterDetails = (props) => {
   };
 
   return (
-    <Row sm={2} md={4} lg={5} className="text-center bg-dark-grey">
+    <Row xs={2} sm={2} md={4} lg={5} className='text-center bg-dark-grey'>
       {props.character.items.length > 0 ? (
         itemList.map((item) => (
-          <Col className="my-1 bg-dark-grey" key={item._id}>
-            <Card style={{ width: "12rem" }}>
+          <Col className='my-1 bg-dark-grey mx-auto' key={item._id}>
+            <Card style={{ width: "10rem" }}>
               <Card.Body>
                 <Card.Text>
                   {item.name} - {getQuantity(item._id)}
@@ -42,7 +42,7 @@ const CharacterDetails = (props) => {
           </Col>
         ))
       ) : (
-        <Row className="text-center">
+        <Row className='text-center'>
           <Col>This character has no items</Col>
         </Row>
       )}

@@ -121,7 +121,7 @@ function UserHome() {
         <div>
           <h1 className='display-3'>User Home</h1>
           <Row>
-            <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
+            <Col xs={{ size: 8 }} sm={{ size: 6, offset: 0 }}>
               Characters
               <ListGroup>
                 {charactersDetails.map((character) => (
@@ -141,7 +141,7 @@ function UserHome() {
               </ListGroup>
             </Col>
 
-            <Col xs={{ size: 8, offset: 2 }} sm={{ size: 6, offset: 0 }}>
+            <Col xs={{ size: 8 }} sm={{ size: 6, offset: 0 }}>
               Bazaars
               <ListGroup>
                 {bazaars.map((bazaar) => (
