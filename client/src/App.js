@@ -31,44 +31,44 @@ function App() {
   return (
     <UserContext.Provider value={{ authenticationState }}>
       <HashRouter>
-        <div className="app">
+        <main className='app'>
           <Switch>
-            <Route exact path="/" render={() => <Landing />}></Route>
+            <Route exact path='/' render={() => <Landing />}></Route>
             <Route
               exact
-              path="/newusertype"
+              path='/newusertype'
               render={() => <NewUserType />}
             ></Route>
             <Route
               exact
-              path="/newusercreds/player"
+              path='/newusercreds/player'
               render={() => <NewUserCreds type={"player"} />}
             ></Route>
             <Route
               exact
-              path="/newusercreds/gm"
+              path='/newusercreds/gm'
               render={() => <NewUserCreds />}
             ></Route>
             <Route
               exact
-              path="/newCharacter"
+              path='/newCharacter'
               render={() => <NewCharacter />}
             ></Route>
-            <Route exact path="/newbazaar" render={() => <NewBazaar />}></Route>
+            <Route exact path='/newbazaar' render={() => <NewBazaar />}></Route>
 
-            <Route path="/userhome" render={() => <UserHome />}></Route>
+            <Route path='/userhome' render={() => <UserHome />}></Route>
 
-            <Route exact path="/login" render={() => <Login />}></Route>
+            <Route exact path='/login' render={() => <Login />}></Route>
 
-            <Route exact path="/logout" render={() => <Logout />}></Route>
+            <Route exact path='/logout' render={() => <Logout />}></Route>
 
-            <Route exact path="/about" render={() => <About />}></Route>
+            <Route exact path='/about' render={() => <About />}></Route>
 
-            <Route path="*">
+            <Route path='*'>
               <NoMatch />
             </Route>
           </Switch>
-        </div>
+        </main>
       </HashRouter>
     </UserContext.Provider>
   );

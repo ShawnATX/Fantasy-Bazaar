@@ -38,7 +38,6 @@
     "nanoid": "^2.1.11",
     "nanoid-generate": "^1.0.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "react-bootstrap-sweetalert": "^5.2.0"
+    "passport-local": "^1.0.0"
   }
 }

@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 
 const NoMatch = () => {
   return (
-    <Container>
+    <Container fluid={true} className='text-center'>
       <div>Sorry, page not found! :(</div>
-      <Link to="/">
-        <Button>Head back Home</Button>
+      <Link to='/'>
+        <Button className='btn-small ml-3' variant='secondary'>
+          Head back Home
+        </Button>
       </Link>
     </Container>
   );
