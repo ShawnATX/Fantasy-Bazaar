@@ -1,16 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useRoutes, A } from "hookrouter";
-import routes from "../utils/ReactRoutes";
+import { A } from "hookrouter";
 
 const About = () => {
-  const Routes = useRoutes(routes);
   return (
     <Container>
       <h1 className='display-2 mt-3 text-center'>Fantasy Bazaar</h1>

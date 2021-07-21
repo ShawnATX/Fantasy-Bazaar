@@ -1,6 +1,7 @@
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
+const routes = require("./routes");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const mongoose = require("mongoose");
@@ -31,8 +32,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
 require("./routes/api-routes.js")(app);
+app.use(routes);
 
 if (process.env.MONGODB_URI) {
   console.log("connected to mongoDB");
