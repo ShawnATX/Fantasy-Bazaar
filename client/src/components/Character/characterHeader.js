@@ -6,6 +6,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import CoinIcon from "../../images/Coins.svg";
 import API from "../../utils/API";
 
 function CharacterHeader(props) {
@@ -140,11 +141,11 @@ function CharacterHeader(props) {
                   <div>
                     {characterInfo.wallet}
                     <img
-                      className='img-fluid w-25 ml-1 mb-1'
-                      src='./gold-coin-icon.png'
+                      className='img-fluid'
+                      src={CoinIcon}
                       alt='gold coins'
+                      style={{ marginLeft: "0.8rem" }}
                     />
-
                     <i
                       className='bi bi-pencil-square'
                       style={{
@@ -158,9 +159,10 @@ function CharacterHeader(props) {
               <>
                 {characterInfo.wallet}
                 <img
-                  className='img-fluid w-25 ml-1 mb-1'
-                  src='/gold-coin-icon.png'
+                  className='ml-1'
+                  src={CoinIcon}
                   alt='gold coins'
+                  style={{ marginLeft: "0.8rem" }}
                 />
               </>
             )}
