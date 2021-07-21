@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,11 +7,11 @@ import Form from "react-bootstrap/Form";
 import { useAlert } from "react-alert";
 import UserContext from "../utils/userContext";
 import API from "../utils/API";
+import { A, navigate } from "hookrouter";
 
 const Login = () => {
   const { authenticationState } = useContext(UserContext);
   const [formObject, setFormObject] = useState({});
-  const history = useHistory();
   const alert = useAlert();
 
   const handleInputChange = (event) => {
@@ -21,7 +20,7 @@ const Login = () => {
   };
 
   const goToUserHome = () => {
-    history.push("/userhome");
+    navigate("/userhome");
   };
 
   const handleFormSubmit = (event) => {
@@ -90,15 +89,11 @@ const Login = () => {
                 </Button>
               </Col>
               <Col>
-                <Button
-                  className='btn-small float-start'
-                  variant='secondary'
-                  onClick={() => {
-                    history.push("/");
-                  }}
-                >
-                  Back Home
-                </Button>
+                <A href='/'>
+                  <Button className='btn-small float-start' variant='secondary'>
+                    Back Home
+                  </Button>
+                </A>
               </Col>
             </Row>
           </Row>

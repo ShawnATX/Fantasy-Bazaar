@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { HashRouter, Switch, Route } from "react-router-dom";
+// import { HashRouter, Switch, Route } from "react-router-dom";
+import { useRoutes } from "hookrouter";
+import routes from "./utils/ReactRoutes";
 import UserContext from "./utils/userContext";
-import Landing from "./pages/landing";
 import NoMatch from "./pages/NoMatch";
-import NewUserType from "./pages/newUserType";
-import NewUserCreds from "./pages/newUserCreds";
-import NewCharacter from "./pages/newCharacter";
-import Login from "./pages/login";
-import NewBazaar from "./pages/newBazaar";
-import UserHome from "./pages/userHome";
-import Logout from "./pages/logout";
-import About from "./pages/about";
 
 function App() {
+  const match = useRoutes(routes);
+  useEffect(() => {}, [match]);
+
   const [authenticationState, setAuthenticationState] = useState({
     updates: 0,
     isAuthenticated: false,
@@ -30,9 +26,10 @@ function App() {
 
   return (
     <UserContext.Provider value={{ authenticationState }}>
-      <HashRouter>
-        <main className='app'>
-          <Switch>
+      {/* <HashRouter> */}
+      <main className='app'>
+        {match || <NoMatch />}
+        {/* <Switch>
             <Route exact path='/' render={() => <Landing />}></Route>
             <Route
               exact
@@ -67,9 +64,9 @@ function App() {
             <Route path='*'>
               <NoMatch />
             </Route>
-          </Switch>
-        </main>
-      </HashRouter>
+          </Switch> */}
+      </main>
+      {/* </HashRouter> */}
     </UserContext.Provider>
   );
 }

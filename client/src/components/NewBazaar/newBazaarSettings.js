@@ -88,7 +88,7 @@ const NewBazaarSettings = (props) => {
               htmlFor='requireCustomItemApproval'
               id='customItem'
             >
-              Custom Item Addition*
+              Custom Item Addition
             </label>
           </OverlayTrigger>
         </div>

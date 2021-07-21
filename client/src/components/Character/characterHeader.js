@@ -17,10 +17,12 @@ function CharacterHeader(props) {
   const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
-    if (viewState === "Inventory") {
-      setGoldEdit(true);
-    } else {
-      setGoldEdit(false);
+    if (viewState) {
+      if (viewState === "Inventory") {
+        setGoldEdit(true);
+      } else {
+        setGoldEdit(false);
+      }
     }
   }, [viewState]);
 
@@ -157,7 +159,7 @@ function CharacterHeader(props) {
                 {characterInfo.wallet}
                 <img
                   className='img-fluid w-25 ml-1 mb-1'
-                  src='./gold-coin-icon.png'
+                  src='/gold-coin-icon.png'
                   alt='gold coins'
                 />
               </>

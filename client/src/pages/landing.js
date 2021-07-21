@@ -5,20 +5,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { Link, useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
+import { A, navigate } from "hookrouter";
 
 const Landing = () => {
   const { authenticationState } = useContext(UserContext);
 
-  const history = useHistory();
   useEffect(() => {
     try {
       getSessionUser();
     } catch (error) {
       //no session exixts, do nothing
     }
-  }, []);
+  });
 
   const getSessionUser = () => {
     API.getSessionUser()
@@ -30,7 +29,7 @@ const Landing = () => {
             characters: res.data.characters,
             id: res.data.id,
           });
-          history.push("/userhome");
+          navigate("/userhome");
         } else {
           return;
         }
@@ -39,29 +38,29 @@ const Landing = () => {
   };
 
   return (
-    <Container fluid={true} className="text-center">
-      <h1 className="display-2 mt-3">Fantasy Bazaar</h1>
-      <Row className="mt-5 px-5">
+    <Container fluid={true} className='text-center'>
+      <h1 className='display-2 mt-3'>Fantasy Bazaar</h1>
+      <Row className='mt-5 px-5'>
         <Col>
-          <ButtonGroup aria-label="Landing Page Actions">
-            <Link to="/newusertype" alt="Get Started" className="text-center">
-              <Button className="btn-small ml-3" variant="secondary">
+          <ButtonGroup aria-label='Landing Page Actions'>
+            <A href='/newusertype' alt='Get Started' className='text-center'>
+              <Button className='btn-small ml-3' variant='secondary'>
                 Get Started
               </Button>
-            </Link>
-            <Link to="/login">
-              <Button className="btn-small ml-3" variant="secondary">
+            </A>
+            <A href='/login'>
+              <Button className='btn-small ml-3' variant='secondary'>
                 Login Here
               </Button>
-            </Link>
+            </A>
           </ButtonGroup>
         </Col>
       </Row>
-      <Row className="align-items-end mt-5">
-        <Col className="align-self-end">
-          <Link to="/about" alt="About Fantasy Bazaar">
-            <Button variant="secondary">About</Button>
-          </Link>
+      <Row className='align-items-end mt-5'>
+        <Col className='align-self-end'>
+          <A href='/about' alt='About Fantasy Bazaar'>
+            <Button variant='secondary'>About</Button>
+          </A>
         </Col>
       </Row>
     </Container>

@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
+import { navigate } from "hookrouter";
 
 const NavbarComponent = (props) => {
   const {
@@ -11,12 +12,11 @@ const NavbarComponent = (props) => {
     goToCharacterHome,
     goToBazaarHome,
     handleLogout,
-    history,
     setPageState,
   } = props;
 
   const userHome = () => {
-    history.push("/userhome");
+    navigate("/userhome");
     setPageState("user");
   };
 
