@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { A } from "hookrouter";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -21,17 +21,18 @@ function NewCharacter(props) {
   });
   const [bazaarObject, setBazaarObject] = useState({});
   const [pageState, setPageState] = useState("Main");
-  const history = useHistory();
-  const bazaarCode = new URLSearchParams(useLocation().search).get("bazaar");
   const [showModal, setShowModal] = useState(false);
   const toggle = () => setShowModal(!showModal);
 
   useEffect(() => {
-    getBazaarDeets(bazaarCode);
+    getBazaarDeets(props.bazaarCode);
+    if (props.bazaarcode) {
+      console.log(props.bazaarcode);
+    }
   }, []);
 
   const getBazaarDeets = (bazaarCode) => {
-    if (bazaarCode) {
+    if (props.bazaarCode) {
       API.getBazaar(bazaarCode)
         .then((res) => {
           console.log(res.data);
@@ -100,7 +101,7 @@ function NewCharacter(props) {
   };
 
   return (
-    <Container className="text-center">
+    <Container className='text-center'>
       <Modal show={showModal}>
         <ModalHeader>
           Enter the Join Code for the bazaar you wish to join
@@ -108,17 +109,17 @@ function NewCharacter(props) {
         <ModalBody>
           <Form.Group>
             <Form.Control
-              name="bazaarCode"
-              id="bazaarCode"
-              placeholder="Bazaar Join Code"
+              name='bazaarCode'
+              id='bazaarCode'
+              placeholder='Bazaar Join Code'
               onChange={handleBazaarCodeInput}
             />
           </Form.Group>
         </ModalBody>
         <ModalFooter>
-          <Button variant="dark" onClick={() => history.push("/userhome")}>
-            Back Home
-          </Button>
+          <A href='/'>
+            <Button variant='dark'>Back Home</Button>
+          </A>
         </ModalFooter>
       </Modal>
       {renderPage()}

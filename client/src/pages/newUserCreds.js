@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import API from "../utils/API";
+import { A, navigate } from "hookrouter";
 
 const NewUserCreds = (props) => {
   const { authenticationState } = useContext(UserContext);
@@ -16,9 +16,6 @@ const NewUserCreds = (props) => {
   });
   const [uniqueEmail, setUniqueEmail] = useState(false);
   const [formReady, setFormReady] = useState(false);
-  const history = useHistory();
-  const { type } = props;
-  const params = new URLSearchParams(useLocation().search);
 
   const handleInputChange = (event) => {
     let { name, value } = event.target;
@@ -35,11 +32,6 @@ const NewUserCreds = (props) => {
         setFormReady(true);
       }
     }
-  };
-
-  const goHome = (event) => {
-    event.preventDefault();
-    history.push("/");
   };
 
   const handleFormSubmit = () => {
@@ -73,11 +65,10 @@ const NewUserCreds = (props) => {
           authenticationState.userHasAuthenticated(true, {
             ...userData,
           });
-          if (type === "player") {
-            let code = params.get("bazaar");
-            history.push("/newCharacter?bazaar=" + code);
+          if (props.type === "player") {
+            navigate("/newcharacter/" + props.bazaarCode);
           } else {
-            history.push("/newBazaar");
+            navigate("/newBazaar");
           }
         }
       })
@@ -108,50 +99,52 @@ const NewUserCreds = (props) => {
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <Form
             onSubmit={handleFormSubmit}
-            className="text-center"
+            className='text-center'
             validated={formReady}
             noValidate
           >
-            <Form.Group className="mt-4">
-              <Form.Label className="text-center">Email Address</Form.Label>
+            <Form.Group className='mt-4'>
+              <Form.Label className='text-center'>Email Address</Form.Label>
               <Form.Control
                 required
-                name="email"
-                id="email"
-                type="email"
-                placeholder="myemailaddress@interwebs.com"
+                name='email'
+                id='email'
+                type='email'
+                placeholder='myemailaddress@interwebs.com'
                 onChange={handleInputChange}
                 onBlur={checkEmailUniqueness}
               />
-              <Form.Control.Feedback type="invalid">
+              <Form.Control.Feedback type='invalid'>
                 Looks like thats not an email address, or it is already
                 registered
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group className="mb-4">
+            <Form.Group className='mb-4'>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 required
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Super Secure Password"
+                type='password'
+                name='password'
+                id='password'
+                placeholder='Super Secure Password'
                 onChange={handleInputChange}
               />
-              <Form.Control.Feedback type="invalid">
+              <Form.Control.Feedback type='invalid'>
                 Password needs to be 7 characters or longer
               </Form.Control.Feedback>
             </Form.Group>
             <Button
-              className="btn-small ml-3"
-              variant="dark"
+              className='btn-small ml-3'
+              variant='dark'
               onClick={() => handleFormSubmit()}
             >
               Submit
             </Button>
-            <Button className="btn-small ml-3" variant="dark" onClick={goHome}>
-              Back Home
-            </Button>
+            <A href='/'>
+              <Button className='btn-small ml-3' variant='dark'>
+                Back Home
+              </Button>
+            </A>
           </Form>
         </Col>
       </Row>

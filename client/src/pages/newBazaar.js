@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import UserContext from "../utils/userContext";
+import { navigate } from "hookrouter";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,7 +20,6 @@ const NewBazaar = () => {
     limitedInventory: false,
   });
   const [pageState, setPageState] = useState("Main");
-  const history = useHistory();
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
@@ -39,7 +38,7 @@ const NewBazaar = () => {
             id: res.data.id,
           });
         } else {
-          history.push("/login");
+          navigate("/login");
         }
       })
       .catch((err) => {
@@ -54,7 +53,6 @@ const NewBazaar = () => {
     };
     API.saveBazaar(newBazaar)
       .then((res) => {
-        console.log(res);
         let bazaars = authenticationState.user.bazaars;
         bazaars.push(res.data._id);
         authenticationState.userHasAuthenticated(true, {
@@ -63,12 +61,9 @@ const NewBazaar = () => {
           characters: authenticationState.user.characters,
           bazaars: bazaars,
         });
-        var joinCode = res.data.joinCode;
-        history.push("/userhome?bazaar=" + joinCode);
+        navigate("/userhome");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function renderPage() {

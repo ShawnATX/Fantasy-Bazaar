@@ -16,12 +16,15 @@ describe("Landing Page", () => {
     expect(allButtons[2]).toHaveTextContent("About");
   });
 
-  // test("Get Started button goes to New User page", () => {
-  //     //Arrange
-  //     render(<Landing />, {wrapper: MemoryRouter});
-  //     //Act
-  //     const getStartedBtn = screen.getByText("Get Started")
-  //     //Assert
-  //     userEvent.click(getStartedBtn);
-  // });
+  test("Get Started button goes to New User page", () => {
+    //Arrange
+    render(<Landing />, { wrapper: MemoryRouter });
+    //Act
+    const getStartedBtn = screen.getByText("Get Started");
+    //Assert
+    userEvent.click(getStartedBtn);
+    const allButtons = screen.getAllByRole("button");
+    expect(allButtons[0]).toHaveTextContent("Create a new Bazaar");
+    expect(allButtons[1]).toHaveTextContent("Join a Bazaar");
+  });
 });

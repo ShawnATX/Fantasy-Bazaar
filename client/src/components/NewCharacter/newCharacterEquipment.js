@@ -2,16 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../utils/userContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useHistory } from "react-router-dom";
 import ListSection from "../listSection";
 import CharacterHeader from "../Character/characterHeader";
 import EquipmentFooter from "./equipmentFooter";
+import { navigate } from "hookrouter";
 
 const NewCharacterEquipment = (props) => {
   const { setPageState, bazaarObject, API, characterObject } = props;
   const { authenticationState } = useContext(UserContext);
-
-  const history = useHistory();
 
   const [itemList, setItemList] = useState([]);
   const [chosenItemList, setChosenItemList] = useState([]);
@@ -61,7 +59,7 @@ const NewCharacterEquipment = (props) => {
       .then((res) => {
         updateAuthenticationState(res.data);
         if (res.status === 201) {
-          history.push("/userhome");
+          navigate("/userhome");
         }
       })
       .catch((err) => console.log(err));

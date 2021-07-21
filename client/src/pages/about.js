@@ -6,14 +6,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useRoutes, A } from "hookrouter";
+import routes from "../utils/ReactRoutes";
 
 const About = () => {
+  const Routes = useRoutes(routes);
   return (
     <Container>
-      <h1 className="display-2 mt-3 text-center">Fantasy Bazaar</h1>
-      <Row className="align-items-center">
-        <Col className="align-items-center">
-          <Card className="my-5">
+      <h1 className='display-2 mt-3 text-center'>Fantasy Bazaar</h1>
+      <Row className='align-items-center'>
+        <Col className='align-items-center'>
+          <Card className='my-5'>
             <Card.Body>
               <Card.Text style={{ fontSize: "1.2rem" }}>
                 Fantasy Bazaar is a table-top game companion app built to help
@@ -34,11 +37,11 @@ const About = () => {
       </Row>
       <Row>
         <Col xs={{ span: 4, offset: 4 }}>
-          <Link to="/" alt="Back Home" className="text-center">
-            <Button className="btn-small" variant="secondary">
+          <A href='/' alt='Back Home' className='text-center'>
+            <Button className='btn-small' variant='secondary'>
               Back Home
             </Button>
-          </Link>
+          </A>
         </Col>
       </Row>
     </Container>

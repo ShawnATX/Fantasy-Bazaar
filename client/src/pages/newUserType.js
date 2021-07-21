@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { A } from "hookrouter";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -36,30 +36,30 @@ function NewUserType() {
     <Container className='text-center'>
       <Row className='mt-5 px-5'>
         <Col>
-          <Link
-            to='/newusercreds/gm'
+          <A
+            href='/newusercreds/gm'
             alt='Create a new Bazaar'
             className='text-center'
           >
             <Button className='btn-small ml-3' variant='dark'>
               Create a new Bazaar
             </Button>
-          </Link>
+          </A>
         </Col>
       </Row>
       <Form>
         <Row className='mt-5 px-5 text-center'>
           <Col md={12}>
             {validBazaarCode ? (
-              <Link
-                to={"/newusercreds/player?bazaar=" + formObject.bazaarCode}
+              <A
+                href={"/newusercreds/player/" + formObject.bazaarCode}
                 alt='Join a bazaar'
                 className='text-center'
               >
                 <Button className='btn-small ml-3' variant='secondary' active>
                   Join a bazaar
                 </Button>
-              </Link>
+              </A>
             ) : (
               <Button className='btn-small ml-3' variant='secondary' disabled>
                 Join a bazaar
@@ -83,11 +83,11 @@ function NewUserType() {
         </Row>
         <Row className='text-center'>
           <Col>
-            <Link to='/' alt='Home' className='text-center'>
+            <A href='/' alt='Home' className='text-center'>
               <Button className='btn-small ml-3' variant='secondary'>
                 Home
               </Button>
-            </Link>
+            </A>
           </Col>
         </Row>
       </Form>

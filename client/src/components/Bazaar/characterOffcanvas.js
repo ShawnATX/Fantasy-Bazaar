@@ -18,6 +18,7 @@ const CharacterOffcanvas = (props) => {
 
   useEffect(() => {}, [character]);
   const handleCloseOffcanvas = () => {
+    setFormObject({});
     props.setShowOffcanvas(false);
   };
 
@@ -90,7 +91,6 @@ const CharacterOffcanvas = (props) => {
                     {goldModifier}
                   </InputGroup.Text>
                   <Form.Control
-                    required
                     type='number'
                     name='gold'
                     placeholder='Add or Subtract gold'

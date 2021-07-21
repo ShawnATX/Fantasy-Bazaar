@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,6 +11,7 @@ import API from "../utils/API";
 import CharacterOffcanvas from "../components/Bazaar/characterOffcanvas";
 import CustomItemDnD from "../components/CustomItem/customItemDnD";
 import CustomItemPF1e from "../components/CustomItem/customItemPF1e";
+import { navigate } from "hookrouter";
 
 const BazaarHome = (props) => {
   const { setPageState, bazaar } = props;
@@ -26,11 +26,10 @@ const BazaarHome = (props) => {
   const handleCloseModal = () => setShowModal(false);
   const [canvasCharacter, setCanvasCharacter] = useState({});
   const [charactersObject, setCharactersObject] = useState([]);
-  const history = useHistory();
 
   useEffect(() => {
     getCharactersDetails();
-  }, [bazaar]);
+  }, [props.bazaar]);
 
   const getCharactersDetails = () => {
     if (bazaar.characters.length !== 0) {
@@ -53,7 +52,7 @@ const BazaarHome = (props) => {
   };
 
   const userHome = () => {
-    history.push("/userhome");
+    navigate("/userhome");
     setPageState("user");
   };
 
@@ -78,7 +77,7 @@ const BazaarHome = (props) => {
           }}
           className='bg-dark-grey'
         >
-          Player Join Code: <strong>{bazaar.joinCode}</strong>
+          Player Join Code: <strong>{props.bazaar.joinCode}</strong>
         </p>
         <p
           className='bg-dark-grey'

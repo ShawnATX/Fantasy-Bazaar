@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { useAlert } from "react-alert";
+import { navigate } from "hookrouter";
 import API from "../utils/API";
 import Inventory from "../components/Character/inventory";
 import StoreFront from "../components/Character/storeFront";
@@ -9,11 +9,9 @@ import CharacterMain from "../components/Character/characterMain";
 import CharacterHeader from "../components/Character/characterHeader";
 
 const CharacterHome = (props) => {
-  //props = character, setCharacter, setPageState
   const [bazaarObject, setBazaarObject] = useState({});
   const [viewState, setViewState] = useState("Home");
   const [waitingResponse, setWaitingResponse] = useState(false);
-  const history = useHistory();
   const alert = useAlert();
 
   useEffect(() => {
@@ -79,7 +77,7 @@ const CharacterHome = (props) => {
   };
 
   const userHome = () => {
-    history.push("/userhome");
+    navigate("/userhome");
     props.setPageState("user");
   };
 

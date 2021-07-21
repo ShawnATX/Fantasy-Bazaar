@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,31 +8,27 @@ import API from "../utils/API";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
 import NavbarComponent from "../components/navbar";
+import { navigate } from "hookrouter";
 
-function UserHome() {
+function UserHome(props) {
   const { authenticationState } = useContext(UserContext);
-  const params = new URLSearchParams(useLocation().search);
   const [charactersDetails, setCharactersDetails] = useState([]);
   const [bazaars, setBazaars] = useState([]);
   const [chosenEntity, setChosenEntity] = useState({});
   const [pageState, setPageState] = useState("user");
-  const history = useHistory();
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
       getSessionUser();
     } else {
-      getCharacters();
-      getBazaars();
-      checkParams();
+      getEntities();
     }
-  }, [pageState]);
+  }, []);
 
   const getSessionUser = () => {
     API.getSessionUser()
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           authenticationState.userHasAuthenticated(true, {
             email: res.data.email,
             bazaars: res.data.bazaars,
@@ -41,31 +36,47 @@ function UserHome() {
             id: res.data.id,
           });
         } else {
-          history.push("/");
+          navigate("/");
         }
       })
       .then(() => {
-        getCharacters();
-        getBazaars();
-        checkParams();
+        getEntities();
       })
       .catch((err) => {
-        history.push("/");
+        navigate("/");
       });
   };
 
   const checkParams = () => {
-    // if (params.get("bazaar")) {
-    // } else if (params.get("character")) {
-    //   let characterId = params.get("character");
-    //   let userCharacters = authenticationState.user.characters;
-    //   const character = userCharacters.filter((character) => {
-    //     return character._id === characterId;
-    //   });
-    // }
+    if (props.bazaar) {
+      let bazaar = getBazaarById();
+      console.log(bazaar);
+      goToBazaarHome(bazaar);
+    } else if (props.character) {
+      let character = getCharacterById();
+      goToCharacterHome(character);
+    }
   };
 
-  const getCharacters = () => {
+  const getBazaarById = () => {
+    for (const bazaar in bazaars) {
+      if (bazaar.joinCode === props.bazaar) {
+        return bazaar;
+      }
+    }
+    return null;
+  };
+
+  const getCharacterById = () => {
+    for (const character in charactersDetails) {
+      if (props.character === character._id) {
+        return character;
+      }
+    }
+    return null;
+  };
+
+  const getEntities = () => {
     if (
       authenticationState.user &&
       authenticationState.user.characters.length > 0
@@ -73,46 +84,47 @@ function UserHome() {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
           setCharactersDetails(res.data);
+          if (authenticationState.user.bazaars.length > 0) {
+            API.getBazaars(authenticationState.user.bazaars)
+              .then((res) => {
+                setBazaars(res.data);
+              })
+              .then(() => {
+                checkParams();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
         })
-        .catch((err) => console.log(err));
-    }
-  };
-
-  const getBazaars = () => {
-    if (
-      authenticationState.user &&
-      authenticationState.user.bazaars.length > 0
-    ) {
-      API.getBazaars(authenticationState.user.bazaars)
-        .then((res) => {
-          setBazaars(res.data);
-        })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
   const goToCharacterHome = (character) => {
     setChosenEntity(character);
-    history.push("/userhome?character=" + character._id);
+    navigate("/userhome/character/" + character._id);
     setPageState("character");
   };
 
   const goToBazaarHome = (bazaar) => {
     setChosenEntity(bazaar);
-    history.push("/userhome?bazaar=" + bazaar.joinCode);
+    navigate("/userhome/bazaar/" + bazaar.joinCode);
     setPageState("bazaar");
   };
 
   const newCharacter = () => {
-    history.push("/newcharacter");
+    navigate("/newcharacter");
   };
 
   const newBazaar = () => {
-    history.push("/newbazaar");
+    navigate("/newbazaar");
   };
 
   const handleLogout = () => {
-    history.push("/logout");
+    navigate("/logout");
   };
 
   const renderPage = () => {
@@ -185,7 +197,6 @@ function UserHome() {
         goToBazaarHome={goToBazaarHome}
         handleLogout={handleLogout}
         setPageState={setPageState}
-        history={history}
       />
       {renderPage()}
     </Container>
