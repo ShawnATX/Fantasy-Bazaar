@@ -86,7 +86,7 @@ const BazaarHome = (props) => {
           }}
           onClick={() => {
             navigator.clipboard.writeText(
-              `https://www.fantasybazaar.app/#/newusercreds/player?bazaar=${bazaar.joinCode}`
+              `https://www.fantasybazaar.app/newusercreds/player?bazaar=${bazaar.joinCode}`
             );
             handleLinkCopy();
           }}
