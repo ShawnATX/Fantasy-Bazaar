@@ -50,7 +50,6 @@ function UserHome(props) {
   const checkParams = () => {
     if (props.bazaar) {
       let bazaar = getBazaarById();
-      console.log(bazaar);
       goToBazaarHome(bazaar);
     } else if (props.character) {
       let character = getCharacterById();

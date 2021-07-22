@@ -54,19 +54,46 @@ const CharacterController = {
       .catch((err) => res.status(422).json(err));
   },
   updateWallet: function (req, res) {
-    db.Character.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $inc: { wallet: req.body.wallet },
-      },
-      {
-        new: true,
-      }
-    )
-      .then((dbModel) => {
-        res.status(200).json(dbModel.wallet);
-      })
-      .catch((err) => res.status(422).json(err));
+    console.log(req.body);
+    if (req.body.trx) {
+      db.Character.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { wallet: req.body.wallet },
+          $set: { pendingApproval: true },
+        },
+        {
+          new: true,
+        }
+      )
+        .then((dbModel) => {
+          db.Transaction.create({
+            type: "Wallet",
+            character: dbModel._id,
+            bazaar: dbModel.bazaar,
+            cleared: false,
+            walletDelta: req.body.wallet,
+          })
+            .then((trx) => console.log(trx))
+            .catch((err) => console.log(err));
+          res.status(200).json(dbModel.wallet);
+        })
+        .catch((err) => res.status(422).json(err));
+    } else {
+      db.Character.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { wallet: req.body.wallet },
+        },
+        {
+          new: true,
+        }
+      )
+        .then((dbModel) => {
+          res.status(200).json(dbModel.wallet);
+        })
+        .catch((err) => res.status(422).json(err));
+    }
   },
   //route specifically for adding item to character item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function (req, res) {

@@ -57,17 +57,19 @@ function CharacterHeader(props) {
       if (goldModifier === "-") {
         walletChange = walletChange * -1;
       }
-      API.updateGold(characterInfo._id, { wallet: walletChange })
-        .then((res) => {
-          if (res.status === 200) {
-            props.setCharacterObject({
-              ...characterInfo,
-              wallet: res.data,
-            });
-            handleShowOverlay();
-          }
-        })
-        .catch((err) => console.log(err));
+      props.updateCharacterGold(characterInfo, walletChange);
+      handleShowOverlay();
+      // API.updateGold(characterInfo._id, { wallet: walletChange })
+      //   .then((res) => {
+      //     if (res.status === 200) {
+      //       props.setCharacterObject({
+      //         ...characterInfo,
+      //         wallet: res.data,
+      //       });
+      //       handleShowOverlay();
+      //     }
+      //   })
+      //   .catch((err) => console.log(err));
     }
   };
 
@@ -144,7 +146,10 @@ function CharacterHeader(props) {
                       className='img-fluid'
                       src={CoinIcon}
                       alt='gold coins'
-                      style={{ marginLeft: "0.8rem" }}
+                      style={{
+                        marginLeft: "0.8rem",
+                        backgroundColor: "transparent",
+                      }}
                     />
                     <i
                       className='bi bi-pencil-square'
@@ -162,7 +167,10 @@ function CharacterHeader(props) {
                   className='ml-1'
                   src={CoinIcon}
                   alt='gold coins'
-                  style={{ marginLeft: "0.8rem" }}
+                  style={{
+                    marginLeft: "0.8rem",
+                    backgroundColor: "transparent",
+                  }}
                 />
               </>
             )}

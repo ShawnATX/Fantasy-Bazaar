@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import Item from "../Item/item";
 import CharacterFooter from "./characterFooter";
 
+//props = setViewState={setViewState} items={props.character.items} sell={sellItem} waitingResponse={waitingResponse} userHome={userHome} bazaaar={bazaarObject}
 const Inventory = (props) => {
   const [itemList, setItemList] = useState([]);
   useEffect(() => {

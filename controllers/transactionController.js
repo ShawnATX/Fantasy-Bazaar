@@ -7,6 +7,20 @@ const TransactionController = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findAllByBazaar: function (req, res) {
+    db.Transaction.find()
+      .where({ bazaar })
+      .in(req.body.bazaar)
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  findAll: function (req, res) {
+    db.Transaction.find(req.query)
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
   findById: function (req, res) {
     db.Transaction.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
@@ -25,12 +39,14 @@ const TransactionController = {
     );
   },
   clearMany: function (req, res) {
-    db.Transaction.updateMany()
-      .where("_id")
+    db.Transaction.where("_id")
       .in(req.body.transactions)
+      .updateMany({}, { $set: { cleared: true } })
       .then((dbModels) => {
         res.json("Success");
       })
       .catch((err) => res.status(422).json(err));
   },
 };
+
+module.exports = TransactionController;

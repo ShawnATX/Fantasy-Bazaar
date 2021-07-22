@@ -60,6 +60,24 @@ const CharacterHome = (props) => {
     }
   };
 
+  const updateCharacterGold = (character, walletChange) => {
+    console.log(bazaarObject);
+
+    API.updateGold(character._id, {
+      wallet: walletChange,
+      trx: bazaarObject.requireWalletChangeApproval,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          props.setCharacter({
+            ...props.character,
+            wallet: res.data,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   const getBazaarSetting = () => {
     API.getBazaarId(props.character.bazaar).then((res) => {
       setBazaarObject({
@@ -121,6 +139,8 @@ const CharacterHome = (props) => {
         characterInfo={props.character}
         setCharacterObject={props.setCharacter}
         viewState={viewState}
+        bazaaar={bazaarObject}
+        updateCharacterGold={updateCharacterGold}
       />
       {renderPage()}
     </Container>

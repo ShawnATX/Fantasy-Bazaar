@@ -3,7 +3,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import CoinIcon from "../../images/Coins.svg";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
@@ -77,7 +77,16 @@ const CharacterOffcanvas = (props) => {
           <Row className='bg-grey mx-auto'>
             <Col sm={6} className='bg-grey align-middle my-auto px-0'>
               <h3 className='bg-grey' onClick={handleEditGold}>
-                {character.characterName} - {character.wallet} gold{" "}
+                {character.characterName} - {character.wallet}
+                <img
+                  className='img-fluid'
+                  src={CoinIcon}
+                  alt='gold coins'
+                  style={{
+                    marginLeft: "0.8rem",
+                    backgroundColor: "transparent",
+                  }}
+                />
               </h3>
             </Col>
             <Col sm={6} className='bg-grey align-middle my-auto'>
@@ -114,7 +123,16 @@ const CharacterOffcanvas = (props) => {
           <Row className='bg-grey mx-auto'>
             <Col sm={10} className='bg-grey align-middle my-auto px-auto'>
               <h3 className='bg-grey text-nowrap' onClick={handleEditGold}>
-                {character.characterName} - {character.wallet} gold{" "}
+                {character.characterName} - {character.wallet}
+                <img
+                  className='img-fluid'
+                  src={CoinIcon}
+                  alt='gold coins'
+                  style={{
+                    marginLeft: "0.8rem",
+                    backgroundColor: "transparent",
+                  }}
+                />
                 <i
                   onClick={handleEditGold}
                   className='bi bi-pencil-square bg-grey'
