@@ -105,7 +105,7 @@ const BazaarHome = (props) => {
 
       {bazaar.characters.length > 0 ? (
         <div>
-          <Row xs={1} sm={2} md={3} lg={4}>
+          <Row xs={2} sm={2} md={3} lg={4}>
             {charactersObject.map((character) => (
               <div key={character._id}>
                 {character.pendingApproval ? (

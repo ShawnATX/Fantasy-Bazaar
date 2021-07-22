@@ -30,6 +30,7 @@ const CharacterHome = (props) => {
       soldItem: item._id,
       items: newItems,
       character: props.character._id,
+      trx: bazaarObject.requireSaleApproval,
     }).then((res) => {
       props.setCharacter({
         ...props.character,
@@ -47,6 +48,7 @@ const CharacterHome = (props) => {
       API.characterPurchase({
         items: [item._id],
         character: props.character._id,
+        trx: bazaarObject.requirePurchaseApproval,
       })
         .then((res) => {
           setWaitingResponse(false);
@@ -61,8 +63,6 @@ const CharacterHome = (props) => {
   };
 
   const updateCharacterGold = (character, walletChange) => {
-    console.log(bazaarObject);
-
     API.updateGold(character._id, {
       wallet: walletChange,
       trx: bazaarObject.requireWalletChangeApproval,
@@ -87,7 +87,6 @@ const CharacterHome = (props) => {
         requireCustomItemApproval: res.data.requireCustomItemApproval,
         requirePurchaseApproval: res.data.requirePurchaseApproval,
         requireSaleApproval: res.data.requireSaleApproval,
-        requireWalletAdditionApproval: res.data.requireWalletAdditionApproval,
         requireWalletChangeApproval: res.data.requireWalletChangeApproval,
         id: res.data._id,
       });

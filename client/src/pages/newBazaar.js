@@ -13,11 +13,11 @@ const NewBazaar = () => {
   const [formObject, setFormObject] = useState({
     requireNewCharacterApproval: true,
     requireCustomItemApproval: false,
-    requireWalletAdditionApproval: false,
     requireWalletChangeApproval: false,
     requireSaleApproval: false,
     requirePurchaseApproval: false,
     limitedInventory: false,
+    stockSoldItems: false,
   });
   const [pageState, setPageState] = useState("Main");
 

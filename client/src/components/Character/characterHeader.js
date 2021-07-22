@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import CoinIcon from "../../images/Coins.svg";
-import API from "../../utils/API";
 
 function CharacterHeader(props) {
   const { characterInfo, viewState } = props;

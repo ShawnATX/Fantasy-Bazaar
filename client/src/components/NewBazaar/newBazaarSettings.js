@@ -88,11 +88,11 @@ const NewBazaarSettings = (props) => {
               htmlFor='requireCustomItemApproval'
               id='customItem'
             >
-              Custom Item Addition
+              Custom Item Addition*
             </label>
           </OverlayTrigger>
         </div>
-        <div className='form-check form-switch mx-2 my-2'>
+        {/* <div className='form-check form-switch mx-2 my-2'>
           <input
             className='form-check-input'
             type='checkbox'
@@ -118,7 +118,7 @@ const NewBazaarSettings = (props) => {
               Wallet Additions*
             </label>
           </OverlayTrigger>
-        </div>
+        </div> */}
         <div className='form-check form-switch mx-2 my-2'>
           <input
             className='form-check-input'
@@ -142,7 +142,7 @@ const NewBazaarSettings = (props) => {
               htmlFor='requireWalletChangeApproval'
               id='walletChanges'
             >
-              All Wallet Changes*
+              All Wallet Changes
             </label>
           </OverlayTrigger>
         </div>
@@ -169,7 +169,7 @@ const NewBazaarSettings = (props) => {
               htmlFor='requireSaleApproval'
               id='itemSale'
             >
-              Item Sales*
+              Item Sales
             </label>
           </OverlayTrigger>
         </div>
@@ -196,7 +196,7 @@ const NewBazaarSettings = (props) => {
               htmlFor='requirePurchaseApproval'
               id='itemPurchase'
             >
-              Item Purchases*
+              Item Purchases
             </label>
           </OverlayTrigger>
         </div>
@@ -228,6 +228,64 @@ const NewBazaarSettings = (props) => {
             </label>
           </OverlayTrigger>
         </div>
+
+        {formObject.limitedInventory ? (
+          <div className='form-check form-switch mx-2 my-2'>
+            <input
+              className='form-check-input'
+              type='checkbox'
+              id='stockSoldItems'
+              name='stockSoldItems'
+              checked={formObject.stockSoldItems}
+              onChange={handleInputChange}
+            />
+            <OverlayTrigger
+              placement={"right"}
+              overlay={
+                <Tooltip id='tooltip-stockSoldItems'>
+                  Add items sold by characters to your stock
+                </Tooltip>
+              }
+            >
+              <label
+                className='form-check-label bazaar-form-check-label'
+                htmlFor='stockLimits'
+                id='stockLimits'
+              >
+                Stock Sold Items*
+              </label>
+            </OverlayTrigger>
+          </div>
+        ) : (
+          <div className='form-check form-switch mx-2 my-2'>
+            <input
+              disabled
+              className='form-check-input'
+              type='checkbox'
+              id='stockSoldItems'
+              name='stockSoldItems'
+              checked={false}
+              onChange={handleInputChange}
+            />
+            <OverlayTrigger
+              placement={"right"}
+              overlay={
+                <Tooltip id='tooltip-stockSoldItems'>
+                  Add items sold by characters to your stock
+                </Tooltip>
+              }
+            >
+              <label
+                className='form-check-label bazaar-form-check-label'
+                htmlFor='stockLimits'
+                id='stockLimits'
+              >
+                Stock Sold Items*
+              </label>
+            </OverlayTrigger>
+          </div>
+        )}
+
         <Row className='sticky-footer mt-3'>
           <Col className='text-center'>
             <Button

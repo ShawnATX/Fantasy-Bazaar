@@ -54,7 +54,6 @@ const CharacterController = {
       .catch((err) => res.status(422).json(err));
   },
   updateWallet: function (req, res) {
-    console.log(req.body);
     if (req.body.trx) {
       db.Character.findOneAndUpdate(
         { _id: req.params.id },
@@ -73,9 +72,7 @@ const CharacterController = {
             bazaar: dbModel.bazaar,
             cleared: false,
             walletDelta: req.body.wallet,
-          })
-            .then((trx) => console.log(trx))
-            .catch((err) => console.log(err));
+          }).catch((err) => console.log(err));
           res.status(200).json(dbModel.wallet);
         })
         .catch((err) => res.status(422).json(err));
@@ -97,43 +94,101 @@ const CharacterController = {
   },
   //route specifically for adding item to character item list and decrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   purchase: function (req, res) {
-    db.Item.findById(req.body.items[0], "value")
-      .then((dbModel) => {
-        let price = dbModel.value * -1;
-        db.Character.findOneAndUpdate(
-          { _id: req.body.character },
-          {
-            $push: { items: req.body.items[0] },
-            $inc: { wallet: price },
-          },
-          { new: true }
-        )
-          .then((dbModel) => {
-            res.json(dbModel);
-          })
-          .catch((err) => res.status(422).json(err));
-      })
-      .catch((err) => res.status(422).json(err));
+    if (req.body.trx) {
+      db.Item.findById(req.body.items[0], "value")
+        .then((dbModel) => {
+          let price = dbModel.value * -1;
+          db.Character.findOneAndUpdate(
+            { _id: req.body.character },
+            {
+              $push: { items: req.body.items[0] },
+              $inc: { wallet: price },
+              $set: { pendingApproval: true },
+            },
+            { new: true }
+          )
+            .then((dbModel) => {
+              db.Transaction.create({
+                type: "Purchase",
+                item: req.body.items[0],
+                character: dbModel._id,
+                bazaar: dbModel.bazaar,
+                cleared: false,
+                walletDelta: price,
+              }).catch((err) => console.log(err));
+              res.json(dbModel);
+            })
+            .catch((err) => res.status(422).json(err));
+        })
+        .catch((err) => res.status(422).json(err));
+    } else {
+      db.Item.findById(req.body.items[0], "value")
+        .then((dbModel) => {
+          let price = dbModel.value * -1;
+          db.Character.findOneAndUpdate(
+            { _id: req.body.character },
+            {
+              $push: { items: req.body.items[0] },
+              $inc: { wallet: price },
+            },
+            { new: true }
+          )
+            .then((dbModel) => {
+              res.json(dbModel);
+            })
+            .catch((err) => res.status(422).json(err));
+        })
+        .catch((err) => res.status(422).json(err));
+    }
   },
   //route specifically for updating character item array with a new array and incrementing gold. This returns the newly modified user doc (not the default unmodified doc)
   sell: function (req, res) {
-    db.Item.findById(req.body.soldItem, "value")
-      .then((dbModel) => {
-        let price = dbModel.value;
-        db.Character.findOneAndUpdate(
-          { _id: req.body.character },
-          {
-            $set: { items: req.body.items },
-            $inc: { wallet: price },
-          },
-          { new: true }
-        )
-          .then((dbModel) => {
-            res.json(dbModel);
-          })
-          .catch((err) => res.status(422).json(err));
-      })
-      .catch((err) => res.status(422).json(err));
+    console.log(req.body);
+    if (req.body.trx) {
+      db.Item.findById(req.body.soldItem, "value")
+        .then((dbModel) => {
+          let price = dbModel.value;
+          db.Character.findOneAndUpdate(
+            { _id: req.body.character },
+            {
+              $set: { items: req.body.items, pendingApproval: true },
+              $inc: { wallet: price },
+            },
+            { new: true }
+          )
+            .then((dbModel) => {
+              db.Transaction.create({
+                type: "Sale",
+                item: req.body.soldItem,
+                character: dbModel._id,
+                bazaar: dbModel.bazaar,
+                cleared: false,
+                walletDelta: price,
+              }).catch((err) => console.log(err));
+              res.json(dbModel);
+            })
+            .catch((err) => res.status(422).json(err));
+        })
+        .catch((err) => res.status(422).json(err));
+    } else {
+      db.Item.findById(req.body.soldItem, "value")
+        .then((dbModel) => {
+          let price = dbModel.value;
+          db.Character.findOneAndUpdate(
+            { _id: req.body.character },
+            {
+              $set: { items: req.body.items },
+              $inc: { wallet: price },
+            },
+            { new: true }
+          )
+            .then((dbModel) => {
+              res.json(dbModel);
+            })
+            .catch((err) => res.status(422).json(err));
+        })
+        .catch((err) => res.status(422).json(err));
+    }
   },
   //route specificallt for adding items in bulk (for character creation)
   addItems: function (req, res) {

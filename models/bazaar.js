@@ -69,6 +69,10 @@ const bazaarSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  stockSoldItems: {
+    type: Boolean,
+    default: false,
+  },
   system: {
     type: String,
     required: true,
