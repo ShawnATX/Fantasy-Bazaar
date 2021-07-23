@@ -25,7 +25,9 @@ const ListSection = (props) => {
     <Accordion>
       <Card>
         <Accordion.Item eventKey='0'>
-          <Accordion.Header as={Card.Header}>{type}</Accordion.Header>
+          <Accordion.Header as={Card.Header} className='py-0'>
+            {type}
+          </Accordion.Header>
 
           <Accordion.Body id={strippedType + "body"}>
             <div>
@@ -38,7 +40,7 @@ const ListSection = (props) => {
                     key={subtypeObject.strippedSubtype}
                   >
                     <Accordion.Header
-                      className='p-1'
+                      className='px-1 py-0'
                       as={Card.Header}
                       id={subtypeObject.strippedSubtype + "head"}
                     >

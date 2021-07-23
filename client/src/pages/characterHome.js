@@ -32,6 +32,7 @@ const CharacterHome = (props) => {
       character: props.character._id,
       trx: bazaarObject.requireSaleApproval,
     }).then((res) => {
+      props.getCharacters();
       props.setCharacter({
         ...props.character,
         items: res.data.items,
@@ -52,6 +53,7 @@ const CharacterHome = (props) => {
       })
         .then((res) => {
           setWaitingResponse(false);
+          props.getCharacters();
           props.setCharacter({
             ...props.character,
             items: res.data.items,
@@ -133,7 +135,7 @@ const CharacterHome = (props) => {
   };
 
   return (
-    <Container>
+    <>
       <CharacterHeader
         characterInfo={props.character}
         setCharacterObject={props.setCharacter}
@@ -142,7 +144,7 @@ const CharacterHome = (props) => {
         updateCharacterGold={updateCharacterGold}
       />
       {renderPage()}
-    </Container>
+    </>
   );
 };
 

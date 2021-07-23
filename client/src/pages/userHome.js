@@ -74,6 +74,22 @@ function UserHome(props) {
     }
     return null;
   };
+  const getCharacters = () => {
+    if (
+      authenticationState.user &&
+      authenticationState.user.characters.length > 0
+    ) {
+      API.getCharacters(authenticationState.user.characters)
+        .then((res) => {
+          authenticationState.userHasAuthenticated(true, {
+            ...authenticationState.user,
+            characters: res.data,
+          });
+          setCharactersDetails(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const getEntities = () => {
     if (
@@ -82,10 +98,18 @@ function UserHome(props) {
     ) {
       API.getCharacters(authenticationState.user.characters)
         .then((res) => {
+          authenticationState.userHasAuthenticated(true, {
+            ...authenticationState.user,
+            characters: res.data,
+          });
           setCharactersDetails(res.data);
           if (authenticationState.user.bazaars.length > 0) {
             API.getBazaars(authenticationState.user.bazaars)
               .then((res) => {
+                authenticationState.userHasAuthenticated(true, {
+                  ...authenticationState.user,
+                  bazaars: res.data,
+                });
                 setBazaars(res.data);
               })
               .then(() => {
@@ -100,6 +124,20 @@ function UserHome(props) {
           console.log(err);
         });
     }
+  };
+
+  const characterList = () => {
+    return charactersDetails.map((character) => (
+      <ListGroup.Item
+        tag='button'
+        key={character._id}
+        onClick={() => {
+          goToCharacterHome(character);
+        }}
+      >
+        {character.characterName}
+      </ListGroup.Item>
+    ));
   };
 
   const goToCharacterHome = (character) => {
@@ -135,17 +173,7 @@ function UserHome(props) {
             <Col xs={{ size: 8 }} sm={{ size: 6, offset: 0 }}>
               Characters
               <ListGroup>
-                {charactersDetails.map((character) => (
-                  <ListGroup.Item
-                    tag='button'
-                    key={character._id}
-                    onClick={() => {
-                      goToCharacterHome(character);
-                    }}
-                  >
-                    {character.characterName}
-                  </ListGroup.Item>
-                ))}
+                {characterList()}
                 <ListGroup.Item tag='button' onClick={newCharacter}>
                   + New Character
                 </ListGroup.Item>
@@ -180,6 +208,7 @@ function UserHome(props) {
           character={chosenEntity}
           setCharacter={setChosenEntity}
           setPageState={setPageState}
+          getCharacters={getCharacters}
         />
       );
     } else if (pageState === "bazaar") {
@@ -188,7 +217,7 @@ function UserHome(props) {
   };
 
   return (
-    <Container className='text-center'>
+    <Container className='text-center' fluid='md'>
       <NavbarComponent
         characters={charactersDetails}
         bazaars={bazaars}

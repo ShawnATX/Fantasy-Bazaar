@@ -17,6 +17,7 @@ const CharacterOffcanvas = (props) => {
   const [validated, setValidated] = useState(false);
 
   useEffect(() => {}, [character]);
+
   const handleCloseOffcanvas = () => {
     setFormObject({});
     props.setShowOffcanvas(false);
@@ -48,7 +49,7 @@ const CharacterOffcanvas = (props) => {
     } else {
       event.preventDefault();
       setValidated(true);
-      let walletChange = formObject.gold;
+      let walletChange = Math.abs(formObject.gold);
       if (goldModifier === "-") {
         walletChange = walletChange * -1;
       }

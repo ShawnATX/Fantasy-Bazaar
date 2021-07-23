@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 import API from "../../utils/API";
 import ListSection from "../listSection";
 import CharacterFooter from "./characterFooter";
@@ -30,8 +31,7 @@ const StoreFront = (props) => {
   };
 
   return (
-    <div>
-      <Row className='mt-5 px-5 mb-5'></Row>
+    <>
       {buildList()}
       <div className='accordion mb-5' id='itemMenu'>
         {typeArr.map((type) => (
@@ -48,7 +48,7 @@ const StoreFront = (props) => {
       </div>
       <Row className='mb-3'></Row>
       <CharacterFooter characterHome={characterHome} userHome={userHome} />
-    </div>
+    </>
   );
 };
 

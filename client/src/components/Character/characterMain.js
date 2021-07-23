@@ -9,11 +9,11 @@ const CharacterMain = (props) => {
   return (
     <div>
       <Row className='mt-5 px-5 mb-5 d-flex justify-content-center'>
-        <Col>
+        <Col className='mx-2'>
           <Button
             variant='secondary'
             alt='Manage Inventory'
-            className='text-center btn-small mx-3'
+            className='text-center btn-small mx-3 my-2'
             onClick={() => props.setViewState("Inventory")}
           >
             Manage {props.characterObject.characterName}'s Inventory
@@ -22,7 +22,7 @@ const CharacterMain = (props) => {
           <Button
             variant='secondary'
             alt='Visit The Bazaar'
-            className='text-center btn-small mx-3'
+            className='text-center btn-small mx-3 my-2'
             onClick={() => props.setViewState("Store")}
           >
             Go Shopping

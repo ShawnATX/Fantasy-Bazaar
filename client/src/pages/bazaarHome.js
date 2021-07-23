@@ -33,21 +33,20 @@ const BazaarHome = (props) => {
 
   const getCharactersDetails = () => {
     if (bazaar.characters.length !== 0) {
-      API.getCharacters(bazaar.characters).then((res) => {
-        setCharactersObject(res.data);
-      });
+      API.getCharacters(bazaar.characters)
+        .then((res) => {
+          setCharactersObject(res.data);
+        })
+        .catch((err) => console.log(err));
     }
   };
 
   const approvePendingChanges = (character) => {
     API.updateCharacter(character._id, { pendingApproval: false })
-      .then(() =>
-        API.getCharacters(bazaar.characters)
-          .then((res) => {
-            setCharactersObject(res.data);
-          })
-          .catch((err) => console.log(err))
-      )
+      .then((character) => {
+        getCharactersDetails();
+        setCanvasCharacter(character.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -98,7 +97,7 @@ const BazaarHome = (props) => {
   );
 
   return (
-    <Container fluid={true}>
+    <Container fluid='md'>
       <OverlayTrigger trigger='click' placement='bottom' overlay={popover}>
         <h2 className='display-3'>{bazaar.bazaarName}</h2>
       </OverlayTrigger>
