@@ -8,8 +8,8 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
-import NavbarComponent from "../components/navbar";
-import UserAd from "../components/userAdComponent";
+import NavbarComponent from "../components/User/navbar";
+import UserAd from "../components/User/userAdComponent";
 
 const UserHome = (props) => {
   const { authenticationState } = useContext(UserContext);

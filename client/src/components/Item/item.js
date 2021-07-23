@@ -12,13 +12,13 @@ const Item = (props) => {
 
   return (
     <Row className='border align-middle py-1'>
-      <Col xs={5} md={3} className='align-middle my-auto'>
+      <Col xs={7} md={3} className='align-middle my-auto'>
         <h4>{props.item.name}</h4> {props.quantity ? `X${props.quantity}` : ""}
       </Col>
       <Col xs={3} md={1} className='align-middle my-auto'>
         <h5>{props.item.value}</h5> Gold
       </Col>
-      <Col xs={3} md={1} className='align-middle my-auto'>
+      <Col xs={2} md={1} className='align-middle my-auto'>
         <h5>{props.item.weight}</h5> lbs.
       </Col>
       <Col xs={9} md={5} className='my-auto'>

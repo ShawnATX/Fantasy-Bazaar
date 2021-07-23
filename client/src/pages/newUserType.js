@@ -34,7 +34,8 @@ function NewUserType() {
 
   return (
     <Container className='text-center'>
-      <Row className='mt-5 px-5'>
+      <h1 className='display-2 mt-3'>Fantasy Bazaar</h1>
+      <Row className='mt-4 px-5'>
         <Col>
           <A
             href='/newusercreds/gm'
@@ -91,7 +92,7 @@ function NewUserType() {
           </Col>
         </Row>
       </Form>
-      <ToastContainer className='p-4' position='top-center'>
+      <ToastContainer className='p-4' position='top-right'>
         <Toast
           onClose={() => setShowToast(false)}
           show={showToast}

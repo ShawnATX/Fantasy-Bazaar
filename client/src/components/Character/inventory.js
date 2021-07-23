@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import API from "../../utils/API";
 import Item from "../Item/item";
+import CharacterAdRow from "./characterAdRow";
 import CharacterFooter from "./characterFooter";
 
 //props = setViewState={setViewState} items={props.character.items} sell={sellItem} waitingResponse={waitingResponse} userHome={userHome} bazaaar={bazaarObject}
@@ -26,6 +27,7 @@ const Inventory = (props) => {
 
   return (
     <>
+      <CharacterAdRow />
       <Row className='mt-4 px-5 mb-5'>
         {props.items.length > 0
           ? itemList.map((item) => (

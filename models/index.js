@@ -4,4 +4,5 @@ module.exports = {
   Bazaar: require("./bazaar"),
   Character: require("./character"),
   Transaction: require("./transaction"),
+  Token: require("./token"),
 };

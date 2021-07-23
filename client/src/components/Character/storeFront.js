@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import API from "../../utils/API";
 import ListSection from "../listSection";
+import CharacterAdRow from "./characterAdRow";
 import CharacterFooter from "./characterFooter";
 
 const StoreFront = (props) => {
@@ -31,8 +32,9 @@ const StoreFront = (props) => {
 
   return (
     <>
+      <CharacterAdRow />
       {buildList()}
-      <div className='accordion mb-5' id='itemMenu'>
+      <div className='accordion mb-5 mt-1' id='itemMenu'>
         {typeArr.map((type) => (
           <ListSection
             key={type}

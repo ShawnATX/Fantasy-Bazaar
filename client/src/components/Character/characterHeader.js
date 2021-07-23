@@ -114,6 +114,7 @@ function CharacterHeader(props) {
       >
         <Row className='mx-0'>
           <Col
+            xs={{ span: 8, offset: 2 }}
             sm={{ span: 6, offset: 3 }}
             md={{ span: 6, offset: 3 }}
             lg={{ span: 5, offset: 3 }}

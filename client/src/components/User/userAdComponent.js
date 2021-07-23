@@ -12,6 +12,14 @@ const UserAd = () => {
     };
   });
 
+  //horizontal display ad
+  //   <ins class="adsbygoogle"
+  //      style="display:block"
+  //      data-ad-client="ca-pub-4956647583327789"
+  //      data-ad-slot="9176994471"
+  //      data-ad-format="auto"
+  //      data-full-width-responsive="true"></ins>
+
   return (
     <div className='ad'>
       <ins
@@ -20,7 +28,7 @@ const UserAd = () => {
         data-ad-client='ca-pub-4956647583327789'
         data-ad-slot='5697107987'
         data-ad-format='auto'
-        // data-full-width-responsive='true'
+        data-full-width-responsive='true'
       />
     </div>
   );

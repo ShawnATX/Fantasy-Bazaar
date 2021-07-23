@@ -140,13 +140,13 @@ const NewUserCreds = (props) => {
             </Form.Group>
             <Button
               className='btn-small ml-3'
-              variant='dark'
+              variant='secondary'
               onClick={() => handleFormSubmit()}
             >
               Submit
             </Button>
             <A href='/'>
-              <Button className='btn-small ml-3' variant='dark'>
+              <Button className='btn-small ml-3' variant='secondary'>
                 Back Home
               </Button>
             </A>
