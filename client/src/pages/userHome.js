@@ -227,6 +227,16 @@ function UserHome(props) {
         setPageState={setPageState}
       />
       {renderPage()}
+      <Row className='my-2'></Row>
+      <ins
+        className='adsbygoogle'
+        style={{ display: "block" }}
+        data-ad-client='ca-pub-4956647583327789'
+        data-ad-slot='5697107987'
+        data-ad-format='auto'
+        data-full-width-responsive='true'
+      ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </Container>
   );
 }
