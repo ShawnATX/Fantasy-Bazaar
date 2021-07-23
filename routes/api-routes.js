@@ -4,6 +4,7 @@ const userController = require("../controllers/userController");
 const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
 const characterController = require("../controllers/characterController");
+const transactionController = require("../controllers/transactionController");
 const isAuth = require("../config/middleware/isAuthenticated").isAuth;
 
 module.exports = function (app) {
@@ -121,4 +122,24 @@ module.exports = function (app) {
 
   //Update character (item list &  wallet)
   app.post("/api/characters/sell", isAuth, characterController.sell);
+
+  //TRANSACTION ROUTES
+  //get uncleared transactions by bazaar id
+  app.get(
+    "/api/trx/bazaar/uncleared/:bazaarid",
+    isAuth,
+    transactionController.findAllUnclearedByBazaar
+  );
+  //get uncleared transactions by character ids
+  app.get(
+    "/api/trx/character/uncleared/:characterid",
+    isAuth,
+    transactionController.findAllUnclearedByCharacter
+  );
+  //get transactions by character ids
+  app.get(
+    "/api/trx/character/:characterid",
+    isAuth,
+    transactionController.findAllByCharacter
+  );
 };

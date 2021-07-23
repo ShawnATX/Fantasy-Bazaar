@@ -18,7 +18,6 @@ const CharacterMain = (props) => {
           >
             Manage {props.characterObject.characterName}'s Inventory
           </Button>
-
           <Button
             variant='secondary'
             alt='Visit The Bazaar'

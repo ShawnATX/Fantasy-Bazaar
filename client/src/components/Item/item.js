@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
+// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap-button-loader";
 import UserContext from "../../utils/userContext";
 import BuildDescription from "./buildDescription";
 
@@ -11,39 +11,35 @@ const Item = (props) => {
   const { authenticationState } = useContext(UserContext);
 
   return (
-    <Row className='border align-middle'>
-      <Col md={3} className='align-middle my-auto'>
+    <Row className='border align-middle py-1'>
+      <Col xs={5} md={3} className='align-middle my-auto'>
         <h4>{props.item.name}</h4> {props.quantity ? `X${props.quantity}` : ""}
       </Col>
-      <Col md={1} className='align-middle my-auto'>
+      <Col xs={3} md={1} className='align-middle my-auto'>
         <h5>{props.item.value}</h5> Gold
       </Col>
-      <Col md={1} className='align-middle my-auto'>
+      <Col xs={3} md={1} className='align-middle my-auto'>
         <h5>{props.item.weight}</h5> lbs.
       </Col>
-      <Col md={4} className='my-auto'>
+      <Col xs={9} md={5} className='my-auto'>
         {BuildDescription(props.item)}
       </Col>
-      <Col md={3} className='align-middle my-auto'>
-        {waitingResponse ? (
-          <Spinner variant='light' role='status'>
-            <span className='sr-only'></span>
-          </Spinner>
-        ) : (
-          <Button
-            variant='secondary'
-            className='btn-small my-1 float-right'
-            onClick={() => props.action(props.item)}
-            disabled={
-              props.item.value > authenticationState.user.wallet &&
-              props.button === "Purchase"
-                ? true
-                : false
-            }
-          >
-            {props.button}
-          </Button>
-        )}
+      <Col xs={3} md={2} className='align-middle my-auto'>
+        <Button
+          variant='secondary'
+          className='btn my-1 float-right'
+          loading={waitingResponse}
+          onClick={() => props.action(props.item)}
+          spinAlignment='right'
+          // disabled={
+          //   props.item.value > authenticationState.user.wallet &&
+          //   props.button === "Purchase"
+          //     ? true
+          //     : false
+          // }
+        >
+          {props.button}
+        </Button>
       </Col>
     </Row>
   );

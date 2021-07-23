@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import API from "../../utils/API";
 import ListSection from "../listSection";
 import CharacterFooter from "./characterFooter";
@@ -41,7 +40,7 @@ const StoreFront = (props) => {
             items={getItems(type)}
             expanded='false'
             action={purchase}
-            button={"Purchase"}
+            button={"Buy"}
             waitingResponse={waitingResponse}
           ></ListSection>
         ))}

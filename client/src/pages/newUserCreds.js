@@ -94,7 +94,12 @@ const NewUserCreds = (props) => {
   }
 
   return (
-    <Container>
+    <Container fluid>
+      <h1 className='display-2 mt-3 pb-2 text-center'>Fantasy Bazaar</h1>
+      <h2 className='display-4 mt-0 pb-3 text-center'>
+        New User Account Details
+      </h2>
+
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <Form

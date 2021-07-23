@@ -217,7 +217,7 @@ function UserHome(props) {
   };
 
   return (
-    <Container className='text-center' fluid='md'>
+    <Container className='text-center' fluid='lg'>
       <NavbarComponent
         characters={charactersDetails}
         bazaars={bazaars}

@@ -8,13 +8,30 @@ const TransactionController = {
       .catch((err) => res.status(422).json(err));
   },
   findAllByBazaar: function (req, res) {
-    db.Transaction.find()
-      .where({ bazaar })
-      .in(req.body.bazaar)
+    db.Transaction.find({ bazaar: req.params.bazaarid })
       .sort({ date: -1 })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findAllUnclearedByBazaar: function (req, res) {
+    db.Transaction.find({ bazaar: req.params.bazaarid, cleared: false })
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  findAllByCharacter: function (req, res) {
+    db.Transaction.find({ character: req.params.characterid })
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  findAllUnclearedByCharacter: function (req, res) {
+    db.Transaction.find({ character: req.params.characterid, cleared: false })
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   findAll: function (req, res) {
     db.Transaction.find(req.query)
       .sort({ date: -1 })
