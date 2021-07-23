@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../utils/userContext";
+import { navigate } from "hookrouter";
+import API from "../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-import API from "../utils/API";
 import CharacterHome from "./characterHome";
 import BazaarHome from "./bazaarHome";
 import NavbarComponent from "../components/navbar";
-import { navigate } from "hookrouter";
+import UserAd from "../components/userAdComponent";
 
-function UserHome(props) {
+const UserHome = (props) => {
   const { authenticationState } = useContext(UserContext);
   const [charactersDetails, setCharactersDetails] = useState([]);
   const [bazaars, setBazaars] = useState([]);
@@ -227,18 +228,9 @@ function UserHome(props) {
         setPageState={setPageState}
       />
       {renderPage()}
-      <Row className='my-2'></Row>
-      <ins
-        className='adsbygoogle'
-        style={{ display: "block" }}
-        data-ad-client='ca-pub-4956647583327789'
-        data-ad-slot='5697107987'
-        data-ad-format='auto'
-        data-full-width-responsive='true'
-      ></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <UserAd />
     </Container>
   );
-}
+};
 
 export default UserHome;
