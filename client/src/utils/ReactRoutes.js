@@ -3,6 +3,7 @@ import NewUserType from "../pages/newUserType";
 import NewUserCreds from "../pages/newUserCreds";
 import NewCharacter from "../pages/newCharacter";
 import Login from "../pages/login";
+import ForgotPassword from "../pages/forgotPassword";
 import NewBazaar from "../pages/newBazaar";
 import UserHome from "../pages/userHome";
 import Logout from "../pages/logout";
@@ -11,6 +12,7 @@ import About from "../pages/about";
 const routes = {
   "/": () => <Landing />,
   "/login": () => <Login />,
+  "/forgotpassword": () => <ForgotPassword />,
   "/logout": () => <Logout />,
   "/about": () => <About />,
   "/newusertype": () => <NewUserType />,

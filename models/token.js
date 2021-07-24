@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tokenSchema = new Schema({
-  _userId: {
+  userId: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: "User",
@@ -14,7 +14,7 @@ const tokenSchema = new Schema({
   expireAt: {
     type: Date,
     default: Date.now,
-    index: { expires: 60 * 2 },
+    index: { expires: 60 * 69 },
   },
 });
 

@@ -5,6 +5,7 @@ const bazaarController = require("../controllers/bazaarController");
 const itemController = require("../controllers/itemController");
 const characterController = require("../controllers/characterController");
 const transactionController = require("../controllers/transactionController");
+const passwordReset = require("../controllers/passwordReset");
 const isAuth = require("../config/middleware/isAuthenticated").isAuth;
 
 module.exports = function (app) {
@@ -141,5 +142,10 @@ module.exports = function (app) {
     "/api/trx/character/:characterid",
     isAuth,
     transactionController.findAllByCharacter
+  );
+  app.post(
+    "/api/forgotpassword",
+    passwordReset
+    //send email and save the token
   );
 };

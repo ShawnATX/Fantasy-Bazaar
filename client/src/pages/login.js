@@ -68,7 +68,7 @@ const Login = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              <Form.Group className='mb-4'>
+              <Form.Group className='mb-2'>
                 <Form.Control
                   type='password'
                   name='password'
@@ -78,7 +78,10 @@ const Login = () => {
                 />
               </Form.Group>
             </Col>
-            <Row xs={1} sm={2} md={2}>
+            <Row className='my-2'>
+              <A href='/forgotpassword'>Forgot Password?</A>
+            </Row>
+            <Row xs={2} sm={2} md={2}>
               <Col>
                 <Button
                   className='btn-small float-end'

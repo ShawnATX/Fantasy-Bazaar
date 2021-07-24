@@ -2,6 +2,10 @@ import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  //Send password reset email
+  forgotPassword: function (email) {
+    return axios.post("/api/forgotpassword", email);
+  },
   // Gets all items
   getItems: function () {
     return axios.get("/api/items");
