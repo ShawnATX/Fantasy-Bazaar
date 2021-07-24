@@ -4,6 +4,7 @@ import NewUserCreds from "../pages/newUserCreds";
 import NewCharacter from "../pages/newCharacter";
 import Login from "../pages/login";
 import ForgotPassword from "../pages/forgotPassword";
+import PasswordReset from "../pages/passwordReset";
 import NewBazaar from "../pages/newBazaar";
 import UserHome from "../pages/userHome";
 import Logout from "../pages/logout";
@@ -13,6 +14,7 @@ const routes = {
   "/": () => <Landing />,
   "/login": () => <Login />,
   "/forgotpassword": () => <ForgotPassword />,
+  "/passwordreset/:token": (token) => <PasswordReset token={token} />,
   "/logout": () => <Logout />,
   "/about": () => <About />,
   "/newusertype": () => <NewUserType />,
