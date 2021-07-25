@@ -2,10 +2,6 @@ import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  //Send password reset email
-  forgotPassword: function (email) {
-    return axios.post("/api/forgotpassword", email);
-  },
   // Gets all items
   getItems: function () {
     return axios.get("/api/items");
@@ -58,10 +54,11 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/users/" + id);
   },
-  //update user
-  updateUser: function (id, userData) {
-    return axios.put("/api/users/" + id, userData);
+  //update user password with a valid reset token
+  saveResetPassword: function (userData) {
+    return axios.post("/api/users/passwordreset", userData);
   },
+
   //user login
   loginUser: function (userData) {
     return axios.post("/api/users/login", userData);
@@ -136,5 +133,14 @@ export default {
     } catch (err) {
       return console.log(err);
     }
+  },
+
+  //Send password reset email
+  forgotPassword: function (email) {
+    return axios.post("/api/forgotpassword", email);
+  },
+  //Validate password reset token, return user if valid
+  getTokenUser: function (token) {
+    return axios.post("/api/validateresettoken", token);
   },
 };

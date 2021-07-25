@@ -75,6 +75,9 @@ module.exports = function (app) {
   //Check uniqueness of an email address before attempting to save a new user
   app.post("/api/users/email/", userController.findByEmail);
 
+  //Update user password with a valid reset token
+  app.post("/api/users/passwordreset", passwordReset.UpdatePassword);
+
   //BAZAAR ROUTES
   //check on bazzar from code, returns bazaar _id, name, system
   app.get("/api/bazaars/code/:joinCode", bazaarController.findByJoinCode);
@@ -143,9 +146,8 @@ module.exports = function (app) {
     isAuth,
     transactionController.findAllByCharacter
   );
-  app.post(
-    "/api/forgotpassword",
-    passwordReset
-    //send email and save the token
-  );
+  //route to send reset password email and save a expiration token
+  app.post("/api/forgotpassword", passwordReset.ResetEmail);
+  //route to check valid reset token and return user if valid
+  app.post("/api/validateresettoken", passwordReset.ValidateToken);
 };
