@@ -97,7 +97,7 @@ const PasswordReset = {
                 bazaars: userModel.bazaars,
                 characters: userModel.characters,
                 email: userModel.email,
-                _id: userModel._id,
+                id: userModel._id,
               });
             })
             .catch((err) => {
