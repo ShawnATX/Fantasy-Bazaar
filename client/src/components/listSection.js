@@ -25,11 +25,11 @@ const ListSection = (props) => {
     <Accordion>
       <Card>
         <Accordion.Item eventKey='0'>
-          <Accordion.Header as={Card.Header} className='py-0'>
+          <Accordion.Header as={Card.Header} className='py-0 my-0'>
             {type}
           </Accordion.Header>
 
-          <Accordion.Body id={strippedType + "body"}>
+          <Accordion.Body id={strippedType + "body"} className='px-1 py-2 mx-0'>
             <div>
               {buildSubtypeList()}
               {subtypeArr.map((subtypeObject) => (
@@ -40,15 +40,15 @@ const ListSection = (props) => {
                     key={subtypeObject.strippedSubtype}
                   >
                     <Accordion.Header
-                      className='px-1 py-0'
+                      className='px-1 py-0 my-0'
                       as={Card.Header}
                       id={subtypeObject.strippedSubtype + "head"}
                     >
-                      <h4 className='mb-0 text-center bg-grey'>
+                      <h4 className='my-0 text-center bg-grey'>
                         {subtypeObject.subtype}
                       </h4>
                     </Accordion.Header>
-                    <Accordion.Body as={Card.Body}>
+                    <Accordion.Body as={Card.Body} className='py-2 px-3'>
                       {getItems(subtypeObject.subtype).map((item) => (
                         <Item
                           key={item._id}

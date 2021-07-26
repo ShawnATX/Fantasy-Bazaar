@@ -19,7 +19,7 @@ const Item = (props) => {
         <h5>{props.item.value}</h5> Gold
       </Col>
       <Col xs={2} md={1} className='align-middle my-auto'>
-        <h5>{props.item.weight}</h5> lbs.
+      <span className="text-nowrap"> <h5>{props.item.weight}</h5> lbs.</span>
       </Col>
       <Col xs={9} md={5} className='my-auto'>
         {BuildDescription(props.item)}
@@ -27,7 +27,7 @@ const Item = (props) => {
       <Col xs={3} md={2} className='align-middle my-auto'>
         <Button
           variant='secondary'
-          className='btn my-1 float-right'
+          className='btn my-1 float-right loader-btn'
           loading={waitingResponse}
           onClick={() => props.action(props.item)}
           spinAlignment='right'

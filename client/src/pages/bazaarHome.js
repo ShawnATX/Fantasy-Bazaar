@@ -20,12 +20,14 @@ const BazaarHome = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
 
+
   const handleCloseOffcanvas = () => setShowOffcanvas(false);
   const handleShowOffcanvas = () => setShowOffcanvas(true);
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
   const [canvasCharacter, setCanvasCharacter] = useState({});
   const [charactersObject, setCharactersObject] = useState([]);
+  const [charactersLoading, setCharactersLoading] = useState(true);
 
   useEffect(() => {
     getCharactersDetails();
@@ -36,6 +38,7 @@ const BazaarHome = (props) => {
       API.getCharacters(bazaar.characters)
         .then((res) => {
           setCharactersObject(res.data);
+          setCharactersLoading(false);
         })
         .catch((err) => console.log(err));
     }
@@ -102,11 +105,20 @@ const BazaarHome = (props) => {
         <h2 className='display-3'>{bazaar.bazaarName}</h2>
       </OverlayTrigger>
 
-      {bazaar.characters.length > 0 ? (
-        <div>
+      { charactersLoading ? 
+      (        
+      <Row className="pt-4">
+        <h2 className="pulsate">Wrangling the cats...</h2>
+      </Row>
+      ) 
+      : 
+      (
+        <>
+        {bazaar.characters.length > 0 ? (
+          <div>
           <Row xs={2} sm={2} md={3} lg={4}>
-            {charactersObject.map((character) => (
-              <div key={character._id}>
+          {charactersObject.map((character) => (
+            <div key={character._id}>
                 {character.pendingApproval ? (
                   <Col key={character._id}>
                     <Card onClick={() => goToCharacterDetails(character)}>
@@ -122,7 +134,7 @@ const BazaarHome = (props) => {
                             zIndex: 2,
                             marginLeft: "3rem",
                           }}
-                        ></i>
+                          ></i>
                       </Card.Title>
                     </Card>
                   </Col>
@@ -137,7 +149,8 @@ const BazaarHome = (props) => {
                   </Col>
                 )}
               </div>
-            ))}
+            ))
+            }
           </Row>
           <CharacterOffcanvas
             character={canvasCharacter}
@@ -146,15 +159,19 @@ const BazaarHome = (props) => {
             setShowOffcanvas={setShowOffcanvas}
             approvePendingChanges={approvePendingChanges}
             API={API}
-          />
-        </div>
-      ) : (
+            />
+            </div>
+            ) : (
         <p>No Characters Yet</p>
-      )}
+        )
+        }
+        </>
+        )
+      }
       <Row className='my-3'>
-        <Col>
-          <Button
-            className='text-center btn-small float-end'
+      <Col>
+      <Button
+      className='text-center btn-small float-end'
             variant='secondary'
             onClick={handleShowModal}
           >

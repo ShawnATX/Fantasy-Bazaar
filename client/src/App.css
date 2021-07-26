@@ -97,6 +97,8 @@ button {
   color: white;
   font-family: "MedievalSharp", cursive;
   font-size: 1.4rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
 }
 .accordion-button:not(.collapsed) {
   background-color: #6c757d;
@@ -130,4 +132,22 @@ button {
 }
 .sweet-alert > div {
   background-color: #6c757d;
+}
+.loader-btn>* {
+  background-color: transparent;
+}
+.pulsate {
+  animation: pulsate 1.5s ease-out infinite;
+  opacity: 0.4;
+}
+@keyframes pulsate {
+  0% { 
+      opacity: 0.4;
+  }
+  50% { 
+      opacity: 1.0;
+  }
+  100% { 
+      opacity: 0.3;
+  }
 }
