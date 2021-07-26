@@ -13,6 +13,8 @@ const itemDescription = new Schema({
   dexBonus: String,
   armorCheckPenalty: String,
   arcaneSpellFailure: String,
+  spellLevel: Number,
+  casterLevel: Number,
 });
 
 const itemSchema = new Schema({

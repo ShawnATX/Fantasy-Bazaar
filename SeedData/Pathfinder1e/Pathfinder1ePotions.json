@@ -1,0 +1,1562 @@
+[
+  {
+    "name": "Arcane Mark",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Guidance",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Light",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Purify Food and Drink",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resistance",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Stabilize",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Virtue",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 0
+    },
+    "value": 25,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Cure Light Wounds",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Endure Elements",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Hide From Animals",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Hide From Undead",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Jump",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Mage Armor",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Fang",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Stone",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Weapon",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Pass Without Trace",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from alignment (Evil)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from alignment (Good)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from alignment (Lawful)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from alignment (Chaotic)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Remove Fear",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Sanctuary",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Shield of Faith +2",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Shillelagh",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Bless Weapon",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Enlarge Person",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Reduce Person",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 1,
+      "spellLevel": 1
+    },
+    "value": 50,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Aid",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Barkskin +2",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Bear's Endurance",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Blur",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Bull's Strength",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Cat's Grace",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Cure Moderate Wounds",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Darkness",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Darkvision",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Delay Poison",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Eagle's Splendor",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Fox's Cunning",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Invisibility",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Lesser Restoration",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Levitate",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Misdirection",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Owl's Wisdom",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 30 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 40 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 4,
+      "spellLevel": 2
+    },
+    "value": 400,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 50 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 2
+    },
+    "value": 500,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 60 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 6,
+      "spellLevel": 2
+    },
+    "value": 600,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 70 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 80 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 8,
+      "spellLevel": 2
+    },
+    "value": 800,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 90 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 9,
+      "spellLevel": 2
+    },
+    "value": 900,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection From Arrows 100 points",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 10,
+      "spellLevel": 2
+    },
+    "value": 1000,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Remove Paralysis",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (fire) 10",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (fire) 20",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (fire) 30",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 11,
+      "spellLevel": 2
+    },
+    "value": 1100,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (cold) 10",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (cold) 20",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (cold) 30",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 11,
+      "spellLevel": 2
+    },
+    "value": 1100,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (acid) 10",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (acid) 20",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (acid) 30",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 11,
+      "spellLevel": 2
+    },
+    "value": 1100,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (electricity) 10",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (electricity) 20",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (electricity) 30",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 11,
+      "spellLevel": 2
+    },
+    "value": 1100,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (sonic) 10",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (sonic) 20",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 2
+    },
+    "value": 700,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Resist Energy (sonic) 30",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 11,
+      "spellLevel": 2
+    },
+    "value": 1100,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Spider Climb",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Undetectable Alignment",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 3,
+      "spellLevel": 2
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Cure Serious Wounds",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Daylight",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Displacement",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Flame Arrow",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Fly",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Gaseous Form",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Fang +1",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Weapon +1",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Haste",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Heroism",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Keen Edge",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Circle Against (Evil)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Circle Against (Good)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Circle Against (Law)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Circle Against (Chaos)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Vestment +1",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Vestment +2",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 8,
+      "spellLevel": 3
+    },
+    "value": 1200,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Vestment +3",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 12,
+      "spellLevel": 3
+    },
+    "value": 1800,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Vestment +4",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 16,
+      "spellLevel": 3
+    },
+    "value": 2400,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Magic Vestment +5",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 20,
+      "spellLevel": 3
+    },
+    "value": 3000,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Neutralize Poison",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Nondetection",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from energy (acid)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from energy (cold)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from energy (electricity)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from energy (fire)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Protection from energy (sonic)",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Rage",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Remove Blindness/Deafness",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Remove Curse",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Remove Disease",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Tongues",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Water Breathing",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Water Walk",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 5,
+      "spellLevel": 3
+    },
+    "value": 750,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Good Hope",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 7,
+      "spellLevel": 3
+    },
+    "value": 1050,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Barkskin +3",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 6,
+      "spellLevel": 2
+    },
+    "value": 600,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Barkskin +4",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 9,
+      "spellLevel": 2
+    },
+    "value": 900,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Barkskin +5",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 12,
+      "spellLevel": 2
+    },
+    "value": 1200,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Shield Of Faith +3",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 6,
+      "spellLevel": 1
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Shield Of Faith +4",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 12,
+      "spellLevel": 1
+    },
+    "value": 300,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Shield Of Faith +5",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 18,
+      "spellLevel": 1
+    },
+    "value": 900,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Fang +2",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 8,
+      "spellLevel": 3
+    },
+    "value": 1200,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Weapon +2",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 8,
+      "spellLevel": 3
+    },
+    "value": 1200,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Fang +3",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 12,
+      "spellLevel": 3
+    },
+    "value": 1800,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Weapon +3",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 12,
+      "spellLevel": 3
+    },
+    "value": 1800,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Fang +4",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 16,
+      "spellLevel": 3
+    },
+    "value": 2400,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Weapon +4",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 16,
+      "spellLevel": 3
+    },
+    "value": 2400,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Fang +5",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 20,
+      "spellLevel": 3
+    },
+    "value": 3000,
+    "weight": 0,
+    "custom": false
+  },
+  {
+    "name": "Greater Magic Weapon +5",
+    "type": "Adventuring Gear",
+    "subtype": "Potion or Oil",
+    "system": "Pathfinder1e",
+    "description": {
+      "casterLevel": 20,
+      "spellLevel": 3
+    },
+    "value": 3000,
+    "weight": 0,
+    "custom": false
+  }
+]

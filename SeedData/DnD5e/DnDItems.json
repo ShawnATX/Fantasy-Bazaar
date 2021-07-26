@@ -879,17 +879,5 @@
     "subtype": "Trekking",
     "system": "DnD",
     "custom": false
-  },
-  {
-    "name": "Potion of Healing",
-    "description": {
-      "description": "A magical potion which heals 2d4 +2 hit points to the user"
-    },
-    "value": 50,
-    "weight": 0.5,
-    "type": "Consumable",
-    "system": "DnD",
-    "subtype": "Potion",
-    "custom": false
   }
 ]

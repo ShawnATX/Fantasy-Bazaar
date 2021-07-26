@@ -28,6 +28,10 @@ const BuildDescription = (item) => {
       description.push(`Properties: ${item.description[element]} `);
     } else if (element === "capacity") {
       description.push(`Capacity: ${item.description[element]} `);
+    } else if (element === "spellLevel") {
+      description.push(`Spell Level: ${item.description[element]} `);
+    } else if (element === "casterLevel") {
+      description.push(`Caster Level: ${item.description[element]} `);
     }
   }
   let descJSX = description.map((item) => {

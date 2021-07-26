@@ -31,12 +31,6 @@ const Item = (props) => {
           loading={waitingResponse}
           onClick={() => props.action(props.item)}
           spinAlignment='right'
-          // disabled={
-          //   props.item.value > authenticationState.user.wallet &&
-          //   props.button === "Purchase"
-          //     ? true
-          //     : false
-          // }
         >
           {props.button}
         </Button>
