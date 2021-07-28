@@ -1,6 +1,6 @@
 # Update
 
-Fantasy Bazaar can now be found at https://www.fantasybazaar.app!
+Fantasy Bazaar can now be found at https://fantasybazaar.app!
 
 # Description
 
