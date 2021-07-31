@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import API from "../utils/API";
 import NewBazaarMain from "../components/NewBazaar/newBazaarMain";
 import NewBazaarSettings from "../components/NewBazaar/newBazaarSettings";
+import NewBazaarStockPicker from "../components/NewBazaar/newBazaarStockPicker";
 
 const NewBazaar = () => {
   const { authenticationState } = useContext(UserContext);
@@ -19,7 +20,7 @@ const NewBazaar = () => {
     limitedInventory: false,
     stockSoldItems: false,
   });
-  const [pageState, setPageState] = useState("Main");
+  const [pageState, setPageState] = useState(1);
 
   useEffect(() => {
     if (!authenticationState.isAuthenticated) {
@@ -67,7 +68,7 @@ const NewBazaar = () => {
   }
 
   function renderPage() {
-    if (pageState === "Main") {
+    if (pageState === 1) {
       return (
         <NewBazaarMain
           setPageState={setPageState}
@@ -75,9 +76,18 @@ const NewBazaar = () => {
           setFormObject={setFormObject}
         />
       );
-    } else if (pageState === "Settings") {
+    } else if (pageState === 2) {
       return (
         <NewBazaarSettings
+          setPageState={setPageState}
+          formObject={formObject}
+          setFormObject={setFormObject}
+          saveNewBazaar={saveNewBazaar}
+        />
+      );
+    } else if (pageState === 3) {
+      return (
+        <NewBazaarStockPicker
           setPageState={setPageState}
           formObject={formObject}
           setFormObject={setFormObject}

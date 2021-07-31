@@ -17,12 +17,25 @@ const itemDescription = new Schema({
   casterLevel: Number,
 });
 
+const valueSettings = new Schema({
+  variablePrice: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  minPrice: Number,
+  maxPrice: Number,
+});
+
 const itemSchema = new Schema({
   name: { type: String, required: true },
   description: { type: itemDescription, default: {} },
   value: {
     type: Number,
     required: true,
+  },
+  valueSettings: {
+    type: valueSettings,
   },
   weight: {
     type: Number,

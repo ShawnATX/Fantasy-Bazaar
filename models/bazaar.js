@@ -11,6 +11,10 @@ const InventoryItem = new Schema({
     type: Number,
     required: false,
   },
+  price: {
+    type: Number,
+    required: false,
+  },
 });
 
 const bazaarSchema = new Schema({

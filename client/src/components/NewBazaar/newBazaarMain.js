@@ -9,11 +9,24 @@ const NewBazaarMain = (props) => {
 
   const handleInputChange = (event) => {
     let { name, value } = event.target;
+    //reverte form to default state to prevent system-specific settings saving incorrectly, specifically item selections
+    if (name === "system") {
+      setFormObject({
+        bazaarName: formObject.bazaarName,
+        requireNewCharacterApproval: true,
+        requireCustomItemApproval: false,
+        requireWalletChangeApproval: false,
+        requireSaleApproval: false,
+        requirePurchaseApproval: false,
+        limitedInventory: false,
+        stockSoldItems: false,
+      });
+    }
     setFormObject({ ...formObject, [name]: value });
   };
 
   const nextPage = () => {
-    setPageState("Settings");
+    setPageState(2);
   };
 
   const handleFormSubmit = (event) => {

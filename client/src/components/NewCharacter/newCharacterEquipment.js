@@ -16,7 +16,7 @@ const NewCharacterEquipment = (props) => {
   let typeArr = [];
 
   useEffect(() => {
-    API.getItemsBySystem(bazaarObject.system).then((res) => {
+    API.getItemsBySystemBazaar(bazaarObject.id).then((res) => {
       setItemList(res.data);
     });
   }, []);

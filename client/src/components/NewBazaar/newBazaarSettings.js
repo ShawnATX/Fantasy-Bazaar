@@ -27,8 +27,12 @@ const NewBazaarSettings = (props) => {
     saveNewBazaar(formObject);
   };
   const handleGoBack = () => {
-    setPageState("Main");
+    setPageState(1);
   };
+  const nextPage = () => {
+    setPageState(3);
+  };
+
   return (
     <Row className='mt-4 text-center'>
       <Col
@@ -296,14 +300,24 @@ const NewBazaarSettings = (props) => {
             >
               Go Back
             </Button>
-            <Button
-              variant='secondary'
-              type='submit'
-              className='text-center btn-small'
-              onClick={handleFormSubmit}
-            >
-              Finish!
-            </Button>
+            {formObject.limitedInventory ? (
+              <Button
+                variant='secondary'
+                className='text-center btn-small'
+                onClick={nextPage}
+              >
+                Select Items
+              </Button>
+            ) : (
+              <Button
+                variant='secondary'
+                type='submit'
+                className='text-center btn-small'
+                onClick={handleFormSubmit}
+              >
+                Finish!
+              </Button>
+            )}
           </Col>
         </Row>
       </Col>
