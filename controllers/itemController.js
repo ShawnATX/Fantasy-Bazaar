@@ -16,30 +16,35 @@ const ItemController = {
       })
       .catch((err) => res.status(422).json(err));
   },
+  
   findAllByBazaar: function (req, res) {
     let items = [];
+
     db.Bazaar.findById(req.params.id).then((dbModel) => {
-      let stock = dbModel.getInventory();
-      stock.forEach((item) => {
-        db.Item.findById(item.item).then((itemModel) => {
-          if (!itemModel === null) {
-            items.push(itemModel);
-          }
-        });
-      });
-      if (!dbModel.limitedInventory) {
-        //no inventory limits, return all system-default items
-        db.Item.find({ system: dbModel.system, custom: false })
-          .then((itemList) => {
-            itemList.forEach((item) => {
-              items.push(item);
+      let stock = dbModel.getInventory().map((stockItem) => {return (stockItem.item)});
+      db.Item.find()
+      .where("_id")
+      .in(stock)
+      .sort({ date: -1 })
+      .then((stockItemList) => {
+        items.push(...stockItemList);
+        if (!dbModel.limitedInventoryItems) {
+          //no inventory limits, return all system-default items
+          db.Item.find({ system: dbModel.system, custom: false })
+            .then((itemList) => {
+              itemList.forEach((item) => {
+                items.push(item);
+              });
+            })
+            .then(() => {
+              res.status(200).json(items);
             });
-          })
-          .then(() => {
-            res.status(200).json(items);
-          });
-      }
-    });
+        }
+        else {
+          res.status(200).json(items);
+        }
+      });
+    })
   },
   findById: function (req, res) {
     db.Item.findById(req.params.id)

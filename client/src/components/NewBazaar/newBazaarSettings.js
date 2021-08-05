@@ -235,7 +235,7 @@ const NewBazaarSettings = (props) => {
               className='form-check-label bazaar-form-check-label'
               htmlFor='limitedInventoryItems'
             >
-              Set Stock Limits*
+              Set Stock Limits
             </label>
           </OverlayTrigger>
         </div>
