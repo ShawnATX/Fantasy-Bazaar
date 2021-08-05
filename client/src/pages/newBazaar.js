@@ -17,7 +17,8 @@ const NewBazaar = () => {
     requireWalletChangeApproval: false,
     requireSaleApproval: false,
     requirePurchaseApproval: false,
-    limitedInventory: false,
+    limitedInventoryItems: false,
+    limitedInventoryQuantity: false,
     stockSoldItems: false,
   });
   const [pageState, setPageState] = useState(1);

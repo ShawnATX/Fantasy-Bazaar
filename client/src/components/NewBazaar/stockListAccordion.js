@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 import Item from "../Item/item";
 import Card from "react-bootstrap/Card";
@@ -8,11 +8,6 @@ import Form from "react-bootstrap/Form";
 
 
 const StockListAccordion = (props) => {
-
-  useEffect(() => {
-    console.log(props.chosenItems);
-
-  })
 
   const { chosenItemTypes, chosenItemSubtypes } = props;
     const whitespaceStrippedType = props.type.replace(/\s+/g, "");
@@ -33,14 +28,10 @@ const StockListAccordion = (props) => {
 
     const handleInputChange = (event) => {
         event.stopPropagation();
-        console.log()
         if (event.target.dataset.level === "type"){
-          console.log(chosenItemTypes)
-          console.log(chosenItemTypes.includes(event.target.name));
           if (chosenItemTypes.includes(event.target.name)){
             let newTypes = [...chosenItemTypes];
             newTypes.splice(newTypes.indexOf(event.target.name), 1);
-            console.log(newTypes);
             props.setChosenItemTypes(newTypes);
             propagateSubtypesFromParent(false)
           } else{
@@ -115,16 +106,12 @@ const StockListAccordion = (props) => {
     }
 
     const propagateSubtypesFromParent = (checked) => {
-      console.log("subtype propagation expected: " + checked);
-      console.log(checked);
       if (!checked){
         let newSubtypes = [...chosenItemSubtypes];
         let newItems = [...props.chosenItems];
-        console.log(newSubtypes);
         subtypes.forEach(subtype => {
           const subtypeItems = getItems(subtype.subtype).map(item => {return (item._id)})
           newSubtypes.splice(newSubtypes.indexOf(subtype.whitespaceStrippedSubtype), 1)
-          console.log("trying to propagate items for " + subtype.subtype)
           subtypeItems.forEach((item) => {
             newItems.splice(newItems.indexOf(item._id), 1);
           })
@@ -137,7 +124,6 @@ const StockListAccordion = (props) => {
         let newItems = [];
         subtypes.forEach(subtype => {
           if (!newSubtypes.includes(subtype.whitespaceStrippedSubtype)){
-            console.log("trying to propagate items for " + subtype.whitespaceStrippedSubtype)
             newSubtypes.push(subtype.whitespaceStrippedSubtype)
             const subtypeItems = getItems(subtype.subtype).map(item => {return (item._id)});
             newItems = [...newItems, ...subtypeItems];
@@ -172,11 +158,9 @@ const StockListAccordion = (props) => {
         ).map((item) => {
           return item._id;
         })
-        console.log(subtype, childrenItems)
         props.setChosenItems([ ...childrenItems, ...props.chosenItems]);
       }
     }
-
 
     return (
         <Accordion>

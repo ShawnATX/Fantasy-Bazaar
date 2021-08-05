@@ -69,9 +69,13 @@ const bazaarSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  limitedInventory: {
+  limitedInventoryItems: {
     type: Boolean,
     default: false,
+  },
+  limitedInventoryQuantity:{
+    type: Boolean,
+    default: false
   },
   stockSoldItems: {
     type: Boolean,

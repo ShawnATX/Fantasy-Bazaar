@@ -22,8 +22,17 @@ const NewBazaarSettings = (props) => {
     });
   };
 
+  const fixStockDependencies = () => {
+      setFormObject({
+        ...formObject,
+        limitedInventoryQuantity: false,
+        stockSoldItems: false
+      })  
+  }
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    fixStockDependencies();
     saveNewBazaar(formObject);
   };
   const handleGoBack = () => {
@@ -198,7 +207,6 @@ const NewBazaarSettings = (props) => {
             <label
               className='form-check-label bazaar-form-check-label'
               htmlFor='requirePurchaseApproval'
-              id='itemPurchase'
             >
               Item Purchases
             </label>
@@ -209,31 +217,58 @@ const NewBazaarSettings = (props) => {
           <input
             className='form-check-input'
             type='checkbox'
-            id='limitedInventory'
-            name='limitedInventory'
-            checked={formObject.limitedInventory}
+            id='limitedInventoryItems'
+            name='limitedInventoryItems'
+            checked={formObject.limitedInventoryItems}
             onChange={handleInputChange}
           />
           <OverlayTrigger
             placement={"right"}
             overlay={
-              <Tooltip id='tooltip-limitedInventory'>
-                Set limits on available inventory items and amounts in your
+              <Tooltip id='tooltip-limitedInventoryItems'>
+                Set limits on available inventory items in your
                 bazaar
               </Tooltip>
             }
           >
             <label
               className='form-check-label bazaar-form-check-label'
-              htmlFor='itemPurchases'
-              id='stockLimits'
+              htmlFor='limitedInventoryItems'
             >
               Set Stock Limits*
             </label>
           </OverlayTrigger>
         </div>
+      
 
-        {formObject.limitedInventory ? (
+        {formObject.limitedInventoryItems ? (
+          <>
+            <div className='form-check form-switch mx-2 my-2'>
+            <input
+              className='form-check-input'
+              type='checkbox'
+              id='Items'
+              name='limitedInventoryQuantity'
+              checked={formObject.limitedInventoryQuantity}
+              onChange={handleInputChange}
+            />
+            <OverlayTrigger
+              placement={"right"}
+              overlay={
+                <Tooltip id='tooltip-limitedInventoryQuantity'>
+                  Set limits on available inventory amounts in your bazaar
+                </Tooltip>
+              }
+            >
+              <label
+                className='form-check-label bazaar-form-check-label'
+                htmlFor='itemPurchases'
+                id='stockLimits'
+              >
+                Set Stock Quantity Limits*
+              </label>
+            </OverlayTrigger>
+          </div>
           <div className='form-check form-switch mx-2 my-2'>
             <input
               className='form-check-input'
@@ -260,7 +295,36 @@ const NewBazaarSettings = (props) => {
               </label>
             </OverlayTrigger>
           </div>
+          </>
         ) : (
+          <>
+          <div className='form-check form-switch mx-2 my-2'>
+            <input
+              disabled
+              className='form-check-input'
+              type='checkbox'
+              id='Items'
+              name='limitedInventoryQuantity'
+              checked={false}
+              onChange={handleInputChange}
+            />
+            <OverlayTrigger
+              placement={"right"}
+              overlay={
+                <Tooltip id='tooltip-limitedInventoryQuantity'>
+                  Set limits on available inventory amounts in your bazaar
+                </Tooltip>
+              }
+            >
+              <label
+                className='form-check-label bazaar-form-check-label'
+                htmlFor='itemPurchases'
+                id='stockLimits'
+              >
+                Set Stock Quantity Limits*
+              </label>
+            </OverlayTrigger>
+          </div>
           <div className='form-check form-switch mx-2 my-2'>
             <input
               disabled
@@ -288,6 +352,7 @@ const NewBazaarSettings = (props) => {
               </label>
             </OverlayTrigger>
           </div>
+          </>
         )}
 
         <Row className='sticky-footer mt-3'>
@@ -300,7 +365,7 @@ const NewBazaarSettings = (props) => {
             >
               Go Back
             </Button>
-            {formObject.limitedInventory ? (
+            {formObject.limitedInventoryItems ? (
               <Button
                 variant='secondary'
                 className='text-center btn-small'

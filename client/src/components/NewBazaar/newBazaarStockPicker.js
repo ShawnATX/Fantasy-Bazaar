@@ -3,28 +3,35 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
-// import ListSection from "../listSection";
 import StockListAccordion from "./stockListAccordion";
 
 
 const StockPicker = (props) => {
-  const [itemList, setItemList] = useState([]);
+  const [itemObjectList, setItemObjectList] = useState([]);
   const [chosenItems, setChosenItems] = useState([]);
   const [chosenItemTypes, setChosenItemTypes] = useState([]);
   const [chosenItemSubtypes, setChosenItemSubtypes] = useState([]);
-
   let itemTypes = [];
-
 
   useEffect(() => {
     API.getItemsBySystem(props.formObject.system).then((res) => {
-      setItemList(res.data);
+      setItemObjectList(res.data);
     });
   }, []);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    props.saveNewBazaar(props.formObject);
+    let newBazaarData = props.formObject;
+    if (newBazaarData.limitedInventoryQuantity) {
+      newBazaarData.stock = chosenItems.map((item) => {
+        return ( {item: item, quantity: 0} )
+      });
+    } else{
+      newBazaarData.stock = chosenItems.map((item) => {
+        return ( {item: item} )
+      });
+    }
+    props.saveNewBazaar(newBazaarData);
   };
   const handleGoBack = () => {
     props.setPageState(2);
@@ -32,11 +39,11 @@ const StockPicker = (props) => {
 
   const buildTypeList = () => {
     //get all unique item types in a Set, casting to an Array
-    itemTypes = Array.from(new Set(itemList.map((item) => item.type)));
+    itemTypes = Array.from(new Set(itemObjectList.map((item) => item.type)));
   };
 
   const getItems = (type) => {
-    return itemList.filter((item) => item.type === type);
+    return itemObjectList.filter((item) => item.type === type);
   };
 
 
