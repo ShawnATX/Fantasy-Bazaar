@@ -4,13 +4,17 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 // import ListSection from "../listSection";
-import CheckboxTree from "react-checkbox-tree";
+import StockListAccordion from "./stockListAccordion";
+
 
 const StockPicker = (props) => {
   const [itemList, setItemList] = useState([]);
-  const [chosenItemList, setChosenItemList] = useState([]);
-  const typeArr = [];
-  const nodes = [];
+  const [chosenItems, setChosenItems] = useState([]);
+  const [chosenItemTypes, setChosenItemTypes] = useState([]);
+  const [chosenItemSubtypes, setChosenItemSubtypes] = useState([]);
+
+  let itemTypes = [];
+
 
   useEffect(() => {
     API.getItemsBySystem(props.formObject.system).then((res) => {
@@ -28,12 +32,13 @@ const StockPicker = (props) => {
 
   const buildTypeList = () => {
     //get all unique item types in a Set, casting to an Array
-    typeArr = Array.from(new Set(itemList.map((item) => item.type)));
+    itemTypes = Array.from(new Set(itemList.map((item) => item.type)));
   };
 
   const getItems = (type) => {
     return itemList.filter((item) => item.type === type);
   };
+
 
   return (
     <>
@@ -43,15 +48,19 @@ const StockPicker = (props) => {
         </h4>
         <Col>
           {buildTypeList()}
-          {typeArr.map((type) => (
-            <ListSection
+          {itemTypes.map((type) => (
+            <StockListAccordion 
+              expanded={"collapse"}
               key={type}
               type={type}
               items={getItems(type)}
-              expanded={"collapse"}
-              // action={}
-              button={"Add"}
-            ></ListSection>
+              chosenItems={chosenItems}
+              setChosenItems={setChosenItems}
+              chosenItemTypes={chosenItemTypes}
+              setChosenItemTypes={setChosenItemTypes}
+              chosenItemSubtypes={chosenItemSubtypes}
+              setChosenItemSubtypes={setChosenItemSubtypes}
+            />
           ))}
         </Col>
         <Row className='sticky-footer mt-3'>

@@ -34,10 +34,10 @@ const BuildDescription = (item) => {
       description.push(`Caster Level: ${item.description[element]} `);
     }
   }
-  let descJSX = description.map((item) => {
+  let descJSX = description.map((element) => {
     return (
-      <p className='mb-1' key={item}>
-        {item}
+      <p className='mb-1' key={element}>
+        {element}
       </p>
     );
   });
