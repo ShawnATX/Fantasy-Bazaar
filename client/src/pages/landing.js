@@ -8,6 +8,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Card from "react-bootstrap/Card";
 import UserContext from "../utils/userContext";
 import { A, navigate } from "hookrouter";
+import Holder from "holderjs";
 
 const Landing = () => {
   const { authenticationState } = useContext(UserContext);
@@ -18,6 +19,7 @@ const Landing = () => {
     } catch (error) {
       //no session exixts, do nothing
     }
+    Holder.run({});
   });
 
   const getSessionUser = () => {
@@ -65,32 +67,34 @@ const Landing = () => {
         </Col>
       </Row>
       <Row className='mt-4'>
-        <Col xs={6} md={{span: 4, offset: 2}} className="mb-2">
+        <Col
+          xs={6}
+          md={{ span: 4, offset: 2 }}
+          xl={{ span: 3, offset: 3 }}
+          className='mb-2'
+        >
           <A href='/pf1example' alt='Example Pathfinder Bazaar'>
             <Card className='text-white text-center'>
               <Card.Img
-                src='https://lorempixel.com/g/100/100/abstract'
+                src='holder.js/100px200?text= &bg=454d53'
                 alt='Card image'
               />
               <Card.ImgOverlay>
-                <Card.Title>
-                  Sample Pathfinder Bazaar
-                </Card.Title>
+                <Card.Title>Sample Pathfinder Bazaar</Card.Title>
                 <Card.Text></Card.Text>
               </Card.ImgOverlay>
             </Card>
           </A>
         </Col>
-        <Col xs={6}  md={{span: 4, offset: 0}} >
+        <Col xs={6} md={{ span: 4, offset: 0 }} xl={{ span: 3 }}>
           <A href='/dndexample' alt='Example Dungeons and Dragons Bazaar'>
             <Card className='text-white text-center'>
               <Card.Img
-                src='https://lorempixel.com/g/100/100/abstract'
+                src='holder.js/100px200?text= &bg=454d53'
                 alt='Card image'
               />
               <Card.ImgOverlay>
                 <Card.Title>Sample Dungeons and Dragons Bazaar</Card.Title>
-                <Card.Text></Card.Text>
               </Card.ImgOverlay>
             </Card>
           </A>
