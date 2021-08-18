@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Card from "react-bootstrap/Card";
 import UserContext from "../utils/userContext";
 import { A, navigate } from "hookrouter";
 
@@ -60,6 +61,38 @@ const Landing = () => {
         <Col className='align-self-end'>
           <A href='/about' alt='About Fantasy Bazaar'>
             <Button variant='secondary'>About</Button>
+          </A>
+        </Col>
+      </Row>
+      <Row className='mt-3'>
+        <Col>
+          <A href='/pf1example' alt='Example Pathfinder Bazaar'>
+            <Card className='text-white text-center'>
+              <Card.Img
+                src='https://lorempixel.com/g/150/150/abstract'
+                alt='Card image'
+              />
+              <Card.ImgOverlay>
+                <Card.Title>
+                  <h2>Sample Pathfinder Bazaar</h2>
+                </Card.Title>
+                <Card.Text></Card.Text>
+              </Card.ImgOverlay>
+            </Card>
+          </A>
+        </Col>
+        <Col>
+          <A href='/dndexample' alt='Example Dungeons and Dragons Bazaar'>
+            <Card className='text-white text-center'>
+              <Card.Img
+                src='https://lorempixel.com/g/150/150/abstract'
+                alt='Card image'
+              />
+              <Card.ImgOverlay>
+                <Card.Title>Sample Dungeons and Dragons Bazaar</Card.Title>
+                <Card.Text></Card.Text>
+              </Card.ImgOverlay>
+            </Card>
           </A>
         </Col>
       </Row>

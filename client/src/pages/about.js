@@ -32,8 +32,11 @@ const About = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={{ span: 4, offset: 4 }}>
-          <A href='/' alt='Back Home' className='text-center'>
+        <Col
+          xs={{ span: 4, offset: 4 }}
+          className='d-flex justify-content-center'
+        >
+          <A href='/' alt='Back Home'>
             <Button className='btn-small' variant='secondary'>
               Back Home
             </Button>

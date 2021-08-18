@@ -46,6 +46,12 @@ button {
   font-size: large;
   font-weight: bold;
 }
+.card-title {
+  background-color: transparent;
+}
+.card-img-overlay {
+  background-color: transparent;
+}
 .input-group-text-base {
   align-items: flex-end;
 }
@@ -133,7 +139,7 @@ button {
 .sweet-alert > div {
   background-color: #6c757d;
 }
-.loader-btn>* {
+.loader-btn > * {
   background-color: transparent;
 }
 .pulsate {
@@ -141,13 +147,13 @@ button {
   opacity: 0.4;
 }
 @keyframes pulsate {
-  0% { 
-      opacity: 0.4;
+  0% {
+    opacity: 0.4;
   }
-  50% { 
-      opacity: 1.0;
+  50% {
+    opacity: 1;
   }
-  100% { 
-      opacity: 0.3;
+  100% {
+    opacity: 0.3;
   }
 }

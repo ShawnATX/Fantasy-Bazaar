@@ -9,6 +9,8 @@ import NewBazaar from "../pages/newBazaar";
 import UserHome from "../pages/userHome";
 import Logout from "../pages/logout";
 import About from "../pages/about";
+import DNDExampleBazaar from "../pages/Example Bazaars/dnd5";
+import PF1ExampleBazaar from "../pages/Example Bazaars/pathfinder1";
 
 const routes = {
   "/": () => <Landing />,
@@ -17,6 +19,8 @@ const routes = {
   "/passwordreset/:token": (token) => <PasswordReset token={token} />,
   "/logout": () => <Logout />,
   "/about": () => <About />,
+  "/dndexample": () => <DNDExampleBazaar />,
+  "/pf1example": () => <PF1ExampleBazaar />,
   "/newusertype": () => <NewUserType />,
   "/newusercreds/player/:bazaarcode": ({ bazaarcode }) => (
     <NewUserCreds type={"player"} bazaarCode={bazaarcode} />
