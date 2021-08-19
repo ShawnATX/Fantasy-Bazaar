@@ -7,6 +7,16 @@ import Card from "react-bootstrap/Card";
 import { A } from "hookrouter";
 
 const About = () => {
+  const AdTrigger = () => {
+    try {
+        window._mNHandle.queue.push(function (){
+            window._mNDetails.loadTag("833316833", "300x250", "833316833");
+        });
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Container>
       <h1 className='display-2 mt-3 text-center'>Fantasy Bazaar</h1>
@@ -43,8 +53,12 @@ const About = () => {
           </A>
         </Col>
       </Row>
+      <div id="833316833">
+        {AdTrigger()}
+      </div>
     </Container>
   );
 };
 
 export default About;
+
