@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import ItemCard from "./itemCard";
 
 const CharacterDetails = (props) => {
   const [itemList, setItemList] = useState([]);
@@ -25,21 +26,23 @@ const CharacterDetails = (props) => {
   };
 
   return (
-    <Row xs={2} sm={2} md={4} lg={5} className='text-center bg-dark-grey'>
+    // <Row xs={2} sm={2} md={4} lg={5} className='text-center bg-dark-grey'>
+    <Row className='text-center bg-dark-grey'>
       {props.character.items.length > 0 ? (
         itemList.map((item) => (
-          <Col className='my-1 bg-dark-grey mx-auto' key={item._id}>
-            <Card style={{ width: "10rem" }}>
-              <Card.Body>
-                <Card.Text>
-                  {item.name} - {getQuantity(item._id)}
-                </Card.Text>
-                <Card.Text>
-                  Total Value: {item.value * getQuantity(item._id)}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+          // <Col className='my-1 bg-dark-grey mx-auto' key={item._id}>
+          //   <Card>
+          //     <Card.Body>
+          //       <Card.Text>
+          //         {item.name} - {getQuantity(item._id)}
+          //       </Card.Text>
+          //       <Card.Text>
+          //         Total Value: {item.value * getQuantity(item._id)}
+          //       </Card.Text>
+          //     </Card.Body>
+          //   </Card>
+          // </Col>
+          <ItemCard item={item} quantity={getQuantity(item._id)} />
         ))
       ) : (
         <Row className='text-center'>

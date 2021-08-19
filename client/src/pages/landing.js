@@ -80,7 +80,9 @@ const Landing = () => {
                 alt='Card image'
               />
               <Card.ImgOverlay>
-                <Card.Title>Sample Pathfinder Bazaar</Card.Title>
+                <Card.Title className='clear-title'>
+                  Sample Pathfinder Bazaar
+                </Card.Title>
                 <Card.Text></Card.Text>
               </Card.ImgOverlay>
             </Card>
@@ -94,7 +96,9 @@ const Landing = () => {
                 alt='Card image'
               />
               <Card.ImgOverlay>
-                <Card.Title>Sample Dungeons and Dragons Bazaar</Card.Title>
+                <Card.Title className='clear-title'>
+                  Sample Dungeons and Dragons Bazaar
+                </Card.Title>
               </Card.ImgOverlay>
             </Card>
           </A>
