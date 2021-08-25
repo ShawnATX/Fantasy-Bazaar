@@ -9,6 +9,7 @@ import { A } from "hookrouter";
 const About = () => {
   const AdTrigger = () => {
     try {
+      console.log("ad trigger")
         window._mNHandle.queue.push(function (){
             window._mNDetails.loadTag("833316833", "300x250", "833316833");
         });

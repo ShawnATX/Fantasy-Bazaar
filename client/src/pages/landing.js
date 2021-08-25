@@ -8,7 +8,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Card from "react-bootstrap/Card";
 import UserContext from "../utils/userContext";
 import { A, navigate } from "hookrouter";
-import Holder from "holderjs";
+import Holder from "holderjs";  //placeholder images
 
 const Landing = () => {
   const { authenticationState } = useContext(UserContext);

@@ -82,13 +82,13 @@ const PasswordReset = {
       });
   },
   UpdatePassword: function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     Token.findOne({ token: req.body.token })
       .then((tokenModel) => {
         if (tokenModel === null) {
           res.status(404).json("token expired");
         } else {
-          User.findByIdAndUpdate(tokenModel.userId, {
+          User.updateOne({_id: tokenModel.userId}, {
             $set: { password: req.body.password },
           })
             .then((userModel) => {

@@ -10,32 +10,35 @@ passport.use(
       passwordField: "password",
     },
     function (email, password, done) {
+      console.log("In passport local strategy")
       User.findOne({ email: email })
-        .then(function (dbUser) {
-          const checkPass = async function () {
-            const rightPass = await dbUser.comparePassword(password);
-            return rightPass;
-          };
-          // If there's no user with the given email
-          if (!dbUser) {
+      .then((dbUser) => {
+        if (!dbUser) {
+          return done(null, false, {
+            message: "Incorrect email",
+          });
+        }
+        async function checkPassword() {
+          let validPassword = await dbUser.comparePassword(password); 
+          console.log(validPassword);
+          return await validPassword;
+        }
+        checkPassword().then((isValid) => {
+          console.log("Is Password Valid? " + isValid);
+          if (!isValid) {
+            console.log("no checks out!");
             return done(null, false, {
-              message: "Incorrect email.",
+            message: "Incorrect password.",
             });
           }
-          // If there is a user with the given email, but the attempted password is incorrect
-          else if (!checkPass) {
-            return done(null, false, {
-              message: "Incorrect password.",
-            });
-          }
-          // If none of the above, return the user
-          else {
-            return done(null, dbUser, {
-              message: "Log-in Successful.",
-            });
-          }
+         else {
+           return done(null, dbUser, {
+             message: "Log-in Successful.",
+           });
+         }
         })
-        .catch((err) => {
+        })
+      .catch((err) => {
           console.log(err);
           return err;
         });
