@@ -1,6 +1,7 @@
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
+const rendertron = require("rendertron-middleware");
 const routes = require("./routes");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);

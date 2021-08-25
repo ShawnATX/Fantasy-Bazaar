@@ -39,6 +39,7 @@
     "nanoid-generate": "^1.0.0",
     "nodemailer": "^6.6.3",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "rendertron-middleware": "^0.1.5"
   }
 }
