@@ -7,23 +7,13 @@ import Card from "react-bootstrap/Card";
 import { A } from "hookrouter";
 
 const About = () => {
-  const AdTrigger = () => {
-    try {
-      console.log("ad trigger");
-      window._mNHandle.queue.push(function () {
-        window._mNDetails.loadTag("833316833", "300x250", "833316833");
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <Container>
       <h1 className='display-2 mt-3 text-center'>Fantasy Bazaar</h1>
       <Row className='align-items-center'>
         <Col className='align-items-center'>
           <Card className='my-5'>
-            <Card.Body>
+            <Card.Body className='bg-black'>
               <Card.Text style={{ fontSize: "1.2rem" }}>
                 Fantasy Bazaar is a table-top game companion app built to help
                 players and Game Masters manage inventory and wealth details
@@ -49,6 +39,11 @@ const About = () => {
           <A href='/' alt='Back Home'>
             <Button className='btn-small' variant='secondary'>
               Back Home
+            </Button>
+          </A>
+          <A href='/privacypolicy' alt='Privacy Policy'>
+            <Button className='btn-small' variant='secondary'>
+              Privacy Policy
             </Button>
           </A>
         </Col>

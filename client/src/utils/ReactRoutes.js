@@ -11,6 +11,7 @@ import Logout from "../pages/logout";
 import About from "../pages/about";
 import DNDExampleBazaar from "../pages/Example Bazaars/dnd5";
 import PF1ExampleBazaar from "../pages/Example Bazaars/pathfinder1";
+import PrivacyPolicy from "../pages/privacyPolicy";
 
 const routes = {
   "/": () => <Landing />,
@@ -19,6 +20,7 @@ const routes = {
   "/passwordreset/:token": (token) => <PasswordReset token={token} />,
   "/logout": () => <Logout />,
   "/about": () => <About />,
+  "/privacypolicy": () => <PrivacyPolicy />,
   "/dndexample": () => <DNDExampleBazaar />,
   "/pf1example": () => <PF1ExampleBazaar />,
   "/newusertype": () => <NewUserType />,

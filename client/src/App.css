@@ -109,6 +109,9 @@ button {
 .accordion-button:not(.collapsed) {
   background-color: #6c757d;
 }
+.bg-black {
+  background-color: black !important;
+}
 .bg-grey {
   background-color: #6c757d;
 }
