@@ -20,11 +20,9 @@ passport.use(
         }
         async function checkPassword() {
           let validPassword = await dbUser.comparePassword(password); 
-          console.log(validPassword);
           return await validPassword;
         }
         checkPassword().then((isValid) => {
-          console.log("Is Password Valid? " + isValid);
           if (!isValid) {
             console.log("no checks out!");
             return done(null, false, {

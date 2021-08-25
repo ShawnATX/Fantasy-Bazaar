@@ -45,9 +45,9 @@ const PasswordReset = (props) => {
       })
         .then((res) => {
           loginUser();
-          console.log(res.data);
         })
         .catch((err) => {
+          console.log(err);
           setSweetAlertContent({
             title: "Error Saving password",
             value: err,

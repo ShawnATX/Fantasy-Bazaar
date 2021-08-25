@@ -16,7 +16,6 @@ const PasswordReset = {
         res.status(403).json("email not found");
       } else {
         let token = nanoid();
-        console.log("token= " + token);
         Token.create({
           userId: dbModel._id,
           token: token,
@@ -82,24 +81,25 @@ const PasswordReset = {
       });
   },
   UpdatePassword: function (req, res) {
-    // console.log(req.body);
     Token.findOne({ token: req.body.token })
       .then((tokenModel) => {
         if (tokenModel === null) {
           res.status(404).json("token expired");
         } else {
-          User.updateOne({_id: tokenModel.userId}, {
-            $set: { password: req.body.password },
-          })
-            .then((userModel) => {
+          User.findById(tokenModel.userId)
+          .then((userDocument) => {
+            userDocument.password = req.body.password;
+            userDocument.save()
+            .then((user) => {
               tokenModel.remove();
               res.status(200).json({
-                bazaars: userModel.bazaars,
-                characters: userModel.characters,
-                email: userModel.email,
-                id: userModel._id,
+                bazaars: user.bazaars,
+                characters: user.characters,
+                email: user.email,
+                id: user._id,
               });
-            })
+            });
+          })
             .catch((err) => {
               res.status(404).json("error finding character");
             });
