@@ -8,12 +8,13 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Card from "react-bootstrap/Card";
 import UserContext from "../utils/userContext";
 import { A, navigate } from "hookrouter";
-import Holder from "holderjs";  //placeholder images
+import Holder from "holderjs"; //placeholder images
 
 const Landing = () => {
   const { authenticationState } = useContext(UserContext);
 
   useEffect(() => {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     try {
       getSessionUser();
     } catch (error) {
@@ -66,7 +67,7 @@ const Landing = () => {
           </A>
         </Col>
       </Row>
-      <Row className='mt-4'>
+      <Row className='my-4'>
         <Col
           xs={6}
           md={{ span: 4, offset: 2 }}
@@ -103,6 +104,16 @@ const Landing = () => {
             </Card>
           </A>
         </Col>
+      </Row>
+      <Row>
+        <ins
+          className='adsbygoogle'
+          style={{ display: "block" }}
+          data-ad-client='ca-pub-4956647583327789'
+          data-ad-slot='9176994471'
+          data-ad-format='auto'
+          data-full-width-responsive='true'
+        />
       </Row>
     </Container>
   );

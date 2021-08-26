@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,6 +7,9 @@ import Card from "react-bootstrap/Card";
 import { A } from "hookrouter";
 
 const About = () => {
+  useEffect(() => {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  });
   return (
     <Container>
       <h1 className='display-2 mt-3 text-center'>Fantasy Bazaar</h1>
@@ -47,6 +50,16 @@ const About = () => {
             </Button>
           </A>
         </Col>
+      </Row>
+      <Row>
+        <ins
+          className='adsbygoogle'
+          style={{ display: "block" }}
+          data-ad-client='ca-pub-4956647583327789'
+          data-ad-slot='9176994471'
+          data-ad-format='auto'
+          data-full-width-responsive='true'
+        />
       </Row>
     </Container>
   );
