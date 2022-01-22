@@ -35,7 +35,7 @@
     "if-env": "^1.0.4",
     "lodash": ">=4.17.21",
     "mongoose": "^5.12.3",
-    "nanoid": "^2.1.11",
+    "nanoid": "^3.1.31",
     "nanoid-generate": "^1.0.0",
     "nodemailer": "^6.6.3",
     "passport": "^0.4.1",
